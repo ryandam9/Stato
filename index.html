@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <style>
-        #home-tab, #storage-tab, #in-progress-queries-tab, #waits-tab, #catalog-tab, #others-tab {
+        #home-tab, #storage-tab, #in-progress-queries-tab, #waits-tab, #catalog-tab, #others-tab, #query-execution-tab {
             cursor: pointer;
         }
     </style>
@@ -19,51 +19,54 @@
 <body>
 <!--Navbar-->
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-    <div class="container">
-        <a class="navbar-brand" href="index.html">Stato - Oracle DB Status</a>
-        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active font-weight-bold">
-                    <a class="nav-link" id="home-tab">
-                        <i class="fas fa-home mr-1"></i>
-                        Home
-                    </a>
-                </li>
-                <li class="nav-item font-weight-bold">
-                    <a class="nav-link" id="storage-tab">
-                        <i class="fas fa-database mr-1"></i>
-                        Storage
-                    </a>
-                </li>
-                <li class="nav-item font-weight-bold">
-                    <a class="nav-link" id="in-progress-queries-tab">
-                        <i class="fas fa-running mr-1"></i>
-                        In-progress
-                        Queries
-                    </a>
-                </li>
-                <li class="nav-item font-weight-bold">
-                    <a class="nav-link" id="waits-tab">
-                        <i class="fas fa-clock mr-1"></i>
-                        Waits
-                    </a>
-                </li>
-                <li class="nav-item font-weight-bold">
-                    <a class="nav-link" id="catalog-tab">
-                        <i class="fas fa-list mr-1"></i>
-                        Catalog</a>
-                </li>
-                <li class="nav-item font-weight-bold">
-                    <a class="nav-link" id="others-tab">
-                        <i class="fas fa-book mr-1"></i>
-                        Others
-                    </a>
-                </li>
-            </ul>
-        </div>
+    <a class="navbar-brand" href="index.html">Stato - Oracle DB Status Viewer</a>
+    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active font-weight-bold">
+                <a class="nav-link" id="home-tab">
+                    <i class="fas fa-home mr-1"></i>
+                    Home
+                </a>
+            </li>
+            <li class="nav-item font-weight-bold">
+                <a class="nav-link" id="storage-tab">
+                    <i class="fas fa-database mr-1"></i>
+                    Storage
+                </a>
+            </li>
+            <li class="nav-item font-weight-bold">
+                <a class="nav-link" id="in-progress-queries-tab">
+                    <i class="fas fa-running mr-1"></i>
+                    In-progress
+                    Queries
+                </a>
+            </li>
+            <li class="nav-item font-weight-bold">
+                <a class="nav-link" id="waits-tab">
+                    <i class="fas fa-clock mr-1"></i>
+                    Waits
+                </a>
+            </li>
+            <li class="nav-item font-weight-bold">
+                <a class="nav-link" id="catalog-tab">
+                    <i class="fas fa-list mr-1"></i>
+                    Catalog</a>
+            </li>
+            <li class="nav-item font-weight-bold">
+                <a class="nav-link" id="query-execution-tab">
+                    <i class="fas fa-adjust mr-1"></i>
+                    Query Execution</a>
+            </li>
+            <li class="nav-item font-weight-bold">
+                <a class="nav-link" id="others-tab">
+                    <i class="fas fa-book mr-1"></i>
+                    Others
+                </a>
+            </li>
+        </ul>
     </div>
 </nav>
 
@@ -105,12 +108,65 @@
                     <div class="card-header">
                         Catalog tables page
                     </div>
+                    <div class="card-body">
+                        <div id="accordion">
+                            <div class="card">
+                                <div class="card-header" id="headingOne">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            Collapsible Group Item #1
+                                        </button>
+                                    </h5>
+                                </div>
+
+                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                    <div class="card-body">
+                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingTwo">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                            Collapsible Group Item #2
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
+                                    <div class="card-body">
+                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                            Collapsible Group Item #3
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordion">
+                                    <div class="card-body">
+                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div id="others-page" class="tool-page">
                 <div class="card">
                     <div class="card-header">
                         Others page
+                    </div>
+                </div>
+            </div><div id="query-execution-page" class="tool-page">
+                <div class="card">
+                    <div class="card-header">
+                        Query Execution page
                     </div>
                 </div>
             </div>
@@ -129,6 +185,7 @@
     document.getElementById('waits-page').style.display = 'none';
     document.getElementById('catalog-page').style.display = 'none';
     document.getElementById('others-page').style.display = 'none';
+    document.getElementById('query-execution-page').style.display = 'none';
 
     document.getElementById('home-tab').addEventListener('click', tabHandler);
     document.getElementById('storage-tab').addEventListener('click', tabHandler);
@@ -136,6 +193,7 @@
     document.getElementById('waits-tab').addEventListener('click', tabHandler);
     document.getElementById('catalog-tab').addEventListener('click', tabHandler);
     document.getElementById('others-tab').addEventListener('click', tabHandler);
+    document.getElementById('query-execution-tab').addEventListener('click', tabHandler);
 
     function tabHandler(e) {
         let targetId = e.target.id;
