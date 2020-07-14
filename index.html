@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        #home-tab, #storage-tab, #in-progress-queries-tab, #waits-tab, #catalog-tab, #others-tab {
+            cursor: pointer;
+        }
+    </style>
+
+    <title>Stato - Oracle DB Status</title>
+</head>
+<body>
+<!--Navbar-->
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">Stato - Oracle DB Status</a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active font-weight-bold">
+                    <a class="nav-link" id="home-tab">
+                        <i class="fas fa-home mr-1"></i>
+                        Home
+                    </a>
+                </li>
+                <li class="nav-item font-weight-bold">
+                    <a class="nav-link" id="storage-tab">
+                        <i class="fas fa-database mr-1"></i>
+                        Storage
+                    </a>
+                </li>
+                <li class="nav-item font-weight-bold">
+                    <a class="nav-link" id="in-progress-queries-tab">
+                        <i class="fas fa-running mr-1"></i>
+                        In-progress
+                        Queries
+                    </a>
+                </li>
+                <li class="nav-item font-weight-bold">
+                    <a class="nav-link" id="waits-tab">
+                        <i class="fas fa-clock mr-1"></i>
+                        Waits
+                    </a>
+                </li>
+                <li class="nav-item font-weight-bold">
+                    <a class="nav-link" id="catalog-tab">
+                        <i class="fas fa-list mr-1"></i>
+                        Catalog</a>
+                </li>
+                <li class="nav-item font-weight-bold">
+                    <a class="nav-link" id="others-tab">
+                        <i class="fas fa-book mr-1"></i>
+                        Others
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid my-2">
+    <div class="jumbotron-fluid">
+        <div id="visible-page">
+            <!-- Home page-->
+            <div id="home-page" class="tool-page">
+                <div class="card">
+                    <div class="card-header">
+                        Home page
+                    </div>
+                </div>
+            </div>
+            <div id="storage-page" class="tool-page">
+                <div class="card">
+                    <div class="card-header">
+                        Storage page
+                    </div>
+
+                </div>
+            </div>
+            <div id="in-progress-queries-page" class="tool-page">
+                <div class="card">
+                    <div class="card-header">
+                        In Progress Queries page
+                    </div>
+                </div>
+            </div>
+            <div id="waits-page" class="tool-page">
+                <div class="card">
+                    <div class="card-header">
+                        Waits
+                    </div>
+                </div>
+            </div>
+            <div id="catalog-page" class="tool-page">
+                <div class="card">
+                    <div class="card-header">
+                        Catalog tables page
+                    </div>
+                </div>
+            </div>
+            <div id="others-page" class="tool-page">
+                <div class="card">
+                    <div class="card-header">
+                        Others page
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+<script>
+    document.getElementById('storage-page').style.display = 'none';
+    document.getElementById('in-progress-queries-page').style.display = 'none';
+    document.getElementById('waits-page').style.display = 'none';
+    document.getElementById('catalog-page').style.display = 'none';
+    document.getElementById('others-page').style.display = 'none';
+
+    document.getElementById('home-tab').addEventListener('click', tabHandler);
+    document.getElementById('storage-tab').addEventListener('click', tabHandler);
+    document.getElementById('in-progress-queries-tab').addEventListener('click', tabHandler);
+    document.getElementById('waits-tab').addEventListener('click', tabHandler);
+    document.getElementById('catalog-tab').addEventListener('click', tabHandler);
+    document.getElementById('others-tab').addEventListener('click', tabHandler);
+
+    function tabHandler(e) {
+        let targetId = e.target.id;
+
+        if (targetId.length === 0 || targetId === undefined)
+            return;
+
+        let pageId = targetId.replace('-tab', '-page');
+
+        hideAllPages();
+        document.getElementById(pageId).style.display = 'block';
+    }
+
+    function hideAllPages() {
+        document.querySelectorAll('.tool-page').forEach(node => node.style.display = 'none');
+    }
+
+
+</script>
+</body>
+</html>
