@@ -1,0 +1,309 @@
+2020-07-23 20:02:59,773 INFO: [_internal.py:122] :  * Restarting with stat
+2020-07-23 20:03:00,125 WARNING: [_internal.py:122] :  * Debugger is active!
+2020-07-23 20:03:00,141 INFO: [_internal.py:122] :  * Debugger PIN: 296-999-343
+2020-07-23 20:03:00,141 INFO: [_internal.py:122] :  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-07-23 20:04:54,320 INFO: [_internal.py:122] :  * Detected change in 'C:\\Users\\ravis\\Desktop\\Stato\\server\\app.py', reloading
+2020-07-23 20:04:54,335 INFO: [_internal.py:122] :  * Restarting with stat
+2020-07-23 20:18:06,866 INFO: [_internal.py:122] :  * Restarting with stat
+2020-07-23 20:18:07,245 WARNING: [_internal.py:122] :  * Debugger is active!
+2020-07-23 20:18:07,245 INFO: [_internal.py:122] :  * Debugger PIN: 296-999-343
+2020-07-23 20:18:07,268 INFO: [_internal.py:122] :  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-07-23 20:18:32,747 INFO: [_internal.py:122] :  * Detected change in 'C:\\Users\\ravis\\Desktop\\Stato\\server\\app.py', reloading
+2020-07-23 20:18:32,762 INFO: [_internal.py:122] :  * Restarting with stat
+2020-07-23 20:18:33,178 WARNING: [_internal.py:122] :  * Debugger is active!
+2020-07-23 20:18:33,178 INFO: [_internal.py:122] :  * Debugger PIN: 296-999-343
+2020-07-23 20:18:33,194 INFO: [_internal.py:122] :  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-07-23 20:18:48,502 INFO: [_internal.py:122] :  * Detected change in 'C:\\Users\\ravis\\Desktop\\Stato\\server\\app.py', reloading
+2020-07-23 20:18:48,518 INFO: [_internal.py:122] :  * Restarting with stat
+2020-07-23 20:20:21,194 INFO: [_internal.py:122] :  * Restarting with stat
+2020-07-23 20:20:21,594 WARNING: [_internal.py:122] :  * Debugger is active!
+2020-07-23 20:20:21,594 INFO: [_internal.py:122] :  * Debugger PIN: 296-999-343
+2020-07-23 20:20:21,594 INFO: [_internal.py:122] :  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-07-23 20:21:03,380 INFO: [_internal.py:122] :  * Detected change in 'C:\\Users\\ravis\\Desktop\\Stato\\server\\app.py', reloading
+2020-07-23 20:21:03,396 INFO: [_internal.py:122] :  * Restarting with stat
+2020-07-23 20:21:03,797 WARNING: [_internal.py:122] :  * Debugger is active!
+2020-07-23 20:21:03,812 INFO: [_internal.py:122] :  * Debugger PIN: 296-999-343
+2020-07-23 20:21:03,812 INFO: [_internal.py:122] :  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-07-23 20:21:41,494 INFO: [_internal.py:122] :  * Detected change in 'C:\\Users\\ravis\\Desktop\\Stato\\server\\app.py', reloading
+2020-07-23 20:21:41,516 INFO: [_internal.py:122] :  * Restarting with stat
+2020-07-23 20:21:41,935 WARNING: [_internal.py:122] :  * Debugger is active!
+2020-07-23 20:21:41,935 INFO: [_internal.py:122] :  * Debugger PIN: 296-999-343
+2020-07-23 20:21:41,935 INFO: [_internal.py:122] :  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-07-23 20:21:45,341 INFO: [_internal.py:122] :  * Restarting with stat
+2020-07-23 20:21:45,704 WARNING: [_internal.py:122] :  * Debugger is active!
+2020-07-23 20:21:45,704 INFO: [_internal.py:122] :  * Debugger PIN: 296-999-343
+2020-07-23 20:21:45,720 INFO: [_internal.py:122] :  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-07-23 20:22:28,235 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 20:22:28] "GET /query_execution HTTP/1.1" 404 -
+2020-07-23 20:22:28,284 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 20:22:28] "GET /favicon.ico HTTP/1.1" 404 -
+2020-07-23 20:22:52,834 DEBUG: [app.py:240] : Query parameters for 223: 
+2020-07-23 20:22:52,834 DEBUG: [app.py:241] : Parameter names        : []
+2020-07-23 20:22:52,834 DEBUG: [app.py:242] : Parameter values       : []
+2020-07-23 20:22:52,844 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 20:22:52] "GET /query_execution/223 HTTP/1.1" 500 -
+2020-07-23 20:22:53,146 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 20:22:53] "GET /query_execution/223?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2020-07-23 20:22:53,158 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 20:22:53] "GET /query_execution/223?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2020-07-23 20:22:53,159 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 20:22:53] "GET /query_execution/223?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2020-07-23 20:22:53,533 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 20:22:53] "GET /query_execution/223?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2020-07-23 20:22:58,943 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 20:22:58] "GET /query_execution/223?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2020-07-23 20:22:59,194 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 20:22:59] "GET /query_execution/223?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2020-07-23 20:23:38,394 INFO: [_internal.py:122] :  * Restarting with stat
+2020-07-23 20:23:38,795 WARNING: [_internal.py:122] :  * Debugger is active!
+2020-07-23 20:23:38,795 INFO: [_internal.py:122] :  * Debugger PIN: 296-999-343
+2020-07-23 20:23:38,795 INFO: [_internal.py:122] :  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-07-23 20:23:42,050 DEBUG: [app.py:240] : Query parameters for 223: 
+2020-07-23 20:23:42,050 DEBUG: [app.py:241] : Parameter names        : []
+2020-07-23 20:23:42,050 DEBUG: [app.py:242] : Parameter values       : []
+2020-07-23 20:23:42,061 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 20:23:42] "GET /query_execution/223 HTTP/1.1" 500 -
+2020-07-23 20:23:42,077 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 20:23:42] "GET /query_execution/223?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2020-07-23 20:23:42,302 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 20:23:42] "GET /query_execution/223?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2020-07-23 20:23:42,379 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 20:23:42] "GET /query_execution/223?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2020-07-23 20:23:42,707 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 20:23:42] "GET /query_execution/223?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2020-07-23 20:23:42,710 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 20:23:42] "GET /query_execution/223?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2020-07-23 20:23:42,958 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 20:23:42] "GET /query_execution/223?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2020-07-23 20:25:06,458 INFO: [_internal.py:122] :  * Detected change in 'C:\\Users\\ravis\\Desktop\\Stato\\server\\app.py', reloading
+2020-07-23 20:25:06,480 INFO: [_internal.py:122] :  * Restarting with stat
+2020-07-23 20:36:19,508 INFO: [_internal.py:122] :  * Restarting with stat
+2020-07-23 20:36:19,893 WARNING: [_internal.py:122] :  * Debugger is active!
+2020-07-23 20:36:19,893 INFO: [_internal.py:122] :  * Debugger PIN: 296-999-343
+2020-07-23 20:36:19,893 INFO: [_internal.py:122] :  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-07-23 21:04:39,360 INFO: [_internal.py:122] :  * Restarting with stat
+2020-07-23 21:04:39,729 WARNING: [_internal.py:122] :  * Debugger is active!
+2020-07-23 21:04:39,729 INFO: [_internal.py:122] :  * Debugger PIN: 296-999-343
+2020-07-23 21:04:39,745 INFO: [_internal.py:122] :  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-07-23 21:04:48,917 INFO: [_internal.py:122] :  * Detected change in 'C:\\Users\\ravis\\Desktop\\Stato\\server\\app.py', reloading
+2020-07-23 21:04:48,924 INFO: [_internal.py:122] :  * Restarting with stat
+2020-07-23 21:04:49,325 WARNING: [_internal.py:122] :  * Debugger is active!
+2020-07-23 21:04:49,341 INFO: [_internal.py:122] :  * Debugger PIN: 296-999-343
+2020-07-23 21:04:49,341 INFO: [_internal.py:122] :  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-07-23 21:05:10,265 DEBUG: [app.py:239] : Query parameters for 223: 
+2020-07-23 21:05:10,265 DEBUG: [app.py:240] : Parameter names        : []
+2020-07-23 21:05:10,265 DEBUG: [app.py:241] : Parameter values       : []
+2020-07-23 21:05:10,279 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 21:05:10] "GET /query_execution/223 HTTP/1.1" 500 -
+2020-07-23 21:05:10,293 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 21:05:10] "GET /query_execution/223?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2020-07-23 21:05:10,519 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 21:05:10] "GET /query_execution/223?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2020-07-23 21:05:10,595 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 21:05:10] "GET /query_execution/223?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2020-07-23 21:05:10,927 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 21:05:10] "GET /query_execution/223?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2020-07-23 21:05:10,929 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 21:05:10] "GET /query_execution/223?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2020-07-23 21:05:11,176 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 21:05:11] "GET /query_execution/223?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2020-07-23 21:05:33,214 INFO: [_internal.py:122] :  * Detected change in 'C:\\Users\\ravis\\Desktop\\Stato\\server\\app.py', reloading
+2020-07-23 21:05:33,245 INFO: [_internal.py:122] :  * Restarting with stat
+2020-07-23 21:05:33,630 WARNING: [_internal.py:122] :  * Debugger is active!
+2020-07-23 21:05:33,646 INFO: [_internal.py:122] :  * Debugger PIN: 296-999-343
+2020-07-23 21:05:33,646 INFO: [_internal.py:122] :  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-07-23 21:05:36,229 DEBUG: [app.py:238] : Query parameters for 223: 
+2020-07-23 21:05:36,230 DEBUG: [app.py:239] : Parameter names        : []
+2020-07-23 21:05:36,230 DEBUG: [app.py:240] : Parameter values       : []
+2020-07-23 21:05:36,242 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 21:05:36] "GET /query_execution/223 HTTP/1.1" 500 -
+2020-07-23 21:05:36,259 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 21:05:36] "GET /query_execution/223?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2020-07-23 21:05:36,480 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 21:05:36] "GET /query_execution/223?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2020-07-23 21:05:36,561 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 21:05:36] "GET /query_execution/223?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2020-07-23 21:05:36,893 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 21:05:36] "GET /query_execution/223?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2020-07-23 21:05:36,895 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 21:05:36] "GET /query_execution/223?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2020-07-23 21:05:37,144 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 21:05:37] "GET /query_execution/223?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2020-07-23 21:05:55,059 INFO: [_internal.py:122] :  * Detected change in 'C:\\Users\\ravis\\Desktop\\Stato\\server\\app.py', reloading
+2020-07-23 21:05:55,074 INFO: [_internal.py:122] :  * Restarting with stat
+2020-07-23 21:06:19,543 INFO: [_internal.py:122] :  * Restarting with stat
+2020-07-23 21:06:19,906 WARNING: [_internal.py:122] :  * Debugger is active!
+2020-07-23 21:06:19,922 INFO: [_internal.py:122] :  * Debugger PIN: 296-999-343
+2020-07-23 21:06:19,922 INFO: [_internal.py:122] :  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-07-23 21:06:22,101 DEBUG: [app.py:238] : Query parameters for 223: 
+2020-07-23 21:06:22,101 DEBUG: [app.py:239] : Parameter names        : []
+2020-07-23 21:06:22,101 DEBUG: [app.py:240] : Parameter values       : []
+2020-07-23 21:06:22,102 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 21:06:22] "GET /query_execution/223 HTTP/1.1" 200 -
+2020-07-23 21:07:00,377 DEBUG: [app.py:238] : Query parameters for schemas: 
+2020-07-23 21:07:00,377 DEBUG: [app.py:239] : Parameter names        : []
+2020-07-23 21:07:00,377 DEBUG: [app.py:240] : Parameter values       : []
+2020-07-23 21:07:00,555 DEBUG: [app.py:98] : DB Connection: <cx_Oracle.Connection to admin@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1522))(CONNECT_DATA=(SERVICE_NAME=testdb)))>
+2020-07-23 21:07:00,555 DEBUG: [app.py:99] : Query to be executed: 
+SELECT
+    USERNAME
+FROM
+    DBA_USERS
+ORDER BY
+    USERNAME
+
+2020-07-23 21:07:00,555 DEBUG: [app.py:100] : Parameters for the Query: None
+2020-07-23 21:07:00,567 DEBUG: [app.py:143] : Sample Result
+2020-07-23 21:07:00,567 DEBUG: [app.py:145] : ['USERNAME']
+2020-07-23 21:07:00,567 DEBUG: [app.py:145] : ['ADMIN']
+2020-07-23 21:07:00,567 DEBUG: [app.py:145] : ['ANONYMOUS']
+2020-07-23 21:07:00,567 DEBUG: [app.py:145] : ['APEX_030200']
+2020-07-23 21:07:00,567 DEBUG: [app.py:145] : ['APEX_PUBLIC_USER']
+2020-07-23 21:07:00,568 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 21:07:00] "GET /query_execution/schemas HTTP/1.1" 200 -
+2020-07-23 23:08:48,314 INFO: [_internal.py:122] :  * Detected change in 'C:\\Users\\ravis\\Desktop\\Stato\\server\\app.py', reloading
+2020-07-23 23:08:48,353 INFO: [_internal.py:122] :  * Restarting with stat
+2020-07-23 23:08:48,720 WARNING: [_internal.py:122] :  * Debugger is active!
+2020-07-23 23:08:48,724 INFO: [_internal.py:122] :  * Debugger PIN: 296-999-343
+2020-07-23 23:08:48,732 INFO: [_internal.py:122] :  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-07-23 23:09:02,360 INFO: [_internal.py:122] :  * Restarting with stat
+2020-07-23 23:09:02,716 WARNING: [_internal.py:122] :  * Debugger is active!
+2020-07-23 23:09:02,720 INFO: [_internal.py:122] :  * Debugger PIN: 296-999-343
+2020-07-23 23:09:02,729 INFO: [_internal.py:122] :  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-07-23 23:09:08,431 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 23:09:08] "GET / HTTP/1.1" 500 -
+2020-07-23 23:09:08,488 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 23:09:08] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2020-07-23 23:09:08,673 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 23:09:08] "GET /?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2020-07-23 23:09:08,790 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 23:09:08] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2020-07-23 23:09:09,103 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 23:09:09] "GET /?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2020-07-23 23:09:09,188 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 23:09:09] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2020-07-23 23:09:09,353 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 23:09:09] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2020-07-23 23:10:09,873 INFO: [_internal.py:122] :  * Detected change in 'C:\\Users\\ravis\\Desktop\\Stato\\server\\app.py', reloading
+2020-07-23 23:10:09,898 INFO: [_internal.py:122] :  * Restarting with stat
+2020-07-23 23:10:10,247 WARNING: [_internal.py:122] :  * Debugger is active!
+2020-07-23 23:10:10,252 INFO: [_internal.py:122] :  * Debugger PIN: 296-999-343
+2020-07-23 23:10:10,261 INFO: [_internal.py:122] :  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-07-23 23:10:20,084 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 23:10:20] "GET / HTTP/1.1" 200 -
+2020-07-23 23:10:20,115 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 23:10:20] "GET /static/css/style.css HTTP/1.1" 200 -
+2020-07-23 23:10:20,331 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 23:10:20] "GET /static/js/app.js HTTP/1.1" 200 -
+2020-07-23 23:10:22,783 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 23:10:22] "GET /favicon.ico HTTP/1.1" 404 -
+2020-07-23 23:10:33,075 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 23:10:33] "GET /js/query-execution-worker.js HTTP/1.1" 404 -
+2020-07-23 23:11:17,547 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 23:11:17] "GET / HTTP/1.1" 200 -
+2020-07-23 23:11:17,572 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 23:11:17] "GET /static/css/style.css HTTP/1.1" 200 -
+2020-07-23 23:11:17,794 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 23:11:17] "GET /server/static/js/app.js HTTP/1.1" 404 -
+2020-07-23 23:11:18,320 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 23:11:18] "GET /favicon.ico HTTP/1.1" 404 -
+2020-07-23 23:11:41,983 INFO: [_internal.py:122] :  * Detected change in 'C:\\Users\\ravis\\Desktop\\Stato\\server\\app.py', reloading
+2020-07-23 23:11:42,009 INFO: [_internal.py:122] :  * Restarting with stat
+2020-07-23 23:11:42,387 WARNING: [_internal.py:122] :  * Debugger is active!
+2020-07-23 23:11:42,394 INFO: [_internal.py:122] :  * Debugger PIN: 296-999-343
+2020-07-23 23:11:42,401 INFO: [_internal.py:122] :  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-07-23 23:16:31,796 INFO: [_internal.py:122] :  * Restarting with stat
+2020-07-23 23:16:32,170 WARNING: [_internal.py:122] :  * Debugger is active!
+2020-07-23 23:16:32,175 INFO: [_internal.py:122] :  * Debugger PIN: 296-999-343
+2020-07-23 23:16:32,185 INFO: [_internal.py:122] :  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-07-23 23:16:45,999 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 23:16:45] "GET / HTTP/1.1" 200 -
+2020-07-23 23:16:46,024 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 23:16:46] "GET /static/css/style.css HTTP/1.1" 200 -
+2020-07-23 23:16:46,247 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 23:16:46] "GET /server/static/js/app.js HTTP/1.1" 404 -
+2020-07-23 23:16:46,795 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 23:16:46] "GET /server/static/js/app.js HTTP/1.1" 404 -
+2020-07-23 23:16:47,451 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 23:16:47] "GET /favicon.ico HTTP/1.1" 404 -
+2020-07-23 23:17:29,457 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 23:17:29] "GET / HTTP/1.1" 200 -
+2020-07-23 23:17:29,482 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 23:17:29] "GET /static/css/style.css HTTP/1.1" 200 -
+2020-07-23 23:17:29,706 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 23:17:29] "GET /static/js/app.js HTTP/1.1" 200 -
+2020-07-23 23:17:30,366 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 23:17:30] "GET /favicon.ico HTTP/1.1" 404 -
+2020-07-23 23:17:37,577 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 23:17:37] "GET /server/static/js/query-execution-worker.js HTTP/1.1" 404 -
+2020-07-23 23:17:56,376 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 23:17:56] "GET / HTTP/1.1" 200 -
+2020-07-23 23:17:56,399 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 23:17:56] "GET /static/css/style.css HTTP/1.1" 200 -
+2020-07-23 23:17:56,626 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 23:17:56] "GET /static/js/app.js HTTP/1.1" 200 -
+2020-07-23 23:17:57,149 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 23:17:57] "GET /favicon.ico HTTP/1.1" 404 -
+2020-07-23 23:18:00,204 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 23:18:00] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-23 23:18:00,519 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 23:18:00] "POST /query_execution/schemas HTTP/1.1" 405 -
+2020-07-23 23:19:52,910 INFO: [_internal.py:122] :  * Detected change in 'C:\\Users\\ravis\\Desktop\\Stato\\app.py', reloading
+2020-07-23 23:19:52,930 INFO: [_internal.py:122] :  * Restarting with stat
+2020-07-23 23:20:25,399 WARNING: [_internal.py:122] :  * Debugger is active!
+2020-07-23 23:20:25,403 INFO: [_internal.py:122] :  * Debugger PIN: 296-999-343
+2020-07-23 23:20:25,412 INFO: [_internal.py:122] :  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-07-23 23:20:25,485 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 23:20:25] "GET / HTTP/1.1" 200 -
+2020-07-23 23:20:25,729 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 23:20:25] "GET /static/css/style.css HTTP/1.1" 200 -
+2020-07-23 23:20:25,730 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 23:20:25] "GET /static/js/app.js HTTP/1.1" 200 -
+2020-07-23 23:20:26,852 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 23:20:26] "GET /favicon.ico HTTP/1.1" 404 -
+2020-07-23 23:20:28,590 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 23:20:28] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-23 23:20:28,838 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 23:20:28] "POST /query_execution/schemas HTTP/1.1" 405 -
+2020-07-23 23:20:56,001 INFO: [_internal.py:122] :  * Detected change in 'C:\\Users\\ravis\\Desktop\\Stato\\app.py', reloading
+2020-07-23 23:20:56,028 INFO: [_internal.py:122] :  * Restarting with stat
+2020-07-23 23:20:56,407 WARNING: [_internal.py:122] :  * Debugger is active!
+2020-07-23 23:20:56,413 INFO: [_internal.py:122] :  * Debugger PIN: 296-999-343
+2020-07-23 23:20:56,420 INFO: [_internal.py:122] :  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-07-23 23:21:00,276 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 23:21:00] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-23 23:21:00,525 DEBUG: [app.py:245] : Query parameters for schemas: 
+2020-07-23 23:21:00,525 DEBUG: [app.py:246] : Parameter names        : []
+2020-07-23 23:21:00,525 DEBUG: [app.py:247] : Parameter values       : []
+2020-07-23 23:21:00,615 DEBUG: [app.py:98] : DB Connection: <cx_Oracle.Connection to admin@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1522))(CONNECT_DATA=(SERVICE_NAME=testdb)))>
+2020-07-23 23:21:00,615 DEBUG: [app.py:99] : Query to be executed: 
+SELECT
+    USERNAME
+FROM
+    DBA_USERS
+ORDER BY
+    USERNAME
+
+2020-07-23 23:21:00,615 DEBUG: [app.py:100] : Parameters for the Query: None
+2020-07-23 23:21:00,623 DEBUG: [app.py:143] : Sample Result
+2020-07-23 23:21:00,623 DEBUG: [app.py:145] : ['USERNAME']
+2020-07-23 23:21:00,623 DEBUG: [app.py:145] : ['ADMIN']
+2020-07-23 23:21:00,623 DEBUG: [app.py:145] : ['ANONYMOUS']
+2020-07-23 23:21:00,623 DEBUG: [app.py:145] : ['APEX_030200']
+2020-07-23 23:21:00,623 DEBUG: [app.py:145] : ['APEX_PUBLIC_USER']
+2020-07-23 23:21:00,624 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 23:21:00] "POST /query_execution/schemas HTTP/1.1" 201 -
+2020-07-23 23:21:22,436 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 23:21:22] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-23 23:21:22,768 DEBUG: [app.py:245] : Query parameters for schemas: 
+2020-07-23 23:21:22,768 DEBUG: [app.py:246] : Parameter names        : []
+2020-07-23 23:21:22,768 DEBUG: [app.py:247] : Parameter values       : []
+2020-07-23 23:21:22,770 DEBUG: [app.py:98] : DB Connection: <cx_Oracle.Connection to admin@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1522))(CONNECT_DATA=(SERVICE_NAME=testdb)))>
+2020-07-23 23:21:22,770 DEBUG: [app.py:99] : Query to be executed: 
+SELECT
+    USERNAME
+FROM
+    DBA_USERS
+ORDER BY
+    USERNAME
+
+2020-07-23 23:21:22,770 DEBUG: [app.py:100] : Parameters for the Query: None
+2020-07-23 23:21:22,773 DEBUG: [app.py:143] : Sample Result
+2020-07-23 23:21:22,773 DEBUG: [app.py:145] : ['USERNAME']
+2020-07-23 23:21:22,773 DEBUG: [app.py:145] : ['ADMIN']
+2020-07-23 23:21:22,773 DEBUG: [app.py:145] : ['ANONYMOUS']
+2020-07-23 23:21:22,773 DEBUG: [app.py:145] : ['APEX_030200']
+2020-07-23 23:21:22,773 DEBUG: [app.py:145] : ['APEX_PUBLIC_USER']
+2020-07-23 23:21:22,774 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 23:21:22] "POST /query_execution/schemas HTTP/1.1" 201 -
+2020-07-23 23:21:23,689 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 23:21:23] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-23 23:21:24,001 DEBUG: [app.py:245] : Query parameters for schemas: 
+2020-07-23 23:21:24,002 DEBUG: [app.py:246] : Parameter names        : []
+2020-07-23 23:21:24,002 DEBUG: [app.py:247] : Parameter values       : []
+2020-07-23 23:21:24,005 DEBUG: [app.py:98] : DB Connection: <cx_Oracle.Connection to admin@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1522))(CONNECT_DATA=(SERVICE_NAME=testdb)))>
+2020-07-23 23:21:24,005 DEBUG: [app.py:99] : Query to be executed: 
+SELECT
+    USERNAME
+FROM
+    DBA_USERS
+ORDER BY
+    USERNAME
+
+2020-07-23 23:21:24,005 DEBUG: [app.py:100] : Parameters for the Query: None
+2020-07-23 23:21:24,008 DEBUG: [app.py:143] : Sample Result
+2020-07-23 23:21:24,008 DEBUG: [app.py:145] : ['USERNAME']
+2020-07-23 23:21:24,008 DEBUG: [app.py:145] : ['ADMIN']
+2020-07-23 23:21:24,008 DEBUG: [app.py:145] : ['ANONYMOUS']
+2020-07-23 23:21:24,008 DEBUG: [app.py:145] : ['APEX_030200']
+2020-07-23 23:21:24,008 DEBUG: [app.py:145] : ['APEX_PUBLIC_USER']
+2020-07-23 23:21:24,009 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 23:21:24] "POST /query_execution/schemas HTTP/1.1" 201 -
+2020-07-23 23:21:24,514 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 23:21:24] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-23 23:21:24,824 DEBUG: [app.py:245] : Query parameters for schemas: 
+2020-07-23 23:21:24,824 DEBUG: [app.py:246] : Parameter names        : []
+2020-07-23 23:21:24,824 DEBUG: [app.py:247] : Parameter values       : []
+2020-07-23 23:21:24,826 DEBUG: [app.py:98] : DB Connection: <cx_Oracle.Connection to admin@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1522))(CONNECT_DATA=(SERVICE_NAME=testdb)))>
+2020-07-23 23:21:24,826 DEBUG: [app.py:99] : Query to be executed: 
+SELECT
+    USERNAME
+FROM
+    DBA_USERS
+ORDER BY
+    USERNAME
+
+2020-07-23 23:21:24,826 DEBUG: [app.py:100] : Parameters for the Query: None
+2020-07-23 23:21:24,830 DEBUG: [app.py:143] : Sample Result
+2020-07-23 23:21:24,830 DEBUG: [app.py:145] : ['USERNAME']
+2020-07-23 23:21:24,830 DEBUG: [app.py:145] : ['ADMIN']
+2020-07-23 23:21:24,830 DEBUG: [app.py:145] : ['ANONYMOUS']
+2020-07-23 23:21:24,831 DEBUG: [app.py:145] : ['APEX_030200']
+2020-07-23 23:21:24,831 DEBUG: [app.py:145] : ['APEX_PUBLIC_USER']
+2020-07-23 23:21:24,831 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 23:21:24] "POST /query_execution/schemas HTTP/1.1" 201 -
+2020-07-23 23:21:25,292 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 23:21:25] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-23 23:21:25,604 DEBUG: [app.py:245] : Query parameters for schemas: 
+2020-07-23 23:21:25,604 DEBUG: [app.py:246] : Parameter names        : []
+2020-07-23 23:21:25,604 DEBUG: [app.py:247] : Parameter values       : []
+2020-07-23 23:21:25,607 DEBUG: [app.py:98] : DB Connection: <cx_Oracle.Connection to admin@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1522))(CONNECT_DATA=(SERVICE_NAME=testdb)))>
+2020-07-23 23:21:25,607 DEBUG: [app.py:99] : Query to be executed: 
+SELECT
+    USERNAME
+FROM
+    DBA_USERS
+ORDER BY
+    USERNAME
+
+2020-07-23 23:21:25,607 DEBUG: [app.py:100] : Parameters for the Query: None
+2020-07-23 23:21:25,612 DEBUG: [app.py:143] : Sample Result
+2020-07-23 23:21:25,612 DEBUG: [app.py:145] : ['USERNAME']
+2020-07-23 23:21:25,612 DEBUG: [app.py:145] : ['ADMIN']
+2020-07-23 23:21:25,612 DEBUG: [app.py:145] : ['ANONYMOUS']
+2020-07-23 23:21:25,612 DEBUG: [app.py:145] : ['APEX_030200']
+2020-07-23 23:21:25,612 DEBUG: [app.py:145] : ['APEX_PUBLIC_USER']
+2020-07-23 23:21:25,613 INFO: [_internal.py:122] : 127.0.0.1 - - [23/Jul/2020 23:21:25] "POST /query_execution/schemas HTTP/1.1" 201 -
+2020-07-23 23:29:03,398 INFO: [_internal.py:122] :  * Detected change in 'C:\\Users\\ravis\\Desktop\\Stato\\oracle_queries.py', reloading
+2020-07-23 23:29:03,434 INFO: [_internal.py:122] :  * Restarting with stat
