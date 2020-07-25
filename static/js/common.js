@@ -621,3 +621,49 @@ function getRandomColor() {
     }
     return color;
 }
+
+function createEmptyDataTable(columns, id, parentId) {
+    let table = createTable(columns, [], id);
+    document.getElementById(parentId).appendChild(table);
+
+    // Make the table a Data table
+    return $(`#${id}`).DataTable({
+        responsive: true,
+        pageLength: 10,
+        pagingType: "simple",
+        scrollX: false,
+    });
+}
+
+function createDataTable(data, options) {
+    let cols = data.data.columns;
+    let records = data.data.records;
+
+    let tableId = options.tableId;
+    let parentId = options.parentId;
+
+    let dataTable =
+        createEmptyDataTable(cols, tableId, parentId);
+
+    let tableData = getHTMLRows(records);
+
+    dataTable.rows.add(tableData).draw(false);
+}
+
+function getHTMLRows(records) {
+    let htmlRows = [];
+
+    // Create Table Data rows
+    records.forEach(record => {
+        let tr = document.createElement('tr');
+
+        record.forEach(cell => {
+            let td = document.createElement('td');
+            td.innerText = cell;
+            tr.appendChild(td);
+        });
+        htmlRows.push(tr);
+    });
+
+    return htmlRows;
+}

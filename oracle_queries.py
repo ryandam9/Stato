@@ -206,15 +206,12 @@ SELECT s.parsing_schema_name schema,
        t.sql_id,
        to_char(t.last_active_time,'yyyy-mm-dd:hh24:mi:ss') last_active_time,
        t.sql_text,
-       t.plan_hash_value,
        t.disk_reads,
        t.buffer_gets,
        t.fetches,
        t.sorts,
        t.cpu_time/1000000 cpu,
-       t.rows_processed,
-       t.elapsed_time,
-       t.version_count
+       t.rows_processed
 FROM V$SQLSTATS t,
      V$SQL s
 WHERE t.sql_id = s.sql_id
@@ -241,5 +238,25 @@ FROM (SELECT sql_id,
       GROUP BY sql_id, sql_exec_start, sql_exec_id
       ORDER BY 2 desc)
 WHERE rownum <= 50
+"""
+}
+
+qry['data-dictionary-views'] = {
+    'heading': 'Catalog tables',
+    'caption': '',
+    'category': 'catalog-tables',
+    'query': """
+SELECT 
+    view_name
+FROM 
+    dba_views a
+WHERE 
+    (view_name LIKE 'V$%'
+OR  view_name LIKE 'GV$%'
+OR  view_name LIKE 'ALL_%'
+OR  view_name LIKE 'DBA_%'  
+OR  view_name LIKE 'USER_%')
+AND EXISTS (SELECT 1 FROM DBA_OBJECTS b WHERE a.owner = b.owner AND a.view_name = b.object_name)
+ORDER BY 1
 """
 }

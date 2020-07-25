@@ -25,18 +25,82 @@ function initialize() {
     document.getElementById('catalog-tab').addEventListener('click', tabHandler);
     document.getElementById('others-tab').addEventListener('click', tabHandler);
     document.getElementById('query-execution-tab').addEventListener('click', tabHandler);
+
+    document.getElementById('catalog-refresh-btn').addEventListener('click', refreshCatalogTables);
 }
 
 function buildPages() {
-    // Query Execution Section
-    let queryExecutionSection = createAccordion('query-execution-section');
-    document.getElementById('query-execution-page').appendChild(queryExecutionSection);
+    showLongRunningQueries();
+    showQueryResourceUsage();
+}
 
-    accordionCard('query-execution-section', 'card1');
-    accordionCard('query-execution-section', 'card2');
-    accordionCard('query-execution-section', 'card3');
-    accordionCard('query-execution-section', 'card4');
-    accordionCard('query-execution-section', 'card5');
+document.getElementById('resource-usage-auto-refresh-btn').addEventListener('click', (e) => {
+    let t = document.getElementById('resource-usage-auto-refresh-time').value;
+    let autoRefreshTime = parseInt(t) * 1000;
+    window.setInterval(() => showQueryResourceUsage(), autoRefreshTime);
+});
+
+function showLongRunningQueries() {
+    let payload = {
+        'end-point': 'http://localhost:5000/query_execution/long-running-queries',
+    };
+
+    let options = {
+        'tableId': 'currently-running-queries-section-table',
+        'parentId': 'currently-running-queries-section',
+    };
+
+    invokeRemoteEndpoint(payload, createDataTable, options);
+}
+
+function showQueryResourceUsage() {
+    console.log('Inside showQueryResourceUsage');
+    let payload = {
+        'end-point': 'http://localhost:5000/query_execution/queries-resource-usage',
+    };
+
+    let options = {
+        'tableId': 'query-resource-usage-table',
+        'parentId': 'query-resource-usage-section',
+    };
+
+    document.getElementById('query-resource-usage-section').childNodes.forEach(node => node.remove());
+
+    invokeRemoteEndpoint(payload, createDataTable, options);
+}
+
+function refreshCatalogTables() {
+    let payload = {
+        'end-point': 'http://localhost:5000/query_execution/data-dictionary-views',
+    };
+
+    let options = {};
+
+    invokeRemoteEndpoint(payload, createCatalogTable, options);
+}
+
+function createCatalogTable(data, options) {
+    let cols = data.data.columns;
+    let records = data.data.records;
+
+    let table = createTable(cols, [], 'catalog-tables-table');
+    document.getElementById('catalog-tables').appendChild(table);
+
+    let catalogDataTable = $('#catalog-tables-table').DataTable({
+        responsive: true,
+        pageLength: 25,
+        pagingType: "simple",
+        columnDefs: [
+            {width    : "500px", targets: [0]},
+        ],
+        "dom": "<'row'<'col-sm-12 col-md-4'l><'col-sm-12 col-md-8'f>>" +
+            "<'row'<'col-sm-12'tr>>" +
+            "<'row'<'col-sm-12 col-md-12'i>>" +
+            "<'row'<'col-sm-12 col-md-12'p>>",
+    });
+
+    let tableData = getHTMLRows(records);
+    catalogDataTable.rows.add(tableData).draw(false);
 }
 
 function tabHandler(e) {
@@ -102,21 +166,43 @@ function accordionCard(accordionId, cardId) {
     document.getElementById(accordionId).appendChild(card);
 }
 
-async function invokeRemoteEndpoint(link, payload, callback) {
+async function invokeRemoteEndpoint(payload, callback, options) {
     let worker = new Worker('/static/js/query-execution-worker.js');
 
     worker.addEventListener('message', function (event) {
         let result = event.data;
-        callback(result);
+        callback(result, options);
     }, false);
 
     worker.postMessage(payload);
 }
 
-document.getElementById('remote-btn').addEventListener('click', (e) => {
-    let payload = {
-        'end-point': 'http://localhost:5000/query_execution/schemas',
-    };
+function createNavBar(tabs) {
+    let navBar = document.createElement('ul');
+    navBar.className = 'nav nav-tabs';
 
-    invokeRemoteEndpoint(null, payload);
-});
+    let index = 0;
+
+    tabs.forEach(tab => {
+
+        let li = document.createElement('li');
+        li.className = 'nav-item mr-2';
+
+        let anchor = document.createElement('a');
+
+        if (index === 0) {
+            anchor.className = 'nav-link active';
+            index++;
+        } else {
+            anchor.className = 'nav-link';
+        }
+
+        anchor.href = '#';
+        anchor.innerText = tab;
+
+        li.appendChild(anchor);
+        navBar.appendChild(li);
+    });
+
+    return navBar;
+}
