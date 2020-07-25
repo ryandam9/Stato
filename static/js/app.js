@@ -1,9 +1,16 @@
 // Server links
 let webServer = 'http://localhost:5000';
-let queryExecutionLink = webServer + '/query_execution/';
+let queryExecutionLink = webServer + '/query_execution';
 
 // On Page loading, execute this
 window.addEventListener('DOMContentLoaded', setup);
+
+// Data table IDs
+let queryResourceUsageDataTable,
+    longRunningQueriesDataTable,
+    catalogDataTable,
+    longRunningQueryDataTable,
+    singleQueryResourceUsageDataTable;
 
 function setup() {
     initialize();
@@ -27,6 +34,26 @@ function initialize() {
     document.getElementById('query-execution-tab').addEventListener('click', tabHandler);
 
     document.getElementById('catalog-refresh-btn').addEventListener('click', refreshCatalogTables);
+    document.getElementById('sqlid-monitor-btn').addEventListener('click', monitorSQLId);
+
+    document.getElementById('sqlid-show-all').addEventListener('click', (e) => {
+        document.querySelectorAll('.sqlid-collapse')
+            .forEach(node => node.className = 'collapse show sqlid-collapse');
+    });
+
+    document.getElementById('sqlid-hide-all').addEventListener('click', (e) => {
+        document.querySelectorAll('.sqlid-collapse')
+            .forEach(node => node.className = 'collapse sqlid-collapse');
+    });
+
+    document.getElementById('enterprise-manager-report-btn').addEventListener('click', (e) => {
+        e.preventDefault();
+
+        let sqlId = document.getElementById('sqlid').value.trim();
+        let link = `${webServer}/report_sql_monitor_active/${sqlId}`;
+
+        window.open(link);
+    });
 }
 
 function buildPages() {
@@ -34,74 +61,16 @@ function buildPages() {
     showQueryResourceUsage();
 }
 
-document.getElementById('resource-usage-auto-refresh-btn').addEventListener('click', (e) => {
-    let t = document.getElementById('resource-usage-auto-refresh-time').value;
-    let autoRefreshTime = parseInt(t) * 1000;
-    window.setInterval(() => showQueryResourceUsage(), autoRefreshTime);
-});
+function monitorSQLId() {
+    let sqlid = document.getElementById('sqlid').value;
 
-function showLongRunningQueries() {
-    let payload = {
-        'end-point': 'http://localhost:5000/query_execution/long-running-queries',
-    };
-
-    let options = {
-        'tableId': 'currently-running-queries-section-table',
-        'parentId': 'currently-running-queries-section',
-    };
-
-    invokeRemoteEndpoint(payload, createDataTable, options);
+    if (sqlid.trim().length > 0) {
+        showLongRunningQuerySqlId(sqlid);
+        showQueryResourceUsageSqlId(sqlid);
+        getSQLTextSqlId(sqlid);
+    }
 }
 
-function showQueryResourceUsage() {
-    console.log('Inside showQueryResourceUsage');
-    let payload = {
-        'end-point': 'http://localhost:5000/query_execution/queries-resource-usage',
-    };
-
-    let options = {
-        'tableId': 'query-resource-usage-table',
-        'parentId': 'query-resource-usage-section',
-    };
-
-    document.getElementById('query-resource-usage-section').childNodes.forEach(node => node.remove());
-
-    invokeRemoteEndpoint(payload, createDataTable, options);
-}
-
-function refreshCatalogTables() {
-    let payload = {
-        'end-point': 'http://localhost:5000/query_execution/data-dictionary-views',
-    };
-
-    let options = {};
-
-    invokeRemoteEndpoint(payload, createCatalogTable, options);
-}
-
-function createCatalogTable(data, options) {
-    let cols = data.data.columns;
-    let records = data.data.records;
-
-    let table = createTable(cols, [], 'catalog-tables-table');
-    document.getElementById('catalog-tables').appendChild(table);
-
-    let catalogDataTable = $('#catalog-tables-table').DataTable({
-        responsive: true,
-        pageLength: 25,
-        pagingType: "simple",
-        columnDefs: [
-            {width    : "500px", targets: [0]},
-        ],
-        "dom": "<'row'<'col-sm-12 col-md-4'l><'col-sm-12 col-md-8'f>>" +
-            "<'row'<'col-sm-12'tr>>" +
-            "<'row'<'col-sm-12 col-md-12'i>>" +
-            "<'row'<'col-sm-12 col-md-12'p>>",
-    });
-
-    let tableData = getHTMLRows(records);
-    catalogDataTable.rows.add(tableData).draw(false);
-}
 
 function tabHandler(e) {
     let targetId = e.target.id;

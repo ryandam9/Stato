@@ -155,8 +155,10 @@ def index():
 @app.route('/report_sql_monitor/<string:sql_id>', methods=['GET'])
 def report_sql_monitor(sql_id):
     query = 'SELECT DBMS_SQLTUNE.REPORT_SQL_MONITOR(' + "'" + sql_id + "')" + ' FROM DUAL'
+    print(query)
 
     records = execute_query(query, '')
+    print(records)
 
     # Data of this query is a LOB Object. Convert it to a String first.
     result = convert_lob_object_to_string(records[1][0])
@@ -171,7 +173,10 @@ def report_sql_monitor_active(sql_id):
     query = 'SELECT DBMS_SQLTUNE.REPORT_SQL_MONITOR(' + "'" + sql_id + "'," \
             + "type => 'active', report_level => 'ALL') FROM DUAL"
 
-    records = execute_query(query, '')
+    print(query)
+
+    records = execute_query(query, None)
+    print(records)
 
     # Data of this query is a LOB Object. Convert it to a String first.
     result = convert_lob_object_to_string(records[1][0])
@@ -237,7 +242,6 @@ def get_list_of_data_dictionary_tables():
 @app.route('/query_execution/<string:query_id>', methods=['GET', 'POST'])
 @cross_origin()
 def query_execution(query_id):
-    print(query_id)
     parameter_names = list(request.args)
     paramerter_values = list()
     [paramerter_values.append(request.args[parm]) for parm in parameter_names]
@@ -256,7 +260,6 @@ def query_execution(query_id):
         parameters = paramerter_values
 
     if query_id in qry.keys():
-        print(qry)
         query = qry[query_id]['query']
         records = execute_query(query, parameters)
     else:

@@ -10,15 +10,19 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Courier Prime|Amiri|Crimson Text|Crimson Text Italic|Fira Code Retina">
-    <link rel="stylesheet" href="../static/css/style.css">
+    <!--    <link rel="stylesheet" href="../static/css/style.css">-->
     <style>
+        body {
+            background-color: #F1F7F0;
+        }
+
         #home-tab, #storage-tab, #in-progress-queries-tab, #waits-tab, #catalog-tab, #others-tab, #query-execution-tab {
             cursor: pointer;
         }
 
-        .card-header {
-            font-family: 'Crimson Text', serif;
-        }
+        /*.card-header {*/
+        /*    font-family: 'Crimson Text', serif;*/
+        /*}*/
 
         .icons {
             display: flex;
@@ -33,8 +37,8 @@
 
         /*Table header*/
         thead {
-            background: #FDEACB;
-            color: #473344;
+            background: #00A086;
+            color: white;
         }
 
         tbody {
@@ -56,6 +60,24 @@
         /*    width: 800px;*/
         /*    margin: 0 auto;*/
         /*}*/
+
+        .hlight-class {
+            background-color: teal;
+            color: white;
+            margin: 2px;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-family: 'Courier Prime', 'Comic Sans MS', serif;
+        }
+
+        .hlight-parameter {
+            background-color: #c82829;
+            color: white;
+            margin: 2px;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-family: 'Courier Prime', 'Comic Sans MS', serif;
+        }
 
     </style>
 
@@ -124,8 +146,6 @@
                     <div class="card-header">
                         Home page
                     </div>
-
-                    <button class="btn btn-success" id="remote-btn">Click Me</button>
                 </div>
             </div>
 
@@ -135,75 +155,128 @@
                     <div class="card-header">
                         Storage page
                     </div>
-
                 </div>
             </div>
 
             <!-- In Progress Queries section -->
             <div id="in-progress-queries-page" class="tool-page">
-                <div class="card scroll">
+                <div class="card">
                     <div class="card-body">
                         <div id="in-progress-queries-bar">
                             <ul class="nav nav-pills" id="pills-tab" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home"
-                                       role="tab" aria-controls="pills-home" aria-selected="true">Currently Running
+                                    <a class="nav-link active" id="long-running-queries-tab" data-toggle="pill"
+                                       href="#pills-long-running-queries"
+                                       role="tab" aria-controls="pills-long-running-queries" aria-selected="true">Long
+                                        Running
                                         Queries</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile"
-                                       role="tab" aria-controls="pills-profile" aria-selected="false">Resource Usage By
+                                    <a class="nav-link" id="query-resources-tab" data-toggle="pill"
+                                       href="#pills-query-resources"
+                                       role="tab" aria-controls="pills-query-resources" aria-selected="false">Resource
+                                        Usage By
                                         Queries</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact"
-                                       role="tab" aria-controls="pills-contact" aria-selected="false">Search for
+                                    <a class="nav-link" id="sqlid-tab" data-toggle="pill" href="#pills-sqlid"
+                                       role="tab" aria-controls="pills-sqlid" aria-selected="false">Search for
                                         SQLID</a>
                                 </li>
                             </ul>
                         </div>
                         <div class="tab-content" id="pills-tabContent">
-                            <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
-                                 aria-labelledby="pills-home-tab">
-                                <div class="card">
-                                    <div class="card-header">
-                                        Hello
-                                    </div>
-                                    <div class="card-body">
-                                        <div id="currently-running-queries-section">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="pills-profile" role="tabpanel"
-                                 aria-labelledby="pills-profile-tab">
+                            <div class="tab-pane fade show active" id="pills-long-running-queries" role="tabpanel"
+                                 aria-labelledby="long-running-queries-tab">
                                 <div class="card">
                                     <div class="card-header">
                                         <div class="icons">
-                                            Hello
-
+                                            Last Refreshed: <span id="long-running-queries-last-refresh"></span>
                                             <form class="form-inline">
                                                 <div class="form-group mx-sm-3">
-                                                    <label for="resource-usage-auto-refresh-time" class="sr-only">Enter Auto Refresh time</label>
-                                                    <input type="number" class="form-control" id="resource-usage-auto-refresh-time"
-                                                           placeholder="10 secs" min="30" max="600" value="10">
+                                                    <label for="long-running-queries-auto-refresh-time" class="sr-only">Enter
+                                                        Auto Refresh time</label>
+                                                    <input type="number" class="form-control"
+                                                           id="long-running-queries-auto-refresh-time"
+                                                           placeholder="30 Secs" min="30" max="600" value="30">
                                                 </div>
-                                                <button type="submit" class="btn btn-success" id="resource-usage-auto-refresh-btn">Enable Auto Refresh</button>
+                                                <button type="submit" class="btn btn-success"
+                                                        id="long-running-queries-auto-refresh-btn">Enable Auto Refresh
+                                                </button>
                                             </form>
                                         </div>
                                     </div>
+
                                     <div class="card-body">
+                                        <div id="long-running-queries-section"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="pills-query-resources" role="tabpanel"
+                                 aria-labelledby="query-resources-tab">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <div class="icons">
+                                            <span></span>
+                                            <form class="form-inline">
+                                                Last Refreshed: <span id="resource-usage-auto-last-refresh"></span>
+                                                <div class="form-group mx-sm-3">
+                                                    <label for="resource-usage-auto-refresh-time" class="sr-only">Enter
+                                                        Auto Refresh time</label>
+                                                    <input type="number" class="form-control"
+                                                           id="resource-usage-auto-refresh-time"
+                                                           placeholder="30 Secs" min="30" max="600" value="30">
+                                                </div>
+                                                <button type="submit" class="btn btn-success"
+                                                        id="resource-usage-auto-refresh-btn">Enable Auto Refresh
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="card-body scroll">
                                         <div id="query-resource-usage-section">
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="pills-contact" role="tabpanel"
-                                 aria-labelledby="pills-contact-tab">
+                            <div class="tab-pane fade" id="pills-sqlid" role="tabpanel"
+                                 aria-labelledby="sqlid-tab">
                                 <div class="card">
                                     <div class="card-header">
-                                        Hello
+                                        <div class="icons">
+                                            Last Refreshed: <span id="query-progress-last-refresh"></span>
+                                            <form class="form-inline">
+                                                <div class="form-group mx-sm-3">
+                                                    <!-- Show all -->
+                                                    <button type="submit" class="btn btn-info mr-3"
+                                                            id="sqlid-show-all">Show All
+                                                    </button>
+
+                                                    <!-- Minimise all -->
+                                                    <button type="submit" class="btn btn-info mr-3"
+                                                            id="sqlid-hide-all">Hide All
+                                                    </button>
+
+                                                    <!-- Enter SQL Id -->
+                                                    <label for="sqlid" class="sr-only">Enter SQLID</label>
+                                                    <input type="text" class="form-control mr-3" id="sqlid"
+                                                           placeholder="Enter SQL ID">
+
+                                                    <button type="submit" class="btn btn-info mr-3"
+                                                            id="sqlid-monitor-btn">Fetch SQLID Data
+                                                    </button>
+
+                                                    <label for="query-progress-auto-refresh-time" class="sr-only">Enter
+                                                        Auto Refresh time</label>
+                                                    <input type="number" class="form-control"
+                                                           id="query-progress-auto-refresh-time"
+                                                           placeholder="30 Secs" min="30" max="600" value="30">
+                                                </div>
+                                                <button type="submit" class="btn btn-success"
+                                                        id="query-progress-auto-refresh-btn">Enable Auto Refresh
+                                                </button>
+                                            </form>
+                                        </div>
                                     </div>
                                     <div class="card-body">
                                         <div id="sqlid-section">
@@ -214,25 +287,15 @@
                                                             <button class="btn btn-link" type="button"
                                                                     data-toggle="collapse" data-target="#collapseOne"
                                                                     aria-expanded="true" aria-controls="collapseOne">
-                                                                Collapsible Group Item #1
+                                                                Long Running Query
                                                             </button>
                                                         </h5>
                                                     </div>
 
-                                                    <div id="collapseOne" class="collapse show"
+                                                    <div id="collapseOne" class="collapse show sqlid-collapse"
                                                          aria-labelledby="headingOne" data-parent="#accordionExample">
                                                         <div class="card-body">
-                                                            Anim pariatur cliche reprehenderit, enim eiusmod high life
-                                                            accusamus terry richardson ad squid. 3 wolf moon officia
-                                                            aute, non cupidatat skateboard dolor brunch. Food truck
-                                                            quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-                                                            sunt aliqua put a bird on it squid single-origin coffee
-                                                            nulla assumenda shoreditch et. Nihil anim keffiyeh
-                                                            helvetica, craft beer labore wes anderson cred nesciunt
-                                                            sapiente ea proident. Ad vegan excepteur butcher vice lomo.
-                                                            Leggings occaecat craft beer farm-to-table, raw denim
-                                                            aesthetic synth nesciunt you probably haven't heard of them
-                                                            accusamus labore sustainable VHS.
+                                                            <div id="long-running-query-sqlid"></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -242,24 +305,15 @@
                                                             <button class="btn btn-link collapsed" type="button"
                                                                     data-toggle="collapse" data-target="#collapseTwo"
                                                                     aria-expanded="false" aria-controls="collapseTwo">
-                                                                Collapsible Group Item #2
+                                                                Query Resource Usage
                                                             </button>
                                                         </h5>
                                                     </div>
-                                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                                                    <div id="collapseTwo" class="collapse sqlid-collapse"
+                                                         aria-labelledby="headingTwo"
                                                          data-parent="#accordionExample">
                                                         <div class="card-body">
-                                                            Anim pariatur cliche reprehenderit, enim eiusmod high life
-                                                            accusamus terry richardson ad squid. 3 wolf moon officia
-                                                            aute, non cupidatat skateboard dolor brunch. Food truck
-                                                            quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-                                                            sunt aliqua put a bird on it squid single-origin coffee
-                                                            nulla assumenda shoreditch et. Nihil anim keffiyeh
-                                                            helvetica, craft beer labore wes anderson cred nesciunt
-                                                            sapiente ea proident. Ad vegan excepteur butcher vice lomo.
-                                                            Leggings occaecat craft beer farm-to-table, raw denim
-                                                            aesthetic synth nesciunt you probably haven't heard of them
-                                                            accusamus labore sustainable VHS.
+                                                            <div id="query-resource-usage-sqlid"></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -269,24 +323,36 @@
                                                             <button class="btn btn-link collapsed" type="button"
                                                                     data-toggle="collapse" data-target="#collapseThree"
                                                                     aria-expanded="false" aria-controls="collapseThree">
-                                                                Collapsible Group Item #3
+                                                                Oracle Enterprise Manager Report
                                                             </button>
                                                         </h5>
                                                     </div>
-                                                    <div id="collapseThree" class="collapse"
+                                                    <div id="collapseThree" class="collapse sqlid-collapse"
                                                          aria-labelledby="headingThree" data-parent="#accordionExample">
                                                         <div class="card-body">
-                                                            Anim pariatur cliche reprehenderit, enim eiusmod high life
-                                                            accusamus terry richardson ad squid. 3 wolf moon officia
-                                                            aute, non cupidatat skateboard dolor brunch. Food truck
-                                                            quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-                                                            sunt aliqua put a bird on it squid single-origin coffee
-                                                            nulla assumenda shoreditch et. Nihil anim keffiyeh
-                                                            helvetica, craft beer labore wes anderson cred nesciunt
-                                                            sapiente ea proident. Ad vegan excepteur butcher vice lomo.
-                                                            Leggings occaecat craft beer farm-to-table, raw denim
-                                                            aesthetic synth nesciunt you probably haven't heard of them
-                                                            accusamus labore sustainable VHS.
+                                                            <div id="oem-report">
+                                                                <button type="button" class="btn btn-success"
+                                                                        id="enterprise-manager-report-btn">OEM Report
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Show SQL Text -->
+                                                <div class="card">
+                                                    <div class="card-header" id="headingFour">
+                                                        <h5 class="mb-0">
+                                                            <button class="btn btn-link collapsed" type="button"
+                                                                    data-toggle="collapse" data-target="#collapseFour"
+                                                                    aria-expanded="false" aria-controls="collapseFour">
+                                                                SQL Text
+                                                            </button>
+                                                        </h5>
+                                                    </div>
+                                                    <div id="collapseFour" class="collapse sqlid-collapse"
+                                                         aria-labelledby="headingFour" data-parent="#accordionExample">
+                                                        <div class="card-body">
+                                                            <div id="sqlid-sqltext"></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -301,73 +367,68 @@
                 </div>
             </div>
 
-        </div>
-    </div>
-
-    <!-- Waits section -->
-    <div id="waits-page" class="tool-page">
-        <div class="card">
-            <div class="card-header">
-                Waits
-            </div>
-        </div>
-    </div>
-
-    <!-- Catalog Tables section -->
-    <div id="catalog-page" class="tool-page">
-        <div class="row">
-            <div class="col-3">
-                <div class="card">
-                    <div class="card-header icons">
-                        <h4>Catalog Tables</h4>
-
-                        <button class="btn btn-primary" id="catalog-refresh-btn">
-                            <i class="fas fa-redo"></i>
-                        </button>
-                    </div>
-
-                    <div id="catalog-tables-sidebar" class="card-body scroll">
-                        <div id="catalog-tables" class="my-2">
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-9">
+            <!-- Waits section -->
+            <div id="waits-page" class="tool-page">
                 <div class="card">
                     <div class="card-header">
-                        <h6>Catalog Tables</h6>
-                    </div>
-
-                    <div class="card-body">
-                        <div id="catalog-tables-mainbar">
-                        </div>
-                    </div>
-
-                    <div class="card-footer">
-                        Hello
+                        Waits
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <!-- Query Execution section -->
-    <div id="query-execution-page" class="tool-page my-5">
+            <!-- Catalog Tables section -->
+            <div id="catalog-page" class="tool-page">
+                <div class="row">
+                    <div class="col-3">
+                        <div class="card">
+                            <div class="card-header icons">
+                                <h4>Catalog Tables</h4>
 
-    </div>
+                                <button class="btn btn-primary" id="catalog-refresh-btn">
+                                    <i class="fas fa-redo"></i>
+                                </button>
+                            </div>
 
-    <!-- Others section -->
-    <div id="others-page" class="tool-page">
-        <div class="card">
-            <div class="card-header">
-                Others page
+                            <div id="catalog-tables-sidebar" class="card-body scroll">
+                                <div id="catalog-tables-section" class="my-2">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-9">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6>Catalog Tables</h6>
+                            </div>
+
+                            <div class="card-body">
+                                <div id="catalog-tables-mainbar">
+                                </div>
+                            </div>
+
+                            <div class="card-footer">
+                                Hello
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+
+            <!-- Query Execution section -->
+            <div id="query-execution-page" class="tool-page my-5"></div>
+
+            <!-- Others section -->
+            <div id="others-page" class="tool-page">
+                <div class="card">
+                    <div class="card-header">
+                        Others page
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
-
-</div>
-</div>
 </div>
 
 
@@ -377,11 +438,9 @@
 <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
 <script src="/static/js/app.js"></script>
+<script src="/static/js/api-calls.js"></script>
+<script src="/static/js/auto-refresh-setup.js"></script>
 <script src="/static/js/common.js"></script>
-
-<script>
-    $('#mydatatable').DataTable();
-</script>
 
 </body>
 </html>

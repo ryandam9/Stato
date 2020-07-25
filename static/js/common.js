@@ -249,7 +249,7 @@ async function executeQuery(queryId, parameters, link = null, dataTableDisplayFl
 
         let currentdate = new Date();
         let datetime = currentdate.getDate() + "/"
-            + (currentdate.getMonth()+1)  + "/"
+            + (currentdate.getMonth() + 1) + "/"
             + currentdate.getFullYear() + " @ "
             + currentdate.getHours() + ":"
             + currentdate.getMinutes();
@@ -632,23 +632,23 @@ function createEmptyDataTable(columns, id, parentId) {
         pageLength: 10,
         pagingType: "simple",
         scrollX: false,
+        "dom": "<'row'<'col-sm-12 col-md-7'l><'col-sm-12 col-md-3'p><'col-sm-12 col-md-2'f>>" +
+            "<'row'<'col-sm-12'tr>>" +
+            "<'row'<'col-sm-12 col-md-12'i>>",
     });
 }
 
-function createDataTable(data, options) {
-    let cols = data.data.columns;
-    let records = data.data.records;
-
-    let tableId = options.tableId;
-    let parentId = options.parentId;
-
-    let dataTable =
-        createEmptyDataTable(cols, tableId, parentId);
-
-    let tableData = getHTMLRows(records);
-
-    dataTable.rows.add(tableData).draw(false);
-}
+// function createDataTable(data, options) {
+//     let cols = data.data.columns;
+//     let records = data.data.records;
+//     let tableId = options.tableId;
+//     let parentId = options.parentId;
+//
+//     let dataTable = createEmptyDataTable(cols, tableId, parentId);
+//     let tableData = getHTMLRows(records);
+//
+//     dataTable.rows.add(tableData).draw(false);
+// }
 
 function getHTMLRows(records) {
     let htmlRows = [];

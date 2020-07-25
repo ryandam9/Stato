@@ -215,29 +215,7 @@ SELECT s.parsing_schema_name schema,
 FROM V$SQLSTATS t,
      V$SQL s
 WHERE t.sql_id = s.sql_id
-  AND ROWNUM < 100
 ORDER BY t.last_active_time DESC
-"""
-}
-
-
-qry['query-statistics'] = {
-    'heading': 'Statistics of a Query',
-    'caption': '',
-    'category': 'in-progress-queries',
-    'query': """
-SELECT * 
-FROM (SELECT sql_id, 
-             to_char(sql_exec_start,'yyyy-mm-dd:hh24:mi:ss') sql_exec_start,
-             sql_exec_id, 
-             sum(buffer_gets) buffer_gets,
-             sum(disk_reads) disk_reads, 
-             round(sum(cpu_time/1000000),1) cpu_secs
-      FROM v$sql_monitor
-      WHERE sql_id = :sql_id
-      GROUP BY sql_id, sql_exec_start, sql_exec_id
-      ORDER BY 2 desc)
-WHERE rownum <= 50
 """
 }
 
@@ -258,5 +236,70 @@ OR  view_name LIKE 'DBA_%'
 OR  view_name LIKE 'USER_%')
 AND EXISTS (SELECT 1 FROM DBA_OBJECTS b WHERE a.owner = b.owner AND a.view_name = b.object_name)
 ORDER BY 1
+"""
+}
+
+########################################################################################################################
+# Data related to a SQLID
+########################################################################################################################
+
+# Long Running Query
+qry['long-running-query'] = {
+    'heading': 'Long Running Queries',
+    'caption': 'Listed based on V$SESSION_LONGOPS data',
+    'category': 'in-progress-queries',
+    'query': """
+SELECT
+  sid
+, serial#
+, opname
+, target
+, target_desc
+, sofar
+, totalwork
+, units
+, start_time
+, last_update_time
+, timestamp
+, time_remaining
+, elapsed_seconds
+, context
+, message
+, username
+, sql_address
+, sql_hash_value
+, sql_id
+, sql_plan_hash_value
+, sql_exec_start
+, sql_exec_id
+, sql_plan_line_id
+, sql_plan_operation
+, sql_plan_options
+, qcsid
+FROM
+    V$SESSION_LONGOPS
+WHERE
+    sql_id = :sqlid
+"""
+}
+
+# Query Resource Usage
+qry['query-resource-usage'] = {
+    'heading': 'Statistics of a Query',
+    'caption': '',
+    'category': 'in-progress-queries',
+    'query': """
+SELECT * 
+FROM (SELECT sql_id, 
+             to_char(sql_exec_start,'yyyy-mm-dd:hh24:mi:ss') sql_exec_start,
+             sql_exec_id, 
+             sum(buffer_gets) buffer_gets,
+             sum(disk_reads) disk_reads, 
+             round(sum(cpu_time/1000000),1) cpu_secs
+      FROM v$sql_monitor
+      WHERE sql_id = :sql_id
+      GROUP BY sql_id, sql_exec_start, sql_exec_id
+      ORDER BY 2 desc)
+WHERE rownum <= 50
 """
 }
