@@ -224,11 +224,15 @@ def get_query_map():
     return jsonify(config_data)
 
 
-@app.route('/get-table/<string:table>', methods=['GET'])
+@app.route('/get-table/<string:table>', methods=['GET', 'POST'])
+@cross_origin()
 def get_table(table):
-    records = execute_query('SELECT * FROM ' + table + ' WHERE ROWNUM < 1000', [])
+    records = execute_query('SELECT * FROM ' + table + ' WHERE ROWNUM < 1000000', [])
     result = format_data(records)
-    return result
+
+    app.logger.debug(table)
+    print(result)
+    return result, 201
 
 
 @app.route('/get-list-of-data-dictionary-tables', methods=['GET'])

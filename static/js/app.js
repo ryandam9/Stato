@@ -1,6 +1,7 @@
 // Server links
 let webServer = 'http://localhost:5000';
 let queryExecutionLink = webServer + '/query_execution';
+let catalogTableLink = webServer + '/get-table';
 
 // On Page loading, execute this
 window.addEventListener('DOMContentLoaded', setup);
@@ -10,7 +11,8 @@ let queryResourceUsageDataTable,
     longRunningQueriesDataTable,
     catalogDataTable,
     longRunningQueryDataTable,
-    singleQueryResourceUsageDataTable;
+    singleQueryResourceUsageDataTable,
+    catalogTableDataTable;
 
 function setup() {
     initialize();

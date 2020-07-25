@@ -48,3 +48,20 @@ function getSQLTextSqlId(sqlid) {
 
     invokeRemoteEndpoint(payload, refreshSQLText, {});
 }
+
+/**
+ * Fetch Catalog Table Data
+ */
+function fetchCatalogTable(e) {
+    let tableName = e.target.innerText;
+    console.log(tableName);
+
+    let payload = {
+        'end-point': catalogTableLink + '/' + tableName,
+    };
+
+    console.log(payload);
+
+    invokeRemoteEndpoint(payload, refreshCatalogTableData, {});
+}
+

@@ -72,8 +72,27 @@ function createCatalogTable(data) {
         catalogDataTable.clear().draw();
     }
 
-    let tableData = getHTMLRows(records);
-    catalogDataTable.rows.add(tableData).draw(false);
+    let htmlRows = [];
+
+    // Create Table Data rows
+    records.forEach(record => {
+        let tr = document.createElement('tr');
+
+        record.forEach(cell => {
+            let td = document.createElement('td');
+
+            let anchor = document.createElement('a');
+            anchor.innerText = cell;
+            anchor.style.cursor = 'pointer';
+            anchor.addEventListener('click', fetchCatalogTable);
+            td.appendChild(anchor);
+
+            tr.appendChild(td);
+        });
+        htmlRows.push(tr);
+    });
+
+    catalogDataTable.rows.add(htmlRows).draw(false);
 }
 
 function refreshLongRunningQuery(data) {
@@ -115,4 +134,23 @@ function refreshQueryResourceUsage(data) {
 
 function refreshSQLText(data) {
 
+}
+
+function refreshCatalogTableData(data) {
+    let tableId = 'catalog-tables-data-html-table';
+    let parentId = 'catalog-tables-data-section';
+
+    console.log(data);
+
+    let cols = data.data.columns;
+    let records = data.data.records;
+
+    // Delete existing Data table.
+    document.getElementById('catalog-tables-data-section')
+        .childNodes
+        .forEach(node => node.remove());
+
+    catalogTableDataTable = createEmptyDataTable(cols, tableId, parentId);
+    let tableData = getHTMLRows(records);
+    catalogTableDataTable.rows.add(tableData).draw(false);
 }

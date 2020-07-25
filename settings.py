@@ -1,4 +1,4 @@
-DEBUG = True
+DEBUG = False
 
 # Set up Credentials for Oracle
 DATABASE_ENGINE = 'oracle'
