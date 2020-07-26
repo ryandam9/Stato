@@ -119,20 +119,35 @@ function monitorSQLId() {
     }
 }
 
-
+/**
+ * This function executes a worker script in the background. The core of this application is to execute queries on a
+ * remote DB and render the results. Query execution may take a while, and network latency adds additional delay.
+ * To avoid this, the API is called in the worker thread and the result is handled asynchronously.
+ *
+ * @param payload - Data to be sent to the API
+ * @param callback - This function is called once worker thread's execution is completed
+ * @param options  - An Object (Not used at the moment)
+ * @returns {Promise<void>}
+ */
 async function invokeRemoteEndpoint(payload, callback, options) {
     let worker = new Worker('/static/js/query-execution-worker.js');
 
+    // The function is called after thread's execution is completed.
     worker.addEventListener('message', function (event) {
         let result = event.data;
 
+        // If the thread failed with network error, show the error message in a modal
+        // An example could be, the API does not allow 'POST', but it is invoked with 'POST'.
+        // In such a case, http status code 405 is returned.
         if (result.status === 'network-failure') {
             document.getElementById('application-error-message').innerText = result.data;
             $('#applicationModal').modal('show')
         }
 
+        // Invoke the callback function with the result
         callback(result, options);
     }, false);
 
+    // Pass the payload to worker thread.
     worker.postMessage(payload);
 }
