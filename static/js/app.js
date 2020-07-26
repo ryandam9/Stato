@@ -15,6 +15,9 @@ let queryResourceUsageDataTable,
     longRunningQueryDataTable,
     singleQueryResourceUsageDataTable,
     sqlTextDataTable,
+    queryProgressDataTable,
+    queryTempSpaceUseDataTable,
+    queryDBAHist1DataTable,
     catalogTableDataTable;
 
 function setup() {
@@ -116,6 +119,9 @@ function monitorSQLId() {
         showLongRunningQuerySqlId(sqlid);
         showQueryResourceUsageSqlId(sqlid);
         getSQLTextSqlId(sqlid);
+        getQueryProgress(sqlid);
+        getTempSpaceUseQuery(sqlid);
+        getDBHistData1(sqlid);
     }
 }
 

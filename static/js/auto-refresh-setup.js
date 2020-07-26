@@ -175,3 +175,48 @@ function refreshSQLText(result) {
     if (result.status === 'success')
         sqlTextDataTable = makeDataTable(sqlTextDataTable, result, tableId, parentId);
 }
+
+/**
+ *
+ * @param result
+ */
+function refreshQueryProgress(result) {
+    let tableId = 'sqlid-progress-vs-plan-table';
+    let parentId = 'sqlid-progress-vs-plan';
+
+    // Check the API result status
+    checkReturnStatus(result, 'query-progress-message');
+
+    if (result.status === 'success')
+        queryProgressDataTable = makeDataTable(queryProgressDataTable, result, tableId, parentId);
+}
+
+/**
+ *
+ * @param result
+ */
+function refreshTempSpaceUsaQuery(result) {
+    let tableId = 'sqlid-temp-space-table';
+    let parentId = 'sqlid-temp-space';
+
+    // Check the API result status
+    checkReturnStatus(result, 'query-progress-message');
+
+    if (result.status === 'success')
+        queryTempSpaceUseDataTable = makeDataTable(queryTempSpaceUseDataTable, result, tableId, parentId);
+}
+
+/**
+ *
+ * @param result
+ */
+function refreshDBHistData1(result) {
+    let tableId = 'sqlid-dba-hist-1-table';
+    let parentId = 'sqlid-dba-hist-1';
+
+    // Check the API result status
+    checkReturnStatus(result, 'query-progress-message');
+
+    if (result.status === 'success')
+        queryDBAHist1DataTable = makeDataTable(queryDBAHist1DataTable, result, tableId, parentId);
+}

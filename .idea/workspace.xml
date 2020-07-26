@@ -4,7 +4,10 @@
     <list default="true" id="171f38cf-7aac-4e59-8577-df3f170775f2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/web-application-log.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/web-application-log.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oracle_queries.py" beforeDir="false" afterPath="$PROJECT_DIR$/oracle_queries.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/api-calls.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/api-calls.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/auto-refresh-setup.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/auto-refresh-setup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp.txt" beforeDir="false" afterPath="$PROJECT_DIR$/temp.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -89,7 +92,7 @@
       <workItem from="1595411160920" duration="698000" />
       <workItem from="1595496202222" duration="5623000" />
       <workItem from="1595510182507" duration="58644000" />
-      <workItem from="1595733165387" duration="4262000" />
+      <workItem from="1595733165387" duration="4695000" />
     </task>
     <servers />
   </component>

@@ -50,6 +50,39 @@ function getSQLTextSqlId(sqlid) {
 }
 
 /**
+ * Progress of a Query against Plan
+ * @param sqlid
+ */
+function getQueryProgress(sqlid) {
+    let payload = {
+        'end-point': queryExecutionLink + '/query-progress-against-plan?sql_id=' + sqlid,
+    };
+
+    invokeRemoteEndpoint(payload, refreshQueryProgress, {});
+}
+
+/**
+ *
+ * @param sqlid
+ */
+function getTempSpaceUseQuery(sqlid) {
+    let payload = {
+        'end-point': queryExecutionLink + '/temp-space-use-sqlid?sql_id=' + sqlid,
+    };
+
+    invokeRemoteEndpoint(payload, refreshTempSpaceUsaQuery, {});
+}
+
+
+function getDBHistData1(sqlid) {
+    let payload = {
+        'end-point': queryExecutionLink + '/dba-hist-1?sql_id=' + sqlid,
+    };
+
+    invokeRemoteEndpoint(payload, refreshDBHistData1, {});
+}
+
+/**
  * Fetch Catalog Table Data
  */
 function fetchCatalogTable(e) {

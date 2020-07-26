@@ -37,14 +37,14 @@
 
         /*Table header*/
         thead {
-            background: #00A086;
-            color: #473344;
+            background: #009688;
+            color: black;
         }
 
-        .table {
-            background: #F1F7F0;
-            color: #473344;
-        }
+        /*.table {*/
+        /*    background: */
+        /*    color: black;*/
+        /*}*/
 
         /*Table Head */
         th {
@@ -371,6 +371,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
                                                 <!-- Show SQL Text -->
                                                 <div class="card">
                                                     <div class="card-header" id="headingFour">
@@ -386,6 +387,63 @@
                                                          aria-labelledby="headingFour" data-parent="#accordionExample">
                                                         <div class="card-body">
                                                             <div id="sqlid-sqltext"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Query Progress against plan -->
+                                                <div class="card">
+                                                    <div class="card-header" id="headingFive">
+                                                        <h5 class="mb-0">
+                                                            <button class="btn btn-link collapsed" type="button"
+                                                                    data-toggle="collapse" data-target="#collapseFive"
+                                                                    aria-expanded="false" aria-controls="collapseFive">
+                                                                Query Progress Vs Plan
+                                                            </button>
+                                                        </h5>
+                                                    </div>
+                                                    <div id="collapseFive" class="collapse sqlid-collapse"
+                                                         aria-labelledby="headingFive" data-parent="#accordionExample">
+                                                        <div class="card-body">
+                                                            <div id="sqlid-progress-vs-plan"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Temp Space use by an SQL -->
+                                                <div class="card">
+                                                    <div class="card-header" id="headingSix">
+                                                        <h5 class="mb-0">
+                                                            <button class="btn btn-link collapsed" type="button"
+                                                                    data-toggle="collapse" data-target="#collapseSix"
+                                                                    aria-expanded="false" aria-controls="collapseSix">
+                                                                Temp Space use by a Query
+                                                            </button>
+                                                        </h5>
+                                                    </div>
+                                                    <div id="collapseSix" class="collapse sqlid-collapse"
+                                                         aria-labelledby="headingSix" data-parent="#accordionExample">
+                                                        <div class="card-body">
+                                                            <div id="sqlid-temp-space"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- DBA Hist Data-->
+                                                <div class="card">
+                                                    <div class="card-header" id="headingSeven">
+                                                        <h5 class="mb-0">
+                                                            <button class="btn btn-link collapsed" type="button"
+                                                                    data-toggle="collapse" data-target="#collapseSeven"
+                                                                    aria-expanded="false" aria-controls="collapseSeven">
+                                                                Fetches & Deltas
+                                                            </button>
+                                                        </h5>
+                                                    </div>
+                                                    <div id="collapseSeven" class="collapse sqlid-collapse"
+                                                         aria-labelledby="headingSeven" data-parent="#accordionExample">
+                                                        <div class="card-body">
+                                                            <div id="sqlid-dba-hist-1"></div>
                                                         </div>
                                                     </div>
                                                 </div>
