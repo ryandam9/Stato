@@ -126,7 +126,7 @@ function monitorSQLId() {
  *
  * @param payload - Data to be sent to the API
  * @param callback - This function is called once worker thread's execution is completed
- * @param options  - An Object (Not used at the moment)
+ * @param options  - An Object to be sent to the callback (Not used at the moment)
  * @returns {Promise<void>}
  */
 async function invokeRemoteEndpoint(payload, callback, options) {

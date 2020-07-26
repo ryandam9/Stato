@@ -1,3 +1,10 @@
+/**
+ * This is invoked with the result of the API call. If the 'status' is not success, it renders the error message.
+ * Otherwise, it shows current time.
+ *
+ * @param result - Result of API Call
+ * @param messageId - HTML Element where the message should be rendered.
+ */
 function checkReturnStatus(result, messageId) {
     let message = document.getElementById(messageId);
 
@@ -10,7 +17,7 @@ function checkReturnStatus(result, messageId) {
     let currentDate = new Date();
 
     let datetime = currentDate.getDate() + "/"
-        + (currentDate.getMonth()+1)  + "/"
+        + (currentDate.getMonth() + 1) + "/"
         + currentDate.getFullYear() + " @ "
         + currentDate.getHours() + ":"
         + currentDate.getMinutes() + ":"
@@ -20,6 +27,10 @@ function checkReturnStatus(result, messageId) {
     message.className = 'alert alert-primary alert-dismissible fade show font-italic';
 }
 
+/**
+ * Long Running Queries
+ * @param result
+ */
 function longRunningQueriesRefresh(result) {
     let tableId = 'long-running-queries-table';
     let parentId = 'long-running-queries-section';
@@ -29,15 +40,25 @@ function longRunningQueriesRefresh(result) {
         longRunningQueriesDataTable = makeDataTable(longRunningQueriesDataTable, result, tableId, parentId);
 }
 
-function queryResourceUsageRefresh(data) {
+/**
+ * Query Resource Usage
+ * @param result
+ */
+function queryResourceUsageRefresh(result) {
     let tableId = 'query-resource-usage-table';
     let parentId = 'query-resource-usage-section';
-    let lastRefreshTimeEntry = 'resource-usage-auto-last-refresh';
-    document.getElementById(lastRefreshTimeEntry).innerText = new Date().toString();
 
-    queryResourceUsageDataTable = makeDataTable(queryResourceUsageDataTable, data, tableId, parentId);
+    // Check the API result status
+    checkReturnStatus(result, 'resource-usage-message');
+
+    if (result.status === 'success')
+        queryResourceUsageDataTable = makeDataTable(queryResourceUsageDataTable, result, tableId, parentId);
 }
 
+/**
+ * Retrieve Catalog tables list
+ * @param data
+ */
 function createCatalogTable(data) {
     let cols = data.data.columns;
     let records = data.data.records;
@@ -90,20 +111,10 @@ function createCatalogTable(data) {
     catalogDataTable.rows.add(htmlRows).draw(false);
 }
 
-function refreshLongRunningQuery(data) {
-    let tableId = 'long-running-query-table';
-    let parentId = 'long-running-query-sqlid';
-
-    longRunningQueryDataTable = makeDataTable(longRunningQueryDataTable, data, tableId, parentId);
-}
-
-function refreshQueryResourceUsage(data) {
-    console.log(data);
-    let tableId = 'query-resource-usage-table-sqlid';
-    let parentId = 'query-resource-usage-sqlid';
-    singleQueryResourceUsageDataTable = makeDataTable(singleQueryResourceUsageDataTable, data, tableId, parentId);
-}
-
+/**
+ * Refresh Catalog table Data.
+ * @param result
+ */
 function refreshCatalogTableData(result) {
     let tableId = 'catalog-tables-data-html-table';
     let parentId = 'catalog-tables-data-section';
@@ -111,6 +122,8 @@ function refreshCatalogTableData(result) {
     checkReturnStatus(result, 'catalog-table-message');
 
     if (result.status === 'success') {
+        // Structure of each catalog table is different. So, every time, a new Data table should
+        // be created.
         catalogTableDataTable = null;
         catalogTableDataTable = makeDataTable(catalogTableDataTable, result, tableId, parentId);
     }
@@ -118,25 +131,47 @@ function refreshCatalogTableData(result) {
     removeSpinner('catalog-table-spinner');
 }
 
-function refreshSQLText(data) {
-    let tableId = 'sqlid-sqltext-table';
-    let parentId = 'sqlid-sqltext';
-    sqlTextDataTable = makeDataTable(sqlTextDataTable, data, tableId, parentId);
+/**
+ * Long Running Query for an SQLID
+ * @param result
+ */
+function refreshLongRunningQuery(result) {
+    let tableId = 'long-running-query-table';
+    let parentId = 'long-running-query-sqlid';
+
+    // Check the API result status
+    checkReturnStatus(result, 'query-progress-message');
+
+    if (result.status === 'success')
+        longRunningQueryDataTable = makeDataTable(longRunningQueryDataTable, result, tableId, parentId);
 }
 
-function makeDataTable(dt, data, tableId, parentId) {
-    let cols = data.data.columns;
-    let records = data.data.records;
+/**
+ * Resource Usage of an SQLID
+ * @param result
+ */
+function refreshQueryResourceUsage(result) {
+    let tableId = 'query-resource-usage-table-sqlid';
+    let parentId = 'query-resource-usage-sqlid';
 
-    if (dt === undefined || dt === null) {
-        dt = createEmptyDataTable(cols, tableId, parentId);
-    } else {
-        // Data table is already defined. Remove existing Data.
-        dt.clear().draw();
-    }
+    // Check the API result status
+    checkReturnStatus(result, 'query-progress-message');
 
-    let tableData = getHTMLRows(records);
-    dt.rows.add(tableData).draw(false);
+    if (result.status === 'success')
+        singleQueryResourceUsageDataTable = makeDataTable(singleQueryResourceUsageDataTable, result, tableId, parentId);
+}
 
-    return dt;
+/**
+ * Refresh SQL Text of an SQLID
+ * @param result
+ */
+function refreshSQLText(result) {
+    let tableId = 'sqlid-sqltext-table';
+    let parentId = 'sqlid-sqltext';
+
+    // Check the API result status
+    checkReturnStatus(result, 'query-progress-message');
+
+    if (result.status === 'success')
+        sqlTextDataTable = makeDataTable(sqlTextDataTable, result, tableId, parentId);
 }

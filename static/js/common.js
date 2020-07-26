@@ -157,7 +157,6 @@ function createCard(type, item) {
     return cardWrapper;
 }
 
-
 async function executeQueries(queries) {
     let uniqueQueryIds = Object.keys(queries);
 
@@ -346,7 +345,6 @@ function clearFooter(footerId, footerTextId) {
     }, 5000);
 }
 
-
 function prepareGraphData(graphRequiredAttributes, dataColumns, dataRecords) {
     let indices = [];
     console.log(graphRequiredAttributes);
@@ -381,7 +379,6 @@ async function fetchRemoteData(link) {
     let data = await response.json();
     return data;
 }
-
 
 function createTiles(all_queries) {
     let cardDeck = document.getElementById('dashboard-tiles');
@@ -526,11 +523,9 @@ function removeSpinner(targetId) {
     document.getElementById(targetId).childNodes.forEach(node => node.remove());
 }
 
-
 function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
 }
-
 
 function createRefreshButton(form, queryId, autoRefreshTimeId, autoRefreshButtonId) {
     let input = document.createElement('input');
@@ -553,7 +548,6 @@ function createRefreshButton(form, queryId, autoRefreshTimeId, autoRefreshButton
     form.append(input, button);
     // return form;
 }
-
 
 /**
  * Creates a Text Box
@@ -586,7 +580,6 @@ function createButton(id, message, attributes) {
 
     return button;
 }
-
 
 function enableAutoRefreshOption(e) {
     console.log(e.target);
@@ -698,7 +691,6 @@ function createNavBar(tabs) {
     return navBar;
 }
 
-
 function createAccordion(id) {
     let accordion = document.createElement('div');
     accordion.id = id;
@@ -744,4 +736,21 @@ function accordionCard(accordionId, cardId) {
     card.append(cardHeader, body);
 
     document.getElementById(accordionId).appendChild(card);
+}
+
+function makeDataTable(dt, data, tableId, parentId) {
+    let cols = data.data.columns;
+    let records = data.data.records;
+
+    if (dt === undefined || dt === null) {
+        dt = createEmptyDataTable(cols, tableId, parentId);
+    } else {
+        // Data table is already defined. Remove existing Data.
+        dt.clear().draw();
+    }
+
+    let tableData = getHTMLRows(records);
+    dt.rows.add(tableData).draw(false);
+
+    return dt;
 }

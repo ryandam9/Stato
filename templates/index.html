@@ -174,7 +174,8 @@
                         <div id="in-progress-queries-bar">
                             <ul class="nav nav-pills" id="pills-tab" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active font-weight-bold" id="long-running-queries-tab" data-toggle="pill"
+                                    <a class="nav-link active font-weight-bold" id="long-running-queries-tab"
+                                       data-toggle="pill"
                                        href="#pills-long-running-queries"
                                        role="tab" aria-controls="pills-long-running-queries" aria-selected="true">Long
                                         Running
@@ -188,7 +189,8 @@
                                         Queries</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link font-weight-bold" id="sqlid-tab" data-toggle="pill" href="#pills-sqlid"
+                                    <a class="nav-link font-weight-bold" id="sqlid-tab" data-toggle="pill"
+                                       href="#pills-sqlid"
                                        role="tab" aria-controls="pills-sqlid" aria-selected="false">Search for
                                         SQLID</a>
                                 </li>
@@ -200,7 +202,7 @@
                                 <div class="card">
                                     <div class="card-header">
                                         <div class="icons">
-                                            <span id="long-running-queries-message"></span>
+                                            <span class="alert" role="alert" id="long-running-queries-message"></span>
                                             <form class="form-inline">
                                                 <div class="form-group mx-sm-3">
                                                     <label for="long-running-queries-auto-refresh-time" class="sr-only">Enter
@@ -226,9 +228,8 @@
                                 <div class="card">
                                     <div class="card-header">
                                         <div class="icons">
-                                            <span></span>
+                                            <span id="resource-usage-message" class="alert" role="alert"></span>
                                             <form class="form-inline">
-                                                Last Refreshed: <span id="resource-usage-auto-last-refresh"></span>
                                                 <div class="form-group mx-sm-3">
                                                     <label for="resource-usage-auto-refresh-time" class="sr-only">Enter
                                                         Auto Refresh time</label>
@@ -253,7 +254,7 @@
                                 <div class="card">
                                     <div class="card-header">
                                         <div class="icons">
-                                            Last Refreshed: <span id="query-progress-last-refresh"></span>
+                                            <span id="query-progress-message" class="alert" role="alert"></span>
                                             <form class="form-inline">
                                                 <div class="form-group mx-sm-3">
                                                     <!-- Show all -->
@@ -422,7 +423,8 @@
                     <div class="col-9">
                         <div class="card">
                             <div class="card-header icons">
-                                <div class="alert alert-primary font-weight-bold" role="alert" id="catalog-table-name"></div>
+                                <div class="alert alert-primary font-weight-bold" role="alert"
+                                     id="catalog-table-name"></div>
                                 <div class="alert" role="alert" id="catalog-table-message"></div>
                                 <span id="catalog-table-spinner"></span>
                             </div>
@@ -453,7 +455,8 @@
 </div>
 
 <!-- Modal for Application Error Message -->
-<div class="modal fade" id="applicationModal" tabindex="-1" role="dialog" aria-labelledby="applicationModalLabel" aria-hidden="true">
+<div class="modal fade" id="applicationModal" tabindex="-1" role="dialog" aria-labelledby="applicationModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
