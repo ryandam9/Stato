@@ -3,13 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="171f38cf-7aac-4e59-8577-df3f170775f2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/web-application-log.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/web-application-log.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/auto-refresh-setup.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/auto-refresh-setup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/common.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/query-execution-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/query-execution-worker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp.txt" beforeDir="false" afterPath="$PROJECT_DIR$/temp.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -94,7 +89,7 @@
       <workItem from="1595411160920" duration="698000" />
       <workItem from="1595496202222" duration="5623000" />
       <workItem from="1595510182507" duration="58644000" />
-      <workItem from="1595733165387" duration="2560000" />
+      <workItem from="1595733165387" duration="3213000" />
     </task>
     <servers />
   </component>
@@ -106,12 +101,12 @@
       <screen x="1920" y="0" width="2048" height="1080" />
     </state>
     <state x="2445" y="183" key="SettingsEditor/0.0.1920.1080/1920.0.2048.1080@1920.0.2048.1080" timestamp="1595511933007" />
-    <state width="498" height="398" key="SwitcherDM" timestamp="1595738287148">
+    <state width="498" height="398" key="SwitcherDM" timestamp="1595742027633">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="498" height="398" key="SwitcherDM/0.0.1920.1080/1920.0.2048.1080@0.0.1920.1080" timestamp="1595649489089" />
     <state width="532" height="398" key="SwitcherDM/0.0.1920.1080/1920.0.2048.1080@1920.0.2048.1080" timestamp="1595672932717" />
-    <state width="498" height="398" key="SwitcherDM/0.0.1920.1080@0.0.1920.1080" timestamp="1595738287148" />
+    <state width="498" height="398" key="SwitcherDM/0.0.1920.1080@0.0.1920.1080" timestamp="1595742027633" />
     <state x="2536" y="274" key="Vcs.Push.Dialog.v2" timestamp="1595661029406">
       <screen x="1920" y="0" width="2048" height="1080" />
     </state>
