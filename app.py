@@ -77,8 +77,8 @@ class DBConnection:
         db = app.config['DB']
         port = app.config['PORT']
 
-        if DBConnection.db_connection is not None:
-            return DBConnection.db_connection
+        # if DBConnection.db_connection is not None:
+        #     return DBConnection.db_connection
 
         try:
             dsn = cx_Oracle.makedsn(host=endpoint, port=port, service_name=db)
@@ -227,7 +227,7 @@ def get_query_map():
 @app.route('/get-table/<string:table>', methods=['GET', 'POST'])
 @cross_origin()
 def get_table(table):
-    records = execute_query('SELECT * FROM ' + table + ' WHERE ROWNUM < 1000000', [])
+    records = execute_query('SELECT * FROM ' + table + ' WHERE ROWNUM < 25000', [])
     result = format_data(records)
 
     app.logger.debug(table)

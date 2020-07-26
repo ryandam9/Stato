@@ -43,7 +43,7 @@ function showQueryResourceUsageSqlId(sqlid) {
 
 function getSQLTextSqlId(sqlid) {
     let payload = {
-        'end-point': queryExecutionLink + '/get_sql_text?sql_id=' + sqlid,
+        'end-point': queryExecutionLink + '/sql_text?sql_id=' + sqlid,
     };
 
     invokeRemoteEndpoint(payload, refreshSQLText, {});
@@ -54,13 +54,18 @@ function getSQLTextSqlId(sqlid) {
  */
 function fetchCatalogTable(e) {
     let tableName = e.target.innerText;
-    console.log(tableName);
+    document.getElementById('catalog-table-name').innerText = tableName;
+
+    // Delete existing Data table.
+    document.getElementById('catalog-tables-data-section')
+        .childNodes
+        .forEach(node => node.remove());
 
     let payload = {
         'end-point': catalogTableLink + '/' + tableName,
     };
 
-    console.log(payload);
+    showSpinner('catalog-table-spinner');
 
     invokeRemoteEndpoint(payload, refreshCatalogTableData, {});
 }

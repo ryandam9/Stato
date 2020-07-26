@@ -303,3 +303,15 @@ FROM (SELECT sql_id,
 WHERE rownum <= 50
 """
 }
+
+# SQL Text
+qry['sql_text'] = {
+    'heading': 'SQL Text',
+    'caption': '',
+    'category': 'in-progress-queries',
+    'query': """
+SELECT sql_fulltext
+FROM   gv$sql
+WHERE  sql_id = :sql_id
+"""
+}

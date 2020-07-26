@@ -12,6 +12,7 @@ let queryResourceUsageDataTable,
     catalogDataTable,
     longRunningQueryDataTable,
     singleQueryResourceUsageDataTable,
+    sqlTextDataTable,
     catalogTableDataTable;
 
 function setup() {

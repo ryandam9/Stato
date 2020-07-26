@@ -523,7 +523,7 @@ function showSpinner(targetId) {
 }
 
 function removeSpinner(targetId) {
-    document.getElementById(targetId).remove();
+    document.getElementById(targetId).childNodes.forEach(node => node.remove());
 }
 
 

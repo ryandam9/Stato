@@ -38,11 +38,11 @@
         /*Table header*/
         thead {
             background: #00A086;
-            color: white;
+            color: #473344;
         }
 
-        tbody {
-            background: white;
+        .table {
+            background: #F1F7F0;
             color: #473344;
         }
 
@@ -54,6 +54,7 @@
         /*Table Data*/
         td {
             font-family: 'Courier Prime', serif;
+            background: #F1F7F0;
         }
 
         /*div.dataTables_wrapper {*/
@@ -200,7 +201,7 @@
                                                            id="long-running-queries-auto-refresh-time"
                                                            placeholder="30 Secs" min="30" max="600" value="30">
                                                 </div>
-                                                <button type="submit" class="btn btn-success"
+                                                <button type="button" class="btn btn-success"
                                                         id="long-running-queries-auto-refresh-btn">Enable Auto Refresh
                                                 </button>
                                             </form>
@@ -227,7 +228,7 @@
                                                            id="resource-usage-auto-refresh-time"
                                                            placeholder="30 Secs" min="30" max="600" value="30">
                                                 </div>
-                                                <button type="submit" class="btn btn-success"
+                                                <button type="button" class="btn btn-success"
                                                         id="resource-usage-auto-refresh-btn">Enable Auto Refresh
                                                 </button>
                                             </form>
@@ -248,33 +249,47 @@
                                             <form class="form-inline">
                                                 <div class="form-group mx-sm-3">
                                                     <!-- Show all -->
-                                                    <button type="submit" class="btn btn-info mr-3"
-                                                            id="sqlid-show-all">Show All
+                                                    <button type="button" class="btn btn-info mr-3"
+                                                            id="sqlid-show-all">
+                                                        <i class="fas fa-plus"></i>
                                                     </button>
 
                                                     <!-- Minimise all -->
-                                                    <button type="submit" class="btn btn-info mr-3"
-                                                            id="sqlid-hide-all">Hide All
+                                                    <button type="button" class="btn btn-info mr-3"
+                                                            id="sqlid-hide-all">
+                                                        <i class="fas fa-minus"></i>
                                                     </button>
 
                                                     <!-- Enter SQL Id -->
-                                                    <label for="sqlid" class="sr-only">Enter SQLID</label>
-                                                    <input type="text" class="form-control mr-3" id="sqlid"
-                                                           placeholder="Enter SQL ID">
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <label for="sqlid" class="sr-only">Enter SQLID</label>
+                                                            <input type="text" class="form-control" id="sqlid"
+                                                                   placeholder="Enter SQL ID"
+                                                                   autocomplete="off"
+                                                                   aria-describedby="sqlid-monitor-btn">
+                                                        </div>
 
-                                                    <button type="submit" class="btn btn-info mr-3"
-                                                            id="sqlid-monitor-btn">Fetch SQLID Data
-                                                    </button>
+                                                        <button type="button" class="btn btn-info mr-3 form-control"
+                                                                id="sqlid-monitor-btn">Fetch SQLID Data
+                                                        </button>
+                                                    </div>
 
-                                                    <label for="query-progress-auto-refresh-time" class="sr-only">Enter
-                                                        Auto Refresh time</label>
-                                                    <input type="number" class="form-control"
-                                                           id="query-progress-auto-refresh-time"
-                                                           placeholder="30 Secs" min="30" max="600" value="30">
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <label for="query-progress-auto-refresh-time"
+                                                                   class="sr-only">Enter
+                                                                Auto Refresh time</label>
+                                                            <input type="number" class="form-control"
+                                                                   id="query-progress-auto-refresh-time"
+                                                                   placeholder="30 Secs" min="30" max="600" value="30"
+                                                                   aria-describedby="query-progress-auto-refresh-btn">
+                                                        </div>
+                                                        <button type="button" class="btn btn-success form-control"
+                                                                id="query-progress-auto-refresh-btn">Enable Auto Refresh
+                                                        </button>
+                                                    </div>
                                                 </div>
-                                                <button type="submit" class="btn btn-success"
-                                                        id="query-progress-auto-refresh-btn">Enable Auto Refresh
-                                                </button>
                                             </form>
                                         </div>
                                     </div>
@@ -398,8 +413,9 @@
                     </div>
                     <div class="col-9">
                         <div class="card">
-                            <div class="card-header">
-                                <h6>Catalog Tables</h6>
+                            <div class="card-header icons">
+                                <h6><span id="catalog-table-name"></span></h6>
+                                <span id="catalog-table-spinner"></span>
                             </div>
 
                             <div class="card-body scroll">
