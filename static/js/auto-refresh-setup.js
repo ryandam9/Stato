@@ -1,8 +1,33 @@
-document.getElementById('resource-usage-auto-refresh-btn').addEventListener('click', (e) => {
-    let t = document.getElementById('resource-usage-auto-refresh-time').value;
-    let autoRefreshTime = parseInt(t) * 1000;
-    window.setInterval(() => showQueryResourceUsage(), autoRefreshTime);
-});
+function checkReturnStatus(result, messageId) {
+    let message = document.getElementById(messageId);
+
+    if (result.status !== 'success') {
+        message.innerText = result.data;
+        message.className = 'alert alert-danger alert-dismissible fade show font-italic';
+        return;
+    }
+
+    let currentDate = new Date();
+
+    let datetime = currentDate.getDate() + "/"
+        + (currentDate.getMonth()+1)  + "/"
+        + currentDate.getFullYear() + " @ "
+        + currentDate.getHours() + ":"
+        + currentDate.getMinutes() + ":"
+        + currentDate.getSeconds();
+
+    message.innerText = 'Last Refreshed: ' + datetime;
+    message.className = 'alert alert-primary alert-dismissible fade show font-italic';
+}
+
+function longRunningQueriesRefresh(result) {
+    let tableId = 'long-running-queries-table';
+    let parentId = 'long-running-queries-section';
+    checkReturnStatus(result, 'long-running-queries-message');
+
+    if (result.status === 'success')
+        longRunningQueriesDataTable = makeDataTable(longRunningQueriesDataTable, result, tableId, parentId);
+}
 
 function queryResourceUsageRefresh(data) {
     let tableId = 'query-resource-usage-table';
@@ -11,41 +36,6 @@ function queryResourceUsageRefresh(data) {
     document.getElementById(lastRefreshTimeEntry).innerText = new Date().toString();
 
     queryResourceUsageDataTable = makeDataTable(queryResourceUsageDataTable, data, tableId, parentId);
-
-    // let cols = data.data.columns;
-    // let records = data.data.records;
-    //
-    // if (queryResourceUsageDataTable === undefined || queryResourceUsageDataTable === null) {
-    //     queryResourceUsageDataTable = createEmptyDataTable(cols, tableId, parentId);
-    // } else {
-    //     // Data table is already defined. Remove existing Data.
-    //     queryResourceUsageDataTable.clear().draw();
-    // }
-    //
-    // let tableData = getHTMLRows(records);
-    // queryResourceUsageDataTable.rows.add(tableData).draw(false);
-}
-
-function longRunningQueriesRefresh(data) {
-    let tableId = 'long-running-queries-table';
-    let parentId = 'long-running-queries-section';
-    let lastRefreshTimeEntry = 'long-running-queries-last-refresh';
-    document.getElementById(lastRefreshTimeEntry).innerText = new Date().toString();
-
-    longRunningQueriesDataTable = makeDataTable(longRunningQueriesDataTable, data, tableId, parentId);
-
-    // let cols = data.data.columns;
-    // let records = data.data.records;
-    //
-    // if (longRunningQueriesDataTable === undefined || longRunningQueriesDataTable === null) {
-    //     longRunningQueriesDataTable = createEmptyDataTable(cols, tableId, parentId);
-    // } else {
-    //     // Data table is already defined. Remove existing Data.
-    //     longRunningQueriesDataTable.clear().draw();
-    // }
-    //
-    // let tableData = getHTMLRows(records);
-    // longRunningQueriesDataTable.rows.add(tableData).draw(false);
 }
 
 function createCatalogTable(data) {
@@ -88,6 +78,7 @@ function createCatalogTable(data) {
             let anchor = document.createElement('a');
             anchor.innerText = cell;
             anchor.style.cursor = 'pointer';
+
             anchor.addEventListener('click', fetchCatalogTable);
             td.appendChild(anchor);
 
@@ -104,19 +95,6 @@ function refreshLongRunningQuery(data) {
     let parentId = 'long-running-query-sqlid';
 
     longRunningQueryDataTable = makeDataTable(longRunningQueryDataTable, data, tableId, parentId);
-
-    // let cols = data.data.columns;
-    // let records = data.data.records;
-    //
-    // if (longRunningQueryDataTable === undefined || longRunningQueryDataTable === null) {
-    //     longRunningQueryDataTable = createEmptyDataTable(cols, tableId, parentId);
-    // } else {
-    //     // Data table is already defined. Remove existing Data.
-    //     longRunningQueryDataTable.clear().draw();
-    // }
-    //
-    // let tableData = getHTMLRows(records);
-    // longRunningQueryDataTable.rows.add(tableData).draw(false);
 }
 
 function refreshQueryResourceUsage(data) {
@@ -126,12 +104,16 @@ function refreshQueryResourceUsage(data) {
     singleQueryResourceUsageDataTable = makeDataTable(singleQueryResourceUsageDataTable, data, tableId, parentId);
 }
 
-function refreshCatalogTableData(data) {
+function refreshCatalogTableData(result) {
     let tableId = 'catalog-tables-data-html-table';
     let parentId = 'catalog-tables-data-section';
 
-    catalogTableDataTable = null;
-    catalogTableDataTable = makeDataTable(catalogTableDataTable, data, tableId, parentId);
+    checkReturnStatus(result, 'catalog-table-message');
+
+    if (result.status === 'success') {
+        catalogTableDataTable = null;
+        catalogTableDataTable = makeDataTable(catalogTableDataTable, result, tableId, parentId);
+    }
 
     removeSpinner('catalog-table-spinner');
 }

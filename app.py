@@ -94,12 +94,24 @@ class DBConnection:
 
 # noinspection PyBroadException
 def execute_query(query, parameters):
-    connection = DBConnection.get_db_connection()
-    app.logger.debug('DB Connection: {}'.format(connection))
-    app.logger.debug('Query to be executed: {}'.format(query))
-    app.logger.debug('Parameters for the Query: {}'.format(parameters))
+    """
+    Executes given SQL query.
 
-    records = []
+    Every time a query is executed, a new DB connection is acquired and closed after the query is executed.
+    This is not really a good idea, but there is a reason for doing this way.
+
+    Using Connection pooling might be a good idea (However, I am not sure how to use them). Query requests from
+    client come at any time and they're are concurrent.
+
+    :return  A List of lists, where each list is a record. First list is the column names.
+    """
+    connection = DBConnection.get_db_connection()
+    app.logger.debug('-' * 120)
+    app.logger.debug('Query to be executed')
+    app.logger.debug(query)
+    app.logger.debug('Query Parameters: {}'.format(parameters))
+
+    records = []  # Query results
     try:
         cur = connection.cursor()
 
@@ -136,12 +148,9 @@ def execute_query(query, parameters):
         app.logger.error(err)
         records.append("Exception: " + str(err))
     finally:
-        print('')
-        # DBConnection.db_connection = None
-        # connection.close()
+        connection.close()
 
     app.logger.debug('Sample Result')
-
     [app.logger.debug(rec) for index, rec in enumerate(records) if index < 5]
 
     return records
@@ -155,17 +164,16 @@ def index():
 @app.route('/report_sql_monitor/<string:sql_id>', methods=['GET'])
 def report_sql_monitor(sql_id):
     query = 'SELECT DBMS_SQLTUNE.REPORT_SQL_MONITOR(' + "'" + sql_id + "')" + ' FROM DUAL'
-    print(query)
+    app.logger.debug(query)
 
-    records = execute_query(query, '')
-    print(records)
+    records = execute_query(query, None)
 
     # Data of this query is a LOB Object. Convert it to a String first.
     result = convert_lob_object_to_string(records[1][0])
 
     records = [['STATUS'], [result]]
     result = format_data(records)
-    return result
+    return result, 201
 
 
 @app.route('/report_sql_monitor_active/<string:sql_id>', methods=['GET'])
@@ -173,14 +181,12 @@ def report_sql_monitor_active(sql_id):
     query = 'SELECT DBMS_SQLTUNE.REPORT_SQL_MONITOR(' + "'" + sql_id + "'," \
             + "type => 'active', report_level => 'ALL') FROM DUAL"
 
-    print(query)
-
+    app.logger.debug(query)
     records = execute_query(query, None)
-    print(records)
 
     # Data of this query is a LOB Object. Convert it to a String first.
     result = convert_lob_object_to_string(records[1][0])
-    return result
+    return result, 201
 
 
 def convert_lob_object_to_string(lob_object):
@@ -227,11 +233,9 @@ def get_query_map():
 @app.route('/get-table/<string:table>', methods=['GET', 'POST'])
 @cross_origin()
 def get_table(table):
-    records = execute_query('SELECT * FROM ' + table + ' WHERE ROWNUM < 25000', [])
+    query = 'SELECT * FROM ' + table + ' WHERE ROWNUM < 25000'
+    records = execute_query(query, [])
     result = format_data(records)
-
-    app.logger.debug(table)
-    print(result)
     return result, 201
 
 
@@ -247,21 +251,21 @@ def get_list_of_data_dictionary_tables():
 @cross_origin()
 def query_execution(query_id):
     parameter_names = list(request.args)
-    paramerter_values = list()
-    [paramerter_values.append(request.args[parm]) for parm in parameter_names]
+    parameter_values = list()
+    [parameter_values.append(request.args[parm]) for parm in parameter_names]
 
     app.logger.debug('Query parameters for {}: '.format(query_id))
     app.logger.debug('Parameter names        : {}'.format(parameter_names))
-    app.logger.debug('Parameter values       : {}'.format(paramerter_values))
+    app.logger.debug('Parameter values       : {}'.format(parameter_values))
 
     # Holds Query results
     records = list()
     parameters = []
 
-    if len(paramerter_values) == 0:
+    if len(parameter_values) == 0:
         parameters = None
     else:
-        parameters = paramerter_values
+        parameters = parameter_values
 
     if query_id in qry.keys():
         query = qry[query_id]['query']

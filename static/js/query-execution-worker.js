@@ -14,8 +14,8 @@ self.addEventListener('message', function (msg) {
             result = JSON.parse(this.responseText);
         } else {
             result = {
-                'status': 'failure',
-                'data': 'Unknown error while connecting to the server'
+                'status': 'network-failure',
+                'data': 'Unknown error while connecting to the server, HTTP Return code: ' + this.status
             }
         }
 

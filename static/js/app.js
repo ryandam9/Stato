@@ -57,6 +57,12 @@ function initialize() {
 
         window.open(link);
     });
+
+    document.getElementById('resource-usage-auto-refresh-btn').addEventListener('click', (e) => {
+        let t = document.getElementById('resource-usage-auto-refresh-time').value;
+        let autoRefreshTime = parseInt(t) * 1000;
+        window.setInterval(() => showQueryResourceUsage(), autoRefreshTime);
+    });
 }
 
 function buildPages() {
@@ -91,90 +97,20 @@ function hideAllPages() {
     document.querySelectorAll('.tool-page').forEach(node => node.style.display = 'none');
 }
 
-function createAccordion(id) {
-    let accordion = document.createElement('div');
-    accordion.id = id;
-    return accordion;
-}
-
-function accordionCard(accordionId, cardId) {
-    let headerId = `${cardId}-header`;
-    let bodyId = `${cardId}-body`;
-
-    let card = document.createElement('div');
-    card.className = 'card rounded-lg';
-
-    let cardHeader = document.createElement('div');
-    cardHeader.className = 'card-header';
-    cardHeader.id = headerId;
-
-    let header = document.createElement('h5');
-    header.className = 'mb-0';
-
-    let link = document.createElement('button');
-    link.className = 'btn btn-link';
-    link.setAttribute('data-toggle', 'collapse');
-    link.setAttribute('data-target', `#${bodyId}`);
-    link.setAttribute('aria-expanded', 'true');
-    link.setAttribute('aria-controls', bodyId);
-    link.innerText = 'Collapsible Group Item #1';
-
-    header.appendChild(link);
-    cardHeader.appendChild(header);
-
-    let body = document.createElement('div');
-    body.id = bodyId;
-    body.className = 'collapse show';
-    body.setAttribute('aria-labelledby', headerId);
-    body.setAttribute('data-parent', `#${accordionId}`);
-
-    let cardBody = document.createElement('div');
-    cardBody.className = 'card-body';
-
-    body.appendChild(cardBody);
-
-    card.append(cardHeader, body);
-
-    document.getElementById(accordionId).appendChild(card);
-}
-
 async function invokeRemoteEndpoint(payload, callback, options) {
     let worker = new Worker('/static/js/query-execution-worker.js');
 
     worker.addEventListener('message', function (event) {
         let result = event.data;
+
+        if (result.status === 'network-failure') {
+            document.getElementById('application-error-message').innerText = result.data;
+            $('#applicationModal').modal('show')
+        }
+
         callback(result, options);
     }, false);
 
     worker.postMessage(payload);
 }
 
-function createNavBar(tabs) {
-    let navBar = document.createElement('ul');
-    navBar.className = 'nav nav-tabs';
-
-    let index = 0;
-
-    tabs.forEach(tab => {
-
-        let li = document.createElement('li');
-        li.className = 'nav-item mr-2';
-
-        let anchor = document.createElement('a');
-
-        if (index === 0) {
-            anchor.className = 'nav-link active';
-            index++;
-        } else {
-            anchor.className = 'nav-link';
-        }
-
-        anchor.href = '#';
-        anchor.innerText = tab;
-
-        li.appendChild(anchor);
-        navBar.appendChild(li);
-    });
-
-    return navBar;
-}
