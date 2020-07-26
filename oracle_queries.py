@@ -32,7 +32,7 @@ ORDER BY
 qry['database-parameters'] = {
     'heading': 'DB Parameters',
     'caption': 'DB parameters from V$PARAMETER',
-'category': 'overview',
+    'category': 'overview',
     'query': """
 SELECT
    name
@@ -46,7 +46,7 @@ FROM
 qry['tables'] = {
     'heading': 'Tables in a Schema',
     'caption': '',
-'category': 'overview',
+    'category': 'overview',
     'query': """
 SELECT 
       owner
@@ -113,7 +113,6 @@ ORDER BY
 """
 }
 
-
 qry['datafiles-usage'] = {
     'heading': 'Data Files Usage',
     'caption': 'Tablespaces and their current state',
@@ -134,7 +133,6 @@ ORDER BY
     TABLESPACE_NAME
 """
 }
-
 
 qry['tempfiles-usage'] = {
     'heading': 'Temp Files Usage',
@@ -313,5 +311,125 @@ qry['sql_text'] = {
 SELECT sql_fulltext
 FROM   gv$sql
 WHERE  sql_id = :sql_id
+"""
+}
+
+# Query Progress Against Execution Plan
+qry['query-progress-against-plan'] = {
+    'heading': 'Query Progress Against Execution Plan',
+    'caption': '',
+    'category': 'in-progress-queries',
+    'query': """
+SELECT sid, 
+       sql_id, 
+       status, 
+       plan_line_id,
+       plan_operation || ' ' || plan_options operation, 
+       (CASE
+           WHEN plan_object_owner IS NOT NULL AND plan_object_name IS NOT NULL THEN
+                plan_object_owner || '.' || plan_object_name || ' ~ ' || plan_object_type 
+           ELSE
+                ' '
+        END) AS plan_object,
+       output_rows
+FROM   V$SQL_PLAN_MONITOR
+WHERE  (sql_id, sql_exec_id, sid) = (SELECT sql_id, sql_exec_id, sid
+                                     FROM   V$SQL_MONITOR a
+                                     WHERE  sql_id = :sql_id
+                                       AND  sql_exec_id = (SELECT MAX(sql_exec_id) FROM V$SQL_MONITOR WHERE sql_id = a.sql_id)
+                                     )  
+ORDER BY 1,4
+"""
+}
+
+# Temp Space use of an SQL ID
+qry['temp-space-use-sqlid'] = {
+    'heading': 'Temp Space Use of an SQL',
+    'caption': '',
+    'category': 'in-progress-queries',
+    'query': """
+SELECT 
+    t.*
+FROM
+    V$TEMPSEG_USAGE t
+WHERE
+    t.sql_id = :sql_id
+"""
+}
+
+# Data from DBA Hist Tables
+qry['dba-hist-1'] = {
+    'heading': 'Fetches and Deltas',
+    'caption': '',
+    'category': 'in-progress-queries',
+    'query': """
+SELECT
+    a.sql_id,
+    to_char(begin_interval_time, 'yyyy-mm-dd:hh24:mi:ss') begin_interval_time,
+    b.error_count,
+    a.parsing_schema_name,
+    a.fetches_total,
+    a.fetches_delta,
+    a.executions_total,
+    a.executions_delta,
+    a.rows_processed_delta
+FROM
+    DBA_HIST_SQLSTAT a,
+    DBA_HIST_SNAPSHOT b
+WHERE
+    a.snap_id = b.snap_id
+AND a.instance_number = b.instance_number
+AND a.sql_id = :sql_id
+ORDER BY begin_interval_time DESC    
+"""
+}
+
+# ----------------------------------------------------------------------------------------------------------------------
+# Waiting Related Queries
+# ----------------------------------------------------------------------------------------------------------------------
+# Sessions in WAIT State
+qry['waiting-sessions'] = {
+    'heading': 'Sessions that are in WAIT State',
+    'caption': '',
+    'category': 'waits',
+    'query': """
+SELECT 
+    s.sid,
+    s.username,
+    s.event,
+    s.blocking_session,
+    s.seconds_in_wait,
+    s.wait_time
+FROM
+    V$SESSION s
+WHERE
+    s.state IN ('WAITING')
+ORDER BY
+    s.username, s.sid
+"""
+}
+
+# Sessions with High I/O Activity
+qry['sessions-with-high-IO'] = {
+    'heading': 'Sessions with High I/O Activity',
+    'caption': '',
+    'category': 'waits',
+    'query': """
+SELECT
+    osuser,
+    username,
+    process pid,
+    ses.sid,
+    serial#,
+    ses.sql_id,
+    physical_reads,
+    block_changes
+FROM 
+    v$session ses,
+    v$sess_io sio
+WHERE
+    ses.sid = sio.sid
+ORDER BY
+    username, ses.sid, ses.serial#, ses.sql_id DESC
 """
 }

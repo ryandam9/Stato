@@ -5267,3 +5267,1883 @@ WHERE  sql_id = :sql_id
 2020-07-26 15:55:28,774 DEBUG: [app.py:154] : ['SYS', 'UNDO$', 'SYSTEM', '', '', 'VALID', '10', '40', '1', '255', '65536', '1048576', '1', '2147483645', '', '1', '1', 'YES', 'N', '21', '1', '0', '0', '0', '59', '0', '0', '         1', '         1', '    N', 'ENABLED', '21', '2020-07-22 22:00:04', 'NO', '', 'N', 'N', 'NO', 'DEFAULT', 'DEFAULT', 'DEFAULT', 'DISABLED', 'YES', 'NO', '', 'DISABLED', 'YES', '', 'DISABLED', 'DISABLED', '', 'NO', 'NO', 'YES', 'DEFAULT']
 2020-07-26 15:55:28,774 DEBUG: [app.py:154] : ['SYS', 'PROXY_ROLE_DATA$', 'SYSTEM', '', '', 'VALID', '10', '40', '1', '255', '65536', '1048576', '1', '2147483645', '', '1', '1', 'YES', 'N', '0', '0', '0', '0', '0', '0', '0', '0', '         1', '         1', '    N', 'ENABLED', '0', '2010-03-30 10:18:28', 'NO', '', 'N', 'N', 'NO', 'DEFAULT', 'DEFAULT', 'DEFAULT', 'DISABLED', 'YES', 'NO', '', 'DISABLED', 'YES', '', 'DISABLED', 'DISABLED', '', 'NO', 'NO', 'YES', 'DEFAULT']
 2020-07-26 15:55:29,111 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 15:55:29] "POST /get-table/ALL_TABLES HTTP/1.1" 201 -
+2020-07-26 17:06:12,115 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:06:12] "GET / HTTP/1.1" 200 -
+2020-07-26 17:06:12,170 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:06:12] "GET /static/js/app.js HTTP/1.1" 200 -
+2020-07-26 17:06:12,370 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:06:12] "GET /static/js/api-calls.js HTTP/1.1" 200 -
+2020-07-26 17:06:12,461 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:06:12] "GET /static/js/auto-refresh-setup.js HTTP/1.1" 200 -
+2020-07-26 17:06:12,463 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:06:12] "GET /static/js/common.js HTTP/1.1" 200 -
+2020-07-26 17:06:13,071 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:06:13] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:06:13,072 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:06:13] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:06:13,322 DEBUG: [app.py:257] : Query parameters for queries-resource-usage: 
+2020-07-26 17:06:13,322 DEBUG: [app.py:258] : Parameter names        : []
+2020-07-26 17:06:13,322 DEBUG: [app.py:259] : Parameter values       : []
+2020-07-26 17:06:13,360 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:06:13,360 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:06:13,361 DEBUG: [app.py:111] : 
+SELECT s.parsing_schema_name schema,
+       t.sql_id,
+       to_char(t.last_active_time,'yyyy-mm-dd:hh24:mi:ss') last_active_time,
+       t.sql_text,
+       t.disk_reads,
+       t.buffer_gets,
+       t.fetches,
+       t.sorts,
+       t.cpu_time/1000000 cpu,
+       t.rows_processed
+FROM V$SQLSTATS t,
+     V$SQL s
+WHERE t.sql_id = s.sql_id
+ORDER BY t.last_active_time DESC
+
+2020-07-26 17:06:13,361 DEBUG: [app.py:112] : Query Parameters: None
+2020-07-26 17:06:13,384 DEBUG: [app.py:257] : Query parameters for long-running-queries: 
+2020-07-26 17:06:13,384 DEBUG: [app.py:258] : Parameter names        : []
+2020-07-26 17:06:13,384 DEBUG: [app.py:259] : Parameter values       : []
+2020-07-26 17:06:13,403 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:06:13,403 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:06:13,403 DEBUG: [app.py:111] : 
+SELECT
+  sid
+, serial#
+, opname
+, target
+, target_desc
+, sofar
+, totalwork
+, units
+, start_time
+, last_update_time
+, timestamp
+, time_remaining
+, elapsed_seconds
+, context
+, message
+, username
+, sql_address
+, sql_hash_value
+, sql_id
+, sql_plan_hash_value
+, sql_exec_start
+, sql_exec_id
+, sql_plan_line_id
+, sql_plan_operation
+, sql_plan_options
+, qcsid
+FROM
+    V$SESSION_LONGOPS
+WHERE
+    sofar <> totalwork
+
+2020-07-26 17:06:13,403 DEBUG: [app.py:112] : Query Parameters: None
+2020-07-26 17:06:13,406 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:06:13,406 DEBUG: [app.py:154] : ['SID', 'SERIAL#', 'OPNAME', 'TARGET', 'TARGET_DESC', 'SOFAR', 'TOTALWORK', 'UNITS', 'START_TIME', 'LAST_UPDATE_TIME', 'TIMESTAMP', 'TIME_REMAINING', 'ELAPSED_SECONDS', 'CONTEXT', 'MESSAGE', 'USERNAME', 'SQL_ADDRESS', 'SQL_HASH_VALUE', 'SQL_ID', 'SQL_PLAN_HASH_VALUE', 'SQL_EXEC_START', 'SQL_EXEC_ID', 'SQL_PLAN_LINE_ID', 'SQL_PLAN_OPERATION', 'SQL_PLAN_OPTIONS', 'QCSID']
+2020-07-26 17:06:13,407 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:06:13] "POST /query_execution/long-running-queries HTTP/1.1" 201 -
+2020-07-26 17:06:13,567 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:06:13,567 DEBUG: [app.py:154] : ['SCHEMA', 'SQL_ID', 'LAST_ACTIVE_TIME', 'SQL_TEXT', 'DISK_READS', 'BUFFER_GETS', 'FETCHES', 'SORTS', 'CPU', 'ROWS_PROCESSED']
+2020-07-26 17:06:13,567 DEBUG: [app.py:154] : ['SYS', '4vs91dcv7u1p6', '2020-07-26:17:06:12', 'insert into sys.aud$( sessionid,entryid,statement,ntimestamp#, userid,userhost,terminal,action#,returncode, obj$creator,obj$name,auth$privileges,auth$grantee, new$owner,new$name,ses$actions,ses$tid,logoff$pread, logoff$lwrite,logoff$dead,comment$text,spare1,spare2,  priv$used,clientid,sessioncpu,proxy$sid,user$guid, instance#,process#,xid,scn,auditid,  sqlbind,sqltext,obj$edition,dbid)  values(:1,:2,:3,SYS_EXTRACT_UTC(SYSTIMESTAMP),     :4,:5,:6,:7,:8,     :9,:10,:11,:12,     :13,:14,:15,:16,:17,     :18,:19,:20,:21,:22,     :23,:24,:25,:26,:27,     :28,:29,:30,:31,:32,     :33,:34,:35,:36)', '1', '14323', '0', '0', '0.28125', '4352']
+2020-07-26 17:06:13,567 DEBUG: [app.py:154] : ['ADMIN', '7gtys6vx02ymj', '2020-07-26:17:06:12', ' SELECT   sid , serial# , opname , target , target_desc , sofar , totalwork , units , start_time , last_update_time , timestamp , time_remaining , elapsed_seconds , context , message , username , sql_address , sql_hash_value , sql_id , sql_plan_hash_value , sql_exec_start , sql_exec_id , sql_plan_line_id , sql_plan_operation , sql_plan_options , qcsid FROM     V$SESSION_LONGOPS WHERE     sofar <> totalwork ', '0', '124', '264', '0', '0.109375', '1']
+2020-07-26 17:06:13,567 DEBUG: [app.py:154] : ['SYS', '4vs91dcv7u1p6', '2020-07-26:17:06:12', 'insert into sys.aud$( sessionid,entryid,statement,ntimestamp#, userid,userhost,terminal,action#,returncode, obj$creator,obj$name,auth$privileges,auth$grantee, new$owner,new$name,ses$actions,ses$tid,logoff$pread, logoff$lwrite,logoff$dead,comment$text,spare1,spare2,  priv$used,clientid,sessioncpu,proxy$sid,user$guid, instance#,process#,xid,scn,auditid,  sqlbind,sqltext,obj$edition,dbid)  values(:1,:2,:3,SYS_EXTRACT_UTC(SYSTIMESTAMP),     :4,:5,:6,:7,:8,     :9,:10,:11,:12,     :13,:14,:15,:16,:17,     :18,:19,:20,:21,:22,     :23,:24,:25,:26,:27,     :28,:29,:30,:31,:32,     :33,:34,:35,:36)', '1', '14323', '0', '0', '0.28125', '4352']
+2020-07-26 17:06:13,567 DEBUG: [app.py:154] : ['SYS', '0k8522rmdzg4k', '2020-07-26:17:06:12', 'select privilege# from sysauth$ where (grantee#=:1 or grantee#=1) and privilege#>0', '4', '290314', '263449', '0', '0.203125', '254374']
+2020-07-26 17:06:13,655 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:06:13] "POST /query_execution/queries-resource-usage HTTP/1.1" 201 -
+2020-07-26 17:06:14,475 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:06:14] "GET /favicon.ico HTTP/1.1" 404 -
+2020-07-26 17:06:32,499 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:06:32] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:06:32,501 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:06:32] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:06:32,502 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:06:32] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:06:32,747 DEBUG: [app.py:257] : Query parameters for long-running-query: 
+2020-07-26 17:06:32,747 DEBUG: [app.py:258] : Parameter names        : ['sql_id']
+2020-07-26 17:06:32,747 DEBUG: [app.py:259] : Parameter values       : ['7gtys6vx02ymj']
+2020-07-26 17:06:32,760 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:06:32,760 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:06:32,760 DEBUG: [app.py:111] : 
+SELECT
+  sid
+, serial#
+, opname
+, target
+, target_desc
+, sofar
+, totalwork
+, units
+, start_time
+, last_update_time
+, timestamp
+, time_remaining
+, elapsed_seconds
+, context
+, message
+, username
+, sql_address
+, sql_hash_value
+, sql_id
+, sql_plan_hash_value
+, sql_exec_start
+, sql_exec_id
+, sql_plan_line_id
+, sql_plan_operation
+, sql_plan_options
+, qcsid
+FROM
+    V$SESSION_LONGOPS
+WHERE
+    sql_id = :sqlid
+
+2020-07-26 17:06:32,760 DEBUG: [app.py:112] : Query Parameters: ['7gtys6vx02ymj']
+2020-07-26 17:06:32,762 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:06:32,762 DEBUG: [app.py:154] : ['SID', 'SERIAL#', 'OPNAME', 'TARGET', 'TARGET_DESC', 'SOFAR', 'TOTALWORK', 'UNITS', 'START_TIME', 'LAST_UPDATE_TIME', 'TIMESTAMP', 'TIME_REMAINING', 'ELAPSED_SECONDS', 'CONTEXT', 'MESSAGE', 'USERNAME', 'SQL_ADDRESS', 'SQL_HASH_VALUE', 'SQL_ID', 'SQL_PLAN_HASH_VALUE', 'SQL_EXEC_START', 'SQL_EXEC_ID', 'SQL_PLAN_LINE_ID', 'SQL_PLAN_OPERATION', 'SQL_PLAN_OPTIONS', 'QCSID']
+2020-07-26 17:06:32,762 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:06:32] "POST /query_execution/long-running-query?sql_id=7gtys6vx02ymj HTTP/1.1" 201 -
+2020-07-26 17:06:32,813 DEBUG: [app.py:257] : Query parameters for query-resource-usage: 
+2020-07-26 17:06:32,813 DEBUG: [app.py:258] : Parameter names        : ['sql_id']
+2020-07-26 17:06:32,813 DEBUG: [app.py:259] : Parameter values       : ['7gtys6vx02ymj']
+2020-07-26 17:06:32,816 DEBUG: [app.py:257] : Query parameters for sql_text: 
+2020-07-26 17:06:32,816 DEBUG: [app.py:258] : Parameter names        : ['sql_id']
+2020-07-26 17:06:32,816 DEBUG: [app.py:259] : Parameter values       : ['7gtys6vx02ymj']
+2020-07-26 17:06:32,829 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:06:32,829 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:06:32,829 DEBUG: [app.py:111] : 
+SELECT sql_fulltext
+FROM   gv$sql
+WHERE  sql_id = :sql_id
+
+2020-07-26 17:06:32,830 DEBUG: [app.py:112] : Query Parameters: ['7gtys6vx02ymj']
+2020-07-26 17:06:32,831 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:06:32,831 DEBUG: [app.py:154] : ['SQL_FULLTEXT']
+2020-07-26 17:06:32,831 DEBUG: [app.py:154] : ['\nSELECT\n  sid\n, serial#\n, opname\n, target\n, target_desc\n, sofar\n, totalwork\n, units\n, start_time\n, last_update_time\n, timestamp\n, time_remaining\n, elapsed_seconds\n, context\n, message\n, username\n, sql_address\n, sql_hash_value\n, sql_id\n, sql_plan_hash_value\n, sql_exec_start\n, sql_exec_id\n, sql_plan_line_id\n, sql_plan_operation\n, sql_plan_options\n, qcsid\nFROM\n    V$SESSION_LONGOPS\nWHERE\n    sofar <> totalwork\n']
+2020-07-26 17:06:32,832 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:06:32] "POST /query_execution/sql_text?sql_id=7gtys6vx02ymj HTTP/1.1" 201 -
+2020-07-26 17:06:32,839 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:06:32,839 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:06:32,839 DEBUG: [app.py:111] : 
+SELECT * 
+FROM (SELECT sql_id, 
+             to_char(sql_exec_start,'yyyy-mm-dd:hh24:mi:ss') sql_exec_start,
+             sql_exec_id, 
+             sum(buffer_gets) buffer_gets,
+             sum(disk_reads) disk_reads, 
+             round(sum(cpu_time/1000000),1) cpu_secs
+      FROM v$sql_monitor
+      WHERE sql_id = :sql_id
+      GROUP BY sql_id, sql_exec_start, sql_exec_id
+      ORDER BY 2 desc)
+WHERE rownum <= 50
+
+2020-07-26 17:06:32,839 DEBUG: [app.py:112] : Query Parameters: ['7gtys6vx02ymj']
+2020-07-26 17:06:32,841 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:06:32,841 DEBUG: [app.py:154] : ['SQL_ID', 'SQL_EXEC_START', 'SQL_EXEC_ID', 'BUFFER_GETS', 'DISK_READS', 'CPU_SECS']
+2020-07-26 17:06:32,842 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:06:32] "POST /query_execution/query-resource-usage?sql_id=7gtys6vx02ymj HTTP/1.1" 201 -
+2020-07-26 17:06:43,422 DEBUG: [app.py:184] : SELECT DBMS_SQLTUNE.REPORT_SQL_MONITOR('7gtys6vx02ymj',type => 'active', report_level => 'ALL') FROM DUAL
+2020-07-26 17:06:43,450 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:06:43,450 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:06:43,450 DEBUG: [app.py:111] : SELECT DBMS_SQLTUNE.REPORT_SQL_MONITOR('7gtys6vx02ymj',type => 'active', report_level => 'ALL') FROM DUAL
+2020-07-26 17:06:43,451 DEBUG: [app.py:112] : Query Parameters: None
+2020-07-26 17:06:43,471 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:06:43,471 DEBUG: [app.py:154] : ["DBMS_SQLTUNE.REPORT_SQL_MONITOR('7GTYS6VX02YMJ',TYPE=>'ACTIVE',REPORT_LEVEL=>'ALL')"]
+2020-07-26 17:06:43,471 DEBUG: [app.py:154] : ['<html>\n <head>\n  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>\n  <base href="http://download.oracle.com/otn_software/"/>\n  <script language="javascript" type="text/javascript" src="emviewers/scripts/flashver.js">\n   <!--Test flash version-->\n  </script>\n  <style>\n      body { margin: 0px; overflow:hidden }\n    </style>\n </head>\n <body scroll="no">\n  <script type="text/xml">\n   <!--FXTMODEL-->\n   <report db_version="11.2.0.1.0" elapsed_time="0.00" cpu_time="0.00">\n    <report_id><![CDATA[/orarep/sqlmonitor/main?bucket_max_count=128&event_detail=yes&report_level=ALL&sql_id=7gtys6vx02ymj]]></report_id>\n   </report>\n   <!--FXTMODEL-->\n  </script>\n  <script language="JavaScript" type="text/javascript" src="emviewers/scripts/loadswf.js">\n   <!--Load report viewer-->\n  </script>\n  <iframe name="_history" frameborder="0" scrolling="no" width="22" height="0">\n   <html>\n    <head>\n     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>\n     <script type="text/javascript" language="JavaScript1.2" charset="utf-8">\n                var v = new top.Vars(top.getSearch(window));\n                var fv = v.toString(&apos;$_&apos;);\n              </script>\n    </head>\n    <body>\n     <script type="text/javascript" language="JavaScript1.2" charset="utf-8" src="emviewers/scripts/document.js">\n      <!--Run document script-->\n     </script>\n    </body>\n   </html>\n  </iframe>\n </body>\n</html>\n']
+2020-07-26 17:06:43,491 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:06:43] "GET /report_sql_monitor_active/7gtys6vx02ymj HTTP/1.1" 201 -
+2020-07-26 17:08:15,394 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:08:15] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:08:15,396 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:08:15] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:08:15,396 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:08:15] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:08:15,639 DEBUG: [app.py:257] : Query parameters for long-running-query: 
+2020-07-26 17:08:15,639 DEBUG: [app.py:258] : Parameter names        : ['sql_id']
+2020-07-26 17:08:15,639 DEBUG: [app.py:259] : Parameter values       : ['7gtys6vx02ymj']
+2020-07-26 17:08:15,665 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:08:15,665 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:08:15,665 DEBUG: [app.py:111] : 
+SELECT
+  sid
+, serial#
+, opname
+, target
+, target_desc
+, sofar
+, totalwork
+, units
+, start_time
+, last_update_time
+, timestamp
+, time_remaining
+, elapsed_seconds
+, context
+, message
+, username
+, sql_address
+, sql_hash_value
+, sql_id
+, sql_plan_hash_value
+, sql_exec_start
+, sql_exec_id
+, sql_plan_line_id
+, sql_plan_operation
+, sql_plan_options
+, qcsid
+FROM
+    V$SESSION_LONGOPS
+WHERE
+    sql_id = :sqlid
+
+2020-07-26 17:08:15,665 DEBUG: [app.py:112] : Query Parameters: ['7gtys6vx02ymj']
+2020-07-26 17:08:15,668 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:08:15,668 DEBUG: [app.py:154] : ['SID', 'SERIAL#', 'OPNAME', 'TARGET', 'TARGET_DESC', 'SOFAR', 'TOTALWORK', 'UNITS', 'START_TIME', 'LAST_UPDATE_TIME', 'TIMESTAMP', 'TIME_REMAINING', 'ELAPSED_SECONDS', 'CONTEXT', 'MESSAGE', 'USERNAME', 'SQL_ADDRESS', 'SQL_HASH_VALUE', 'SQL_ID', 'SQL_PLAN_HASH_VALUE', 'SQL_EXEC_START', 'SQL_EXEC_ID', 'SQL_PLAN_LINE_ID', 'SQL_PLAN_OPERATION', 'SQL_PLAN_OPTIONS', 'QCSID']
+2020-07-26 17:08:15,668 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:08:15] "POST /query_execution/long-running-query?sql_id=7gtys6vx02ymj HTTP/1.1" 201 -
+2020-07-26 17:08:15,710 DEBUG: [app.py:257] : Query parameters for sql_text: 
+2020-07-26 17:08:15,710 DEBUG: [app.py:258] : Parameter names        : ['sql_id']
+2020-07-26 17:08:15,710 DEBUG: [app.py:259] : Parameter values       : ['7gtys6vx02ymj']
+2020-07-26 17:08:15,711 DEBUG: [app.py:257] : Query parameters for query-resource-usage: 
+2020-07-26 17:08:15,712 DEBUG: [app.py:258] : Parameter names        : ['sql_id']
+2020-07-26 17:08:15,712 DEBUG: [app.py:259] : Parameter values       : ['7gtys6vx02ymj']
+2020-07-26 17:08:15,730 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:08:15,730 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:08:15,730 DEBUG: [app.py:111] : 
+SELECT * 
+FROM (SELECT sql_id, 
+             to_char(sql_exec_start,'yyyy-mm-dd:hh24:mi:ss') sql_exec_start,
+             sql_exec_id, 
+             sum(buffer_gets) buffer_gets,
+             sum(disk_reads) disk_reads, 
+             round(sum(cpu_time/1000000),1) cpu_secs
+      FROM v$sql_monitor
+      WHERE sql_id = :sql_id
+      GROUP BY sql_id, sql_exec_start, sql_exec_id
+      ORDER BY 2 desc)
+WHERE rownum <= 50
+
+2020-07-26 17:08:15,730 DEBUG: [app.py:112] : Query Parameters: ['7gtys6vx02ymj']
+2020-07-26 17:08:15,733 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:08:15,733 DEBUG: [app.py:154] : ['SQL_ID', 'SQL_EXEC_START', 'SQL_EXEC_ID', 'BUFFER_GETS', 'DISK_READS', 'CPU_SECS']
+2020-07-26 17:08:15,733 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:08:15] "POST /query_execution/query-resource-usage?sql_id=7gtys6vx02ymj HTTP/1.1" 201 -
+2020-07-26 17:08:15,743 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:08:15,743 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:08:15,743 DEBUG: [app.py:111] : 
+SELECT sql_fulltext
+FROM   gv$sql
+WHERE  sql_id = :sql_id
+
+2020-07-26 17:08:15,743 DEBUG: [app.py:112] : Query Parameters: ['7gtys6vx02ymj']
+2020-07-26 17:08:15,747 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:08:15,747 DEBUG: [app.py:154] : ['SQL_FULLTEXT']
+2020-07-26 17:08:15,747 DEBUG: [app.py:154] : ['\nSELECT\n  sid\n, serial#\n, opname\n, target\n, target_desc\n, sofar\n, totalwork\n, units\n, start_time\n, last_update_time\n, timestamp\n, time_remaining\n, elapsed_seconds\n, context\n, message\n, username\n, sql_address\n, sql_hash_value\n, sql_id\n, sql_plan_hash_value\n, sql_exec_start\n, sql_exec_id\n, sql_plan_line_id\n, sql_plan_operation\n, sql_plan_options\n, qcsid\nFROM\n    V$SESSION_LONGOPS\nWHERE\n    sofar <> totalwork\n']
+2020-07-26 17:08:15,748 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:08:15] "POST /query_execution/sql_text?sql_id=7gtys6vx02ymj HTTP/1.1" 201 -
+2020-07-26 17:08:17,930 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:08:17] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:08:18,234 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:08:18] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:08:18,235 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:08:18] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:08:18,245 DEBUG: [app.py:257] : Query parameters for long-running-query: 
+2020-07-26 17:08:18,246 DEBUG: [app.py:258] : Parameter names        : ['sql_id']
+2020-07-26 17:08:18,246 DEBUG: [app.py:259] : Parameter values       : ['7gtys6vx02ymj']
+2020-07-26 17:08:18,259 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:08:18,259 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:08:18,259 DEBUG: [app.py:111] : 
+SELECT
+  sid
+, serial#
+, opname
+, target
+, target_desc
+, sofar
+, totalwork
+, units
+, start_time
+, last_update_time
+, timestamp
+, time_remaining
+, elapsed_seconds
+, context
+, message
+, username
+, sql_address
+, sql_hash_value
+, sql_id
+, sql_plan_hash_value
+, sql_exec_start
+, sql_exec_id
+, sql_plan_line_id
+, sql_plan_operation
+, sql_plan_options
+, qcsid
+FROM
+    V$SESSION_LONGOPS
+WHERE
+    sql_id = :sqlid
+
+2020-07-26 17:08:18,259 DEBUG: [app.py:112] : Query Parameters: ['7gtys6vx02ymj']
+2020-07-26 17:08:18,261 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:08:18,261 DEBUG: [app.py:154] : ['SID', 'SERIAL#', 'OPNAME', 'TARGET', 'TARGET_DESC', 'SOFAR', 'TOTALWORK', 'UNITS', 'START_TIME', 'LAST_UPDATE_TIME', 'TIMESTAMP', 'TIME_REMAINING', 'ELAPSED_SECONDS', 'CONTEXT', 'MESSAGE', 'USERNAME', 'SQL_ADDRESS', 'SQL_HASH_VALUE', 'SQL_ID', 'SQL_PLAN_HASH_VALUE', 'SQL_EXEC_START', 'SQL_EXEC_ID', 'SQL_PLAN_LINE_ID', 'SQL_PLAN_OPERATION', 'SQL_PLAN_OPTIONS', 'QCSID']
+2020-07-26 17:08:18,262 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:08:18] "POST /query_execution/long-running-query?sql_id=7gtys6vx02ymj HTTP/1.1" 201 -
+2020-07-26 17:08:18,547 DEBUG: [app.py:257] : Query parameters for query-resource-usage: 
+2020-07-26 17:08:18,548 DEBUG: [app.py:258] : Parameter names        : ['sql_id']
+2020-07-26 17:08:18,548 DEBUG: [app.py:259] : Parameter values       : ['7gtys6vx02ymj']
+2020-07-26 17:08:18,549 DEBUG: [app.py:257] : Query parameters for sql_text: 
+2020-07-26 17:08:18,549 DEBUG: [app.py:258] : Parameter names        : ['sql_id']
+2020-07-26 17:08:18,549 DEBUG: [app.py:259] : Parameter values       : ['7gtys6vx02ymj']
+2020-07-26 17:08:18,576 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:08:18,577 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:08:18,577 DEBUG: [app.py:111] : 
+SELECT * 
+FROM (SELECT sql_id, 
+             to_char(sql_exec_start,'yyyy-mm-dd:hh24:mi:ss') sql_exec_start,
+             sql_exec_id, 
+             sum(buffer_gets) buffer_gets,
+             sum(disk_reads) disk_reads, 
+             round(sum(cpu_time/1000000),1) cpu_secs
+      FROM v$sql_monitor
+      WHERE sql_id = :sql_id
+      GROUP BY sql_id, sql_exec_start, sql_exec_id
+      ORDER BY 2 desc)
+WHERE rownum <= 50
+
+2020-07-26 17:08:18,577 DEBUG: [app.py:112] : Query Parameters: ['7gtys6vx02ymj']
+2020-07-26 17:08:18,577 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:08:18,577 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:08:18,577 DEBUG: [app.py:111] : 
+SELECT sql_fulltext
+FROM   gv$sql
+WHERE  sql_id = :sql_id
+
+2020-07-26 17:08:18,577 DEBUG: [app.py:112] : Query Parameters: ['7gtys6vx02ymj']
+2020-07-26 17:08:18,578 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:08:18,578 DEBUG: [app.py:154] : ['SQL_ID', 'SQL_EXEC_START', 'SQL_EXEC_ID', 'BUFFER_GETS', 'DISK_READS', 'CPU_SECS']
+2020-07-26 17:08:18,579 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:08:18] "POST /query_execution/query-resource-usage?sql_id=7gtys6vx02ymj HTTP/1.1" 201 -
+2020-07-26 17:08:18,579 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:08:18,579 DEBUG: [app.py:154] : ['SQL_FULLTEXT']
+2020-07-26 17:08:18,579 DEBUG: [app.py:154] : ['\nSELECT\n  sid\n, serial#\n, opname\n, target\n, target_desc\n, sofar\n, totalwork\n, units\n, start_time\n, last_update_time\n, timestamp\n, time_remaining\n, elapsed_seconds\n, context\n, message\n, username\n, sql_address\n, sql_hash_value\n, sql_id\n, sql_plan_hash_value\n, sql_exec_start\n, sql_exec_id\n, sql_plan_line_id\n, sql_plan_operation\n, sql_plan_options\n, qcsid\nFROM\n    V$SESSION_LONGOPS\nWHERE\n    sofar <> totalwork\n']
+2020-07-26 17:08:18,580 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:08:18] "POST /query_execution/sql_text?sql_id=7gtys6vx02ymj HTTP/1.1" 201 -
+2020-07-26 17:08:28,555 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:08:28] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:08:28,557 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:08:28] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:08:28,558 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:08:28] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:08:28,805 DEBUG: [app.py:257] : Query parameters for query-resource-usage: 
+2020-07-26 17:08:28,805 DEBUG: [app.py:258] : Parameter names        : ['sql_id']
+2020-07-26 17:08:28,805 DEBUG: [app.py:259] : Parameter values       : ['7kngmdwtb1dsh']
+2020-07-26 17:08:28,836 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:08:28,836 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:08:28,836 DEBUG: [app.py:111] : 
+SELECT * 
+FROM (SELECT sql_id, 
+             to_char(sql_exec_start,'yyyy-mm-dd:hh24:mi:ss') sql_exec_start,
+             sql_exec_id, 
+             sum(buffer_gets) buffer_gets,
+             sum(disk_reads) disk_reads, 
+             round(sum(cpu_time/1000000),1) cpu_secs
+      FROM v$sql_monitor
+      WHERE sql_id = :sql_id
+      GROUP BY sql_id, sql_exec_start, sql_exec_id
+      ORDER BY 2 desc)
+WHERE rownum <= 50
+
+2020-07-26 17:08:28,836 DEBUG: [app.py:112] : Query Parameters: ['7kngmdwtb1dsh']
+2020-07-26 17:08:28,837 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:08:28,838 DEBUG: [app.py:154] : ['SQL_ID', 'SQL_EXEC_START', 'SQL_EXEC_ID', 'BUFFER_GETS', 'DISK_READS', 'CPU_SECS']
+2020-07-26 17:08:28,838 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:08:28] "POST /query_execution/query-resource-usage?sql_id=7kngmdwtb1dsh HTTP/1.1" 201 -
+2020-07-26 17:08:28,870 DEBUG: [app.py:257] : Query parameters for long-running-query: 
+2020-07-26 17:08:28,871 DEBUG: [app.py:258] : Parameter names        : ['sql_id']
+2020-07-26 17:08:28,871 DEBUG: [app.py:259] : Parameter values       : ['7kngmdwtb1dsh']
+2020-07-26 17:08:28,872 DEBUG: [app.py:257] : Query parameters for sql_text: 
+2020-07-26 17:08:28,872 DEBUG: [app.py:258] : Parameter names        : ['sql_id']
+2020-07-26 17:08:28,872 DEBUG: [app.py:259] : Parameter values       : ['7kngmdwtb1dsh']
+2020-07-26 17:08:28,893 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:08:28,893 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:08:28,894 DEBUG: [app.py:111] : 
+SELECT
+  sid
+, serial#
+, opname
+, target
+, target_desc
+, sofar
+, totalwork
+, units
+, start_time
+, last_update_time
+, timestamp
+, time_remaining
+, elapsed_seconds
+, context
+, message
+, username
+, sql_address
+, sql_hash_value
+, sql_id
+, sql_plan_hash_value
+, sql_exec_start
+, sql_exec_id
+, sql_plan_line_id
+, sql_plan_operation
+, sql_plan_options
+, qcsid
+FROM
+    V$SESSION_LONGOPS
+WHERE
+    sql_id = :sqlid
+
+2020-07-26 17:08:28,894 DEBUG: [app.py:112] : Query Parameters: ['7kngmdwtb1dsh']
+2020-07-26 17:08:28,896 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:08:28,896 DEBUG: [app.py:154] : ['SID', 'SERIAL#', 'OPNAME', 'TARGET', 'TARGET_DESC', 'SOFAR', 'TOTALWORK', 'UNITS', 'START_TIME', 'LAST_UPDATE_TIME', 'TIMESTAMP', 'TIME_REMAINING', 'ELAPSED_SECONDS', 'CONTEXT', 'MESSAGE', 'USERNAME', 'SQL_ADDRESS', 'SQL_HASH_VALUE', 'SQL_ID', 'SQL_PLAN_HASH_VALUE', 'SQL_EXEC_START', 'SQL_EXEC_ID', 'SQL_PLAN_LINE_ID', 'SQL_PLAN_OPERATION', 'SQL_PLAN_OPTIONS', 'QCSID']
+2020-07-26 17:08:28,897 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:08:28] "POST /query_execution/long-running-query?sql_id=7kngmdwtb1dsh HTTP/1.1" 201 -
+2020-07-26 17:08:28,900 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:08:28,901 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:08:28,901 DEBUG: [app.py:111] : 
+SELECT sql_fulltext
+FROM   gv$sql
+WHERE  sql_id = :sql_id
+
+2020-07-26 17:08:28,901 DEBUG: [app.py:112] : Query Parameters: ['7kngmdwtb1dsh']
+2020-07-26 17:08:28,903 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:08:28,903 DEBUG: [app.py:154] : ['SQL_FULLTEXT']
+2020-07-26 17:08:28,903 DEBUG: [app.py:154] : ["\nSELECT s.parsing_schema_name schema,\n       t.sql_id,\n       to_char(t.last_active_time,'yyyy-mm-dd:hh24:mi:ss') last_active_time,\n       t.sql_text,\n       t.disk_reads,\n       t.buffer_gets,\n       t.fetches,\n       t.sorts,\n       t.cpu_time/1000000 cpu,\n       t.rows_processed\nFROM V$SQLSTATS t,\n     V$SQL s\nWHERE t.sql_id = s.sql_id\nORDER BY t.last_active_time DESC\n"]
+2020-07-26 17:08:28,904 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:08:28] "POST /query_execution/sql_text?sql_id=7kngmdwtb1dsh HTTP/1.1" 201 -
+2020-07-26 17:08:35,144 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:08:35] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:08:35,457 DEBUG: [app.py:257] : Query parameters for long-running-queries: 
+2020-07-26 17:08:35,457 DEBUG: [app.py:258] : Parameter names        : []
+2020-07-26 17:08:35,457 DEBUG: [app.py:259] : Parameter values       : []
+2020-07-26 17:08:35,491 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:08:35,491 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:08:35,491 DEBUG: [app.py:111] : 
+SELECT
+  sid
+, serial#
+, opname
+, target
+, target_desc
+, sofar
+, totalwork
+, units
+, start_time
+, last_update_time
+, timestamp
+, time_remaining
+, elapsed_seconds
+, context
+, message
+, username
+, sql_address
+, sql_hash_value
+, sql_id
+, sql_plan_hash_value
+, sql_exec_start
+, sql_exec_id
+, sql_plan_line_id
+, sql_plan_operation
+, sql_plan_options
+, qcsid
+FROM
+    V$SESSION_LONGOPS
+WHERE
+    sofar <> totalwork
+
+2020-07-26 17:08:35,491 DEBUG: [app.py:112] : Query Parameters: None
+2020-07-26 17:08:35,493 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:08:35,493 DEBUG: [app.py:154] : ['SID', 'SERIAL#', 'OPNAME', 'TARGET', 'TARGET_DESC', 'SOFAR', 'TOTALWORK', 'UNITS', 'START_TIME', 'LAST_UPDATE_TIME', 'TIMESTAMP', 'TIME_REMAINING', 'ELAPSED_SECONDS', 'CONTEXT', 'MESSAGE', 'USERNAME', 'SQL_ADDRESS', 'SQL_HASH_VALUE', 'SQL_ID', 'SQL_PLAN_HASH_VALUE', 'SQL_EXEC_START', 'SQL_EXEC_ID', 'SQL_PLAN_LINE_ID', 'SQL_PLAN_OPERATION', 'SQL_PLAN_OPTIONS', 'QCSID']
+2020-07-26 17:08:35,493 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:08:35] "POST /query_execution/long-running-queries HTTP/1.1" 201 -
+2020-07-26 17:08:45,955 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:08:45] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:08:46,268 DEBUG: [app.py:257] : Query parameters for data-dictionary-views: 
+2020-07-26 17:08:46,268 DEBUG: [app.py:258] : Parameter names        : []
+2020-07-26 17:08:46,268 DEBUG: [app.py:259] : Parameter values       : []
+2020-07-26 17:08:46,299 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:08:46,299 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:08:46,299 DEBUG: [app.py:111] : 
+SELECT 
+    view_name
+FROM 
+    dba_views a
+WHERE 
+    (view_name LIKE 'V$%'
+OR  view_name LIKE 'GV$%'
+OR  view_name LIKE 'ALL_%'
+OR  view_name LIKE 'DBA_%'  
+OR  view_name LIKE 'USER_%')
+AND EXISTS (SELECT 1 FROM DBA_OBJECTS b WHERE a.owner = b.owner AND a.view_name = b.object_name)
+ORDER BY 1
+
+2020-07-26 17:08:46,300 DEBUG: [app.py:112] : Query Parameters: None
+2020-07-26 17:08:46,403 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:08:46,403 DEBUG: [app.py:154] : ['VIEW_NAME']
+2020-07-26 17:08:46,403 DEBUG: [app.py:154] : ['ALL$AW_CUBE_AGG_LEVELS']
+2020-07-26 17:08:46,403 DEBUG: [app.py:154] : ['ALL$AW_CUBE_AGG_MEASURES']
+2020-07-26 17:08:46,403 DEBUG: [app.py:154] : ['ALL$AW_CUBE_AGG_PLANS']
+2020-07-26 17:08:46,403 DEBUG: [app.py:154] : ['ALL$AW_CUBE_ENABLED_HIERCOMBO']
+2020-07-26 17:08:46,408 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:08:46] "POST /query_execution/data-dictionary-views HTTP/1.1" 201 -
+2020-07-26 17:08:47,916 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:08:47] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:08:48,267 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:08:48,267 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:08:48,267 DEBUG: [app.py:111] : SELECT * FROM ALL$AW_LOAD_CUBE_PARM WHERE ROWNUM < 25000
+2020-07-26 17:08:48,267 DEBUG: [app.py:112] : Query Parameters: []
+2020-07-26 17:08:48,269 ERROR: [app.py:148] : ORA-00942: table or view does not exist
+2020-07-26 17:08:48,271 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:08:48,271 DEBUG: [app.py:154] : Exception: ORA-00942: table or view does not exist
+2020-07-26 17:08:48,272 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:08:48] "POST /get-table/ALL$AW_LOAD_CUBE_PARM HTTP/1.1" 201 -
+2020-07-26 17:08:56,250 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:08:56] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:08:56,589 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:08:56,589 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:08:56,589 DEBUG: [app.py:111] : SELECT * FROM ALL_TABLES WHERE ROWNUM < 25000
+2020-07-26 17:08:56,589 DEBUG: [app.py:112] : Query Parameters: []
+2020-07-26 17:08:56,743 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:08:56,743 DEBUG: [app.py:154] : ['OWNER', 'TABLE_NAME', 'TABLESPACE_NAME', 'CLUSTER_NAME', 'IOT_NAME', 'STATUS', 'PCT_FREE', 'PCT_USED', 'INI_TRANS', 'MAX_TRANS', 'INITIAL_EXTENT', 'NEXT_EXTENT', 'MIN_EXTENTS', 'MAX_EXTENTS', 'PCT_INCREASE', 'FREELISTS', 'FREELIST_GROUPS', 'LOGGING', 'BACKED_UP', 'NUM_ROWS', 'BLOCKS', 'EMPTY_BLOCKS', 'AVG_SPACE', 'CHAIN_CNT', 'AVG_ROW_LEN', 'AVG_SPACE_FREELIST_BLOCKS', 'NUM_FREELIST_BLOCKS', 'DEGREE', 'INSTANCES', 'CACHE', 'TABLE_LOCK', 'SAMPLE_SIZE', 'LAST_ANALYZED', 'PARTITIONED', 'IOT_TYPE', 'TEMPORARY', 'SECONDARY', 'NESTED', 'BUFFER_POOL', 'FLASH_CACHE', 'CELL_FLASH_CACHE', 'ROW_MOVEMENT', 'GLOBAL_STATS', 'USER_STATS', 'DURATION', 'SKIP_CORRUPT', 'MONITORING', 'CLUSTER_OWNER', 'DEPENDENCIES', 'COMPRESSION', 'COMPRESS_FOR', 'DROPPED', 'READ_ONLY', 'SEGMENT_CREATED', 'RESULT_CACHE']
+2020-07-26 17:08:56,743 DEBUG: [app.py:154] : ['SYS', 'ICOL$', 'SYSTEM', 'C_OBJ#', '', 'VALID', '0', '0', '0', '0', '139264', '204800', '1', '2147483645', '', '1', '1', 'YES', 'N', '2791', '734', '0', '0', '0', '30', '0', '0', '         1', '         1', '    N', 'ENABLED', '2791', '2010-03-30 10:17:59', 'NO', '', 'N', 'N', 'NO', 'DEFAULT', 'DEFAULT', 'DEFAULT', 'DISABLED', 'YES', 'NO', '', 'DISABLED', 'YES', 'SYS', 'DISABLED', 'DISABLED', '', 'NO', 'NO', 'YES', 'DEFAULT']
+2020-07-26 17:08:56,743 DEBUG: [app.py:154] : ['SYS', 'CON$', 'SYSTEM', '', '', 'VALID', '10', '40', '1', '255', '65536', '1048576', '1', '2147483645', '', '1', '1', 'YES', 'N', '10940', '44', '0', '0', '0', '25', '0', '0', '         1', '         1', '    N', 'ENABLED', '10940', '2020-07-22 22:00:11', 'NO', '', 'N', 'N', 'NO', 'DEFAULT', 'DEFAULT', 'DEFAULT', 'DISABLED', 'YES', 'NO', '', 'DISABLED', 'YES', '', 'DISABLED', 'DISABLED', '', 'NO', 'NO', 'YES', 'DEFAULT']
+2020-07-26 17:08:56,743 DEBUG: [app.py:154] : ['SYS', 'UNDO$', 'SYSTEM', '', '', 'VALID', '10', '40', '1', '255', '65536', '1048576', '1', '2147483645', '', '1', '1', 'YES', 'N', '21', '1', '0', '0', '0', '59', '0', '0', '         1', '         1', '    N', 'ENABLED', '21', '2020-07-22 22:00:04', 'NO', '', 'N', 'N', 'NO', 'DEFAULT', 'DEFAULT', 'DEFAULT', 'DISABLED', 'YES', 'NO', '', 'DISABLED', 'YES', '', 'DISABLED', 'DISABLED', '', 'NO', 'NO', 'YES', 'DEFAULT']
+2020-07-26 17:08:56,744 DEBUG: [app.py:154] : ['SYS', 'PROXY_ROLE_DATA$', 'SYSTEM', '', '', 'VALID', '10', '40', '1', '255', '65536', '1048576', '1', '2147483645', '', '1', '1', 'YES', 'N', '0', '0', '0', '0', '0', '0', '0', '0', '         1', '         1', '    N', 'ENABLED', '0', '2010-03-30 10:18:28', 'NO', '', 'N', 'N', 'NO', 'DEFAULT', 'DEFAULT', 'DEFAULT', 'DISABLED', 'YES', 'NO', '', 'DISABLED', 'YES', '', 'DISABLED', 'DISABLED', '', 'NO', 'NO', 'YES', 'DEFAULT']
+2020-07-26 17:08:56,810 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:08:56] "POST /get-table/ALL_TABLES HTTP/1.1" 201 -
+2020-07-26 17:09:05,141 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:09:05] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:09:05,454 DEBUG: [app.py:257] : Query parameters for long-running-queries: 
+2020-07-26 17:09:05,455 DEBUG: [app.py:258] : Parameter names        : []
+2020-07-26 17:09:05,455 DEBUG: [app.py:259] : Parameter values       : []
+2020-07-26 17:09:05,489 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:09:05,489 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:09:05,489 DEBUG: [app.py:111] : 
+SELECT
+  sid
+, serial#
+, opname
+, target
+, target_desc
+, sofar
+, totalwork
+, units
+, start_time
+, last_update_time
+, timestamp
+, time_remaining
+, elapsed_seconds
+, context
+, message
+, username
+, sql_address
+, sql_hash_value
+, sql_id
+, sql_plan_hash_value
+, sql_exec_start
+, sql_exec_id
+, sql_plan_line_id
+, sql_plan_operation
+, sql_plan_options
+, qcsid
+FROM
+    V$SESSION_LONGOPS
+WHERE
+    sofar <> totalwork
+
+2020-07-26 17:09:05,489 DEBUG: [app.py:112] : Query Parameters: None
+2020-07-26 17:09:05,492 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:09:05,492 DEBUG: [app.py:154] : ['SID', 'SERIAL#', 'OPNAME', 'TARGET', 'TARGET_DESC', 'SOFAR', 'TOTALWORK', 'UNITS', 'START_TIME', 'LAST_UPDATE_TIME', 'TIMESTAMP', 'TIME_REMAINING', 'ELAPSED_SECONDS', 'CONTEXT', 'MESSAGE', 'USERNAME', 'SQL_ADDRESS', 'SQL_HASH_VALUE', 'SQL_ID', 'SQL_PLAN_HASH_VALUE', 'SQL_EXEC_START', 'SQL_EXEC_ID', 'SQL_PLAN_LINE_ID', 'SQL_PLAN_OPERATION', 'SQL_PLAN_OPTIONS', 'QCSID']
+2020-07-26 17:09:05,493 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:09:05] "POST /query_execution/long-running-queries HTTP/1.1" 201 -
+2020-07-26 17:09:35,142 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:09:35] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:09:35,456 DEBUG: [app.py:257] : Query parameters for long-running-queries: 
+2020-07-26 17:09:35,456 DEBUG: [app.py:258] : Parameter names        : []
+2020-07-26 17:09:35,456 DEBUG: [app.py:259] : Parameter values       : []
+2020-07-26 17:09:35,496 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:09:35,496 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:09:35,496 DEBUG: [app.py:111] : 
+SELECT
+  sid
+, serial#
+, opname
+, target
+, target_desc
+, sofar
+, totalwork
+, units
+, start_time
+, last_update_time
+, timestamp
+, time_remaining
+, elapsed_seconds
+, context
+, message
+, username
+, sql_address
+, sql_hash_value
+, sql_id
+, sql_plan_hash_value
+, sql_exec_start
+, sql_exec_id
+, sql_plan_line_id
+, sql_plan_operation
+, sql_plan_options
+, qcsid
+FROM
+    V$SESSION_LONGOPS
+WHERE
+    sofar <> totalwork
+
+2020-07-26 17:09:35,496 DEBUG: [app.py:112] : Query Parameters: None
+2020-07-26 17:09:35,498 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:09:35,498 DEBUG: [app.py:154] : ['SID', 'SERIAL#', 'OPNAME', 'TARGET', 'TARGET_DESC', 'SOFAR', 'TOTALWORK', 'UNITS', 'START_TIME', 'LAST_UPDATE_TIME', 'TIMESTAMP', 'TIME_REMAINING', 'ELAPSED_SECONDS', 'CONTEXT', 'MESSAGE', 'USERNAME', 'SQL_ADDRESS', 'SQL_HASH_VALUE', 'SQL_ID', 'SQL_PLAN_HASH_VALUE', 'SQL_EXEC_START', 'SQL_EXEC_ID', 'SQL_PLAN_LINE_ID', 'SQL_PLAN_OPERATION', 'SQL_PLAN_OPTIONS', 'QCSID']
+2020-07-26 17:09:35,499 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:09:35] "POST /query_execution/long-running-queries HTTP/1.1" 201 -
+2020-07-26 17:10:05,144 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:10:05] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:10:05,460 DEBUG: [app.py:257] : Query parameters for long-running-queries: 
+2020-07-26 17:10:05,460 DEBUG: [app.py:258] : Parameter names        : []
+2020-07-26 17:10:05,460 DEBUG: [app.py:259] : Parameter values       : []
+2020-07-26 17:10:05,496 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:10:05,496 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:10:05,497 DEBUG: [app.py:111] : 
+SELECT
+  sid
+, serial#
+, opname
+, target
+, target_desc
+, sofar
+, totalwork
+, units
+, start_time
+, last_update_time
+, timestamp
+, time_remaining
+, elapsed_seconds
+, context
+, message
+, username
+, sql_address
+, sql_hash_value
+, sql_id
+, sql_plan_hash_value
+, sql_exec_start
+, sql_exec_id
+, sql_plan_line_id
+, sql_plan_operation
+, sql_plan_options
+, qcsid
+FROM
+    V$SESSION_LONGOPS
+WHERE
+    sofar <> totalwork
+
+2020-07-26 17:10:05,497 DEBUG: [app.py:112] : Query Parameters: None
+2020-07-26 17:10:05,500 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:10:05,500 DEBUG: [app.py:154] : ['SID', 'SERIAL#', 'OPNAME', 'TARGET', 'TARGET_DESC', 'SOFAR', 'TOTALWORK', 'UNITS', 'START_TIME', 'LAST_UPDATE_TIME', 'TIMESTAMP', 'TIME_REMAINING', 'ELAPSED_SECONDS', 'CONTEXT', 'MESSAGE', 'USERNAME', 'SQL_ADDRESS', 'SQL_HASH_VALUE', 'SQL_ID', 'SQL_PLAN_HASH_VALUE', 'SQL_EXEC_START', 'SQL_EXEC_ID', 'SQL_PLAN_LINE_ID', 'SQL_PLAN_OPERATION', 'SQL_PLAN_OPTIONS', 'QCSID']
+2020-07-26 17:10:05,500 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:10:05] "POST /query_execution/long-running-queries HTTP/1.1" 201 -
+2020-07-26 17:10:35,145 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:10:35] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:10:35,457 DEBUG: [app.py:257] : Query parameters for long-running-queries: 
+2020-07-26 17:10:35,458 DEBUG: [app.py:258] : Parameter names        : []
+2020-07-26 17:10:35,458 DEBUG: [app.py:259] : Parameter values       : []
+2020-07-26 17:10:35,497 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:10:35,498 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:10:35,498 DEBUG: [app.py:111] : 
+SELECT
+  sid
+, serial#
+, opname
+, target
+, target_desc
+, sofar
+, totalwork
+, units
+, start_time
+, last_update_time
+, timestamp
+, time_remaining
+, elapsed_seconds
+, context
+, message
+, username
+, sql_address
+, sql_hash_value
+, sql_id
+, sql_plan_hash_value
+, sql_exec_start
+, sql_exec_id
+, sql_plan_line_id
+, sql_plan_operation
+, sql_plan_options
+, qcsid
+FROM
+    V$SESSION_LONGOPS
+WHERE
+    sofar <> totalwork
+
+2020-07-26 17:10:35,498 DEBUG: [app.py:112] : Query Parameters: None
+2020-07-26 17:10:35,501 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:10:35,501 DEBUG: [app.py:154] : ['SID', 'SERIAL#', 'OPNAME', 'TARGET', 'TARGET_DESC', 'SOFAR', 'TOTALWORK', 'UNITS', 'START_TIME', 'LAST_UPDATE_TIME', 'TIMESTAMP', 'TIME_REMAINING', 'ELAPSED_SECONDS', 'CONTEXT', 'MESSAGE', 'USERNAME', 'SQL_ADDRESS', 'SQL_HASH_VALUE', 'SQL_ID', 'SQL_PLAN_HASH_VALUE', 'SQL_EXEC_START', 'SQL_EXEC_ID', 'SQL_PLAN_LINE_ID', 'SQL_PLAN_OPERATION', 'SQL_PLAN_OPTIONS', 'QCSID']
+2020-07-26 17:10:35,502 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:10:35] "POST /query_execution/long-running-queries HTTP/1.1" 201 -
+2020-07-26 17:11:05,144 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:11:05] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:11:05,457 DEBUG: [app.py:257] : Query parameters for long-running-queries: 
+2020-07-26 17:11:05,457 DEBUG: [app.py:258] : Parameter names        : []
+2020-07-26 17:11:05,458 DEBUG: [app.py:259] : Parameter values       : []
+2020-07-26 17:11:05,485 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:11:05,485 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:11:05,485 DEBUG: [app.py:111] : 
+SELECT
+  sid
+, serial#
+, opname
+, target
+, target_desc
+, sofar
+, totalwork
+, units
+, start_time
+, last_update_time
+, timestamp
+, time_remaining
+, elapsed_seconds
+, context
+, message
+, username
+, sql_address
+, sql_hash_value
+, sql_id
+, sql_plan_hash_value
+, sql_exec_start
+, sql_exec_id
+, sql_plan_line_id
+, sql_plan_operation
+, sql_plan_options
+, qcsid
+FROM
+    V$SESSION_LONGOPS
+WHERE
+    sofar <> totalwork
+
+2020-07-26 17:11:05,485 DEBUG: [app.py:112] : Query Parameters: None
+2020-07-26 17:11:05,488 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:11:05,488 DEBUG: [app.py:154] : ['SID', 'SERIAL#', 'OPNAME', 'TARGET', 'TARGET_DESC', 'SOFAR', 'TOTALWORK', 'UNITS', 'START_TIME', 'LAST_UPDATE_TIME', 'TIMESTAMP', 'TIME_REMAINING', 'ELAPSED_SECONDS', 'CONTEXT', 'MESSAGE', 'USERNAME', 'SQL_ADDRESS', 'SQL_HASH_VALUE', 'SQL_ID', 'SQL_PLAN_HASH_VALUE', 'SQL_EXEC_START', 'SQL_EXEC_ID', 'SQL_PLAN_LINE_ID', 'SQL_PLAN_OPERATION', 'SQL_PLAN_OPTIONS', 'QCSID']
+2020-07-26 17:11:05,489 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:11:05] "POST /query_execution/long-running-queries HTTP/1.1" 201 -
+2020-07-26 17:11:35,144 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:11:35] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:11:35,457 DEBUG: [app.py:257] : Query parameters for long-running-queries: 
+2020-07-26 17:11:35,457 DEBUG: [app.py:258] : Parameter names        : []
+2020-07-26 17:11:35,457 DEBUG: [app.py:259] : Parameter values       : []
+2020-07-26 17:11:35,498 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:11:35,499 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:11:35,499 DEBUG: [app.py:111] : 
+SELECT
+  sid
+, serial#
+, opname
+, target
+, target_desc
+, sofar
+, totalwork
+, units
+, start_time
+, last_update_time
+, timestamp
+, time_remaining
+, elapsed_seconds
+, context
+, message
+, username
+, sql_address
+, sql_hash_value
+, sql_id
+, sql_plan_hash_value
+, sql_exec_start
+, sql_exec_id
+, sql_plan_line_id
+, sql_plan_operation
+, sql_plan_options
+, qcsid
+FROM
+    V$SESSION_LONGOPS
+WHERE
+    sofar <> totalwork
+
+2020-07-26 17:11:35,499 DEBUG: [app.py:112] : Query Parameters: None
+2020-07-26 17:11:35,502 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:11:35,502 DEBUG: [app.py:154] : ['SID', 'SERIAL#', 'OPNAME', 'TARGET', 'TARGET_DESC', 'SOFAR', 'TOTALWORK', 'UNITS', 'START_TIME', 'LAST_UPDATE_TIME', 'TIMESTAMP', 'TIME_REMAINING', 'ELAPSED_SECONDS', 'CONTEXT', 'MESSAGE', 'USERNAME', 'SQL_ADDRESS', 'SQL_HASH_VALUE', 'SQL_ID', 'SQL_PLAN_HASH_VALUE', 'SQL_EXEC_START', 'SQL_EXEC_ID', 'SQL_PLAN_LINE_ID', 'SQL_PLAN_OPERATION', 'SQL_PLAN_OPTIONS', 'QCSID']
+2020-07-26 17:11:35,503 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:11:35] "POST /query_execution/long-running-queries HTTP/1.1" 201 -
+2020-07-26 17:12:05,142 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:12:05] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:12:05,456 DEBUG: [app.py:257] : Query parameters for long-running-queries: 
+2020-07-26 17:12:05,456 DEBUG: [app.py:258] : Parameter names        : []
+2020-07-26 17:12:05,456 DEBUG: [app.py:259] : Parameter values       : []
+2020-07-26 17:12:05,481 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:12:05,481 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:12:05,481 DEBUG: [app.py:111] : 
+SELECT
+  sid
+, serial#
+, opname
+, target
+, target_desc
+, sofar
+, totalwork
+, units
+, start_time
+, last_update_time
+, timestamp
+, time_remaining
+, elapsed_seconds
+, context
+, message
+, username
+, sql_address
+, sql_hash_value
+, sql_id
+, sql_plan_hash_value
+, sql_exec_start
+, sql_exec_id
+, sql_plan_line_id
+, sql_plan_operation
+, sql_plan_options
+, qcsid
+FROM
+    V$SESSION_LONGOPS
+WHERE
+    sofar <> totalwork
+
+2020-07-26 17:12:05,481 DEBUG: [app.py:112] : Query Parameters: None
+2020-07-26 17:12:05,484 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:12:05,485 DEBUG: [app.py:154] : ['SID', 'SERIAL#', 'OPNAME', 'TARGET', 'TARGET_DESC', 'SOFAR', 'TOTALWORK', 'UNITS', 'START_TIME', 'LAST_UPDATE_TIME', 'TIMESTAMP', 'TIME_REMAINING', 'ELAPSED_SECONDS', 'CONTEXT', 'MESSAGE', 'USERNAME', 'SQL_ADDRESS', 'SQL_HASH_VALUE', 'SQL_ID', 'SQL_PLAN_HASH_VALUE', 'SQL_EXEC_START', 'SQL_EXEC_ID', 'SQL_PLAN_LINE_ID', 'SQL_PLAN_OPERATION', 'SQL_PLAN_OPTIONS', 'QCSID']
+2020-07-26 17:12:05,485 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:12:05] "POST /query_execution/long-running-queries HTTP/1.1" 201 -
+2020-07-26 17:12:35,144 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:12:35] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:12:35,461 DEBUG: [app.py:257] : Query parameters for long-running-queries: 
+2020-07-26 17:12:35,461 DEBUG: [app.py:258] : Parameter names        : []
+2020-07-26 17:12:35,461 DEBUG: [app.py:259] : Parameter values       : []
+2020-07-26 17:12:35,498 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:12:35,498 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:12:35,498 DEBUG: [app.py:111] : 
+SELECT
+  sid
+, serial#
+, opname
+, target
+, target_desc
+, sofar
+, totalwork
+, units
+, start_time
+, last_update_time
+, timestamp
+, time_remaining
+, elapsed_seconds
+, context
+, message
+, username
+, sql_address
+, sql_hash_value
+, sql_id
+, sql_plan_hash_value
+, sql_exec_start
+, sql_exec_id
+, sql_plan_line_id
+, sql_plan_operation
+, sql_plan_options
+, qcsid
+FROM
+    V$SESSION_LONGOPS
+WHERE
+    sofar <> totalwork
+
+2020-07-26 17:12:35,498 DEBUG: [app.py:112] : Query Parameters: None
+2020-07-26 17:12:35,501 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:12:35,501 DEBUG: [app.py:154] : ['SID', 'SERIAL#', 'OPNAME', 'TARGET', 'TARGET_DESC', 'SOFAR', 'TOTALWORK', 'UNITS', 'START_TIME', 'LAST_UPDATE_TIME', 'TIMESTAMP', 'TIME_REMAINING', 'ELAPSED_SECONDS', 'CONTEXT', 'MESSAGE', 'USERNAME', 'SQL_ADDRESS', 'SQL_HASH_VALUE', 'SQL_ID', 'SQL_PLAN_HASH_VALUE', 'SQL_EXEC_START', 'SQL_EXEC_ID', 'SQL_PLAN_LINE_ID', 'SQL_PLAN_OPERATION', 'SQL_PLAN_OPTIONS', 'QCSID']
+2020-07-26 17:12:35,502 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:12:35] "POST /query_execution/long-running-queries HTTP/1.1" 201 -
+2020-07-26 17:13:05,141 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:13:05] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:13:05,451 DEBUG: [app.py:257] : Query parameters for long-running-queries: 
+2020-07-26 17:13:05,451 DEBUG: [app.py:258] : Parameter names        : []
+2020-07-26 17:13:05,451 DEBUG: [app.py:259] : Parameter values       : []
+2020-07-26 17:13:05,481 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:13:05,481 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:13:05,481 DEBUG: [app.py:111] : 
+SELECT
+  sid
+, serial#
+, opname
+, target
+, target_desc
+, sofar
+, totalwork
+, units
+, start_time
+, last_update_time
+, timestamp
+, time_remaining
+, elapsed_seconds
+, context
+, message
+, username
+, sql_address
+, sql_hash_value
+, sql_id
+, sql_plan_hash_value
+, sql_exec_start
+, sql_exec_id
+, sql_plan_line_id
+, sql_plan_operation
+, sql_plan_options
+, qcsid
+FROM
+    V$SESSION_LONGOPS
+WHERE
+    sofar <> totalwork
+
+2020-07-26 17:13:05,481 DEBUG: [app.py:112] : Query Parameters: None
+2020-07-26 17:13:05,484 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:13:05,484 DEBUG: [app.py:154] : ['SID', 'SERIAL#', 'OPNAME', 'TARGET', 'TARGET_DESC', 'SOFAR', 'TOTALWORK', 'UNITS', 'START_TIME', 'LAST_UPDATE_TIME', 'TIMESTAMP', 'TIME_REMAINING', 'ELAPSED_SECONDS', 'CONTEXT', 'MESSAGE', 'USERNAME', 'SQL_ADDRESS', 'SQL_HASH_VALUE', 'SQL_ID', 'SQL_PLAN_HASH_VALUE', 'SQL_EXEC_START', 'SQL_EXEC_ID', 'SQL_PLAN_LINE_ID', 'SQL_PLAN_OPERATION', 'SQL_PLAN_OPTIONS', 'QCSID']
+2020-07-26 17:13:05,484 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:13:05] "POST /query_execution/long-running-queries HTTP/1.1" 201 -
+2020-07-26 17:13:29,403 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:13:29] "GET / HTTP/1.1" 200 -
+2020-07-26 17:13:29,690 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:13:29] "GET /static/js/app.js HTTP/1.1" 200 -
+2020-07-26 17:13:29,756 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:13:29] "GET /static/js/api-calls.js HTTP/1.1" 200 -
+2020-07-26 17:13:29,757 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:13:29] "GET /static/js/auto-refresh-setup.js HTTP/1.1" 200 -
+2020-07-26 17:13:29,758 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:13:29] "GET /static/js/common.js HTTP/1.1" 200 -
+2020-07-26 17:13:30,656 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:13:30] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:13:30,658 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:13:30] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:13:30,907 DEBUG: [app.py:257] : Query parameters for long-running-queries: 
+2020-07-26 17:13:30,908 DEBUG: [app.py:258] : Parameter names        : []
+2020-07-26 17:13:30,908 DEBUG: [app.py:259] : Parameter values       : []
+2020-07-26 17:13:30,936 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:13:30,936 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:13:30,937 DEBUG: [app.py:111] : 
+SELECT
+  sid
+, serial#
+, opname
+, target
+, target_desc
+, sofar
+, totalwork
+, units
+, start_time
+, last_update_time
+, timestamp
+, time_remaining
+, elapsed_seconds
+, context
+, message
+, username
+, sql_address
+, sql_hash_value
+, sql_id
+, sql_plan_hash_value
+, sql_exec_start
+, sql_exec_id
+, sql_plan_line_id
+, sql_plan_operation
+, sql_plan_options
+, qcsid
+FROM
+    V$SESSION_LONGOPS
+WHERE
+    sofar <> totalwork
+
+2020-07-26 17:13:30,937 DEBUG: [app.py:112] : Query Parameters: None
+2020-07-26 17:13:30,941 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:13:30,941 DEBUG: [app.py:154] : ['SID', 'SERIAL#', 'OPNAME', 'TARGET', 'TARGET_DESC', 'SOFAR', 'TOTALWORK', 'UNITS', 'START_TIME', 'LAST_UPDATE_TIME', 'TIMESTAMP', 'TIME_REMAINING', 'ELAPSED_SECONDS', 'CONTEXT', 'MESSAGE', 'USERNAME', 'SQL_ADDRESS', 'SQL_HASH_VALUE', 'SQL_ID', 'SQL_PLAN_HASH_VALUE', 'SQL_EXEC_START', 'SQL_EXEC_ID', 'SQL_PLAN_LINE_ID', 'SQL_PLAN_OPERATION', 'SQL_PLAN_OPTIONS', 'QCSID']
+2020-07-26 17:13:30,941 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:13:30] "POST /query_execution/long-running-queries HTTP/1.1" 201 -
+2020-07-26 17:13:30,973 DEBUG: [app.py:257] : Query parameters for queries-resource-usage: 
+2020-07-26 17:13:30,973 DEBUG: [app.py:258] : Parameter names        : []
+2020-07-26 17:13:30,974 DEBUG: [app.py:259] : Parameter values       : []
+2020-07-26 17:13:31,003 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:13:31,003 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:13:31,003 DEBUG: [app.py:111] : 
+SELECT s.parsing_schema_name schema,
+       t.sql_id,
+       to_char(t.last_active_time,'yyyy-mm-dd:hh24:mi:ss') last_active_time,
+       t.sql_text,
+       t.disk_reads,
+       t.buffer_gets,
+       t.fetches,
+       t.sorts,
+       t.cpu_time/1000000 cpu,
+       t.rows_processed
+FROM V$SQLSTATS t,
+     V$SQL s
+WHERE t.sql_id = s.sql_id
+ORDER BY t.last_active_time DESC
+
+2020-07-26 17:13:31,003 DEBUG: [app.py:112] : Query Parameters: None
+2020-07-26 17:13:31,185 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:13:31,185 DEBUG: [app.py:154] : ['SCHEMA', 'SQL_ID', 'LAST_ACTIVE_TIME', 'SQL_TEXT', 'DISK_READS', 'BUFFER_GETS', 'FETCHES', 'SORTS', 'CPU', 'ROWS_PROCESSED']
+2020-07-26 17:13:31,185 DEBUG: [app.py:154] : ['SYS', '5ur69atw3vfhj', '2020-07-26:17:13:30', "select decode(failover_method, NULL, 0 , 'BASIC', 1, 'PRECONNECT', 2 , 'PREPARSE', 4 , 0), decode(failover_type, NULL, 1 , 'NONE', 1 , 'SESSION', 2, 'SELECT',  4, 1), failover_retries, failover_delay, flags from service$ where name = :1", '0', '13185', '4384', '0', '0.078125', '4384']
+2020-07-26 17:13:31,185 DEBUG: [app.py:154] : ['SYS', 'cm5vu20fhtnq1', '2020-07-26:17:13:30', 'select /*+ connect_by_filtering */ privilege#,level from sysauth$ connect by grantee#=prior privilege# and privilege#>0 start with grantee#=:1 and privilege#>0', '2', '832846', '583993', '0', '0.90625', '348039']
+2020-07-26 17:13:31,185 DEBUG: [app.py:154] : ['SYS', '0k8522rmdzg4k', '2020-07-26:17:13:30', 'select privilege# from sysauth$ where (grantee#=:1 or grantee#=1) and privilege#>0', '4', '290909', '263949', '0', '0.203125', '254833']
+2020-07-26 17:13:31,185 DEBUG: [app.py:154] : ['SYS', '0k8522rmdzg4k', '2020-07-26:17:13:30', 'select privilege# from sysauth$ where (grantee#=:1 or grantee#=1) and privilege#>0', '4', '290909', '263949', '0', '0.203125', '254833']
+2020-07-26 17:13:31,273 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:13:31] "POST /query_execution/queries-resource-usage HTTP/1.1" 201 -
+2020-07-26 17:13:32,107 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:13:32] "GET /favicon.ico HTTP/1.1" 404 -
+2020-07-26 17:14:22,297 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:14:22] "GET / HTTP/1.1" 200 -
+2020-07-26 17:14:22,334 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:14:22] "GET /static/js/app.js HTTP/1.1" 200 -
+2020-07-26 17:14:22,534 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:14:22] "GET /static/js/api-calls.js HTTP/1.1" 200 -
+2020-07-26 17:14:22,634 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:14:22] "GET /static/js/auto-refresh-setup.js HTTP/1.1" 200 -
+2020-07-26 17:14:22,636 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:14:22] "GET /static/js/common.js HTTP/1.1" 200 -
+2020-07-26 17:14:22,952 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:14:22] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:14:22,955 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:14:22] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:14:23,177 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:14:23] "GET /favicon.ico HTTP/1.1" 404 -
+2020-07-26 17:14:23,203 DEBUG: [app.py:257] : Query parameters for long-running-queries: 
+2020-07-26 17:14:23,203 DEBUG: [app.py:258] : Parameter names        : []
+2020-07-26 17:14:23,203 DEBUG: [app.py:259] : Parameter values       : []
+2020-07-26 17:14:23,242 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:14:23,242 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:14:23,242 DEBUG: [app.py:111] : 
+SELECT
+  sid
+, serial#
+, opname
+, target
+, target_desc
+, sofar
+, totalwork
+, units
+, start_time
+, last_update_time
+, timestamp
+, time_remaining
+, elapsed_seconds
+, context
+, message
+, username
+, sql_address
+, sql_hash_value
+, sql_id
+, sql_plan_hash_value
+, sql_exec_start
+, sql_exec_id
+, sql_plan_line_id
+, sql_plan_operation
+, sql_plan_options
+, qcsid
+FROM
+    V$SESSION_LONGOPS
+WHERE
+    sofar <> totalwork
+
+2020-07-26 17:14:23,242 DEBUG: [app.py:112] : Query Parameters: None
+2020-07-26 17:14:23,244 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:14:23,244 DEBUG: [app.py:154] : ['SID', 'SERIAL#', 'OPNAME', 'TARGET', 'TARGET_DESC', 'SOFAR', 'TOTALWORK', 'UNITS', 'START_TIME', 'LAST_UPDATE_TIME', 'TIMESTAMP', 'TIME_REMAINING', 'ELAPSED_SECONDS', 'CONTEXT', 'MESSAGE', 'USERNAME', 'SQL_ADDRESS', 'SQL_HASH_VALUE', 'SQL_ID', 'SQL_PLAN_HASH_VALUE', 'SQL_EXEC_START', 'SQL_EXEC_ID', 'SQL_PLAN_LINE_ID', 'SQL_PLAN_OPERATION', 'SQL_PLAN_OPTIONS', 'QCSID']
+2020-07-26 17:14:23,244 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:14:23] "POST /query_execution/long-running-queries HTTP/1.1" 201 -
+2020-07-26 17:14:23,265 DEBUG: [app.py:257] : Query parameters for queries-resource-usage: 
+2020-07-26 17:14:23,265 DEBUG: [app.py:258] : Parameter names        : []
+2020-07-26 17:14:23,265 DEBUG: [app.py:259] : Parameter values       : []
+2020-07-26 17:14:23,298 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:14:23,298 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:14:23,298 DEBUG: [app.py:111] : 
+SELECT s.parsing_schema_name schema,
+       t.sql_id,
+       to_char(t.last_active_time,'yyyy-mm-dd:hh24:mi:ss') last_active_time,
+       t.sql_text,
+       t.disk_reads,
+       t.buffer_gets,
+       t.fetches,
+       t.sorts,
+       t.cpu_time/1000000 cpu,
+       t.rows_processed
+FROM V$SQLSTATS t,
+     V$SQL s
+WHERE t.sql_id = s.sql_id
+ORDER BY t.last_active_time DESC
+
+2020-07-26 17:14:23,298 DEBUG: [app.py:112] : Query Parameters: None
+2020-07-26 17:14:23,469 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:14:23,469 DEBUG: [app.py:154] : ['SCHEMA', 'SQL_ID', 'LAST_ACTIVE_TIME', 'SQL_TEXT', 'DISK_READS', 'BUFFER_GETS', 'FETCHES', 'SORTS', 'CPU', 'ROWS_PROCESSED']
+2020-07-26 17:14:23,470 DEBUG: [app.py:154] : ['SYS', '4vs91dcv7u1p6', '2020-07-26:17:14:23', 'insert into sys.aud$( sessionid,entryid,statement,ntimestamp#, userid,userhost,terminal,action#,returncode, obj$creator,obj$name,auth$privileges,auth$grantee, new$owner,new$name,ses$actions,ses$tid,logoff$pread, logoff$lwrite,logoff$dead,comment$text,spare1,spare2,  priv$used,clientid,sessioncpu,proxy$sid,user$guid, instance#,process#,xid,scn,auditid,  sqlbind,sqltext,obj$edition,dbid)  values(:1,:2,:3,SYS_EXTRACT_UTC(SYSTIMESTAMP),     :4,:5,:6,:7,:8,     :9,:10,:11,:12,     :13,:14,:15,:16,:17,     :18,:19,:20,:21,:22,     :23,:24,:25,:26,:27,     :28,:29,:30,:31,:32,     :33,:34,:35,:36)', '1', '14455', '0', '0', '0.28125', '4391']
+2020-07-26 17:14:23,470 DEBUG: [app.py:154] : ['ADMIN', '7gtys6vx02ymj', '2020-07-26:17:14:23', ' SELECT   sid , serial# , opname , target , target_desc , sofar , totalwork , units , start_time , last_update_time , timestamp , time_remaining , elapsed_seconds , context , message , username , sql_address , sql_hash_value , sql_id , sql_plan_hash_value , sql_exec_start , sql_exec_id , sql_plan_line_id , sql_plan_operation , sql_plan_options , qcsid FROM     V$SESSION_LONGOPS WHERE     sofar <> totalwork ', '0', '124', '276', '0', '0.125', '1']
+2020-07-26 17:14:23,470 DEBUG: [app.py:154] : ['SYS', '4vs91dcv7u1p6', '2020-07-26:17:14:23', 'insert into sys.aud$( sessionid,entryid,statement,ntimestamp#, userid,userhost,terminal,action#,returncode, obj$creator,obj$name,auth$privileges,auth$grantee, new$owner,new$name,ses$actions,ses$tid,logoff$pread, logoff$lwrite,logoff$dead,comment$text,spare1,spare2,  priv$used,clientid,sessioncpu,proxy$sid,user$guid, instance#,process#,xid,scn,auditid,  sqlbind,sqltext,obj$edition,dbid)  values(:1,:2,:3,SYS_EXTRACT_UTC(SYSTIMESTAMP),     :4,:5,:6,:7,:8,     :9,:10,:11,:12,     :13,:14,:15,:16,:17,     :18,:19,:20,:21,:22,     :23,:24,:25,:26,:27,     :28,:29,:30,:31,:32,     :33,:34,:35,:36)', '1', '14455', '0', '0', '0.28125', '4391']
+2020-07-26 17:14:23,470 DEBUG: [app.py:154] : ['SYS', '459f3z9u4fb3u', '2020-07-26:17:14:23', "select value$ from props$ where name = 'GLOBAL_DB_NAME'", '0', '17565', '8783', '0', '0.671875', '4391']
+2020-07-26 17:14:23,567 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:14:23] "POST /query_execution/queries-resource-usage HTTP/1.1" 201 -
+2020-07-26 17:16:39,480 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:16:39] "GET / HTTP/1.1" 200 -
+2020-07-26 17:16:39,510 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:16:39] "GET /static/js/app.js HTTP/1.1" 200 -
+2020-07-26 17:16:39,716 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:16:39] "GET /static/js/api-calls.js HTTP/1.1" 200 -
+2020-07-26 17:16:39,812 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:16:39] "GET /static/js/auto-refresh-setup.js HTTP/1.1" 200 -
+2020-07-26 17:16:39,826 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:16:39] "GET /static/js/common.js HTTP/1.1" 200 -
+2020-07-26 17:16:40,144 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:16:40] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:16:40,145 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:16:40] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:16:40,314 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:16:40] "GET /favicon.ico HTTP/1.1" 404 -
+2020-07-26 17:16:40,392 DEBUG: [app.py:257] : Query parameters for queries-resource-usage: 
+2020-07-26 17:16:40,393 DEBUG: [app.py:258] : Parameter names        : []
+2020-07-26 17:16:40,393 DEBUG: [app.py:259] : Parameter values       : []
+2020-07-26 17:16:40,441 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:16:40,442 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:16:40,442 DEBUG: [app.py:111] : 
+SELECT s.parsing_schema_name schema,
+       t.sql_id,
+       to_char(t.last_active_time,'yyyy-mm-dd:hh24:mi:ss') last_active_time,
+       t.sql_text,
+       t.disk_reads,
+       t.buffer_gets,
+       t.fetches,
+       t.sorts,
+       t.cpu_time/1000000 cpu,
+       t.rows_processed
+FROM V$SQLSTATS t,
+     V$SQL s
+WHERE t.sql_id = s.sql_id
+ORDER BY t.last_active_time DESC
+
+2020-07-26 17:16:40,442 DEBUG: [app.py:112] : Query Parameters: None
+2020-07-26 17:16:40,460 DEBUG: [app.py:257] : Query parameters for long-running-queries: 
+2020-07-26 17:16:40,460 DEBUG: [app.py:258] : Parameter names        : []
+2020-07-26 17:16:40,460 DEBUG: [app.py:259] : Parameter values       : []
+2020-07-26 17:16:40,480 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:16:40,480 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:16:40,480 DEBUG: [app.py:111] : 
+SELECT
+  sid
+, serial#
+, opname
+, target
+, target_desc
+, sofar
+, totalwork
+, units
+, start_time
+, last_update_time
+, timestamp
+, time_remaining
+, elapsed_seconds
+, context
+, message
+, username
+, sql_address
+, sql_hash_value
+, sql_id
+, sql_plan_hash_value
+, sql_exec_start
+, sql_exec_id
+, sql_plan_line_id
+, sql_plan_operation
+, sql_plan_options
+, qcsid
+FROM
+    V$SESSION_LONGOPS
+WHERE
+    sofar <> totalwork
+
+2020-07-26 17:16:40,480 DEBUG: [app.py:112] : Query Parameters: None
+2020-07-26 17:16:40,484 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:16:40,484 DEBUG: [app.py:154] : ['SID', 'SERIAL#', 'OPNAME', 'TARGET', 'TARGET_DESC', 'SOFAR', 'TOTALWORK', 'UNITS', 'START_TIME', 'LAST_UPDATE_TIME', 'TIMESTAMP', 'TIME_REMAINING', 'ELAPSED_SECONDS', 'CONTEXT', 'MESSAGE', 'USERNAME', 'SQL_ADDRESS', 'SQL_HASH_VALUE', 'SQL_ID', 'SQL_PLAN_HASH_VALUE', 'SQL_EXEC_START', 'SQL_EXEC_ID', 'SQL_PLAN_LINE_ID', 'SQL_PLAN_OPERATION', 'SQL_PLAN_OPTIONS', 'QCSID']
+2020-07-26 17:16:40,484 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:16:40] "POST /query_execution/long-running-queries HTTP/1.1" 201 -
+2020-07-26 17:16:40,628 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:16:40,629 DEBUG: [app.py:154] : ['SCHEMA', 'SQL_ID', 'LAST_ACTIVE_TIME', 'SQL_TEXT', 'DISK_READS', 'BUFFER_GETS', 'FETCHES', 'SORTS', 'CPU', 'ROWS_PROCESSED']
+2020-07-26 17:16:40,629 DEBUG: [app.py:154] : ['SYS', 'cm5vu20fhtnq1', '2020-07-26:17:16:39', 'select /*+ connect_by_filtering */ privilege#,level from sysauth$ connect by grantee#=prior privilege# and privilege#>0 start with grantee#=:1 and privilege#>0', '2', '833564', '584494', '0', '0.90625', '348337']
+2020-07-26 17:16:40,629 DEBUG: [app.py:154] : ['ADMIN', '7kngmdwtb1dsh', '2020-07-26:17:16:39', " SELECT s.parsing_schema_name schema,        t.sql_id,        to_char(t.last_active_time,'yyyy-mm-dd:hh24:mi:ss') last_active_time,        t.sql_text,        t.disk_reads,        t.buffer_gets,        t.fetches,        t.sorts,        t.cpu_time/1000000 cpu,        t.rows_processed FROM V$SQLSTATS t,      V$SQL s WHERE t.sql_id = s.sql_id ORDER BY t.last_active_time DESC ", '0', '4', '17308', '191', '9.546875', '1705786']
+2020-07-26 17:16:40,629 DEBUG: [app.py:154] : ['SYS', '0k8522rmdzg4k', '2020-07-26:17:16:39', 'select privilege# from sysauth$ where (grantee#=:1 or grantee#=1) and privilege#>0', '4', '291164', '264177', '0', '0.203125', '255051']
+2020-07-26 17:16:40,629 DEBUG: [app.py:154] : ['SYS', '0k8522rmdzg4k', '2020-07-26:17:16:39', 'select privilege# from sysauth$ where (grantee#=:1 or grantee#=1) and privilege#>0', '4', '291164', '264177', '0', '0.203125', '255051']
+2020-07-26 17:16:40,722 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:16:40] "POST /query_execution/queries-resource-usage HTTP/1.1" 201 -
+2020-07-26 17:16:58,546 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:16:58] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:16:58,849 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:16:58] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:16:58,849 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:16:58] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:16:58,859 DEBUG: [app.py:257] : Query parameters for long-running-query: 
+2020-07-26 17:16:58,860 DEBUG: [app.py:258] : Parameter names        : ['sql_id']
+2020-07-26 17:16:58,860 DEBUG: [app.py:259] : Parameter values       : ['7kngmdwtb1dsh']
+2020-07-26 17:16:58,877 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:16:58,877 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:16:58,877 DEBUG: [app.py:111] : 
+SELECT
+  sid
+, serial#
+, opname
+, target
+, target_desc
+, sofar
+, totalwork
+, units
+, start_time
+, last_update_time
+, timestamp
+, time_remaining
+, elapsed_seconds
+, context
+, message
+, username
+, sql_address
+, sql_hash_value
+, sql_id
+, sql_plan_hash_value
+, sql_exec_start
+, sql_exec_id
+, sql_plan_line_id
+, sql_plan_operation
+, sql_plan_options
+, qcsid
+FROM
+    V$SESSION_LONGOPS
+WHERE
+    sql_id = :sqlid
+
+2020-07-26 17:16:58,877 DEBUG: [app.py:112] : Query Parameters: ['7kngmdwtb1dsh']
+2020-07-26 17:16:58,879 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:16:58,879 DEBUG: [app.py:154] : ['SID', 'SERIAL#', 'OPNAME', 'TARGET', 'TARGET_DESC', 'SOFAR', 'TOTALWORK', 'UNITS', 'START_TIME', 'LAST_UPDATE_TIME', 'TIMESTAMP', 'TIME_REMAINING', 'ELAPSED_SECONDS', 'CONTEXT', 'MESSAGE', 'USERNAME', 'SQL_ADDRESS', 'SQL_HASH_VALUE', 'SQL_ID', 'SQL_PLAN_HASH_VALUE', 'SQL_EXEC_START', 'SQL_EXEC_ID', 'SQL_PLAN_LINE_ID', 'SQL_PLAN_OPERATION', 'SQL_PLAN_OPTIONS', 'QCSID']
+2020-07-26 17:16:58,880 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:16:58] "POST /query_execution/long-running-query?sql_id=7kngmdwtb1dsh HTTP/1.1" 201 -
+2020-07-26 17:16:59,162 DEBUG: [app.py:257] : Query parameters for sql_text: 
+2020-07-26 17:16:59,162 DEBUG: [app.py:258] : Parameter names        : ['sql_id']
+2020-07-26 17:16:59,162 DEBUG: [app.py:259] : Parameter values       : ['7kngmdwtb1dsh']
+2020-07-26 17:16:59,163 DEBUG: [app.py:257] : Query parameters for query-resource-usage: 
+2020-07-26 17:16:59,163 DEBUG: [app.py:258] : Parameter names        : ['sql_id']
+2020-07-26 17:16:59,164 DEBUG: [app.py:259] : Parameter values       : ['7kngmdwtb1dsh']
+2020-07-26 17:16:59,189 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:16:59,189 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:16:59,190 DEBUG: [app.py:111] : 
+SELECT * 
+FROM (SELECT sql_id, 
+             to_char(sql_exec_start,'yyyy-mm-dd:hh24:mi:ss') sql_exec_start,
+             sql_exec_id, 
+             sum(buffer_gets) buffer_gets,
+             sum(disk_reads) disk_reads, 
+             round(sum(cpu_time/1000000),1) cpu_secs
+      FROM v$sql_monitor
+      WHERE sql_id = :sql_id
+      GROUP BY sql_id, sql_exec_start, sql_exec_id
+      ORDER BY 2 desc)
+WHERE rownum <= 50
+
+2020-07-26 17:16:59,190 DEBUG: [app.py:112] : Query Parameters: ['7kngmdwtb1dsh']
+2020-07-26 17:16:59,191 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:16:59,192 DEBUG: [app.py:154] : ['SQL_ID', 'SQL_EXEC_START', 'SQL_EXEC_ID', 'BUFFER_GETS', 'DISK_READS', 'CPU_SECS']
+2020-07-26 17:16:59,192 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:16:59] "POST /query_execution/query-resource-usage?sql_id=7kngmdwtb1dsh HTTP/1.1" 201 -
+2020-07-26 17:16:59,194 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:16:59,194 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:16:59,194 DEBUG: [app.py:111] : 
+SELECT sql_fulltext
+FROM   gv$sql
+WHERE  sql_id = :sql_id
+
+2020-07-26 17:16:59,194 DEBUG: [app.py:112] : Query Parameters: ['7kngmdwtb1dsh']
+2020-07-26 17:16:59,197 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:16:59,198 DEBUG: [app.py:154] : ['SQL_FULLTEXT']
+2020-07-26 17:16:59,198 DEBUG: [app.py:154] : ["\nSELECT s.parsing_schema_name schema,\n       t.sql_id,\n       to_char(t.last_active_time,'yyyy-mm-dd:hh24:mi:ss') last_active_time,\n       t.sql_text,\n       t.disk_reads,\n       t.buffer_gets,\n       t.fetches,\n       t.sorts,\n       t.cpu_time/1000000 cpu,\n       t.rows_processed\nFROM V$SQLSTATS t,\n     V$SQL s\nWHERE t.sql_id = s.sql_id\nORDER BY t.last_active_time DESC\n"]
+2020-07-26 17:16:59,199 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:16:59] "POST /query_execution/sql_text?sql_id=7kngmdwtb1dsh HTTP/1.1" 201 -
+2020-07-26 17:18:01,760 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:18:01] "GET / HTTP/1.1" 200 -
+2020-07-26 17:18:01,789 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:18:01] "GET /static/js/app.js HTTP/1.1" 200 -
+2020-07-26 17:18:01,996 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:18:01] "GET /static/js/api-calls.js HTTP/1.1" 200 -
+2020-07-26 17:18:02,091 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:18:02] "GET /static/js/auto-refresh-setup.js HTTP/1.1" 200 -
+2020-07-26 17:18:02,092 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:18:02] "GET /static/js/common.js HTTP/1.1" 200 -
+2020-07-26 17:18:02,410 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:18:02] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:18:02,411 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:18:02] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:18:02,582 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:18:02] "GET /favicon.ico HTTP/1.1" 404 -
+2020-07-26 17:18:02,658 DEBUG: [app.py:257] : Query parameters for long-running-queries: 
+2020-07-26 17:18:02,659 DEBUG: [app.py:258] : Parameter names        : []
+2020-07-26 17:18:02,659 DEBUG: [app.py:259] : Parameter values       : []
+2020-07-26 17:18:02,692 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:18:02,692 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:18:02,692 DEBUG: [app.py:111] : 
+SELECT
+  sid
+, serial#
+, opname
+, target
+, target_desc
+, sofar
+, totalwork
+, units
+, start_time
+, last_update_time
+, timestamp
+, time_remaining
+, elapsed_seconds
+, context
+, message
+, username
+, sql_address
+, sql_hash_value
+, sql_id
+, sql_plan_hash_value
+, sql_exec_start
+, sql_exec_id
+, sql_plan_line_id
+, sql_plan_operation
+, sql_plan_options
+, qcsid
+FROM
+    V$SESSION_LONGOPS
+WHERE
+    sofar <> totalwork
+
+2020-07-26 17:18:02,692 DEBUG: [app.py:112] : Query Parameters: None
+2020-07-26 17:18:02,695 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:18:02,695 DEBUG: [app.py:154] : ['SID', 'SERIAL#', 'OPNAME', 'TARGET', 'TARGET_DESC', 'SOFAR', 'TOTALWORK', 'UNITS', 'START_TIME', 'LAST_UPDATE_TIME', 'TIMESTAMP', 'TIME_REMAINING', 'ELAPSED_SECONDS', 'CONTEXT', 'MESSAGE', 'USERNAME', 'SQL_ADDRESS', 'SQL_HASH_VALUE', 'SQL_ID', 'SQL_PLAN_HASH_VALUE', 'SQL_EXEC_START', 'SQL_EXEC_ID', 'SQL_PLAN_LINE_ID', 'SQL_PLAN_OPERATION', 'SQL_PLAN_OPTIONS', 'QCSID']
+2020-07-26 17:18:02,696 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:18:02] "POST /query_execution/long-running-queries HTTP/1.1" 201 -
+2020-07-26 17:18:02,726 DEBUG: [app.py:257] : Query parameters for queries-resource-usage: 
+2020-07-26 17:18:02,726 DEBUG: [app.py:258] : Parameter names        : []
+2020-07-26 17:18:02,726 DEBUG: [app.py:259] : Parameter values       : []
+2020-07-26 17:18:02,747 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:18:02,747 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:18:02,747 DEBUG: [app.py:111] : 
+SELECT s.parsing_schema_name schema,
+       t.sql_id,
+       to_char(t.last_active_time,'yyyy-mm-dd:hh24:mi:ss') last_active_time,
+       t.sql_text,
+       t.disk_reads,
+       t.buffer_gets,
+       t.fetches,
+       t.sorts,
+       t.cpu_time/1000000 cpu,
+       t.rows_processed
+FROM V$SQLSTATS t,
+     V$SQL s
+WHERE t.sql_id = s.sql_id
+ORDER BY t.last_active_time DESC
+
+2020-07-26 17:18:02,747 DEBUG: [app.py:112] : Query Parameters: None
+2020-07-26 17:18:02,921 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:18:02,921 DEBUG: [app.py:154] : ['SCHEMA', 'SQL_ID', 'LAST_ACTIVE_TIME', 'SQL_TEXT', 'DISK_READS', 'BUFFER_GETS', 'FETCHES', 'SORTS', 'CPU', 'ROWS_PROCESSED']
+2020-07-26 17:18:02,921 DEBUG: [app.py:154] : ['SYS', '459f3z9u4fb3u', '2020-07-26:17:18:02', "select value$ from props$ where name = 'GLOBAL_DB_NAME'", '0', '17601', '8801', '0', '0.671875', '4400']
+2020-07-26 17:18:02,921 DEBUG: [app.py:154] : ['SYS', 'f711myt0q6cma', '2020-07-26:17:18:02', 'insert into sys.aud$( sessionid,entryid,statement,ntimestamp#, userid,userhost,terminal,action#,returncode, logoff$lread,logoff$pread,logoff$lwrite,logoff$dead, logoff$time,comment$text,spare1,clientid,sessioncpu,proxy$sid,user$guid, instance#,process#,auditid,dbid) values(:1,:2,:3,SYS_EXTRACT_UTC(SYSTIMESTAMP),     :4,:5,:6,:7,:8,     :9,:10,:11,:12,     cast(SYS_EXTRACT_UTC(systimestamp) as date),:13,:14,:15,:16,:17,:18,     :19,:20,:21,:22)', '0', '13208', '0', '0', '0.3125', '4276']
+2020-07-26 17:18:02,921 DEBUG: [app.py:154] : ['SYS', '4vs91dcv7u1p6', '2020-07-26:17:18:02', 'insert into sys.aud$( sessionid,entryid,statement,ntimestamp#, userid,userhost,terminal,action#,returncode, obj$creator,obj$name,auth$privileges,auth$grantee, new$owner,new$name,ses$actions,ses$tid,logoff$pread, logoff$lwrite,logoff$dead,comment$text,spare1,spare2,  priv$used,clientid,sessioncpu,proxy$sid,user$guid, instance#,process#,xid,scn,auditid,  sqlbind,sqltext,obj$edition,dbid)  values(:1,:2,:3,SYS_EXTRACT_UTC(SYSTIMESTAMP),     :4,:5,:6,:7,:8,     :9,:10,:11,:12,     :13,:14,:15,:16,:17,     :18,:19,:20,:21,:22,     :23,:24,:25,:26,:27,     :28,:29,:30,:31,:32,     :33,:34,:35,:36)', '1', '14482', '0', '0', '0.28125', '4400']
+2020-07-26 17:18:02,921 DEBUG: [app.py:154] : ['SYS', '4vs91dcv7u1p6', '2020-07-26:17:18:02', 'insert into sys.aud$( sessionid,entryid,statement,ntimestamp#, userid,userhost,terminal,action#,returncode, obj$creator,obj$name,auth$privileges,auth$grantee, new$owner,new$name,ses$actions,ses$tid,logoff$pread, logoff$lwrite,logoff$dead,comment$text,spare1,spare2,  priv$used,clientid,sessioncpu,proxy$sid,user$guid, instance#,process#,xid,scn,auditid,  sqlbind,sqltext,obj$edition,dbid)  values(:1,:2,:3,SYS_EXTRACT_UTC(SYSTIMESTAMP),     :4,:5,:6,:7,:8,     :9,:10,:11,:12,     :13,:14,:15,:16,:17,     :18,:19,:20,:21,:22,     :23,:24,:25,:26,:27,     :28,:29,:30,:31,:32,     :33,:34,:35,:36)', '1', '14482', '0', '0', '0.28125', '4400']
+2020-07-26 17:18:03,018 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:18:03] "POST /query_execution/queries-resource-usage HTTP/1.1" 201 -
+2020-07-26 17:19:24,665 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:19:24] "GET / HTTP/1.1" 200 -
+2020-07-26 17:19:24,697 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:19:24] "GET /static/js/app.js HTTP/1.1" 200 -
+2020-07-26 17:19:24,898 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:19:24] "GET /static/js/api-calls.js HTTP/1.1" 200 -
+2020-07-26 17:19:24,998 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:19:24] "GET /static/js/auto-refresh-setup.js HTTP/1.1" 200 -
+2020-07-26 17:19:25,000 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:19:25] "GET /static/js/common.js HTTP/1.1" 200 -
+2020-07-26 17:19:25,313 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:19:25] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:19:25,314 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:19:25] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:19:25,479 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:19:25] "GET /favicon.ico HTTP/1.1" 404 -
+2020-07-26 17:19:25,562 DEBUG: [app.py:257] : Query parameters for long-running-queries: 
+2020-07-26 17:19:25,563 DEBUG: [app.py:258] : Parameter names        : []
+2020-07-26 17:19:25,563 DEBUG: [app.py:259] : Parameter values       : []
+2020-07-26 17:19:25,600 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:19:25,601 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:19:25,601 DEBUG: [app.py:111] : 
+SELECT
+  sid
+, serial#
+, opname
+, target
+, target_desc
+, sofar
+, totalwork
+, units
+, start_time
+, last_update_time
+, timestamp
+, time_remaining
+, elapsed_seconds
+, context
+, message
+, username
+, sql_address
+, sql_hash_value
+, sql_id
+, sql_plan_hash_value
+, sql_exec_start
+, sql_exec_id
+, sql_plan_line_id
+, sql_plan_operation
+, sql_plan_options
+, qcsid
+FROM
+    V$SESSION_LONGOPS
+WHERE
+    sofar <> totalwork
+
+2020-07-26 17:19:25,601 DEBUG: [app.py:112] : Query Parameters: None
+2020-07-26 17:19:25,603 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:19:25,603 DEBUG: [app.py:154] : ['SID', 'SERIAL#', 'OPNAME', 'TARGET', 'TARGET_DESC', 'SOFAR', 'TOTALWORK', 'UNITS', 'START_TIME', 'LAST_UPDATE_TIME', 'TIMESTAMP', 'TIME_REMAINING', 'ELAPSED_SECONDS', 'CONTEXT', 'MESSAGE', 'USERNAME', 'SQL_ADDRESS', 'SQL_HASH_VALUE', 'SQL_ID', 'SQL_PLAN_HASH_VALUE', 'SQL_EXEC_START', 'SQL_EXEC_ID', 'SQL_PLAN_LINE_ID', 'SQL_PLAN_OPERATION', 'SQL_PLAN_OPTIONS', 'QCSID']
+2020-07-26 17:19:25,604 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:19:25] "POST /query_execution/long-running-queries HTTP/1.1" 201 -
+2020-07-26 17:19:25,625 DEBUG: [app.py:257] : Query parameters for queries-resource-usage: 
+2020-07-26 17:19:25,625 DEBUG: [app.py:258] : Parameter names        : []
+2020-07-26 17:19:25,625 DEBUG: [app.py:259] : Parameter values       : []
+2020-07-26 17:19:25,650 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:19:25,651 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:19:25,651 DEBUG: [app.py:111] : 
+SELECT s.parsing_schema_name schema,
+       t.sql_id,
+       to_char(t.last_active_time,'yyyy-mm-dd:hh24:mi:ss') last_active_time,
+       t.sql_text,
+       t.disk_reads,
+       t.buffer_gets,
+       t.fetches,
+       t.sorts,
+       t.cpu_time/1000000 cpu,
+       t.rows_processed
+FROM V$SQLSTATS t,
+     V$SQL s
+WHERE t.sql_id = s.sql_id
+ORDER BY t.last_active_time DESC
+
+2020-07-26 17:19:25,651 DEBUG: [app.py:112] : Query Parameters: None
+2020-07-26 17:19:25,840 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:19:25,841 DEBUG: [app.py:154] : ['SCHEMA', 'SQL_ID', 'LAST_ACTIVE_TIME', 'SQL_TEXT', 'DISK_READS', 'BUFFER_GETS', 'FETCHES', 'SORTS', 'CPU', 'ROWS_PROCESSED']
+2020-07-26 17:19:25,841 DEBUG: [app.py:154] : ['SYS', 'fvkynu9xgck8h', '2020-07-26:17:19:24', 'select PGA_TARGET_FOR_ESTIMATE s,          PGA_TARGET_FACTOR * 100 f,           ESTD_TIME t,         BYTES_PROCESSED b   from v$pga_target_advice order by PGA_TARGET_FOR_ESTIMATE', '0', '7', '128176', '8546', '0.21875', '119630']
+2020-07-26 17:19:25,841 DEBUG: [app.py:154] : ['SYS', 'cm5vu20fhtnq1', '2020-07-26:17:19:24', 'select /*+ connect_by_filtering */ privilege#,level from sysauth$ connect by grantee#=prior privilege# and privilege#>0 start with grantee#=:1 and privilege#>0', '2', '833964', '584765', '0', '0.90625', '348498']
+2020-07-26 17:19:25,841 DEBUG: [app.py:154] : ['SYS', '8p447s6p0rv6b', '2020-07-26:17:19:24', 'select java_pool_size_for_estimate s,           java_pool_size_factor * 100 f,           estd_lc_load_time l, 0            from v$java_pool_advice', '0', '7', '25638', '0', '0', '17092']
+2020-07-26 17:19:25,841 DEBUG: [app.py:154] : ['SYS', '772s25v1y0x8k', '2020-07-26:17:19:24', 'select shared_pool_size_for_estimate s,          shared_pool_size_factor * 100 f,          estd_lc_load_time l, 0             from v$shared_pool_advice', '0', '7', '159971', '0', '0.046875', '151425']
+2020-07-26 17:19:25,939 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:19:25] "POST /query_execution/queries-resource-usage HTTP/1.1" 201 -
+2020-07-26 17:19:41,200 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:19:41] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:19:41,502 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:19:41] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:19:41,503 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:19:41] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:19:41,512 DEBUG: [app.py:257] : Query parameters for long-running-query: 
+2020-07-26 17:19:41,513 DEBUG: [app.py:258] : Parameter names        : ['sql_id']
+2020-07-26 17:19:41,513 DEBUG: [app.py:259] : Parameter values       : ['7gtys6vx02ymj']
+2020-07-26 17:19:41,556 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:19:41,556 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:19:41,556 DEBUG: [app.py:111] : 
+SELECT
+  sid
+, serial#
+, opname
+, target
+, target_desc
+, sofar
+, totalwork
+, units
+, start_time
+, last_update_time
+, timestamp
+, time_remaining
+, elapsed_seconds
+, context
+, message
+, username
+, sql_address
+, sql_hash_value
+, sql_id
+, sql_plan_hash_value
+, sql_exec_start
+, sql_exec_id
+, sql_plan_line_id
+, sql_plan_operation
+, sql_plan_options
+, qcsid
+FROM
+    V$SESSION_LONGOPS
+WHERE
+    sql_id = :sqlid
+
+2020-07-26 17:19:41,557 DEBUG: [app.py:112] : Query Parameters: ['7gtys6vx02ymj']
+2020-07-26 17:19:41,560 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:19:41,560 DEBUG: [app.py:154] : ['SID', 'SERIAL#', 'OPNAME', 'TARGET', 'TARGET_DESC', 'SOFAR', 'TOTALWORK', 'UNITS', 'START_TIME', 'LAST_UPDATE_TIME', 'TIMESTAMP', 'TIME_REMAINING', 'ELAPSED_SECONDS', 'CONTEXT', 'MESSAGE', 'USERNAME', 'SQL_ADDRESS', 'SQL_HASH_VALUE', 'SQL_ID', 'SQL_PLAN_HASH_VALUE', 'SQL_EXEC_START', 'SQL_EXEC_ID', 'SQL_PLAN_LINE_ID', 'SQL_PLAN_OPERATION', 'SQL_PLAN_OPTIONS', 'QCSID']
+2020-07-26 17:19:41,561 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:19:41] "POST /query_execution/long-running-query?sql_id=7gtys6vx02ymj HTTP/1.1" 201 -
+2020-07-26 17:19:41,815 DEBUG: [app.py:257] : Query parameters for query-resource-usage: 
+2020-07-26 17:19:41,815 DEBUG: [app.py:258] : Parameter names        : ['sql_id']
+2020-07-26 17:19:41,815 DEBUG: [app.py:259] : Parameter values       : ['7gtys6vx02ymj']
+2020-07-26 17:19:41,817 DEBUG: [app.py:257] : Query parameters for sql_text: 
+2020-07-26 17:19:41,817 DEBUG: [app.py:258] : Parameter names        : ['sql_id']
+2020-07-26 17:19:41,817 DEBUG: [app.py:259] : Parameter values       : ['7gtys6vx02ymj']
+2020-07-26 17:19:41,859 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:19:41,859 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:19:41,859 DEBUG: [app.py:111] : 
+SELECT * 
+FROM (SELECT sql_id, 
+             to_char(sql_exec_start,'yyyy-mm-dd:hh24:mi:ss') sql_exec_start,
+             sql_exec_id, 
+             sum(buffer_gets) buffer_gets,
+             sum(disk_reads) disk_reads, 
+             round(sum(cpu_time/1000000),1) cpu_secs
+      FROM v$sql_monitor
+      WHERE sql_id = :sql_id
+      GROUP BY sql_id, sql_exec_start, sql_exec_id
+      ORDER BY 2 desc)
+WHERE rownum <= 50
+
+2020-07-26 17:19:41,859 DEBUG: [app.py:112] : Query Parameters: ['7gtys6vx02ymj']
+2020-07-26 17:19:41,859 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:19:41,859 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:19:41,859 DEBUG: [app.py:111] : 
+SELECT sql_fulltext
+FROM   gv$sql
+WHERE  sql_id = :sql_id
+
+2020-07-26 17:19:41,859 DEBUG: [app.py:112] : Query Parameters: ['7gtys6vx02ymj']
+2020-07-26 17:19:41,862 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:19:41,862 DEBUG: [app.py:154] : ['SQL_ID', 'SQL_EXEC_START', 'SQL_EXEC_ID', 'BUFFER_GETS', 'DISK_READS', 'CPU_SECS']
+2020-07-26 17:19:41,862 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:19:41,863 DEBUG: [app.py:154] : ['SQL_FULLTEXT']
+2020-07-26 17:19:41,863 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:19:41] "POST /query_execution/query-resource-usage?sql_id=7gtys6vx02ymj HTTP/1.1" 201 -
+2020-07-26 17:19:41,863 DEBUG: [app.py:154] : ['\nSELECT\n  sid\n, serial#\n, opname\n, target\n, target_desc\n, sofar\n, totalwork\n, units\n, start_time\n, last_update_time\n, timestamp\n, time_remaining\n, elapsed_seconds\n, context\n, message\n, username\n, sql_address\n, sql_hash_value\n, sql_id\n, sql_plan_hash_value\n, sql_exec_start\n, sql_exec_id\n, sql_plan_line_id\n, sql_plan_operation\n, sql_plan_options\n, qcsid\nFROM\n    V$SESSION_LONGOPS\nWHERE\n    sofar <> totalwork\n']
+2020-07-26 17:19:41,864 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:19:41] "POST /query_execution/sql_text?sql_id=7gtys6vx02ymj HTTP/1.1" 201 -
+2020-07-26 17:19:51,241 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:19:51] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:19:51,492 DEBUG: [app.py:257] : Query parameters for data-dictionary-views: 
+2020-07-26 17:19:51,492 DEBUG: [app.py:258] : Parameter names        : []
+2020-07-26 17:19:51,492 DEBUG: [app.py:259] : Parameter values       : []
+2020-07-26 17:19:51,526 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:19:51,526 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:19:51,526 DEBUG: [app.py:111] : 
+SELECT 
+    view_name
+FROM 
+    dba_views a
+WHERE 
+    (view_name LIKE 'V$%'
+OR  view_name LIKE 'GV$%'
+OR  view_name LIKE 'ALL_%'
+OR  view_name LIKE 'DBA_%'  
+OR  view_name LIKE 'USER_%')
+AND EXISTS (SELECT 1 FROM DBA_OBJECTS b WHERE a.owner = b.owner AND a.view_name = b.object_name)
+ORDER BY 1
+
+2020-07-26 17:19:51,526 DEBUG: [app.py:112] : Query Parameters: None
+2020-07-26 17:19:51,616 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:19:51,616 DEBUG: [app.py:154] : ['VIEW_NAME']
+2020-07-26 17:19:51,616 DEBUG: [app.py:154] : ['ALL$AW_CUBE_AGG_LEVELS']
+2020-07-26 17:19:51,616 DEBUG: [app.py:154] : ['ALL$AW_CUBE_AGG_MEASURES']
+2020-07-26 17:19:51,616 DEBUG: [app.py:154] : ['ALL$AW_CUBE_AGG_PLANS']
+2020-07-26 17:19:51,616 DEBUG: [app.py:154] : ['ALL$AW_CUBE_ENABLED_HIERCOMBO']
+2020-07-26 17:19:51,621 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:19:51] "POST /query_execution/data-dictionary-views HTTP/1.1" 201 -
+2020-07-26 17:19:57,308 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:19:57] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:19:57,649 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:19:57,649 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:19:57,649 DEBUG: [app.py:111] : SELECT * FROM ALL_TABLES WHERE ROWNUM < 25000
+2020-07-26 17:19:57,649 DEBUG: [app.py:112] : Query Parameters: []
+2020-07-26 17:19:57,838 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:19:57,839 DEBUG: [app.py:154] : ['OWNER', 'TABLE_NAME', 'TABLESPACE_NAME', 'CLUSTER_NAME', 'IOT_NAME', 'STATUS', 'PCT_FREE', 'PCT_USED', 'INI_TRANS', 'MAX_TRANS', 'INITIAL_EXTENT', 'NEXT_EXTENT', 'MIN_EXTENTS', 'MAX_EXTENTS', 'PCT_INCREASE', 'FREELISTS', 'FREELIST_GROUPS', 'LOGGING', 'BACKED_UP', 'NUM_ROWS', 'BLOCKS', 'EMPTY_BLOCKS', 'AVG_SPACE', 'CHAIN_CNT', 'AVG_ROW_LEN', 'AVG_SPACE_FREELIST_BLOCKS', 'NUM_FREELIST_BLOCKS', 'DEGREE', 'INSTANCES', 'CACHE', 'TABLE_LOCK', 'SAMPLE_SIZE', 'LAST_ANALYZED', 'PARTITIONED', 'IOT_TYPE', 'TEMPORARY', 'SECONDARY', 'NESTED', 'BUFFER_POOL', 'FLASH_CACHE', 'CELL_FLASH_CACHE', 'ROW_MOVEMENT', 'GLOBAL_STATS', 'USER_STATS', 'DURATION', 'SKIP_CORRUPT', 'MONITORING', 'CLUSTER_OWNER', 'DEPENDENCIES', 'COMPRESSION', 'COMPRESS_FOR', 'DROPPED', 'READ_ONLY', 'SEGMENT_CREATED', 'RESULT_CACHE']
+2020-07-26 17:19:57,839 DEBUG: [app.py:154] : ['SYS', 'ICOL$', 'SYSTEM', 'C_OBJ#', '', 'VALID', '0', '0', '0', '0', '139264', '204800', '1', '2147483645', '', '1', '1', 'YES', 'N', '2791', '734', '0', '0', '0', '30', '0', '0', '         1', '         1', '    N', 'ENABLED', '2791', '2010-03-30 10:17:59', 'NO', '', 'N', 'N', 'NO', 'DEFAULT', 'DEFAULT', 'DEFAULT', 'DISABLED', 'YES', 'NO', '', 'DISABLED', 'YES', 'SYS', 'DISABLED', 'DISABLED', '', 'NO', 'NO', 'YES', 'DEFAULT']
+2020-07-26 17:19:57,839 DEBUG: [app.py:154] : ['SYS', 'CON$', 'SYSTEM', '', '', 'VALID', '10', '40', '1', '255', '65536', '1048576', '1', '2147483645', '', '1', '1', 'YES', 'N', '10940', '44', '0', '0', '0', '25', '0', '0', '         1', '         1', '    N', 'ENABLED', '10940', '2020-07-22 22:00:11', 'NO', '', 'N', 'N', 'NO', 'DEFAULT', 'DEFAULT', 'DEFAULT', 'DISABLED', 'YES', 'NO', '', 'DISABLED', 'YES', '', 'DISABLED', 'DISABLED', '', 'NO', 'NO', 'YES', 'DEFAULT']
+2020-07-26 17:19:57,839 DEBUG: [app.py:154] : ['SYS', 'UNDO$', 'SYSTEM', '', '', 'VALID', '10', '40', '1', '255', '65536', '1048576', '1', '2147483645', '', '1', '1', 'YES', 'N', '21', '1', '0', '0', '0', '59', '0', '0', '         1', '         1', '    N', 'ENABLED', '21', '2020-07-22 22:00:04', 'NO', '', 'N', 'N', 'NO', 'DEFAULT', 'DEFAULT', 'DEFAULT', 'DISABLED', 'YES', 'NO', '', 'DISABLED', 'YES', '', 'DISABLED', 'DISABLED', '', 'NO', 'NO', 'YES', 'DEFAULT']
+2020-07-26 17:19:57,839 DEBUG: [app.py:154] : ['SYS', 'PROXY_ROLE_DATA$', 'SYSTEM', '', '', 'VALID', '10', '40', '1', '255', '65536', '1048576', '1', '2147483645', '', '1', '1', 'YES', 'N', '0', '0', '0', '0', '0', '0', '0', '0', '         1', '         1', '    N', 'ENABLED', '0', '2010-03-30 10:18:28', 'NO', '', 'N', 'N', 'NO', 'DEFAULT', 'DEFAULT', 'DEFAULT', 'DISABLED', 'YES', 'NO', '', 'DISABLED', 'YES', '', 'DISABLED', 'DISABLED', '', 'NO', 'NO', 'YES', 'DEFAULT']
+2020-07-26 17:19:57,913 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:19:57] "POST /get-table/ALL_TABLES HTTP/1.1" 201 -
+2020-07-26 17:20:35,972 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:20:35] "GET / HTTP/1.1" 200 -
+2020-07-26 17:20:36,258 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:20:36] "GET /static/js/app.js HTTP/1.1" 200 -
+2020-07-26 17:20:36,307 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:20:36] "GET /static/js/api-calls.js HTTP/1.1" 200 -
+2020-07-26 17:20:36,308 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:20:36] "GET /static/js/auto-refresh-setup.js HTTP/1.1" 200 -
+2020-07-26 17:20:36,309 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:20:36] "GET /static/js/common.js HTTP/1.1" 200 -
+2020-07-26 17:20:36,629 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:20:36] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:20:36,630 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:20:36] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:20:36,781 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:20:36] "GET /favicon.ico HTTP/1.1" 404 -
+2020-07-26 17:20:36,879 DEBUG: [app.py:257] : Query parameters for queries-resource-usage: 
+2020-07-26 17:20:36,879 DEBUG: [app.py:258] : Parameter names        : []
+2020-07-26 17:20:36,879 DEBUG: [app.py:259] : Parameter values       : []
+2020-07-26 17:20:36,901 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:20:36,901 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:20:36,901 DEBUG: [app.py:111] : 
+SELECT s.parsing_schema_name schema,
+       t.sql_id,
+       to_char(t.last_active_time,'yyyy-mm-dd:hh24:mi:ss') last_active_time,
+       t.sql_text,
+       t.disk_reads,
+       t.buffer_gets,
+       t.fetches,
+       t.sorts,
+       t.cpu_time/1000000 cpu,
+       t.rows_processed
+FROM V$SQLSTATS t,
+     V$SQL s
+WHERE t.sql_id = s.sql_id
+ORDER BY t.last_active_time DESC
+
+2020-07-26 17:20:36,901 DEBUG: [app.py:112] : Query Parameters: None
+2020-07-26 17:20:36,944 DEBUG: [app.py:257] : Query parameters for long-running-queries: 
+2020-07-26 17:20:36,944 DEBUG: [app.py:258] : Parameter names        : []
+2020-07-26 17:20:36,944 DEBUG: [app.py:259] : Parameter values       : []
+2020-07-26 17:20:36,962 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:20:36,962 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:20:36,962 DEBUG: [app.py:111] : 
+SELECT
+  sid
+, serial#
+, opname
+, target
+, target_desc
+, sofar
+, totalwork
+, units
+, start_time
+, last_update_time
+, timestamp
+, time_remaining
+, elapsed_seconds
+, context
+, message
+, username
+, sql_address
+, sql_hash_value
+, sql_id
+, sql_plan_hash_value
+, sql_exec_start
+, sql_exec_id
+, sql_plan_line_id
+, sql_plan_operation
+, sql_plan_options
+, qcsid
+FROM
+    V$SESSION_LONGOPS
+WHERE
+    sofar <> totalwork
+
+2020-07-26 17:20:36,962 DEBUG: [app.py:112] : Query Parameters: None
+2020-07-26 17:20:36,965 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:20:36,966 DEBUG: [app.py:154] : ['SID', 'SERIAL#', 'OPNAME', 'TARGET', 'TARGET_DESC', 'SOFAR', 'TOTALWORK', 'UNITS', 'START_TIME', 'LAST_UPDATE_TIME', 'TIMESTAMP', 'TIME_REMAINING', 'ELAPSED_SECONDS', 'CONTEXT', 'MESSAGE', 'USERNAME', 'SQL_ADDRESS', 'SQL_HASH_VALUE', 'SQL_ID', 'SQL_PLAN_HASH_VALUE', 'SQL_EXEC_START', 'SQL_EXEC_ID', 'SQL_PLAN_LINE_ID', 'SQL_PLAN_OPERATION', 'SQL_PLAN_OPTIONS', 'QCSID']
+2020-07-26 17:20:36,966 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:20:36] "POST /query_execution/long-running-queries HTTP/1.1" 201 -
+2020-07-26 17:20:37,102 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:20:37,103 DEBUG: [app.py:154] : ['SCHEMA', 'SQL_ID', 'LAST_ACTIVE_TIME', 'SQL_TEXT', 'DISK_READS', 'BUFFER_GETS', 'FETCHES', 'SORTS', 'CPU', 'ROWS_PROCESSED']
+2020-07-26 17:20:37,103 DEBUG: [app.py:154] : ['SYS', '4vs91dcv7u1p6', '2020-07-26:17:20:36', 'insert into sys.aud$( sessionid,entryid,statement,ntimestamp#, userid,userhost,terminal,action#,returncode, obj$creator,obj$name,auth$privileges,auth$grantee, new$owner,new$name,ses$actions,ses$tid,logoff$pread, logoff$lwrite,logoff$dead,comment$text,spare1,spare2,  priv$used,clientid,sessioncpu,proxy$sid,user$guid, instance#,process#,xid,scn,auditid,  sqlbind,sqltext,obj$edition,dbid)  values(:1,:2,:3,SYS_EXTRACT_UTC(SYSTIMESTAMP),     :4,:5,:6,:7,:8,     :9,:10,:11,:12,     :13,:14,:15,:16,:17,     :18,:19,:20,:21,:22,     :23,:24,:25,:26,:27,     :28,:29,:30,:31,:32,     :33,:34,:35,:36)', '1', '14515', '0', '0', '0.28125', '4411']
+2020-07-26 17:20:37,103 DEBUG: [app.py:154] : ['SYS', '4vs91dcv7u1p6', '2020-07-26:17:20:36', 'insert into sys.aud$( sessionid,entryid,statement,ntimestamp#, userid,userhost,terminal,action#,returncode, obj$creator,obj$name,auth$privileges,auth$grantee, new$owner,new$name,ses$actions,ses$tid,logoff$pread, logoff$lwrite,logoff$dead,comment$text,spare1,spare2,  priv$used,clientid,sessioncpu,proxy$sid,user$guid, instance#,process#,xid,scn,auditid,  sqlbind,sqltext,obj$edition,dbid)  values(:1,:2,:3,SYS_EXTRACT_UTC(SYSTIMESTAMP),     :4,:5,:6,:7,:8,     :9,:10,:11,:12,     :13,:14,:15,:16,:17,     :18,:19,:20,:21,:22,     :23,:24,:25,:26,:27,     :28,:29,:30,:31,:32,     :33,:34,:35,:36)', '1', '14515', '0', '0', '0.28125', '4411']
+2020-07-26 17:20:37,103 DEBUG: [app.py:154] : ['SYS', '5ur69atw3vfhj', '2020-07-26:17:20:36', "select decode(failover_method, NULL, 0 , 'BASIC', 1, 'PRECONNECT', 2 , 'PREPARSE', 4 , 0), decode(failover_type, NULL, 1 , 'NONE', 1 , 'SESSION', 2, 'SELECT',  4, 1), failover_retries, failover_delay, flags from service$ where name = :1", '0', '13260', '4409', '0', '0.078125', '4409']
+2020-07-26 17:20:37,103 DEBUG: [app.py:154] : ['SYS', '5ur69atw3vfhj', '2020-07-26:17:20:36', "select decode(failover_method, NULL, 0 , 'BASIC', 1, 'PRECONNECT', 2 , 'PREPARSE', 4 , 0), decode(failover_type, NULL, 1 , 'NONE', 1 , 'SESSION', 2, 'SELECT',  4, 1), failover_retries, failover_delay, flags from service$ where name = :1", '0', '13260', '4409', '0', '0.078125', '4409']
+2020-07-26 17:20:37,189 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:20:37] "POST /query_execution/queries-resource-usage HTTP/1.1" 201 -
+2020-07-26 17:21:25,194 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:21:25] "GET / HTTP/1.1" 200 -
+2020-07-26 17:21:25,479 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:21:25] "GET /static/js/app.js HTTP/1.1" 200 -
+2020-07-26 17:21:25,522 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:21:25] "GET /static/js/api-calls.js HTTP/1.1" 200 -
+2020-07-26 17:21:25,525 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:21:25] "GET /static/js/auto-refresh-setup.js HTTP/1.1" 200 -
+2020-07-26 17:21:25,526 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:21:25] "GET /static/js/common.js HTTP/1.1" 200 -
+2020-07-26 17:21:25,846 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:21:25] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:21:25,847 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:21:25] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:21:26,042 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:21:26] "GET /favicon.ico HTTP/1.1" 404 -
+2020-07-26 17:21:26,095 DEBUG: [app.py:257] : Query parameters for long-running-queries: 
+2020-07-26 17:21:26,095 DEBUG: [app.py:258] : Parameter names        : []
+2020-07-26 17:21:26,095 DEBUG: [app.py:259] : Parameter values       : []
+2020-07-26 17:21:26,115 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:21:26,115 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:21:26,115 DEBUG: [app.py:111] : 
+SELECT
+  sid
+, serial#
+, opname
+, target
+, target_desc
+, sofar
+, totalwork
+, units
+, start_time
+, last_update_time
+, timestamp
+, time_remaining
+, elapsed_seconds
+, context
+, message
+, username
+, sql_address
+, sql_hash_value
+, sql_id
+, sql_plan_hash_value
+, sql_exec_start
+, sql_exec_id
+, sql_plan_line_id
+, sql_plan_operation
+, sql_plan_options
+, qcsid
+FROM
+    V$SESSION_LONGOPS
+WHERE
+    sofar <> totalwork
+
+2020-07-26 17:21:26,115 DEBUG: [app.py:112] : Query Parameters: None
+2020-07-26 17:21:26,122 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:21:26,122 DEBUG: [app.py:154] : ['SID', 'SERIAL#', 'OPNAME', 'TARGET', 'TARGET_DESC', 'SOFAR', 'TOTALWORK', 'UNITS', 'START_TIME', 'LAST_UPDATE_TIME', 'TIMESTAMP', 'TIME_REMAINING', 'ELAPSED_SECONDS', 'CONTEXT', 'MESSAGE', 'USERNAME', 'SQL_ADDRESS', 'SQL_HASH_VALUE', 'SQL_ID', 'SQL_PLAN_HASH_VALUE', 'SQL_EXEC_START', 'SQL_EXEC_ID', 'SQL_PLAN_LINE_ID', 'SQL_PLAN_OPERATION', 'SQL_PLAN_OPTIONS', 'QCSID']
+2020-07-26 17:21:26,122 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:21:26] "POST /query_execution/long-running-queries HTTP/1.1" 201 -
+2020-07-26 17:21:26,217 DEBUG: [app.py:257] : Query parameters for queries-resource-usage: 
+2020-07-26 17:21:26,217 DEBUG: [app.py:258] : Parameter names        : []
+2020-07-26 17:21:26,217 DEBUG: [app.py:259] : Parameter values       : []
+2020-07-26 17:21:26,248 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:21:26,248 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:21:26,248 DEBUG: [app.py:111] : 
+SELECT s.parsing_schema_name schema,
+       t.sql_id,
+       to_char(t.last_active_time,'yyyy-mm-dd:hh24:mi:ss') last_active_time,
+       t.sql_text,
+       t.disk_reads,
+       t.buffer_gets,
+       t.fetches,
+       t.sorts,
+       t.cpu_time/1000000 cpu,
+       t.rows_processed
+FROM V$SQLSTATS t,
+     V$SQL s
+WHERE t.sql_id = s.sql_id
+ORDER BY t.last_active_time DESC
+
+2020-07-26 17:21:26,248 DEBUG: [app.py:112] : Query Parameters: None
+2020-07-26 17:21:26,433 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:21:26,433 DEBUG: [app.py:154] : ['SCHEMA', 'SQL_ID', 'LAST_ACTIVE_TIME', 'SQL_TEXT', 'DISK_READS', 'BUFFER_GETS', 'FETCHES', 'SORTS', 'CPU', 'ROWS_PROCESSED']
+2020-07-26 17:21:26,434 DEBUG: [app.py:154] : ['SYS', '4vs91dcv7u1p6', '2020-07-26:17:21:25', 'insert into sys.aud$( sessionid,entryid,statement,ntimestamp#, userid,userhost,terminal,action#,returncode, obj$creator,obj$name,auth$privileges,auth$grantee, new$owner,new$name,ses$actions,ses$tid,logoff$pread, logoff$lwrite,logoff$dead,comment$text,spare1,spare2,  priv$used,clientid,sessioncpu,proxy$sid,user$guid, instance#,process#,xid,scn,auditid,  sqlbind,sqltext,obj$edition,dbid)  values(:1,:2,:3,SYS_EXTRACT_UTC(SYSTIMESTAMP),     :4,:5,:6,:7,:8,     :9,:10,:11,:12,     :13,:14,:15,:16,:17,     :18,:19,:20,:21,:22,     :23,:24,:25,:26,:27,     :28,:29,:30,:31,:32,     :33,:34,:35,:36)', '1', '14524', '0', '0', '0.28125', '4414']
+2020-07-26 17:21:26,434 DEBUG: [app.py:154] : ['SYS', '4vs91dcv7u1p6', '2020-07-26:17:21:25', 'insert into sys.aud$( sessionid,entryid,statement,ntimestamp#, userid,userhost,terminal,action#,returncode, obj$creator,obj$name,auth$privileges,auth$grantee, new$owner,new$name,ses$actions,ses$tid,logoff$pread, logoff$lwrite,logoff$dead,comment$text,spare1,spare2,  priv$used,clientid,sessioncpu,proxy$sid,user$guid, instance#,process#,xid,scn,auditid,  sqlbind,sqltext,obj$edition,dbid)  values(:1,:2,:3,SYS_EXTRACT_UTC(SYSTIMESTAMP),     :4,:5,:6,:7,:8,     :9,:10,:11,:12,     :13,:14,:15,:16,:17,     :18,:19,:20,:21,:22,     :23,:24,:25,:26,:27,     :28,:29,:30,:31,:32,     :33,:34,:35,:36)', '1', '14524', '0', '0', '0.28125', '4414']
+2020-07-26 17:21:26,434 DEBUG: [app.py:154] : ['ADMIN', '7gtys6vx02ymj', '2020-07-26:17:21:25', ' SELECT   sid , serial# , opname , target , target_desc , sofar , totalwork , units , start_time , last_update_time , timestamp , time_remaining , elapsed_seconds , context , message , username , sql_address , sql_hash_value , sql_id , sql_plan_hash_value , sql_exec_start , sql_exec_id , sql_plan_line_id , sql_plan_operation , sql_plan_options , qcsid FROM     V$SESSION_LONGOPS WHERE     sofar <> totalwork ', '0', '124', '281', '0', '0.125', '1']
+2020-07-26 17:21:26,434 DEBUG: [app.py:154] : ['SYS', '0ws7ahf1d78qa', '2020-07-26:17:21:25', "select SYS_CONTEXT('USERENV', 'SERVER_HOST'), SYS_CONTEXT('USERENV', 'DB_UNIQUE_NAME'), SYS_CONTEXT('USERENV', 'INSTANCE_NAME'), SYS_CONTEXT('USERENV', 'SERVICE_NAME'), INSTANCE_NUMBER, STARTUP_TIME, SYS_CONTEXT('USERENV', 'DB_DOMAIN') from v$instance where INSTANCE_NAME=SYS_CONTEXT('USERENV', 'INSTANCE_NAME')", '0', '0', '4413', '0', '0.296875', '4413']
+2020-07-26 17:21:26,529 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:21:26] "POST /query_execution/queries-resource-usage HTTP/1.1" 201 -
+2020-07-26 17:21:57,691 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:21:57] "GET / HTTP/1.1" 200 -
+2020-07-26 17:21:57,980 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:21:57] "GET /static/js/app.js HTTP/1.1" 200 -
+2020-07-26 17:21:58,026 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:21:58] "GET /static/js/api-calls.js HTTP/1.1" 200 -
+2020-07-26 17:21:58,028 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:21:58] "GET /static/js/common.js HTTP/1.1" 200 -
+2020-07-26 17:21:58,028 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:21:58] "GET /static/js/auto-refresh-setup.js HTTP/1.1" 200 -
+2020-07-26 17:21:58,366 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:21:58] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:21:58,367 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:21:58] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:21:58,529 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:21:58] "GET /favicon.ico HTTP/1.1" 404 -
+2020-07-26 17:21:58,615 DEBUG: [app.py:257] : Query parameters for queries-resource-usage: 
+2020-07-26 17:21:58,615 DEBUG: [app.py:258] : Parameter names        : []
+2020-07-26 17:21:58,615 DEBUG: [app.py:259] : Parameter values       : []
+2020-07-26 17:21:58,654 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:21:58,654 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:21:58,654 DEBUG: [app.py:111] : 
+SELECT s.parsing_schema_name schema,
+       t.sql_id,
+       to_char(t.last_active_time,'yyyy-mm-dd:hh24:mi:ss') last_active_time,
+       t.sql_text,
+       t.disk_reads,
+       t.buffer_gets,
+       t.fetches,
+       t.sorts,
+       t.cpu_time/1000000 cpu,
+       t.rows_processed
+FROM V$SQLSTATS t,
+     V$SQL s
+WHERE t.sql_id = s.sql_id
+ORDER BY t.last_active_time DESC
+
+2020-07-26 17:21:58,654 DEBUG: [app.py:112] : Query Parameters: None
+2020-07-26 17:21:58,697 DEBUG: [app.py:257] : Query parameters for long-running-queries: 
+2020-07-26 17:21:58,697 DEBUG: [app.py:258] : Parameter names        : []
+2020-07-26 17:21:58,698 DEBUG: [app.py:259] : Parameter values       : []
+2020-07-26 17:21:58,727 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:21:58,727 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:21:58,727 DEBUG: [app.py:111] : 
+SELECT
+  sid
+, serial#
+, opname
+, target
+, target_desc
+, sofar
+, totalwork
+, units
+, start_time
+, last_update_time
+, timestamp
+, time_remaining
+, elapsed_seconds
+, context
+, message
+, username
+, sql_address
+, sql_hash_value
+, sql_id
+, sql_plan_hash_value
+, sql_exec_start
+, sql_exec_id
+, sql_plan_line_id
+, sql_plan_operation
+, sql_plan_options
+, qcsid
+FROM
+    V$SESSION_LONGOPS
+WHERE
+    sofar <> totalwork
+
+2020-07-26 17:21:58,727 DEBUG: [app.py:112] : Query Parameters: None
+2020-07-26 17:21:58,731 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:21:58,731 DEBUG: [app.py:154] : ['SID', 'SERIAL#', 'OPNAME', 'TARGET', 'TARGET_DESC', 'SOFAR', 'TOTALWORK', 'UNITS', 'START_TIME', 'LAST_UPDATE_TIME', 'TIMESTAMP', 'TIME_REMAINING', 'ELAPSED_SECONDS', 'CONTEXT', 'MESSAGE', 'USERNAME', 'SQL_ADDRESS', 'SQL_HASH_VALUE', 'SQL_ID', 'SQL_PLAN_HASH_VALUE', 'SQL_EXEC_START', 'SQL_EXEC_ID', 'SQL_PLAN_LINE_ID', 'SQL_PLAN_OPERATION', 'SQL_PLAN_OPTIONS', 'QCSID']
+2020-07-26 17:21:58,732 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:21:58] "POST /query_execution/long-running-queries HTTP/1.1" 201 -
+2020-07-26 17:21:58,826 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:21:58,826 DEBUG: [app.py:154] : ['SCHEMA', 'SQL_ID', 'LAST_ACTIVE_TIME', 'SQL_TEXT', 'DISK_READS', 'BUFFER_GETS', 'FETCHES', 'SORTS', 'CPU', 'ROWS_PROCESSED']
+2020-07-26 17:21:58,826 DEBUG: [app.py:154] : ['SYS', '4vs91dcv7u1p6', '2020-07-26:17:21:58', 'insert into sys.aud$( sessionid,entryid,statement,ntimestamp#, userid,userhost,terminal,action#,returncode, obj$creator,obj$name,auth$privileges,auth$grantee, new$owner,new$name,ses$actions,ses$tid,logoff$pread, logoff$lwrite,logoff$dead,comment$text,spare1,spare2,  priv$used,clientid,sessioncpu,proxy$sid,user$guid, instance#,process#,xid,scn,auditid,  sqlbind,sqltext,obj$edition,dbid)  values(:1,:2,:3,SYS_EXTRACT_UTC(SYSTIMESTAMP),     :4,:5,:6,:7,:8,     :9,:10,:11,:12,     :13,:14,:15,:16,:17,     :18,:19,:20,:21,:22,     :23,:24,:25,:26,:27,     :28,:29,:30,:31,:32,     :33,:34,:35,:36)', '1', '14533', '0', '0', '0.28125', '4417']
+2020-07-26 17:21:58,826 DEBUG: [app.py:154] : ['SYS', '4vs91dcv7u1p6', '2020-07-26:17:21:58', 'insert into sys.aud$( sessionid,entryid,statement,ntimestamp#, userid,userhost,terminal,action#,returncode, obj$creator,obj$name,auth$privileges,auth$grantee, new$owner,new$name,ses$actions,ses$tid,logoff$pread, logoff$lwrite,logoff$dead,comment$text,spare1,spare2,  priv$used,clientid,sessioncpu,proxy$sid,user$guid, instance#,process#,xid,scn,auditid,  sqlbind,sqltext,obj$edition,dbid)  values(:1,:2,:3,SYS_EXTRACT_UTC(SYSTIMESTAMP),     :4,:5,:6,:7,:8,     :9,:10,:11,:12,     :13,:14,:15,:16,:17,     :18,:19,:20,:21,:22,     :23,:24,:25,:26,:27,     :28,:29,:30,:31,:32,     :33,:34,:35,:36)', '1', '14533', '0', '0', '0.28125', '4417']
+2020-07-26 17:21:58,826 DEBUG: [app.py:154] : ['SYS', '0ws7ahf1d78qa', '2020-07-26:17:21:58', "select SYS_CONTEXT('USERENV', 'SERVER_HOST'), SYS_CONTEXT('USERENV', 'DB_UNIQUE_NAME'), SYS_CONTEXT('USERENV', 'INSTANCE_NAME'), SYS_CONTEXT('USERENV', 'SERVICE_NAME'), INSTANCE_NUMBER, STARTUP_TIME, SYS_CONTEXT('USERENV', 'DB_DOMAIN') from v$instance where INSTANCE_NAME=SYS_CONTEXT('USERENV', 'INSTANCE_NAME')", '0', '0', '4416', '0', '0.296875', '4416']
+2020-07-26 17:21:58,826 DEBUG: [app.py:154] : ['SYS', '5ur69atw3vfhj', '2020-07-26:17:21:58', "select decode(failover_method, NULL, 0 , 'BASIC', 1, 'PRECONNECT', 2 , 'PREPARSE', 4 , 0), decode(failover_type, NULL, 1 , 'NONE', 1 , 'SESSION', 2, 'SELECT',  4, 1), failover_retries, failover_delay, flags from service$ where name = :1", '0', '13278', '4415', '0', '0.078125', '4415']
+2020-07-26 17:21:58,926 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:21:58] "POST /query_execution/queries-resource-usage HTTP/1.1" 201 -
+2020-07-26 17:22:08,594 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:22:08] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:22:08,899 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:22:08] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:22:08,900 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:22:08] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-07-26 17:22:08,908 DEBUG: [app.py:257] : Query parameters for long-running-query: 
+2020-07-26 17:22:08,908 DEBUG: [app.py:258] : Parameter names        : ['sql_id']
+2020-07-26 17:22:08,908 DEBUG: [app.py:259] : Parameter values       : ['7kngmdwtb1dsh']
+2020-07-26 17:22:08,938 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:22:08,938 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:22:08,938 DEBUG: [app.py:111] : 
+SELECT
+  sid
+, serial#
+, opname
+, target
+, target_desc
+, sofar
+, totalwork
+, units
+, start_time
+, last_update_time
+, timestamp
+, time_remaining
+, elapsed_seconds
+, context
+, message
+, username
+, sql_address
+, sql_hash_value
+, sql_id
+, sql_plan_hash_value
+, sql_exec_start
+, sql_exec_id
+, sql_plan_line_id
+, sql_plan_operation
+, sql_plan_options
+, qcsid
+FROM
+    V$SESSION_LONGOPS
+WHERE
+    sql_id = :sqlid
+
+2020-07-26 17:22:08,938 DEBUG: [app.py:112] : Query Parameters: ['7kngmdwtb1dsh']
+2020-07-26 17:22:08,941 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:22:08,941 DEBUG: [app.py:154] : ['SID', 'SERIAL#', 'OPNAME', 'TARGET', 'TARGET_DESC', 'SOFAR', 'TOTALWORK', 'UNITS', 'START_TIME', 'LAST_UPDATE_TIME', 'TIMESTAMP', 'TIME_REMAINING', 'ELAPSED_SECONDS', 'CONTEXT', 'MESSAGE', 'USERNAME', 'SQL_ADDRESS', 'SQL_HASH_VALUE', 'SQL_ID', 'SQL_PLAN_HASH_VALUE', 'SQL_EXEC_START', 'SQL_EXEC_ID', 'SQL_PLAN_LINE_ID', 'SQL_PLAN_OPERATION', 'SQL_PLAN_OPTIONS', 'QCSID']
+2020-07-26 17:22:08,941 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:22:08] "POST /query_execution/long-running-query?sql_id=7kngmdwtb1dsh HTTP/1.1" 201 -
+2020-07-26 17:22:09,212 DEBUG: [app.py:257] : Query parameters for query-resource-usage: 
+2020-07-26 17:22:09,212 DEBUG: [app.py:258] : Parameter names        : ['sql_id']
+2020-07-26 17:22:09,213 DEBUG: [app.py:257] : Query parameters for sql_text: 
+2020-07-26 17:22:09,213 DEBUG: [app.py:259] : Parameter values       : ['7kngmdwtb1dsh']
+2020-07-26 17:22:09,213 DEBUG: [app.py:258] : Parameter names        : ['sql_id']
+2020-07-26 17:22:09,214 DEBUG: [app.py:259] : Parameter values       : ['7kngmdwtb1dsh']
+2020-07-26 17:22:09,237 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:22:09,237 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:22:09,237 DEBUG: [app.py:111] : 
+SELECT sql_fulltext
+FROM   gv$sql
+WHERE  sql_id = :sql_id
+
+2020-07-26 17:22:09,237 DEBUG: [app.py:112] : Query Parameters: ['7kngmdwtb1dsh']
+2020-07-26 17:22:09,238 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-07-26 17:22:09,238 DEBUG: [app.py:110] : Query to be executed
+2020-07-26 17:22:09,238 DEBUG: [app.py:111] : 
+SELECT * 
+FROM (SELECT sql_id, 
+             to_char(sql_exec_start,'yyyy-mm-dd:hh24:mi:ss') sql_exec_start,
+             sql_exec_id, 
+             sum(buffer_gets) buffer_gets,
+             sum(disk_reads) disk_reads, 
+             round(sum(cpu_time/1000000),1) cpu_secs
+      FROM v$sql_monitor
+      WHERE sql_id = :sql_id
+      GROUP BY sql_id, sql_exec_start, sql_exec_id
+      ORDER BY 2 desc)
+WHERE rownum <= 50
+
+2020-07-26 17:22:09,238 DEBUG: [app.py:112] : Query Parameters: ['7kngmdwtb1dsh']
+2020-07-26 17:22:09,239 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:22:09,239 DEBUG: [app.py:154] : ['SQL_FULLTEXT']
+2020-07-26 17:22:09,239 DEBUG: [app.py:154] : ["\nSELECT s.parsing_schema_name schema,\n       t.sql_id,\n       to_char(t.last_active_time,'yyyy-mm-dd:hh24:mi:ss') last_active_time,\n       t.sql_text,\n       t.disk_reads,\n       t.buffer_gets,\n       t.fetches,\n       t.sorts,\n       t.cpu_time/1000000 cpu,\n       t.rows_processed\nFROM V$SQLSTATS t,\n     V$SQL s\nWHERE t.sql_id = s.sql_id\nORDER BY t.last_active_time DESC\n"]
+2020-07-26 17:22:09,239 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:22:09] "POST /query_execution/sql_text?sql_id=7kngmdwtb1dsh HTTP/1.1" 201 -
+2020-07-26 17:22:09,245 DEBUG: [app.py:153] : Sample Result
+2020-07-26 17:22:09,246 DEBUG: [app.py:154] : ['SQL_ID', 'SQL_EXEC_START', 'SQL_EXEC_ID', 'BUFFER_GETS', 'DISK_READS', 'CPU_SECS']
+2020-07-26 17:22:09,246 INFO: [_internal.py:122] : 127.0.0.1 - - [26/Jul/2020 17:22:09] "POST /query_execution/query-resource-usage?sql_id=7kngmdwtb1dsh HTTP/1.1" 201 -
+2020-07-26 17:24:37,915 INFO: [_internal.py:122] :  * Detected change in 'C:\\Users\\ravis\\Desktop\\Stato\\oracle_queries.py', reloading
+2020-07-26 17:24:37,965 INFO: [_internal.py:122] :  * Restarting with stat
+2020-07-26 17:24:38,466 WARNING: [_internal.py:122] :  * Debugger is active!
+2020-07-26 17:24:38,471 INFO: [_internal.py:122] :  * Debugger PIN: 296-999-343
+2020-07-26 17:24:38,483 INFO: [_internal.py:122] :  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-07-26 17:24:58,918 INFO: [_internal.py:122] :  * Detected change in 'C:\\Users\\ravis\\Desktop\\Stato\\oracle_queries.py', reloading
+2020-07-26 17:24:58,942 INFO: [_internal.py:122] :  * Restarting with stat
+2020-07-26 17:24:59,435 WARNING: [_internal.py:122] :  * Debugger is active!
+2020-07-26 17:24:59,440 INFO: [_internal.py:122] :  * Debugger PIN: 296-999-343
+2020-07-26 17:24:59,447 INFO: [_internal.py:122] :  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-07-26 17:25:41,953 INFO: [_internal.py:122] :  * Detected change in 'C:\\Users\\ravis\\Desktop\\Stato\\oracle_queries.py', reloading
+2020-07-26 17:25:41,984 INFO: [_internal.py:122] :  * Restarting with stat
+2020-07-26 17:25:42,435 WARNING: [_internal.py:122] :  * Debugger is active!
+2020-07-26 17:25:42,440 INFO: [_internal.py:122] :  * Debugger PIN: 296-999-343
+2020-07-26 17:25:42,447 INFO: [_internal.py:122] :  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-07-26 17:25:55,797 INFO: [_internal.py:122] :  * Detected change in 'C:\\Users\\ravis\\Desktop\\Stato\\oracle_queries.py', reloading
+2020-07-26 17:25:55,823 INFO: [_internal.py:122] :  * Restarting with stat
+2020-07-26 17:25:56,260 WARNING: [_internal.py:122] :  * Debugger is active!
+2020-07-26 17:25:56,266 INFO: [_internal.py:122] :  * Debugger PIN: 296-999-343
+2020-07-26 17:25:56,276 INFO: [_internal.py:122] :  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-07-26 17:26:42,349 INFO: [_internal.py:122] :  * Detected change in 'C:\\Users\\ravis\\Desktop\\Stato\\oracle_queries.py', reloading
+2020-07-26 17:26:42,375 INFO: [_internal.py:122] :  * Restarting with stat
+2020-07-26 17:26:42,858 WARNING: [_internal.py:122] :  * Debugger is active!
+2020-07-26 17:26:42,864 INFO: [_internal.py:122] :  * Debugger PIN: 296-999-343
+2020-07-26 17:26:42,872 INFO: [_internal.py:122] :  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-07-26 17:27:17,670 INFO: [_internal.py:122] :  * Detected change in 'C:\\Users\\ravis\\Desktop\\Stato\\oracle_queries.py', reloading
+2020-07-26 17:27:17,698 INFO: [_internal.py:122] :  * Restarting with stat
+2020-07-26 17:27:18,177 WARNING: [_internal.py:122] :  * Debugger is active!
+2020-07-26 17:27:18,184 INFO: [_internal.py:122] :  * Debugger PIN: 296-999-343
+2020-07-26 17:27:18,193 INFO: [_internal.py:122] :  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-07-26 17:28:00,075 INFO: [_internal.py:122] :  * Detected change in 'C:\\Users\\ravis\\Desktop\\Stato\\oracle_queries.py', reloading
+2020-07-26 17:28:00,105 INFO: [_internal.py:122] :  * Restarting with stat
+2020-07-26 17:28:00,573 WARNING: [_internal.py:122] :  * Debugger is active!
+2020-07-26 17:28:00,579 INFO: [_internal.py:122] :  * Debugger PIN: 296-999-343
+2020-07-26 17:28:00,589 INFO: [_internal.py:122] :  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-07-26 17:28:09,808 INFO: [_internal.py:122] :  * Detected change in 'C:\\Users\\ravis\\Desktop\\Stato\\oracle_queries.py', reloading
+2020-07-26 17:28:09,834 INFO: [_internal.py:122] :  * Restarting with stat
+2020-07-26 17:28:10,280 WARNING: [_internal.py:122] :  * Debugger is active!
+2020-07-26 17:28:10,286 INFO: [_internal.py:122] :  * Debugger PIN: 296-999-343
+2020-07-26 17:28:10,297 INFO: [_internal.py:122] :  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-07-26 17:28:46,090 INFO: [_internal.py:122] :  * Detected change in 'C:\\Users\\ravis\\Desktop\\Stato\\oracle_queries.py', reloading
+2020-07-26 17:28:46,113 INFO: [_internal.py:122] :  * Restarting with stat
+2020-07-26 17:28:46,543 WARNING: [_internal.py:122] :  * Debugger is active!
+2020-07-26 17:28:46,550 INFO: [_internal.py:122] :  * Debugger PIN: 296-999-343
+2020-07-26 17:28:46,559 INFO: [_internal.py:122] :  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-07-26 17:29:16,204 INFO: [_internal.py:122] :  * Detected change in 'C:\\Users\\ravis\\Desktop\\Stato\\oracle_queries.py', reloading
+2020-07-26 17:29:16,233 INFO: [_internal.py:122] :  * Restarting with stat
+2020-07-26 17:29:16,691 WARNING: [_internal.py:122] :  * Debugger is active!
+2020-07-26 17:29:16,696 INFO: [_internal.py:122] :  * Debugger PIN: 296-999-343
+2020-07-26 17:29:16,707 INFO: [_internal.py:122] :  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-07-26 17:30:18,049 INFO: [_internal.py:122] :  * Detected change in 'C:\\Users\\ravis\\Desktop\\Stato\\oracle_queries.py', reloading
+2020-07-26 17:30:18,079 INFO: [_internal.py:122] :  * Restarting with stat
+2020-07-26 17:30:18,510 WARNING: [_internal.py:122] :  * Debugger is active!
+2020-07-26 17:30:18,516 INFO: [_internal.py:122] :  * Debugger PIN: 296-999-343
+2020-07-26 17:30:18,526 INFO: [_internal.py:122] :  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-07-26 17:30:31,848 INFO: [_internal.py:122] :  * Detected change in 'C:\\Users\\ravis\\Desktop\\Stato\\oracle_queries.py', reloading
+2020-07-26 17:30:31,871 INFO: [_internal.py:122] :  * Restarting with stat
+2020-07-26 17:30:32,332 WARNING: [_internal.py:122] :  * Debugger is active!
+2020-07-26 17:30:32,338 INFO: [_internal.py:122] :  * Debugger PIN: 296-999-343
+2020-07-26 17:30:32,348 INFO: [_internal.py:122] :  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
