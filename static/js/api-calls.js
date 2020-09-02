@@ -22,6 +22,16 @@ function refreshCatalogTables() {
     invokeRemoteEndpoint(payload, createCatalogTable, {});
 }
 
+function refreshSchemaTables() {
+    let schema_name = document.getElementById('schema-name').value;
+
+    let payload = {
+        'end-point': queryExecutionLink + '/data-dictionary-views',
+    };
+
+    invokeRemoteEndpoint(payload, createCatalogTable, {});
+}
+
 /**
  * Calls related to a SQLID
  */

@@ -156,4 +156,11 @@ FROM
 WHERE
     a.snap_id = b.snap_id
 AND a.instance_number = b.instance_number
-AND a.sql_id = '7kngmdwtb1dsh';
+AND a.sql_id = '7kngmdwtb1dsh'
+ORDER BY begin_interval_time DESC;
+
+CREATE TABLE TEMP (col1 NUMBER(30));
+COMMIT;
+
+SELECT COUNT(*)
+FROM   temp a, temp b;

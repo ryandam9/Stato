@@ -1,9 +1,10 @@
 DEBUG = True
 
 # Set up Credentials for Oracle
+CONNECTION_STRING = "admin/password@localhost:1522/testdb"
 DATABASE_ENGINE = 'oracle'
-USERNAME = 'admin'
-PASSWORD = 'password'
-DB = 'testdb'
-ENDPOINT = 'localhost'
-PORT = '1522'
+USERNAME = ''
+PASSWORD = ''
+DB = ''
+ENDPOINT = ''
+PORT = ''

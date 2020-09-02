@@ -16,7 +16,7 @@
             background-color: #F1F7F0;
         }
 
-        #home-tab, #storage-tab, #in-progress-queries-tab, #waits-tab, #catalog-tab, #others-tab, #query-execution-tab {
+        #home-tab, #storage-tab, #in-progress-queries-tab, #waits-tab, #catalog-tab, #others-tab, #query-execution-tab, #table-data-tab {
             cursor: pointer;
         }
 
@@ -144,6 +144,11 @@
                 <a class="nav-link" id="query-execution-tab">
                     <i class="fas fa-adjust mr-1"></i>
                     Query Execution</a>
+            </li>
+            <li class="nav-item font-weight-bold">
+                <a class="nav-link" id="table-data-tab">
+                    <i class="fas fa-adjust mr-1"></i>
+                    Table Data</a>
             </li>
             <li class="nav-item font-weight-bold">
                 <a class="nav-link" id="others-tab">
@@ -498,6 +503,44 @@
 
                             <div class="card-body scroll">
                                 <div id="catalog-tables-data-section">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fetch Table Data -->
+            <div id="table-data-page" class="tool-page">
+                <div class="row">
+                    <div class="col-3">
+                        <div class="card">
+                            <div class="card-header icons">
+                                <input type="text" class="form-control mr-2" id="schema-name"
+                                       placeholder="Schema"
+                                       autocomplete="off">
+
+                                <button class="btn btn-primary" id="schema-refresh-btn">
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+
+                            <div id="tables-sidebar" class="card-body scroll">
+                                <div id="tables-section" class="my-2"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-9">
+                        <div class="card">
+                            <div class="card-header icons">
+                                <div class="alert alert-primary font-weight-bold" role="alert"
+                                     id="db-table-name"></div>
+                                <div class="alert" role="alert" id="db-table-message"></div>
+                                <span id="db-table-spinner"></span>
+                            </div>
+
+                            <div class="card-body scroll">
+                                <div id="db-table-data-section">
                                 </div>
                             </div>
                         </div>

@@ -76,14 +76,14 @@ class DBConnection:
         endpoint = app.config['ENDPOINT']
         db = app.config['DB']
         port = app.config['PORT']
-
-        # if DBConnection.db_connection is not None:
-        #     return DBConnection.db_connection
+        connection_string = app.config['CONNECTION_STRING']
 
         try:
-            dsn = cx_Oracle.makedsn(host=endpoint, port=port, service_name=db)
-            DBConnection.db_connection = cx_Oracle.connect(username, password, dsn, encoding="UTF-8")
-
+            if len(connection_string.strip()) > 0:
+                DBConnection.db_connection = cx_Oracle.connect(username, password, dsn=connection_string)
+            else:
+                dsn = cx_Oracle.makedsn(host=endpoint, port=port, service_name=db)
+                DBConnection.db_connection = cx_Oracle.connect(username, password, dsn, encoding="UTF-8")
         except Exception as err:
             print(err)
             app.logger.error('Unable to get a DB connection to {}'.format(endpoint))

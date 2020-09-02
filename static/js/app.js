@@ -34,6 +34,7 @@ function initialize() {
     document.getElementById('catalog-page').style.display = 'none';
     document.getElementById('others-page').style.display = 'none';
     document.getElementById('query-execution-page').style.display = 'none';
+    document.getElementById('table-data-page').style.display = 'none';
 
     // When any tab is clicked, Hide all other pages.
     // Only show the clicked tab page.
@@ -44,9 +45,13 @@ function initialize() {
     document.getElementById('catalog-tab').addEventListener('click', tabHandler);
     document.getElementById('others-tab').addEventListener('click', tabHandler);
     document.getElementById('query-execution-tab').addEventListener('click', tabHandler);
+    document.getElementById('table-data-tab').addEventListener('click', tabHandler);
 
     document.getElementById('catalog-refresh-btn').addEventListener('click', refreshCatalogTables);
     document.getElementById('sqlid-monitor-btn').addEventListener('click', monitorSQLId);
+
+    // Schema Refresh action
+    document.getElementById('schema-refresh-btn').addEventListener('click', refreshSchemaTables);
 
     // Expand all entries
     document.getElementById('sqlid-show-all').addEventListener('click', (e) => {
