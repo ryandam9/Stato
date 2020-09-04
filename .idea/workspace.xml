@@ -4,12 +4,12 @@
     <list default="true" id="171f38cf-7aac-4e59-8577-df3f170775f2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/admin.sql" beforeDir="false" afterPath="$PROJECT_DIR$/config/admin.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/web-application-log.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/web-application-log.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oracle_queries.py" beforeDir="false" afterPath="$PROJECT_DIR$/oracle_queries.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/js/api-calls.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/api-calls.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp.txt" beforeDir="false" afterPath="$PROJECT_DIR$/temp.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/auto-refresh-setup.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/auto-refresh-setup.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -97,6 +97,7 @@
       <workItem from="1595733165387" duration="5392000" />
       <workItem from="1599051453993" duration="1375000" />
       <workItem from="1599052981908" duration="561000" />
+      <workItem from="1599254870009" duration="3442000" />
     </task>
     <servers />
   </component>
@@ -109,11 +110,11 @@
     </state>
     <state x="2445" y="183" key="SettingsEditor/0.0.1920.1080/1920.0.2048.1080@1920.0.2048.1080" timestamp="1595511933007" />
     <state x="492" y="183" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1595742713945" />
-    <state width="498" height="398" key="SwitcherDM" timestamp="1599053437242">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="532" height="398" key="SwitcherDM" timestamp="1599257150830">
+      <screen x="1920" y="0" width="2048" height="1080" />
     </state>
     <state width="498" height="398" key="SwitcherDM/0.0.1920.1080/1920.0.2048.1080@0.0.1920.1080" timestamp="1599053437242" />
-    <state width="532" height="398" key="SwitcherDM/0.0.1920.1080/1920.0.2048.1080@1920.0.2048.1080" timestamp="1595746870068" />
+    <state width="532" height="398" key="SwitcherDM/0.0.1920.1080/1920.0.2048.1080@1920.0.2048.1080" timestamp="1599257150830" />
     <state width="498" height="398" key="SwitcherDM/0.0.1920.1080@0.0.1920.1080" timestamp="1595742027633" />
     <state x="2536" y="274" key="Vcs.Push.Dialog.v2" timestamp="1595661029406">
       <screen x="1920" y="0" width="2048" height="1080" />

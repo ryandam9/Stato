@@ -411,25 +411,42 @@ ORDER BY
 
 # Sessions with High I/O Activity
 qry['sessions-with-high-IO'] = {
-    'heading': 'Sessions with High I/O Activity',
-    'caption': '',
-    'category': 'waits',
-    'query': """
-SELECT
-    osuser,
-    username,
-    process pid,
-    ses.sid,
-    serial#,
-    ses.sql_id,
-    physical_reads,
-    block_changes
-FROM 
-    v$session ses,
-    v$sess_io sio
-WHERE
-    ses.sid = sio.sid
-ORDER BY
-    username, ses.sid, ses.serial#, ses.sql_id DESC
-"""
-}
+     'heading': 'Sessions with High I/O Activity',
+     'caption': '',
+     'category': 'waits',
+     'query': """
+ SELECT
+     osuser,
+     username,
+     process pid,
+     ses.sid,
+     serial#,
+     ses.sql_id,
+     physical_reads,
+     block_changes
+ FROM
+     v$session ses,
+     v$sess_io sio
+ WHERE
+     ses.sid = sio.sid
+ ORDER BY
+     username, ses.sid, ses.serial#, ses.sql_id DESC
+ """
+ }
+
+# Get all tables names in a Schema
+qry['get-tables-in-a-schema'] = {
+     'heading': 'Get tables names in a Schema',
+     'caption': '',
+     'category': 'Tables',
+     'query': """
+ SELECT DISTINCT
+     at.TABLE_NAME
+ FROM
+     ALL_TABLES at
+ WHERE
+     at.OWNER = :schema_name
+ ORDER BY
+    at.TABLE_NAME
+ """
+ }

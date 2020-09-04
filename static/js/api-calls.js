@@ -25,11 +25,15 @@ function refreshCatalogTables() {
 function refreshSchemaTables() {
     let schema_name = document.getElementById('schema-name').value;
 
+    if (schema_name.trim().length === 0) {
+        return;
+    }
+
     let payload = {
-        'end-point': queryExecutionLink + '/data-dictionary-views',
+        'end-point': queryExecutionLink + '/get-tables-in-a-schema?schema_name=' + schema_name,
     };
 
-    invokeRemoteEndpoint(payload, createCatalogTable, {});
+    invokeRemoteEndpoint(payload, createSchemaTable, {});
 }
 
 /**
@@ -105,7 +109,7 @@ function fetchCatalogTable(e) {
         .forEach(node => node.remove());
 
     let payload = {
-        'end-point': catalogTableLink + '/' + tableName,
+        'end-point': fetchTableDataLink + '/' + tableName,
     };
 
     showSpinner('catalog-table-spinner');
@@ -113,3 +117,25 @@ function fetchCatalogTable(e) {
     invokeRemoteEndpoint(payload, refreshCatalogTableData, {});
 }
 
+/**
+ * Fetch Table Data
+ */
+function fetchSchemaTable(e) {
+    let tableName = e.target.innerText;
+    document.getElementById('schema-table-name').innerText = tableName;
+
+    let schema_name = document.getElementById('schema-name').value;
+
+    // Delete existing Data table.
+    document.getElementById('schema-tables-data-section')
+        .childNodes
+        .forEach(node => node.remove());
+
+    let payload = {
+        'end-point': fetchTableDataLink + '/' + schema_name + '.' + tableName,
+    };
+
+    showSpinner('schema-table-spinner');
+
+    invokeRemoteEndpoint(payload, refreshSchemaTableData, {});
+}

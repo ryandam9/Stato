@@ -3,7 +3,7 @@ let webServer = 'http://localhost:5000';
 let queryExecutionLink = webServer + '/query_execution';
 
 // To fetch Catalog table data
-let catalogTableLink = webServer + '/get-table';
+let fetchTableDataLink = webServer + '/get-table';
 
 // On Page loading, execute this
 window.addEventListener('DOMContentLoaded', setup);
@@ -18,7 +18,9 @@ let queryResourceUsageDataTable,
     queryProgressDataTable,
     queryTempSpaceUseDataTable,
     queryDBAHist1DataTable,
-    catalogTableDataTable;
+    catalogTableDataTable,
+    schemaTablesListDataTable,
+    schemaTableDataTable;
 
 function setup() {
     initialize();

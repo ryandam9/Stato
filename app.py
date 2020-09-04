@@ -85,8 +85,8 @@ class DBConnection:
                 dsn = cx_Oracle.makedsn(host=endpoint, port=port, service_name=db)
                 DBConnection.db_connection = cx_Oracle.connect(username, password, dsn, encoding="UTF-8")
         except Exception as err:
-            print(err)
-            app.logger.error('Unable to get a DB connection to {}'.format(endpoint))
+            app.logger.error('Unable to get a DB connection to {}'.format(connection_string))
+            app.logger.error(str(err))
             sys.exit(1)
 
         return DBConnection.db_connection

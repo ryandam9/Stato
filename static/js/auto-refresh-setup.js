@@ -112,6 +112,62 @@ function createCatalogTable(data) {
 }
 
 /**
+ * Retrieve all tables in a Schema
+ * @param data
+ */
+function createSchemaTable(data) {
+    let cols = data.data.columns;
+    let records = data.data.records;
+
+    let tableId = 'schema-tables-table';
+    let parentId = 'schema-tables-section';
+
+    if (schemaTablesListDataTable === undefined || schemaTablesListDataTable === null) {
+        let table = createTable(cols, [], tableId);
+        document.getElementById(parentId).appendChild(table);
+
+        schemaTablesListDataTable = $(`#${tableId}`).DataTable({
+            responsive: true,
+            pageLength: 25,
+            pagingType: "simple",
+            columnDefs: [
+                {width: "500px", targets: [0]},
+            ],
+            "dom": "<'row'<'col-sm-12 col-md-4'l><'col-sm-12 col-md-8'f>>" +
+                "<'row'<'col-sm-12'tr>>" +
+                "<'row'<'col-sm-12 col-md-12'i>>" +
+                "<'row'<'col-sm-12 col-md-12'p>>",
+        });
+    } else {
+        // Data table is already defined. Remove existing Data.
+        schemaTablesListDataTable.clear().draw();
+    }
+
+    let htmlRows = [];
+
+    // Create Table Data rows
+    records.forEach(record => {
+        let tr = document.createElement('tr');
+
+        record.forEach(cell => {
+            let td = document.createElement('td');
+
+            let anchor = document.createElement('a');
+            anchor.innerText = cell;
+            anchor.style.cursor = 'pointer';
+
+            anchor.addEventListener('click', fetchSchemaTable);
+            td.appendChild(anchor);
+
+            tr.appendChild(td);
+        });
+        htmlRows.push(tr);
+    });
+
+    schemaTablesListDataTable.rows.add(htmlRows).draw(false);
+}
+
+/**
  * Refresh Catalog table Data.
  * @param result
  */
@@ -129,6 +185,26 @@ function refreshCatalogTableData(result) {
     }
 
     removeSpinner('catalog-table-spinner');
+}
+
+/**
+ * Refresh Schema table Data.
+ * @param result
+ */
+function refreshSchemaTableData(result) {
+    let tableId = 'schema-tables-data-html-table';
+    let parentId = 'schema-tables-data-section';
+
+    checkReturnStatus(result, 'schema-table-message');
+
+    if (result.status === 'success') {
+        // Structure of each catalog table is different. So, every time, a new Data table should
+        // be created.
+        schemaTableDataTable = null;
+        schemaTableDataTable = makeDataTable(schemaTableDataTable, result, tableId, parentId);
+    }
+
+    removeSpinner('schema-table-spinner');
 }
 
 /**
