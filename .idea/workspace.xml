@@ -3,13 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="171f38cf-7aac-4e59-8577-df3f170775f2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/web-application-log.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/web-application-log.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oracle_queries.py" beforeDir="false" afterPath="$PROJECT_DIR$/oracle_queries.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/api-calls.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/api-calls.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/auto-refresh-setup.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/auto-refresh-setup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -97,7 +92,8 @@
       <workItem from="1595733165387" duration="5392000" />
       <workItem from="1599051453993" duration="1375000" />
       <workItem from="1599052981908" duration="561000" />
-      <workItem from="1599254870009" duration="3442000" />
+      <workItem from="1599254870009" duration="4266000" />
+      <workItem from="1600944258814" duration="262000" />
     </task>
     <servers />
   </component>

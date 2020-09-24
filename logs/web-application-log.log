@@ -1012,3 +1012,1953 @@ ORDER BY t.last_active_time DESC
 2020-09-05 08:17:05,781 DEBUG: [app.py:154] : ['3', 'Asia']
 2020-09-05 08:17:05,782 DEBUG: [app.py:154] : ['4', 'Middle East and Africa']
 2020-09-05 08:17:05,782 INFO: [_internal.py:122] : 127.0.0.1 - - [05/Sep/2020 08:17:05] "POST /get-table/HR.REGIONS HTTP/1.1" 201 -
+2020-09-15 09:18:36,377 INFO: [_internal.py:122] :  * Restarting with stat
+2020-09-15 09:18:36,753 WARNING: [_internal.py:122] :  * Debugger is active!
+2020-09-15 09:18:36,758 INFO: [_internal.py:122] :  * Debugger PIN: 224-116-682
+2020-09-15 09:18:36,766 INFO: [_internal.py:122] :  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-09-15 09:18:43,979 INFO: [_internal.py:122] : 127.0.0.1 - - [15/Sep/2020 09:18:43] "GET / HTTP/1.1" 200 -
+2020-09-15 09:18:44,018 INFO: [_internal.py:122] : 127.0.0.1 - - [15/Sep/2020 09:18:44] "GET /static/js/app.js HTTP/1.1" 200 -
+2020-09-15 09:18:44,217 INFO: [_internal.py:122] : 127.0.0.1 - - [15/Sep/2020 09:18:44] "GET /static/js/api-calls.js HTTP/1.1" 200 -
+2020-09-15 09:18:44,323 INFO: [_internal.py:122] : 127.0.0.1 - - [15/Sep/2020 09:18:44] "GET /static/js/common.js HTTP/1.1" 200 -
+2020-09-15 09:18:44,334 INFO: [_internal.py:122] : 127.0.0.1 - - [15/Sep/2020 09:18:44] "GET /static/js/auto-refresh-setup.js HTTP/1.1" 200 -
+2020-09-15 09:18:45,125 INFO: [_internal.py:122] : 127.0.0.1 - - [15/Sep/2020 09:18:45] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-15 09:18:45,372 DEBUG: [app.py:257] : Query parameters for long-running-queries: 
+2020-09-15 09:18:45,372 DEBUG: [app.py:258] : Parameter names        : []
+2020-09-15 09:18:45,372 DEBUG: [app.py:259] : Parameter values       : []
+2020-09-15 09:18:45,606 DEBUG: [app.py:257] : Query parameters for queries-resource-usage: 
+2020-09-15 09:18:45,607 DEBUG: [app.py:258] : Parameter names        : []
+2020-09-15 09:18:45,607 DEBUG: [app.py:259] : Parameter values       : []
+2020-09-15 09:18:45,678 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-15 09:18:45,678 DEBUG: [app.py:110] : Query to be executed
+2020-09-15 09:18:45,678 DEBUG: [app.py:111] : 
+SELECT
+  sid
+, serial#
+, opname
+, target
+, target_desc
+, sofar
+, totalwork
+, units
+, start_time
+, last_update_time
+, timestamp
+, time_remaining
+, elapsed_seconds
+, context
+, message
+, username
+, sql_address
+, sql_hash_value
+, sql_id
+, sql_plan_hash_value
+, sql_exec_start
+, sql_exec_id
+, sql_plan_line_id
+, sql_plan_operation
+, sql_plan_options
+, qcsid
+FROM
+    V$SESSION_LONGOPS
+WHERE
+    sofar <> totalwork
+
+2020-09-15 09:18:45,678 DEBUG: [app.py:112] : Query Parameters: None
+2020-09-15 09:18:45,684 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-15 09:18:45,684 DEBUG: [app.py:110] : Query to be executed
+2020-09-15 09:18:45,684 DEBUG: [app.py:111] : 
+SELECT s.parsing_schema_name schema,
+       t.sql_id,
+       to_char(t.last_active_time,'yyyy-mm-dd:hh24:mi:ss') last_active_time,
+       t.sql_text,
+       t.disk_reads,
+       t.buffer_gets,
+       t.fetches,
+       t.sorts,
+       t.cpu_time/1000000 cpu,
+       t.rows_processed
+FROM V$SQLSTATS t,
+     V$SQL s
+WHERE t.sql_id = s.sql_id
+ORDER BY t.last_active_time DESC
+
+2020-09-15 09:18:45,684 DEBUG: [app.py:112] : Query Parameters: None
+2020-09-15 09:18:45,696 DEBUG: [app.py:153] : Sample Result
+2020-09-15 09:18:45,696 DEBUG: [app.py:154] : ['SID', 'SERIAL#', 'OPNAME', 'TARGET', 'TARGET_DESC', 'SOFAR', 'TOTALWORK', 'UNITS', 'START_TIME', 'LAST_UPDATE_TIME', 'TIMESTAMP', 'TIME_REMAINING', 'ELAPSED_SECONDS', 'CONTEXT', 'MESSAGE', 'USERNAME', 'SQL_ADDRESS', 'SQL_HASH_VALUE', 'SQL_ID', 'SQL_PLAN_HASH_VALUE', 'SQL_EXEC_START', 'SQL_EXEC_ID', 'SQL_PLAN_LINE_ID', 'SQL_PLAN_OPERATION', 'SQL_PLAN_OPTIONS', 'QCSID']
+2020-09-15 09:18:45,696 INFO: [_internal.py:122] : 127.0.0.1 - - [15/Sep/2020 09:18:45] "POST /query_execution/long-running-queries HTTP/1.1" 201 -
+2020-09-15 09:18:45,739 INFO: [_internal.py:122] : 127.0.0.1 - - [15/Sep/2020 09:18:45] "GET /favicon.ico HTTP/1.1" 404 -
+2020-09-15 09:18:45,936 DEBUG: [app.py:153] : Sample Result
+2020-09-15 09:18:45,936 DEBUG: [app.py:154] : ['SCHEMA', 'SQL_ID', 'LAST_ACTIVE_TIME', 'SQL_TEXT', 'DISK_READS', 'BUFFER_GETS', 'FETCHES', 'SORTS', 'CPU', 'ROWS_PROCESSED']
+2020-09-15 09:18:45,936 DEBUG: [app.py:154] : ['SYS', 'grwydz59pu6mc', '2020-09-15:09:18:45', 'select text from view$ where rowid=:1', '0', '1400', '693', '0', '0', '693']
+2020-09-15 09:18:45,936 DEBUG: [app.py:154] : ['SYS', '3nkd3g3ju5ph1', '2020-09-15:09:18:45', 'select obj#,type#,ctime,mtime,stime, status, dataobj#, flags, oid$, spare1, spare2 from obj$ where owner#=:1 and name=:2 and namespace=:3 and remoteowner is null and linkname is null and subname is null', '89', '11100', '2820', '0', '0.03125', '2530']
+2020-09-15 09:18:45,936 DEBUG: [app.py:154] : ['SYS', 'gx4mv66pvj3xz', '2020-09-15:09:18:45', 'select con#,type#,condlength,intcols,robj#,rcon#,match#,refact,nvl(enabled,0),rowid,cols,nvl(defer,0),mtime,nvl(spare1,0),spare2,spare3 from cdef$ where obj#=:1', '9', '12230', '6152', '0', '0.046875', '5032']
+2020-09-15 09:18:45,936 DEBUG: [app.py:154] : ['SYS', 'gx4mv66pvj3xz', '2020-09-15:09:18:45', 'select con#,type#,condlength,intcols,robj#,rcon#,match#,refact,nvl(enabled,0),rowid,cols,nvl(defer,0),mtime,nvl(spare1,0),spare2,spare3 from cdef$ where obj#=:1', '9', '12230', '6152', '0', '0.046875', '5032']
+2020-09-15 09:18:45,977 INFO: [_internal.py:122] : 127.0.0.1 - - [15/Sep/2020 09:18:45] "POST /query_execution/queries-resource-usage HTTP/1.1" 201 -
+2020-09-24 20:35:39,183 INFO: [_internal.py:122] :  * Restarting with stat
+2020-09-24 20:35:39,522 WARNING: [_internal.py:122] :  * Debugger is active!
+2020-09-24 20:35:39,528 INFO: [_internal.py:122] :  * Debugger PIN: 224-116-682
+2020-09-24 20:35:39,537 INFO: [_internal.py:122] :  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-09-24 20:35:48,094 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:35:48] "GET / HTTP/1.1" 200 -
+2020-09-24 20:35:48,139 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:35:48] "GET /static/js/app.js HTTP/1.1" 200 -
+2020-09-24 20:35:48,323 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:35:48] "GET /static/js/api-calls.js HTTP/1.1" 200 -
+2020-09-24 20:35:48,446 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:35:48] "GET /static/js/auto-refresh-setup.js HTTP/1.1" 200 -
+2020-09-24 20:35:48,447 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:35:48] "GET /static/js/common.js HTTP/1.1" 200 -
+2020-09-24 20:35:49,273 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:35:49] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-24 20:35:49,510 DEBUG: [app.py:257] : Query parameters for long-running-queries: 
+2020-09-24 20:35:49,510 DEBUG: [app.py:258] : Parameter names        : []
+2020-09-24 20:35:49,510 DEBUG: [app.py:259] : Parameter values       : []
+2020-09-24 20:35:49,606 DEBUG: [app.py:257] : Query parameters for queries-resource-usage: 
+2020-09-24 20:35:49,607 DEBUG: [app.py:258] : Parameter names        : []
+2020-09-24 20:35:49,607 DEBUG: [app.py:259] : Parameter values       : []
+2020-09-24 20:35:49,643 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:35:49,644 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:35:49,644 DEBUG: [app.py:111] : 
+SELECT s.parsing_schema_name schema,
+       t.sql_id,
+       to_char(t.last_active_time,'yyyy-mm-dd:hh24:mi:ss') last_active_time,
+       t.sql_text,
+       t.disk_reads,
+       t.buffer_gets,
+       t.fetches,
+       t.sorts,
+       t.cpu_time/1000000 cpu,
+       t.rows_processed
+FROM V$SQLSTATS t,
+     V$SQL s
+WHERE t.sql_id = s.sql_id
+ORDER BY t.last_active_time DESC
+
+2020-09-24 20:35:49,644 DEBUG: [app.py:112] : Query Parameters: None
+2020-09-24 20:35:49,678 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:35:49,678 DEBUG: [app.py:154] : ['SCHEMA', 'SQL_ID', 'LAST_ACTIVE_TIME', 'SQL_TEXT', 'DISK_READS', 'BUFFER_GETS', 'FETCHES', 'SORTS', 'CPU', 'ROWS_PROCESSED']
+2020-09-24 20:35:49,678 DEBUG: [app.py:154] : ['SYS', '35hatv0pj8hw7', '2020-09-24:20:35:48', 'select  decode(u.type#, 2, u.ext_username, u.name), o.name, trigger$.sys_evts, trigger$.type#  from obj$ o, user$ u, trigger$  where o.type# = 12 and bitand(trigger$.property,16) = 16   and trigger$.baseobject = :1 and trigger$.obj# = o.obj#   and o.owner# = u.user# order by o.obj#', '2', '8', '4', '4', '0', '0']
+2020-09-24 20:35:49,678 DEBUG: [app.py:154] : ['SYS', '96g93hntrzjtr', '2020-09-24:20:35:48', 'select /*+ rule */ bucket_cnt, row_cnt, cache_cnt, null_cnt, timestamp#, sample_size, minimum, maximum, distcnt, lowval, hival, density, col#, spare1, spare2, avgcln from hist_head$ where obj#=:1 and intcol#=:2', '147', '9851', '3601', '0', '0.03125', '2571']
+2020-09-24 20:35:49,678 DEBUG: [app.py:154] : ['SYS', '599kk70c4bmmk', '2020-09-24:20:35:48', 'select option#,NVL(success,0),NVL(failure,0) from audit$ where user#=:client and proxy# is null', '3', '90', '33', '0', '0', '28']
+2020-09-24 20:35:49,679 DEBUG: [app.py:154] : ['SYS', 'cm5vu20fhtnq1', '2020-09-24:20:35:48', 'select /*+ connect_by_filtering */ privilege#,level from sysauth$ connect by grantee#=prior privilege# and privilege#>0 start with grantee#=:1 and privilege#>0', '3', '52143', '33135', '0', '0', '16689']
+2020-09-24 20:35:49,686 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:35:49] "POST /query_execution/queries-resource-usage HTTP/1.1" 201 -
+2020-09-24 20:35:49,692 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:35:49,693 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:35:49,693 DEBUG: [app.py:111] : 
+SELECT
+  sid
+, serial#
+, opname
+, target
+, target_desc
+, sofar
+, totalwork
+, units
+, start_time
+, last_update_time
+, timestamp
+, time_remaining
+, elapsed_seconds
+, context
+, message
+, username
+, sql_address
+, sql_hash_value
+, sql_id
+, sql_plan_hash_value
+, sql_exec_start
+, sql_exec_id
+, sql_plan_line_id
+, sql_plan_operation
+, sql_plan_options
+, qcsid
+FROM
+    V$SESSION_LONGOPS
+WHERE
+    sofar <> totalwork
+
+2020-09-24 20:35:49,693 DEBUG: [app.py:112] : Query Parameters: None
+2020-09-24 20:35:49,700 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:35:49,700 DEBUG: [app.py:154] : ['SID', 'SERIAL#', 'OPNAME', 'TARGET', 'TARGET_DESC', 'SOFAR', 'TOTALWORK', 'UNITS', 'START_TIME', 'LAST_UPDATE_TIME', 'TIMESTAMP', 'TIME_REMAINING', 'ELAPSED_SECONDS', 'CONTEXT', 'MESSAGE', 'USERNAME', 'SQL_ADDRESS', 'SQL_HASH_VALUE', 'SQL_ID', 'SQL_PLAN_HASH_VALUE', 'SQL_EXEC_START', 'SQL_EXEC_ID', 'SQL_PLAN_LINE_ID', 'SQL_PLAN_OPERATION', 'SQL_PLAN_OPTIONS', 'QCSID']
+2020-09-24 20:35:49,701 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:35:49] "POST /query_execution/long-running-queries HTTP/1.1" 201 -
+2020-09-24 20:35:49,899 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:35:49] "GET /favicon.ico HTTP/1.1" 404 -
+2020-09-24 20:36:03,494 DEBUG: [app.py:257] : Query parameters for long-running-query: 
+2020-09-24 20:36:03,494 DEBUG: [app.py:258] : Parameter names        : ['sql_id']
+2020-09-24 20:36:03,494 DEBUG: [app.py:259] : Parameter values       : ['7kngmdwtb1dsh']
+2020-09-24 20:36:03,495 DEBUG: [app.py:257] : Query parameters for query-resource-usage: 
+2020-09-24 20:36:03,495 DEBUG: [app.py:258] : Parameter names        : ['sql_id']
+2020-09-24 20:36:03,496 DEBUG: [app.py:257] : Query parameters for sql_text: 
+2020-09-24 20:36:03,496 DEBUG: [app.py:259] : Parameter values       : ['7kngmdwtb1dsh']
+2020-09-24 20:36:03,496 DEBUG: [app.py:258] : Parameter names        : ['sql_id']
+2020-09-24 20:36:03,496 DEBUG: [app.py:257] : Query parameters for query-progress-against-plan: 
+2020-09-24 20:36:03,497 DEBUG: [app.py:259] : Parameter values       : ['7kngmdwtb1dsh']
+2020-09-24 20:36:03,497 DEBUG: [app.py:257] : Query parameters for temp-space-use-sqlid: 
+2020-09-24 20:36:03,497 DEBUG: [app.py:258] : Parameter names        : ['sql_id']
+2020-09-24 20:36:03,498 DEBUG: [app.py:257] : Query parameters for dba-hist-1: 
+2020-09-24 20:36:03,498 DEBUG: [app.py:258] : Parameter names        : ['sql_id']
+2020-09-24 20:36:03,499 DEBUG: [app.py:259] : Parameter values       : ['7kngmdwtb1dsh']
+2020-09-24 20:36:03,499 DEBUG: [app.py:258] : Parameter names        : ['sql_id']
+2020-09-24 20:36:03,499 DEBUG: [app.py:259] : Parameter values       : ['7kngmdwtb1dsh']
+2020-09-24 20:36:03,499 DEBUG: [app.py:259] : Parameter values       : ['7kngmdwtb1dsh']
+2020-09-24 20:36:03,514 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:36:03,514 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:36:03,514 DEBUG: [app.py:111] : 
+SELECT
+  sid
+, serial#
+, opname
+, target
+, target_desc
+, sofar
+, totalwork
+, units
+, start_time
+, last_update_time
+, timestamp
+, time_remaining
+, elapsed_seconds
+, context
+, message
+, username
+, sql_address
+, sql_hash_value
+, sql_id
+, sql_plan_hash_value
+, sql_exec_start
+, sql_exec_id
+, sql_plan_line_id
+, sql_plan_operation
+, sql_plan_options
+, qcsid
+FROM
+    V$SESSION_LONGOPS
+WHERE
+    sql_id = :sqlid
+
+2020-09-24 20:36:03,514 DEBUG: [app.py:112] : Query Parameters: ['7kngmdwtb1dsh']
+2020-09-24 20:36:03,515 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:36:03,515 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:36:03,515 DEBUG: [app.py:111] : 
+SELECT * 
+FROM (SELECT sql_id, 
+             to_char(sql_exec_start,'yyyy-mm-dd:hh24:mi:ss') sql_exec_start,
+             sql_exec_id, 
+             sum(buffer_gets) buffer_gets,
+             sum(disk_reads) disk_reads, 
+             round(sum(cpu_time/1000000),1) cpu_secs
+      FROM v$sql_monitor
+      WHERE sql_id = :sql_id
+      GROUP BY sql_id, sql_exec_start, sql_exec_id
+      ORDER BY 2 desc)
+WHERE rownum <= 50
+
+2020-09-24 20:36:03,515 DEBUG: [app.py:112] : Query Parameters: ['7kngmdwtb1dsh']
+2020-09-24 20:36:03,517 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:36:03,517 DEBUG: [app.py:154] : ['SID', 'SERIAL#', 'OPNAME', 'TARGET', 'TARGET_DESC', 'SOFAR', 'TOTALWORK', 'UNITS', 'START_TIME', 'LAST_UPDATE_TIME', 'TIMESTAMP', 'TIME_REMAINING', 'ELAPSED_SECONDS', 'CONTEXT', 'MESSAGE', 'USERNAME', 'SQL_ADDRESS', 'SQL_HASH_VALUE', 'SQL_ID', 'SQL_PLAN_HASH_VALUE', 'SQL_EXEC_START', 'SQL_EXEC_ID', 'SQL_PLAN_LINE_ID', 'SQL_PLAN_OPERATION', 'SQL_PLAN_OPTIONS', 'QCSID']
+2020-09-24 20:36:03,518 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:36:03] "POST /query_execution/long-running-query?sql_id=7kngmdwtb1dsh HTTP/1.1" 201 -
+2020-09-24 20:36:03,524 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:36:03,524 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:36:03,525 DEBUG: [app.py:111] : 
+SELECT sql_fulltext
+FROM   gv$sql
+WHERE  sql_id = :sql_id
+
+2020-09-24 20:36:03,525 DEBUG: [app.py:112] : Query Parameters: ['7kngmdwtb1dsh']
+2020-09-24 20:36:03,527 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:36:03,528 DEBUG: [app.py:154] : ['SQL_ID', 'SQL_EXEC_START', 'SQL_EXEC_ID', 'BUFFER_GETS', 'DISK_READS', 'CPU_SECS']
+2020-09-24 20:36:03,528 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:36:03] "POST /query_execution/query-resource-usage?sql_id=7kngmdwtb1dsh HTTP/1.1" 201 -
+2020-09-24 20:36:03,533 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:36:03,534 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:36:03,534 DEBUG: [app.py:111] : 
+SELECT sid, 
+       sql_id, 
+       status, 
+       plan_line_id,
+       plan_operation || ' ' || plan_options operation, 
+       (CASE
+           WHEN plan_object_owner IS NOT NULL AND plan_object_name IS NOT NULL THEN
+                plan_object_owner || '.' || plan_object_name || ' ~ ' || plan_object_type 
+           ELSE
+                ' '
+        END) AS plan_object,
+       output_rows
+FROM   V$SQL_PLAN_MONITOR
+WHERE  (sql_id, sql_exec_id, sid) = (SELECT sql_id, sql_exec_id, sid
+                                     FROM   V$SQL_MONITOR a
+                                     WHERE  sql_id = :sql_id
+                                       AND  sql_exec_id = (SELECT MAX(sql_exec_id) FROM V$SQL_MONITOR WHERE sql_id = a.sql_id)
+                                     )  
+ORDER BY 1,4
+
+2020-09-24 20:36:03,534 DEBUG: [app.py:112] : Query Parameters: ['7kngmdwtb1dsh']
+2020-09-24 20:36:03,534 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:36:03,535 DEBUG: [app.py:154] : ['SQL_FULLTEXT']
+2020-09-24 20:36:03,535 DEBUG: [app.py:154] : ["\nSELECT s.parsing_schema_name schema,\n       t.sql_id,\n       to_char(t.last_active_time,'yyyy-mm-dd:hh24:mi:ss') last_active_time,\n       t.sql_text,\n       t.disk_reads,\n       t.buffer_gets,\n       t.fetches,\n       t.sorts,\n       t.cpu_time/1000000 cpu,\n       t.rows_processed\nFROM V$SQLSTATS t,\n     V$SQL s\nWHERE t.sql_id = s.sql_id\nORDER BY t.last_active_time DESC\n"]
+2020-09-24 20:36:03,535 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:36:03] "POST /query_execution/sql_text?sql_id=7kngmdwtb1dsh HTTP/1.1" 201 -
+2020-09-24 20:36:03,544 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:36:03,544 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:36:03,544 DEBUG: [app.py:111] : 
+SELECT
+    a.sql_id,
+    to_char(begin_interval_time, 'yyyy-mm-dd:hh24:mi:ss') begin_interval_time,
+    b.error_count,
+    a.parsing_schema_name,
+    a.fetches_total,
+    a.fetches_delta,
+    a.executions_total,
+    a.executions_delta,
+    a.rows_processed_delta
+FROM
+    DBA_HIST_SQLSTAT a,
+    DBA_HIST_SNAPSHOT b
+WHERE
+    a.snap_id = b.snap_id
+AND a.instance_number = b.instance_number
+AND a.sql_id = :sql_id
+ORDER BY begin_interval_time DESC    
+
+2020-09-24 20:36:03,544 DEBUG: [app.py:112] : Query Parameters: ['7kngmdwtb1dsh']
+2020-09-24 20:36:03,545 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:36:03,545 DEBUG: [app.py:154] : ['SID', 'SQL_ID', 'STATUS', 'PLAN_LINE_ID', 'OPERATION', 'PLAN_OBJECT', 'OUTPUT_ROWS']
+2020-09-24 20:36:03,546 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:36:03] "POST /query_execution/query-progress-against-plan?sql_id=7kngmdwtb1dsh HTTP/1.1" 201 -
+2020-09-24 20:36:03,554 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:36:03,554 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:36:03,554 DEBUG: [app.py:111] : 
+SELECT 
+    t.*
+FROM
+    V$TEMPSEG_USAGE t
+WHERE
+    t.sql_id = :sql_id
+
+2020-09-24 20:36:03,554 DEBUG: [app.py:112] : Query Parameters: ['7kngmdwtb1dsh']
+2020-09-24 20:36:03,558 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:36:03,558 DEBUG: [app.py:154] : ['SQL_ID', 'BEGIN_INTERVAL_TIME', 'ERROR_COUNT', 'PARSING_SCHEMA_NAME', 'FETCHES_TOTAL', 'FETCHES_DELTA', 'EXECUTIONS_TOTAL', 'EXECUTIONS_DELTA', 'ROWS_PROCESSED_DELTA']
+2020-09-24 20:36:03,558 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:36:03] "POST /query_execution/dba-hist-1?sql_id=7kngmdwtb1dsh HTTP/1.1" 201 -
+2020-09-24 20:36:03,567 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:36:03,567 DEBUG: [app.py:154] : ['USERNAME', 'USER', 'SESSION_ADDR', 'SESSION_NUM', 'SQLADDR', 'SQLHASH', 'SQL_ID', 'TABLESPACE', 'CONTENTS', 'SEGTYPE', 'SEGFILE#', 'SEGBLK#', 'EXTENTS', 'BLOCKS', 'SEGRFNO#']
+2020-09-24 20:36:03,568 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:36:03] "POST /query_execution/temp-space-use-sqlid?sql_id=7kngmdwtb1dsh HTTP/1.1" 201 -
+2020-09-24 20:36:27,487 DEBUG: [app.py:257] : Query parameters for get-tables-in-a-schema: 
+2020-09-24 20:36:27,487 DEBUG: [app.py:258] : Parameter names        : ['schema_name']
+2020-09-24 20:36:27,487 DEBUG: [app.py:259] : Parameter values       : ['HR']
+2020-09-24 20:36:27,525 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:36:27,525 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:36:27,525 DEBUG: [app.py:111] : 
+ SELECT DISTINCT
+     at.TABLE_NAME
+ FROM
+     ALL_TABLES at
+ WHERE
+     at.OWNER = :schema_name
+ ORDER BY
+    at.TABLE_NAME
+ 
+2020-09-24 20:36:27,525 DEBUG: [app.py:112] : Query Parameters: ['HR']
+2020-09-24 20:36:27,586 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:36:27,586 DEBUG: [app.py:154] : ['TABLE_NAME']
+2020-09-24 20:36:27,586 DEBUG: [app.py:154] : ['COUNTRIES']
+2020-09-24 20:36:27,586 DEBUG: [app.py:154] : ['DEPARTMENTS']
+2020-09-24 20:36:27,586 DEBUG: [app.py:154] : ['EMPLOYEES']
+2020-09-24 20:36:27,587 DEBUG: [app.py:154] : ['JOBS']
+2020-09-24 20:36:27,587 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:36:27] "POST /query_execution/get-tables-in-a-schema?schema_name=HR HTTP/1.1" 201 -
+2020-09-24 20:36:28,508 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:36:28,508 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:36:28,508 DEBUG: [app.py:111] : SELECT * FROM HR.COUNTRIES WHERE ROWNUM < 25000
+2020-09-24 20:36:28,509 DEBUG: [app.py:112] : Query Parameters: []
+2020-09-24 20:36:28,514 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:36:28,514 DEBUG: [app.py:154] : ['COUNTRY_ID', 'COUNTRY_NAME', 'REGION_ID']
+2020-09-24 20:36:28,514 DEBUG: [app.py:154] : ['AR', 'Argentina', '2']
+2020-09-24 20:36:28,514 DEBUG: [app.py:154] : ['AU', 'Australia', '3']
+2020-09-24 20:36:28,516 DEBUG: [app.py:154] : ['BE', 'Belgium', '1']
+2020-09-24 20:36:28,516 DEBUG: [app.py:154] : ['BR', 'Brazil', '2']
+2020-09-24 20:36:28,516 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:36:28] "POST /get-table/HR.COUNTRIES HTTP/1.1" 201 -
+2020-09-24 20:36:30,861 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:36:30,861 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:36:30,862 DEBUG: [app.py:111] : SELECT * FROM HR.JOBS WHERE ROWNUM < 25000
+2020-09-24 20:36:30,862 DEBUG: [app.py:112] : Query Parameters: []
+2020-09-24 20:36:30,867 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:36:30,867 DEBUG: [app.py:154] : ['JOB_ID', 'JOB_TITLE', 'MIN_SALARY', 'MAX_SALARY']
+2020-09-24 20:36:30,867 DEBUG: [app.py:154] : ['AD_PRES', 'President', '20080', '40000']
+2020-09-24 20:36:30,867 DEBUG: [app.py:154] : ['AD_VP', 'Administration Vice President', '15000', '30000']
+2020-09-24 20:36:30,867 DEBUG: [app.py:154] : ['AD_ASST', 'Administration Assistant', '3000', '6000']
+2020-09-24 20:36:30,867 DEBUG: [app.py:154] : ['FI_MGR', 'Finance Manager', '8200', '16000']
+2020-09-24 20:36:30,868 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:36:30] "POST /get-table/HR.JOBS HTTP/1.1" 201 -
+2020-09-24 20:36:31,124 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:36:31,124 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:36:31,124 DEBUG: [app.py:111] : SELECT * FROM HR.LOCATIONS WHERE ROWNUM < 25000
+2020-09-24 20:36:31,124 DEBUG: [app.py:112] : Query Parameters: []
+2020-09-24 20:36:31,131 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:36:31,131 DEBUG: [app.py:154] : ['LOCATION_ID', 'STREET_ADDRESS', 'POSTAL_CODE', 'CITY', 'STATE_PROVINCE', 'COUNTRY_ID']
+2020-09-24 20:36:31,131 DEBUG: [app.py:154] : ['1000', '1297 Via Cola di Rie', '00989', 'Roma', '', 'IT']
+2020-09-24 20:36:31,131 DEBUG: [app.py:154] : ['1100', '93091 Calle della Testa', '10934', 'Venice', '', 'IT']
+2020-09-24 20:36:31,131 DEBUG: [app.py:154] : ['1200', '2017 Shinjuku-ku', '1689', 'Tokyo', 'Tokyo Prefecture', 'JP']
+2020-09-24 20:36:31,131 DEBUG: [app.py:154] : ['1300', '9450 Kamiya-cho', '6823', 'Hiroshima', '', 'JP']
+2020-09-24 20:36:31,131 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:36:31] "POST /get-table/HR.LOCATIONS HTTP/1.1" 201 -
+2020-09-24 20:36:34,515 DEBUG: [app.py:257] : Query parameters for data-dictionary-views: 
+2020-09-24 20:36:34,515 DEBUG: [app.py:258] : Parameter names        : []
+2020-09-24 20:36:34,515 DEBUG: [app.py:259] : Parameter values       : []
+2020-09-24 20:36:34,535 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:36:34,535 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:36:34,535 DEBUG: [app.py:111] : 
+SELECT 
+    view_name
+FROM 
+    dba_views a
+WHERE 
+    (view_name LIKE 'V$%'
+OR  view_name LIKE 'GV$%'
+OR  view_name LIKE 'ALL_%'
+OR  view_name LIKE 'DBA_%'  
+OR  view_name LIKE 'USER_%')
+AND EXISTS (SELECT 1 FROM DBA_OBJECTS b WHERE a.owner = b.owner AND a.view_name = b.object_name)
+ORDER BY 1
+
+2020-09-24 20:36:34,535 DEBUG: [app.py:112] : Query Parameters: None
+2020-09-24 20:36:34,685 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:36:34,685 DEBUG: [app.py:154] : ['VIEW_NAME']
+2020-09-24 20:36:34,686 DEBUG: [app.py:154] : ['ALL$AW_CUBE_AGG_LEVELS']
+2020-09-24 20:36:34,686 DEBUG: [app.py:154] : ['ALL$AW_CUBE_AGG_MEASURES']
+2020-09-24 20:36:34,686 DEBUG: [app.py:154] : ['ALL$AW_CUBE_AGG_PLANS']
+2020-09-24 20:36:34,686 DEBUG: [app.py:154] : ['ALL$AW_CUBE_ENABLED_HIERCOMBO']
+2020-09-24 20:36:34,690 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:36:34] "POST /query_execution/data-dictionary-views HTTP/1.1" 201 -
+2020-09-24 20:36:39,276 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:36:39,276 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:36:39,276 DEBUG: [app.py:111] : SELECT * FROM ALL_EDITIONING_VIEWS WHERE ROWNUM < 25000
+2020-09-24 20:36:39,276 DEBUG: [app.py:112] : Query Parameters: []
+2020-09-24 20:36:39,286 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:36:39,286 DEBUG: [app.py:154] : ['OWNER', 'VIEW_NAME', 'TABLE_NAME']
+2020-09-24 20:36:39,288 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:36:39] "POST /get-table/ALL_EDITIONING_VIEWS HTTP/1.1" 201 -
+2020-09-24 20:36:47,843 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:36:47,843 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:36:47,843 DEBUG: [app.py:111] : SELECT * FROM ALL_TABLES WHERE ROWNUM < 25000
+2020-09-24 20:36:47,843 DEBUG: [app.py:112] : Query Parameters: []
+2020-09-24 20:36:48,132 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:36:48,132 DEBUG: [app.py:154] : ['OWNER', 'TABLE_NAME', 'TABLESPACE_NAME', 'CLUSTER_NAME', 'IOT_NAME', 'STATUS', 'PCT_FREE', 'PCT_USED', 'INI_TRANS', 'MAX_TRANS', 'INITIAL_EXTENT', 'NEXT_EXTENT', 'MIN_EXTENTS', 'MAX_EXTENTS', 'PCT_INCREASE', 'FREELISTS', 'FREELIST_GROUPS', 'LOGGING', 'BACKED_UP', 'NUM_ROWS', 'BLOCKS', 'EMPTY_BLOCKS', 'AVG_SPACE', 'CHAIN_CNT', 'AVG_ROW_LEN', 'AVG_SPACE_FREELIST_BLOCKS', 'NUM_FREELIST_BLOCKS', 'DEGREE', 'INSTANCES', 'CACHE', 'TABLE_LOCK', 'SAMPLE_SIZE', 'LAST_ANALYZED', 'PARTITIONED', 'IOT_TYPE', 'TEMPORARY', 'SECONDARY', 'NESTED', 'BUFFER_POOL', 'FLASH_CACHE', 'CELL_FLASH_CACHE', 'ROW_MOVEMENT', 'GLOBAL_STATS', 'USER_STATS', 'DURATION', 'SKIP_CORRUPT', 'MONITORING', 'CLUSTER_OWNER', 'DEPENDENCIES', 'COMPRESSION', 'COMPRESS_FOR', 'DROPPED', 'READ_ONLY', 'SEGMENT_CREATED', 'RESULT_CACHE']
+2020-09-24 20:36:48,132 DEBUG: [app.py:154] : ['SYS', 'ICOL$', 'SYSTEM', 'C_OBJ#', '', 'VALID', '0', '0', '0', '0', '139264', '204800', '1', '2147483645', '', '1', '1', 'YES', 'N', '2791', '734', '0', '0', '0', '30', '0', '0', '         1', '         1', '    N', 'ENABLED', '2791', '2010-03-30 10:17:59', 'NO', '', 'N', 'N', 'NO', 'DEFAULT', 'DEFAULT', 'DEFAULT', 'DISABLED', 'YES', 'NO', '', 'DISABLED', 'YES', 'SYS', 'DISABLED', 'DISABLED', '', 'NO', 'NO', 'YES', 'DEFAULT']
+2020-09-24 20:36:48,132 DEBUG: [app.py:154] : ['SYS', 'CON$', 'SYSTEM', '', '', 'VALID', '10', '40', '1', '255', '65536', '1048576', '1', '2147483645', '', '1', '1', 'YES', 'N', '10940', '44', '0', '0', '0', '25', '0', '0', '         1', '         1', '    N', 'ENABLED', '10940', '2020-09-23 22:00:12', 'NO', '', 'N', 'N', 'NO', 'DEFAULT', 'DEFAULT', 'DEFAULT', 'DISABLED', 'YES', 'NO', '', 'DISABLED', 'YES', '', 'DISABLED', 'DISABLED', '', 'NO', 'NO', 'YES', 'DEFAULT']
+2020-09-24 20:36:48,133 DEBUG: [app.py:154] : ['SYS', 'UNDO$', 'SYSTEM', '', '', 'VALID', '10', '40', '1', '255', '65536', '1048576', '1', '2147483645', '', '1', '1', 'YES', 'N', '21', '1', '0', '0', '0', '60', '0', '0', '         1', '         1', '    N', 'ENABLED', '21', '2020-09-19 18:05:32', 'NO', '', 'N', 'N', 'NO', 'DEFAULT', 'DEFAULT', 'DEFAULT', 'DISABLED', 'YES', 'NO', '', 'DISABLED', 'YES', '', 'DISABLED', 'DISABLED', '', 'NO', 'NO', 'YES', 'DEFAULT']
+2020-09-24 20:36:48,133 DEBUG: [app.py:154] : ['SYS', 'PROXY_ROLE_DATA$', 'SYSTEM', '', '', 'VALID', '10', '40', '1', '255', '65536', '1048576', '1', '2147483645', '', '1', '1', 'YES', 'N', '0', '0', '0', '0', '0', '0', '0', '0', '         1', '         1', '    N', 'ENABLED', '0', '2010-03-30 10:18:28', 'NO', '', 'N', 'N', 'NO', 'DEFAULT', 'DEFAULT', 'DEFAULT', 'DISABLED', 'YES', 'NO', '', 'DISABLED', 'YES', '', 'DISABLED', 'DISABLED', '', 'NO', 'NO', 'YES', 'DEFAULT']
+2020-09-24 20:36:48,195 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:36:48] "POST /get-table/ALL_TABLES HTTP/1.1" 201 -
+2020-09-24 20:36:56,487 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:36:56,487 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:36:56,487 DEBUG: [app.py:111] : SELECT * FROM ALL_TABLES WHERE ROWNUM < 25000
+2020-09-24 20:36:56,487 DEBUG: [app.py:112] : Query Parameters: []
+2020-09-24 20:36:56,712 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:36:56,712 DEBUG: [app.py:154] : ['OWNER', 'TABLE_NAME', 'TABLESPACE_NAME', 'CLUSTER_NAME', 'IOT_NAME', 'STATUS', 'PCT_FREE', 'PCT_USED', 'INI_TRANS', 'MAX_TRANS', 'INITIAL_EXTENT', 'NEXT_EXTENT', 'MIN_EXTENTS', 'MAX_EXTENTS', 'PCT_INCREASE', 'FREELISTS', 'FREELIST_GROUPS', 'LOGGING', 'BACKED_UP', 'NUM_ROWS', 'BLOCKS', 'EMPTY_BLOCKS', 'AVG_SPACE', 'CHAIN_CNT', 'AVG_ROW_LEN', 'AVG_SPACE_FREELIST_BLOCKS', 'NUM_FREELIST_BLOCKS', 'DEGREE', 'INSTANCES', 'CACHE', 'TABLE_LOCK', 'SAMPLE_SIZE', 'LAST_ANALYZED', 'PARTITIONED', 'IOT_TYPE', 'TEMPORARY', 'SECONDARY', 'NESTED', 'BUFFER_POOL', 'FLASH_CACHE', 'CELL_FLASH_CACHE', 'ROW_MOVEMENT', 'GLOBAL_STATS', 'USER_STATS', 'DURATION', 'SKIP_CORRUPT', 'MONITORING', 'CLUSTER_OWNER', 'DEPENDENCIES', 'COMPRESSION', 'COMPRESS_FOR', 'DROPPED', 'READ_ONLY', 'SEGMENT_CREATED', 'RESULT_CACHE']
+2020-09-24 20:36:56,713 DEBUG: [app.py:154] : ['SYS', 'ICOL$', 'SYSTEM', 'C_OBJ#', '', 'VALID', '0', '0', '0', '0', '139264', '204800', '1', '2147483645', '', '1', '1', 'YES', 'N', '2791', '734', '0', '0', '0', '30', '0', '0', '         1', '         1', '    N', 'ENABLED', '2791', '2010-03-30 10:17:59', 'NO', '', 'N', 'N', 'NO', 'DEFAULT', 'DEFAULT', 'DEFAULT', 'DISABLED', 'YES', 'NO', '', 'DISABLED', 'YES', 'SYS', 'DISABLED', 'DISABLED', '', 'NO', 'NO', 'YES', 'DEFAULT']
+2020-09-24 20:36:56,713 DEBUG: [app.py:154] : ['SYS', 'CON$', 'SYSTEM', '', '', 'VALID', '10', '40', '1', '255', '65536', '1048576', '1', '2147483645', '', '1', '1', 'YES', 'N', '10940', '44', '0', '0', '0', '25', '0', '0', '         1', '         1', '    N', 'ENABLED', '10940', '2020-09-23 22:00:12', 'NO', '', 'N', 'N', 'NO', 'DEFAULT', 'DEFAULT', 'DEFAULT', 'DISABLED', 'YES', 'NO', '', 'DISABLED', 'YES', '', 'DISABLED', 'DISABLED', '', 'NO', 'NO', 'YES', 'DEFAULT']
+2020-09-24 20:36:56,713 DEBUG: [app.py:154] : ['SYS', 'UNDO$', 'SYSTEM', '', '', 'VALID', '10', '40', '1', '255', '65536', '1048576', '1', '2147483645', '', '1', '1', 'YES', 'N', '21', '1', '0', '0', '0', '60', '0', '0', '         1', '         1', '    N', 'ENABLED', '21', '2020-09-19 18:05:32', 'NO', '', 'N', 'N', 'NO', 'DEFAULT', 'DEFAULT', 'DEFAULT', 'DISABLED', 'YES', 'NO', '', 'DISABLED', 'YES', '', 'DISABLED', 'DISABLED', '', 'NO', 'NO', 'YES', 'DEFAULT']
+2020-09-24 20:36:56,713 DEBUG: [app.py:154] : ['SYS', 'PROXY_ROLE_DATA$', 'SYSTEM', '', '', 'VALID', '10', '40', '1', '255', '65536', '1048576', '1', '2147483645', '', '1', '1', 'YES', 'N', '0', '0', '0', '0', '0', '0', '0', '0', '         1', '         1', '    N', 'ENABLED', '0', '2010-03-30 10:18:28', 'NO', '', 'N', 'N', 'NO', 'DEFAULT', 'DEFAULT', 'DEFAULT', 'DISABLED', 'YES', 'NO', '', 'DISABLED', 'YES', '', 'DISABLED', 'DISABLED', '', 'NO', 'NO', 'YES', 'DEFAULT']
+2020-09-24 20:36:56,788 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:36:56] "POST /get-table/ALL_TABLES HTTP/1.1" 201 -
+2020-09-24 20:45:08,626 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:45:08] "GET / HTTP/1.1" 200 -
+2020-09-24 20:45:08,728 DEBUG: [app.py:257] : Query parameters for long-running-queries: 
+2020-09-24 20:45:08,728 DEBUG: [app.py:258] : Parameter names        : []
+2020-09-24 20:45:08,728 DEBUG: [app.py:259] : Parameter values       : []
+2020-09-24 20:45:08,747 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:45:08,747 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:45:08,747 DEBUG: [app.py:111] : 
+SELECT
+  sid
+, serial#
+, opname
+, target
+, target_desc
+, sofar
+, totalwork
+, units
+, start_time
+, last_update_time
+, timestamp
+, time_remaining
+, elapsed_seconds
+, context
+, message
+, username
+, sql_address
+, sql_hash_value
+, sql_id
+, sql_plan_hash_value
+, sql_exec_start
+, sql_exec_id
+, sql_plan_line_id
+, sql_plan_operation
+, sql_plan_options
+, qcsid
+FROM
+    V$SESSION_LONGOPS
+WHERE
+    sofar <> totalwork
+
+2020-09-24 20:45:08,747 DEBUG: [app.py:112] : Query Parameters: None
+2020-09-24 20:45:08,749 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:45:08,749 DEBUG: [app.py:154] : ['SID', 'SERIAL#', 'OPNAME', 'TARGET', 'TARGET_DESC', 'SOFAR', 'TOTALWORK', 'UNITS', 'START_TIME', 'LAST_UPDATE_TIME', 'TIMESTAMP', 'TIME_REMAINING', 'ELAPSED_SECONDS', 'CONTEXT', 'MESSAGE', 'USERNAME', 'SQL_ADDRESS', 'SQL_HASH_VALUE', 'SQL_ID', 'SQL_PLAN_HASH_VALUE', 'SQL_EXEC_START', 'SQL_EXEC_ID', 'SQL_PLAN_LINE_ID', 'SQL_PLAN_OPERATION', 'SQL_PLAN_OPTIONS', 'QCSID']
+2020-09-24 20:45:08,750 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:45:08] "POST /query_execution/long-running-queries HTTP/1.1" 201 -
+2020-09-24 20:45:08,878 DEBUG: [app.py:257] : Query parameters for queries-resource-usage: 
+2020-09-24 20:45:08,878 DEBUG: [app.py:258] : Parameter names        : []
+2020-09-24 20:45:08,879 DEBUG: [app.py:259] : Parameter values       : []
+2020-09-24 20:45:08,913 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:45:08,913 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:45:08,913 DEBUG: [app.py:111] : 
+SELECT s.parsing_schema_name schema,
+       t.sql_id,
+       to_char(t.last_active_time,'yyyy-mm-dd:hh24:mi:ss') last_active_time,
+       t.sql_text,
+       t.disk_reads,
+       t.buffer_gets,
+       t.fetches,
+       t.sorts,
+       t.cpu_time/1000000 cpu,
+       t.rows_processed
+FROM V$SQLSTATS t,
+     V$SQL s
+WHERE t.sql_id = s.sql_id
+ORDER BY t.last_active_time DESC
+
+2020-09-24 20:45:08,913 DEBUG: [app.py:112] : Query Parameters: None
+2020-09-24 20:45:08,935 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:45:08,935 DEBUG: [app.py:154] : ['SCHEMA', 'SQL_ID', 'LAST_ACTIVE_TIME', 'SQL_TEXT', 'DISK_READS', 'BUFFER_GETS', 'FETCHES', 'SORTS', 'CPU', 'ROWS_PROCESSED']
+2020-09-24 20:45:08,935 DEBUG: [app.py:154] : ['SYS', '0k8522rmdzg4k', '2020-09-24:20:45:08', 'select privilege# from sysauth$ where (grantee#=:1 or grantee#=1) and privilege#>0', '3', '28702', '20781', '0', '0', '18151']
+2020-09-24 20:45:08,935 DEBUG: [app.py:154] : ['SYS', '4vs91dcv7u1p6', '2020-09-24:20:45:08', 'insert into sys.aud$( sessionid,entryid,statement,ntimestamp#, userid,userhost,terminal,action#,returncode, obj$creator,obj$name,auth$privileges,auth$grantee, new$owner,new$name,ses$actions,ses$tid,logoff$pread, logoff$lwrite,logoff$dead,comment$text,spare1,spare2,  priv$used,clientid,sessioncpu,proxy$sid,user$guid, instance#,process#,xid,scn,auditid,  sqlbind,sqltext,obj$edition,dbid)  values(:1,:2,:3,SYS_EXTRACT_UTC(SYSTIMESTAMP),     :4,:5,:6,:7,:8,     :9,:10,:11,:12,     :13,:14,:15,:16,:17,     :18,:19,:20,:21,:22,     :23,:24,:25,:26,:27,     :28,:29,:30,:31,:32,     :33,:34,:35,:36)', '0', '7847', '0', '0', '0', '2421']
+2020-09-24 20:45:08,935 DEBUG: [app.py:154] : ['SYS', '0ws7ahf1d78qa', '2020-09-24:20:45:08', "select SYS_CONTEXT('USERENV', 'SERVER_HOST'), SYS_CONTEXT('USERENV', 'DB_UNIQUE_NAME'), SYS_CONTEXT('USERENV', 'INSTANCE_NAME'), SYS_CONTEXT('USERENV', 'SERVICE_NAME'), INSTANCE_NUMBER, STARTUP_TIME, SYS_CONTEXT('USERENV', 'DB_DOMAIN') from v$instance where INSTANCE_NAME=SYS_CONTEXT('USERENV', 'INSTANCE_NAME')", '0', '0', '18', '0', '0', '18']
+2020-09-24 20:45:08,935 DEBUG: [app.py:154] : ['SYS', '459f3z9u4fb3u', '2020-09-24:20:45:08', "select value$ from props$ where name = 'GLOBAL_DB_NAME'", '0', '76', '38', '0', '0', '19']
+2020-09-24 20:45:08,942 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:45:08] "POST /query_execution/queries-resource-usage HTTP/1.1" 201 -
+2020-09-24 20:45:13,103 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:45:13] "GET / HTTP/1.1" 200 -
+2020-09-24 20:45:13,127 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:45:13] "GET /static/js/app.js HTTP/1.1" 200 -
+2020-09-24 20:45:13,354 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:45:13] "GET /static/js/api-calls.js HTTP/1.1" 200 -
+2020-09-24 20:45:13,428 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:45:13] "GET /static/js/auto-refresh-setup.js HTTP/1.1" 200 -
+2020-09-24 20:45:13,428 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:45:13] "GET /static/js/common.js HTTP/1.1" 200 -
+2020-09-24 20:45:13,838 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:45:13] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-24 20:45:13,839 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:45:13] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-24 20:45:14,086 DEBUG: [app.py:257] : Query parameters for long-running-queries: 
+2020-09-24 20:45:14,087 DEBUG: [app.py:258] : Parameter names        : []
+2020-09-24 20:45:14,087 DEBUG: [app.py:259] : Parameter values       : []
+2020-09-24 20:45:14,118 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:45:14,118 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:45:14,118 DEBUG: [app.py:111] : 
+SELECT
+  sid
+, serial#
+, opname
+, target
+, target_desc
+, sofar
+, totalwork
+, units
+, start_time
+, last_update_time
+, timestamp
+, time_remaining
+, elapsed_seconds
+, context
+, message
+, username
+, sql_address
+, sql_hash_value
+, sql_id
+, sql_plan_hash_value
+, sql_exec_start
+, sql_exec_id
+, sql_plan_line_id
+, sql_plan_operation
+, sql_plan_options
+, qcsid
+FROM
+    V$SESSION_LONGOPS
+WHERE
+    sofar <> totalwork
+
+2020-09-24 20:45:14,118 DEBUG: [app.py:112] : Query Parameters: None
+2020-09-24 20:45:14,120 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:45:14,120 DEBUG: [app.py:154] : ['SID', 'SERIAL#', 'OPNAME', 'TARGET', 'TARGET_DESC', 'SOFAR', 'TOTALWORK', 'UNITS', 'START_TIME', 'LAST_UPDATE_TIME', 'TIMESTAMP', 'TIME_REMAINING', 'ELAPSED_SECONDS', 'CONTEXT', 'MESSAGE', 'USERNAME', 'SQL_ADDRESS', 'SQL_HASH_VALUE', 'SQL_ID', 'SQL_PLAN_HASH_VALUE', 'SQL_EXEC_START', 'SQL_EXEC_ID', 'SQL_PLAN_LINE_ID', 'SQL_PLAN_OPERATION', 'SQL_PLAN_OPTIONS', 'QCSID']
+2020-09-24 20:45:14,121 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:45:14] "POST /query_execution/long-running-queries HTTP/1.1" 201 -
+2020-09-24 20:45:14,150 DEBUG: [app.py:257] : Query parameters for queries-resource-usage: 
+2020-09-24 20:45:14,150 DEBUG: [app.py:258] : Parameter names        : []
+2020-09-24 20:45:14,150 DEBUG: [app.py:259] : Parameter values       : []
+2020-09-24 20:45:14,164 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:45:14,164 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:45:14,164 DEBUG: [app.py:111] : 
+SELECT s.parsing_schema_name schema,
+       t.sql_id,
+       to_char(t.last_active_time,'yyyy-mm-dd:hh24:mi:ss') last_active_time,
+       t.sql_text,
+       t.disk_reads,
+       t.buffer_gets,
+       t.fetches,
+       t.sorts,
+       t.cpu_time/1000000 cpu,
+       t.rows_processed
+FROM V$SQLSTATS t,
+     V$SQL s
+WHERE t.sql_id = s.sql_id
+ORDER BY t.last_active_time DESC
+
+2020-09-24 20:45:14,165 DEBUG: [app.py:112] : Query Parameters: None
+2020-09-24 20:45:14,187 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:45:14,187 DEBUG: [app.py:154] : ['SCHEMA', 'SQL_ID', 'LAST_ACTIVE_TIME', 'SQL_TEXT', 'DISK_READS', 'BUFFER_GETS', 'FETCHES', 'SORTS', 'CPU', 'ROWS_PROCESSED']
+2020-09-24 20:45:14,187 DEBUG: [app.py:154] : ['SYS', '4vs91dcv7u1p6', '2020-09-24:20:45:13', 'insert into sys.aud$( sessionid,entryid,statement,ntimestamp#, userid,userhost,terminal,action#,returncode, obj$creator,obj$name,auth$privileges,auth$grantee, new$owner,new$name,ses$actions,ses$tid,logoff$pread, logoff$lwrite,logoff$dead,comment$text,spare1,spare2,  priv$used,clientid,sessioncpu,proxy$sid,user$guid, instance#,process#,xid,scn,auditid,  sqlbind,sqltext,obj$edition,dbid)  values(:1,:2,:3,SYS_EXTRACT_UTC(SYSTIMESTAMP),     :4,:5,:6,:7,:8,     :9,:10,:11,:12,     :13,:14,:15,:16,:17,     :18,:19,:20,:21,:22,     :23,:24,:25,:26,:27,     :28,:29,:30,:31,:32,     :33,:34,:35,:36)', '0', '7853', '0', '0', '0', '2423']
+2020-09-24 20:45:14,187 DEBUG: [app.py:154] : ['SYS', 'cm5vu20fhtnq1', '2020-09-24:20:45:13', 'select /*+ connect_by_filtering */ privilege#,level from sysauth$ connect by grantee#=prior privilege# and privilege#>0 start with grantee#=:1 and privilege#>0', '3', '54893', '34865', '0', '0', '17548']
+2020-09-24 20:45:14,187 DEBUG: [app.py:154] : ['SYS', '0k8522rmdzg4k', '2020-09-24:20:45:13', 'select privilege# from sysauth$ where (grantee#=:1 or grantee#=1) and privilege#>0', '3', '28710', '20785', '0', '0', '18153']
+2020-09-24 20:45:14,187 DEBUG: [app.py:154] : ['SYS', '5ur69atw3vfhj', '2020-09-24:20:45:13', "select decode(failover_method, NULL, 0 , 'BASIC', 1, 'PRECONNECT', 2 , 'PREPARSE', 4 , 0), decode(failover_type, NULL, 1 , 'NONE', 1 , 'SESSION', 2, 'SELECT',  4, 1), failover_retries, failover_delay, flags from service$ where name = :1", '0', '78', '20', '0', '0', '20']
+2020-09-24 20:45:14,193 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:45:14] "POST /query_execution/queries-resource-usage HTTP/1.1" 201 -
+2020-09-24 20:45:14,451 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:45:14] "GET /favicon.ico HTTP/1.1" 404 -
+2020-09-24 20:45:16,744 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:45:16] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-24 20:45:16,997 DEBUG: [app.py:257] : Query parameters for data-dictionary-views: 
+2020-09-24 20:45:16,997 DEBUG: [app.py:258] : Parameter names        : []
+2020-09-24 20:45:16,998 DEBUG: [app.py:259] : Parameter values       : []
+2020-09-24 20:45:17,028 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:45:17,028 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:45:17,028 DEBUG: [app.py:111] : 
+SELECT 
+    view_name
+FROM 
+    dba_views a
+WHERE 
+    (view_name LIKE 'V$%'
+OR  view_name LIKE 'GV$%'
+OR  view_name LIKE 'ALL_%'
+OR  view_name LIKE 'DBA_%'  
+OR  view_name LIKE 'USER_%')
+AND EXISTS (SELECT 1 FROM DBA_OBJECTS b WHERE a.owner = b.owner AND a.view_name = b.object_name)
+ORDER BY 1
+
+2020-09-24 20:45:17,029 DEBUG: [app.py:112] : Query Parameters: None
+2020-09-24 20:45:17,105 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:45:17,106 DEBUG: [app.py:154] : ['VIEW_NAME']
+2020-09-24 20:45:17,106 DEBUG: [app.py:154] : ['ALL$AW_CUBE_AGG_LEVELS']
+2020-09-24 20:45:17,106 DEBUG: [app.py:154] : ['ALL$AW_CUBE_AGG_MEASURES']
+2020-09-24 20:45:17,106 DEBUG: [app.py:154] : ['ALL$AW_CUBE_AGG_PLANS']
+2020-09-24 20:45:17,106 DEBUG: [app.py:154] : ['ALL$AW_CUBE_ENABLED_HIERCOMBO']
+2020-09-24 20:45:17,110 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:45:17] "POST /query_execution/data-dictionary-views HTTP/1.1" 201 -
+2020-09-24 20:45:22,993 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:45:22] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-24 20:45:23,338 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:45:23,339 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:45:23,339 DEBUG: [app.py:111] : SELECT * FROM ALL_TABLES WHERE ROWNUM < 25000
+2020-09-24 20:45:23,339 DEBUG: [app.py:112] : Query Parameters: []
+2020-09-24 20:45:23,565 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:45:23,565 DEBUG: [app.py:154] : ['OWNER', 'TABLE_NAME', 'TABLESPACE_NAME', 'CLUSTER_NAME', 'IOT_NAME', 'STATUS', 'PCT_FREE', 'PCT_USED', 'INI_TRANS', 'MAX_TRANS', 'INITIAL_EXTENT', 'NEXT_EXTENT', 'MIN_EXTENTS', 'MAX_EXTENTS', 'PCT_INCREASE', 'FREELISTS', 'FREELIST_GROUPS', 'LOGGING', 'BACKED_UP', 'NUM_ROWS', 'BLOCKS', 'EMPTY_BLOCKS', 'AVG_SPACE', 'CHAIN_CNT', 'AVG_ROW_LEN', 'AVG_SPACE_FREELIST_BLOCKS', 'NUM_FREELIST_BLOCKS', 'DEGREE', 'INSTANCES', 'CACHE', 'TABLE_LOCK', 'SAMPLE_SIZE', 'LAST_ANALYZED', 'PARTITIONED', 'IOT_TYPE', 'TEMPORARY', 'SECONDARY', 'NESTED', 'BUFFER_POOL', 'FLASH_CACHE', 'CELL_FLASH_CACHE', 'ROW_MOVEMENT', 'GLOBAL_STATS', 'USER_STATS', 'DURATION', 'SKIP_CORRUPT', 'MONITORING', 'CLUSTER_OWNER', 'DEPENDENCIES', 'COMPRESSION', 'COMPRESS_FOR', 'DROPPED', 'READ_ONLY', 'SEGMENT_CREATED', 'RESULT_CACHE']
+2020-09-24 20:45:23,565 DEBUG: [app.py:154] : ['SYS', 'ICOL$', 'SYSTEM', 'C_OBJ#', '', 'VALID', '0', '0', '0', '0', '139264', '204800', '1', '2147483645', '', '1', '1', 'YES', 'N', '2791', '734', '0', '0', '0', '30', '0', '0', '         1', '         1', '    N', 'ENABLED', '2791', '2010-03-30 10:17:59', 'NO', '', 'N', 'N', 'NO', 'DEFAULT', 'DEFAULT', 'DEFAULT', 'DISABLED', 'YES', 'NO', '', 'DISABLED', 'YES', 'SYS', 'DISABLED', 'DISABLED', '', 'NO', 'NO', 'YES', 'DEFAULT']
+2020-09-24 20:45:23,566 DEBUG: [app.py:154] : ['SYS', 'CON$', 'SYSTEM', '', '', 'VALID', '10', '40', '1', '255', '65536', '1048576', '1', '2147483645', '', '1', '1', 'YES', 'N', '10940', '44', '0', '0', '0', '25', '0', '0', '         1', '         1', '    N', 'ENABLED', '10940', '2020-09-23 22:00:12', 'NO', '', 'N', 'N', 'NO', 'DEFAULT', 'DEFAULT', 'DEFAULT', 'DISABLED', 'YES', 'NO', '', 'DISABLED', 'YES', '', 'DISABLED', 'DISABLED', '', 'NO', 'NO', 'YES', 'DEFAULT']
+2020-09-24 20:45:23,566 DEBUG: [app.py:154] : ['SYS', 'UNDO$', 'SYSTEM', '', '', 'VALID', '10', '40', '1', '255', '65536', '1048576', '1', '2147483645', '', '1', '1', 'YES', 'N', '21', '1', '0', '0', '0', '60', '0', '0', '         1', '         1', '    N', 'ENABLED', '21', '2020-09-19 18:05:32', 'NO', '', 'N', 'N', 'NO', 'DEFAULT', 'DEFAULT', 'DEFAULT', 'DISABLED', 'YES', 'NO', '', 'DISABLED', 'YES', '', 'DISABLED', 'DISABLED', '', 'NO', 'NO', 'YES', 'DEFAULT']
+2020-09-24 20:45:23,566 DEBUG: [app.py:154] : ['SYS', 'PROXY_ROLE_DATA$', 'SYSTEM', '', '', 'VALID', '10', '40', '1', '255', '65536', '1048576', '1', '2147483645', '', '1', '1', 'YES', 'N', '0', '0', '0', '0', '0', '0', '0', '0', '         1', '         1', '    N', 'ENABLED', '0', '2010-03-30 10:18:28', 'NO', '', 'N', 'N', 'NO', 'DEFAULT', 'DEFAULT', 'DEFAULT', 'DISABLED', 'YES', 'NO', '', 'DISABLED', 'YES', '', 'DISABLED', 'DISABLED', '', 'NO', 'NO', 'YES', 'DEFAULT']
+2020-09-24 20:45:23,623 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:45:23] "POST /get-table/ALL_TABLES HTTP/1.1" 201 -
+2020-09-24 20:45:33,253 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:45:33] "GET / HTTP/1.1" 200 -
+2020-09-24 20:45:33,552 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:45:33] "GET /static/js/app.js HTTP/1.1" 200 -
+2020-09-24 20:45:33,582 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:45:33] "GET /static/js/api-calls.js HTTP/1.1" 200 -
+2020-09-24 20:45:33,582 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:45:33] "GET /static/js/auto-refresh-setup.js HTTP/1.1" 200 -
+2020-09-24 20:45:33,583 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:45:33] "GET /static/js/common.js HTTP/1.1" 200 -
+2020-09-24 20:45:33,901 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:45:33] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-24 20:45:33,901 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:45:33] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-24 20:45:34,014 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:45:34] "GET /favicon.ico HTTP/1.1" 404 -
+2020-09-24 20:45:34,147 DEBUG: [app.py:257] : Query parameters for queries-resource-usage: 
+2020-09-24 20:45:34,147 DEBUG: [app.py:258] : Parameter names        : []
+2020-09-24 20:45:34,147 DEBUG: [app.py:259] : Parameter values       : []
+2020-09-24 20:45:34,184 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:45:34,184 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:45:34,184 DEBUG: [app.py:111] : 
+SELECT s.parsing_schema_name schema,
+       t.sql_id,
+       to_char(t.last_active_time,'yyyy-mm-dd:hh24:mi:ss') last_active_time,
+       t.sql_text,
+       t.disk_reads,
+       t.buffer_gets,
+       t.fetches,
+       t.sorts,
+       t.cpu_time/1000000 cpu,
+       t.rows_processed
+FROM V$SQLSTATS t,
+     V$SQL s
+WHERE t.sql_id = s.sql_id
+ORDER BY t.last_active_time DESC
+
+2020-09-24 20:45:34,184 DEBUG: [app.py:112] : Query Parameters: None
+2020-09-24 20:45:34,205 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:45:34,205 DEBUG: [app.py:154] : ['SCHEMA', 'SQL_ID', 'LAST_ACTIVE_TIME', 'SQL_TEXT', 'DISK_READS', 'BUFFER_GETS', 'FETCHES', 'SORTS', 'CPU', 'ROWS_PROCESSED']
+2020-09-24 20:45:34,205 DEBUG: [app.py:154] : ['SYS', '459f3z9u4fb3u', '2020-09-24:20:45:34', "select value$ from props$ where name = 'GLOBAL_DB_NAME'", '0', '96', '48', '0', '0', '24']
+2020-09-24 20:45:34,205 DEBUG: [app.py:154] : ['SYS', '0ws7ahf1d78qa', '2020-09-24:20:45:34', "select SYS_CONTEXT('USERENV', 'SERVER_HOST'), SYS_CONTEXT('USERENV', 'DB_UNIQUE_NAME'), SYS_CONTEXT('USERENV', 'INSTANCE_NAME'), SYS_CONTEXT('USERENV', 'SERVICE_NAME'), INSTANCE_NUMBER, STARTUP_TIME, SYS_CONTEXT('USERENV', 'DB_DOMAIN') from v$instance where INSTANCE_NAME=SYS_CONTEXT('USERENV', 'INSTANCE_NAME')", '0', '0', '23', '0', '0', '23']
+2020-09-24 20:45:34,205 DEBUG: [app.py:154] : ['ADMIN', '7kngmdwtb1dsh', '2020-09-24:20:45:34', " SELECT s.parsing_schema_name schema,        t.sql_id,        to_char(t.last_active_time,'yyyy-mm-dd:hh24:mi:ss') last_active_time,        t.sql_text,        t.disk_reads,        t.buffer_gets,        t.fetches,        t.sorts,        t.cpu_time/1000000 cpu,        t.rows_processed FROM V$SQLSTATS t,      V$SQL s WHERE t.sql_id = s.sql_id ORDER BY t.last_active_time DESC ", '4', '192', '33', '4', '0.015625', '2946']
+2020-09-24 20:45:34,205 DEBUG: [app.py:154] : ['SYS', '5ur69atw3vfhj', '2020-09-24:20:45:34', "select decode(failover_method, NULL, 0 , 'BASIC', 1, 'PRECONNECT', 2 , 'PREPARSE', 4 , 0), decode(failover_type, NULL, 1 , 'NONE', 1 , 'SESSION', 2, 'SELECT',  4, 1), failover_retries, failover_delay, flags from service$ where name = :1", '0', '87', '23', '0', '0', '23']
+2020-09-24 20:45:34,212 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:45:34] "POST /query_execution/queries-resource-usage HTTP/1.1" 201 -
+2020-09-24 20:45:34,217 DEBUG: [app.py:257] : Query parameters for long-running-queries: 
+2020-09-24 20:45:34,217 DEBUG: [app.py:258] : Parameter names        : []
+2020-09-24 20:45:34,217 DEBUG: [app.py:259] : Parameter values       : []
+2020-09-24 20:45:34,230 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:45:34,230 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:45:34,230 DEBUG: [app.py:111] : 
+SELECT
+  sid
+, serial#
+, opname
+, target
+, target_desc
+, sofar
+, totalwork
+, units
+, start_time
+, last_update_time
+, timestamp
+, time_remaining
+, elapsed_seconds
+, context
+, message
+, username
+, sql_address
+, sql_hash_value
+, sql_id
+, sql_plan_hash_value
+, sql_exec_start
+, sql_exec_id
+, sql_plan_line_id
+, sql_plan_operation
+, sql_plan_options
+, qcsid
+FROM
+    V$SESSION_LONGOPS
+WHERE
+    sofar <> totalwork
+
+2020-09-24 20:45:34,230 DEBUG: [app.py:112] : Query Parameters: None
+2020-09-24 20:45:34,232 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:45:34,232 DEBUG: [app.py:154] : ['SID', 'SERIAL#', 'OPNAME', 'TARGET', 'TARGET_DESC', 'SOFAR', 'TOTALWORK', 'UNITS', 'START_TIME', 'LAST_UPDATE_TIME', 'TIMESTAMP', 'TIME_REMAINING', 'ELAPSED_SECONDS', 'CONTEXT', 'MESSAGE', 'USERNAME', 'SQL_ADDRESS', 'SQL_HASH_VALUE', 'SQL_ID', 'SQL_PLAN_HASH_VALUE', 'SQL_EXEC_START', 'SQL_EXEC_ID', 'SQL_PLAN_LINE_ID', 'SQL_PLAN_OPERATION', 'SQL_PLAN_OPTIONS', 'QCSID']
+2020-09-24 20:45:34,232 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:45:34] "POST /query_execution/long-running-queries HTTP/1.1" 201 -
+2020-09-24 20:45:36,612 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:45:36] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-24 20:45:36,925 DEBUG: [app.py:257] : Query parameters for data-dictionary-views: 
+2020-09-24 20:45:36,925 DEBUG: [app.py:258] : Parameter names        : []
+2020-09-24 20:45:36,925 DEBUG: [app.py:259] : Parameter values       : []
+2020-09-24 20:45:36,940 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:45:36,940 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:45:36,940 DEBUG: [app.py:111] : 
+SELECT 
+    view_name
+FROM 
+    dba_views a
+WHERE 
+    (view_name LIKE 'V$%'
+OR  view_name LIKE 'GV$%'
+OR  view_name LIKE 'ALL_%'
+OR  view_name LIKE 'DBA_%'  
+OR  view_name LIKE 'USER_%')
+AND EXISTS (SELECT 1 FROM DBA_OBJECTS b WHERE a.owner = b.owner AND a.view_name = b.object_name)
+ORDER BY 1
+
+2020-09-24 20:45:36,940 DEBUG: [app.py:112] : Query Parameters: None
+2020-09-24 20:45:37,018 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:45:37,019 DEBUG: [app.py:154] : ['VIEW_NAME']
+2020-09-24 20:45:37,019 DEBUG: [app.py:154] : ['ALL$AW_CUBE_AGG_LEVELS']
+2020-09-24 20:45:37,019 DEBUG: [app.py:154] : ['ALL$AW_CUBE_AGG_MEASURES']
+2020-09-24 20:45:37,019 DEBUG: [app.py:154] : ['ALL$AW_CUBE_AGG_PLANS']
+2020-09-24 20:45:37,019 DEBUG: [app.py:154] : ['ALL$AW_CUBE_ENABLED_HIERCOMBO']
+2020-09-24 20:45:37,023 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:45:37] "POST /query_execution/data-dictionary-views HTTP/1.1" 201 -
+2020-09-24 20:45:45,300 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:45:45] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-24 20:45:45,645 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:45:45,645 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:45:45,645 DEBUG: [app.py:111] : SELECT * FROM ALL_TABLES WHERE ROWNUM < 25000
+2020-09-24 20:45:45,645 DEBUG: [app.py:112] : Query Parameters: []
+2020-09-24 20:45:45,881 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:45:45,881 DEBUG: [app.py:154] : ['OWNER', 'TABLE_NAME', 'TABLESPACE_NAME', 'CLUSTER_NAME', 'IOT_NAME', 'STATUS', 'PCT_FREE', 'PCT_USED', 'INI_TRANS', 'MAX_TRANS', 'INITIAL_EXTENT', 'NEXT_EXTENT', 'MIN_EXTENTS', 'MAX_EXTENTS', 'PCT_INCREASE', 'FREELISTS', 'FREELIST_GROUPS', 'LOGGING', 'BACKED_UP', 'NUM_ROWS', 'BLOCKS', 'EMPTY_BLOCKS', 'AVG_SPACE', 'CHAIN_CNT', 'AVG_ROW_LEN', 'AVG_SPACE_FREELIST_BLOCKS', 'NUM_FREELIST_BLOCKS', 'DEGREE', 'INSTANCES', 'CACHE', 'TABLE_LOCK', 'SAMPLE_SIZE', 'LAST_ANALYZED', 'PARTITIONED', 'IOT_TYPE', 'TEMPORARY', 'SECONDARY', 'NESTED', 'BUFFER_POOL', 'FLASH_CACHE', 'CELL_FLASH_CACHE', 'ROW_MOVEMENT', 'GLOBAL_STATS', 'USER_STATS', 'DURATION', 'SKIP_CORRUPT', 'MONITORING', 'CLUSTER_OWNER', 'DEPENDENCIES', 'COMPRESSION', 'COMPRESS_FOR', 'DROPPED', 'READ_ONLY', 'SEGMENT_CREATED', 'RESULT_CACHE']
+2020-09-24 20:45:45,882 DEBUG: [app.py:154] : ['SYS', 'ICOL$', 'SYSTEM', 'C_OBJ#', '', 'VALID', '0', '0', '0', '0', '139264', '204800', '1', '2147483645', '', '1', '1', 'YES', 'N', '2791', '734', '0', '0', '0', '30', '0', '0', '         1', '         1', '    N', 'ENABLED', '2791', '2010-03-30 10:17:59', 'NO', '', 'N', 'N', 'NO', 'DEFAULT', 'DEFAULT', 'DEFAULT', 'DISABLED', 'YES', 'NO', '', 'DISABLED', 'YES', 'SYS', 'DISABLED', 'DISABLED', '', 'NO', 'NO', 'YES', 'DEFAULT']
+2020-09-24 20:45:45,882 DEBUG: [app.py:154] : ['SYS', 'CON$', 'SYSTEM', '', '', 'VALID', '10', '40', '1', '255', '65536', '1048576', '1', '2147483645', '', '1', '1', 'YES', 'N', '10940', '44', '0', '0', '0', '25', '0', '0', '         1', '         1', '    N', 'ENABLED', '10940', '2020-09-23 22:00:12', 'NO', '', 'N', 'N', 'NO', 'DEFAULT', 'DEFAULT', 'DEFAULT', 'DISABLED', 'YES', 'NO', '', 'DISABLED', 'YES', '', 'DISABLED', 'DISABLED', '', 'NO', 'NO', 'YES', 'DEFAULT']
+2020-09-24 20:45:45,882 DEBUG: [app.py:154] : ['SYS', 'UNDO$', 'SYSTEM', '', '', 'VALID', '10', '40', '1', '255', '65536', '1048576', '1', '2147483645', '', '1', '1', 'YES', 'N', '21', '1', '0', '0', '0', '60', '0', '0', '         1', '         1', '    N', 'ENABLED', '21', '2020-09-19 18:05:32', 'NO', '', 'N', 'N', 'NO', 'DEFAULT', 'DEFAULT', 'DEFAULT', 'DISABLED', 'YES', 'NO', '', 'DISABLED', 'YES', '', 'DISABLED', 'DISABLED', '', 'NO', 'NO', 'YES', 'DEFAULT']
+2020-09-24 20:45:45,882 DEBUG: [app.py:154] : ['SYS', 'PROXY_ROLE_DATA$', 'SYSTEM', '', '', 'VALID', '10', '40', '1', '255', '65536', '1048576', '1', '2147483645', '', '1', '1', 'YES', 'N', '0', '0', '0', '0', '0', '0', '0', '0', '         1', '         1', '    N', 'ENABLED', '0', '2010-03-30 10:18:28', 'NO', '', 'N', 'N', 'NO', 'DEFAULT', 'DEFAULT', 'DEFAULT', 'DISABLED', 'YES', 'NO', '', 'DISABLED', 'YES', '', 'DISABLED', 'DISABLED', '', 'NO', 'NO', 'YES', 'DEFAULT']
+2020-09-24 20:45:45,936 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:45:45] "POST /get-table/ALL_TABLES HTTP/1.1" 201 -
+2020-09-24 20:46:26,733 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:46:26] "GET / HTTP/1.1" 200 -
+2020-09-24 20:46:27,016 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:46:27] "GET /static/js/app.js HTTP/1.1" 200 -
+2020-09-24 20:46:27,064 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:46:27] "GET /static/js/auto-refresh-setup.js HTTP/1.1" 200 -
+2020-09-24 20:46:27,064 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:46:27] "GET /static/js/common.js HTTP/1.1" 200 -
+2020-09-24 20:46:27,065 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:46:27] "GET /static/js/api-calls.js HTTP/1.1" 200 -
+2020-09-24 20:46:27,391 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:46:27] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-24 20:46:27,391 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:46:27] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-24 20:46:27,639 DEBUG: [app.py:257] : Query parameters for long-running-queries: 
+2020-09-24 20:46:27,639 DEBUG: [app.py:258] : Parameter names        : []
+2020-09-24 20:46:27,639 DEBUG: [app.py:259] : Parameter values       : []
+2020-09-24 20:46:27,669 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:46:27,669 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:46:27,669 DEBUG: [app.py:111] : 
+SELECT
+  sid
+, serial#
+, opname
+, target
+, target_desc
+, sofar
+, totalwork
+, units
+, start_time
+, last_update_time
+, timestamp
+, time_remaining
+, elapsed_seconds
+, context
+, message
+, username
+, sql_address
+, sql_hash_value
+, sql_id
+, sql_plan_hash_value
+, sql_exec_start
+, sql_exec_id
+, sql_plan_line_id
+, sql_plan_operation
+, sql_plan_options
+, qcsid
+FROM
+    V$SESSION_LONGOPS
+WHERE
+    sofar <> totalwork
+
+2020-09-24 20:46:27,669 DEBUG: [app.py:112] : Query Parameters: None
+2020-09-24 20:46:27,671 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:46:27,671 DEBUG: [app.py:154] : ['SID', 'SERIAL#', 'OPNAME', 'TARGET', 'TARGET_DESC', 'SOFAR', 'TOTALWORK', 'UNITS', 'START_TIME', 'LAST_UPDATE_TIME', 'TIMESTAMP', 'TIME_REMAINING', 'ELAPSED_SECONDS', 'CONTEXT', 'MESSAGE', 'USERNAME', 'SQL_ADDRESS', 'SQL_HASH_VALUE', 'SQL_ID', 'SQL_PLAN_HASH_VALUE', 'SQL_EXEC_START', 'SQL_EXEC_ID', 'SQL_PLAN_LINE_ID', 'SQL_PLAN_OPERATION', 'SQL_PLAN_OPTIONS', 'QCSID']
+2020-09-24 20:46:27,671 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:46:27] "POST /query_execution/long-running-queries HTTP/1.1" 201 -
+2020-09-24 20:46:27,704 DEBUG: [app.py:257] : Query parameters for queries-resource-usage: 
+2020-09-24 20:46:27,704 DEBUG: [app.py:258] : Parameter names        : []
+2020-09-24 20:46:27,704 DEBUG: [app.py:259] : Parameter values       : []
+2020-09-24 20:46:27,729 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:46:27,729 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:46:27,729 DEBUG: [app.py:111] : 
+SELECT s.parsing_schema_name schema,
+       t.sql_id,
+       to_char(t.last_active_time,'yyyy-mm-dd:hh24:mi:ss') last_active_time,
+       t.sql_text,
+       t.disk_reads,
+       t.buffer_gets,
+       t.fetches,
+       t.sorts,
+       t.cpu_time/1000000 cpu,
+       t.rows_processed
+FROM V$SQLSTATS t,
+     V$SQL s
+WHERE t.sql_id = s.sql_id
+ORDER BY t.last_active_time DESC
+
+2020-09-24 20:46:27,729 DEBUG: [app.py:112] : Query Parameters: None
+2020-09-24 20:46:27,750 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:46:27,750 DEBUG: [app.py:154] : ['SCHEMA', 'SQL_ID', 'LAST_ACTIVE_TIME', 'SQL_TEXT', 'DISK_READS', 'BUFFER_GETS', 'FETCHES', 'SORTS', 'CPU', 'ROWS_PROCESSED']
+2020-09-24 20:46:27,750 DEBUG: [app.py:154] : ['SYS', 'cm5vu20fhtnq1', '2020-09-24:20:46:27', 'select /*+ connect_by_filtering */ privilege#,level from sysauth$ connect by grantee#=prior privilege# and privilege#>0 start with grantee#=:1 and privilege#>0', '3', '55232', '35070', '0', '0', '17645']
+2020-09-24 20:46:27,750 DEBUG: [app.py:154] : ['ADMIN', '7gtys6vx02ymj', '2020-09-24:20:46:27', ' SELECT   sid , serial# , opname , target , target_desc , sofar , totalwork , units , start_time , last_update_time , timestamp , time_remaining , elapsed_seconds , context , message , username , sql_address , sql_hash_value , sql_id , sql_plan_hash_value , sql_exec_start , sql_exec_id , sql_plan_line_id , sql_plan_operation , sql_plan_options , qcsid FROM     V$SESSION_LONGOPS WHERE     sofar <> totalwork ', '1', '124', '5', '0', '0', '0']
+2020-09-24 20:46:27,750 DEBUG: [app.py:154] : ['SYS', '4vs91dcv7u1p6', '2020-09-24:20:46:27', 'insert into sys.aud$( sessionid,entryid,statement,ntimestamp#, userid,userhost,terminal,action#,returncode, obj$creator,obj$name,auth$privileges,auth$grantee, new$owner,new$name,ses$actions,ses$tid,logoff$pread, logoff$lwrite,logoff$dead,comment$text,spare1,spare2,  priv$used,clientid,sessioncpu,proxy$sid,user$guid, instance#,process#,xid,scn,auditid,  sqlbind,sqltext,obj$edition,dbid)  values(:1,:2,:3,SYS_EXTRACT_UTC(SYSTIMESTAMP),     :4,:5,:6,:7,:8,     :9,:10,:11,:12,     :13,:14,:15,:16,:17,     :18,:19,:20,:21,:22,     :23,:24,:25,:26,:27,     :28,:29,:30,:31,:32,     :33,:34,:35,:36)', '0', '7932', '0', '0', '0', '2448']
+2020-09-24 20:46:27,750 DEBUG: [app.py:154] : ['SYS', '0ws7ahf1d78qa', '2020-09-24:20:46:27', "select SYS_CONTEXT('USERENV', 'SERVER_HOST'), SYS_CONTEXT('USERENV', 'DB_UNIQUE_NAME'), SYS_CONTEXT('USERENV', 'INSTANCE_NAME'), SYS_CONTEXT('USERENV', 'SERVICE_NAME'), INSTANCE_NUMBER, STARTUP_TIME, SYS_CONTEXT('USERENV', 'DB_DOMAIN') from v$instance where INSTANCE_NAME=SYS_CONTEXT('USERENV', 'INSTANCE_NAME')", '0', '0', '28', '0', '0', '28']
+2020-09-24 20:46:27,757 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:46:27] "POST /query_execution/queries-resource-usage HTTP/1.1" 201 -
+2020-09-24 20:46:29,816 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:46:29] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-24 20:46:30,128 DEBUG: [app.py:257] : Query parameters for data-dictionary-views: 
+2020-09-24 20:46:30,128 DEBUG: [app.py:258] : Parameter names        : []
+2020-09-24 20:46:30,129 DEBUG: [app.py:259] : Parameter values       : []
+2020-09-24 20:46:30,166 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:46:30,166 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:46:30,166 DEBUG: [app.py:111] : 
+SELECT 
+    view_name
+FROM 
+    dba_views a
+WHERE 
+    (view_name LIKE 'V$%'
+OR  view_name LIKE 'GV$%'
+OR  view_name LIKE 'ALL_%'
+OR  view_name LIKE 'DBA_%'  
+OR  view_name LIKE 'USER_%')
+AND EXISTS (SELECT 1 FROM DBA_OBJECTS b WHERE a.owner = b.owner AND a.view_name = b.object_name)
+ORDER BY 1
+
+2020-09-24 20:46:30,166 DEBUG: [app.py:112] : Query Parameters: None
+2020-09-24 20:46:30,258 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:46:30,258 DEBUG: [app.py:154] : ['VIEW_NAME']
+2020-09-24 20:46:30,258 DEBUG: [app.py:154] : ['ALL$AW_CUBE_AGG_LEVELS']
+2020-09-24 20:46:30,258 DEBUG: [app.py:154] : ['ALL$AW_CUBE_AGG_MEASURES']
+2020-09-24 20:46:30,258 DEBUG: [app.py:154] : ['ALL$AW_CUBE_AGG_PLANS']
+2020-09-24 20:46:30,258 DEBUG: [app.py:154] : ['ALL$AW_CUBE_ENABLED_HIERCOMBO']
+2020-09-24 20:46:30,262 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:46:30] "POST /query_execution/data-dictionary-views HTTP/1.1" 201 -
+2020-09-24 20:46:33,976 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:46:33] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-24 20:46:34,325 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:46:34,325 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:46:34,325 DEBUG: [app.py:111] : SELECT * FROM ALL_TABLES WHERE ROWNUM < 25000
+2020-09-24 20:46:34,325 DEBUG: [app.py:112] : Query Parameters: []
+2020-09-24 20:46:34,540 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:46:34,540 DEBUG: [app.py:154] : ['OWNER', 'TABLE_NAME', 'TABLESPACE_NAME', 'CLUSTER_NAME', 'IOT_NAME', 'STATUS', 'PCT_FREE', 'PCT_USED', 'INI_TRANS', 'MAX_TRANS', 'INITIAL_EXTENT', 'NEXT_EXTENT', 'MIN_EXTENTS', 'MAX_EXTENTS', 'PCT_INCREASE', 'FREELISTS', 'FREELIST_GROUPS', 'LOGGING', 'BACKED_UP', 'NUM_ROWS', 'BLOCKS', 'EMPTY_BLOCKS', 'AVG_SPACE', 'CHAIN_CNT', 'AVG_ROW_LEN', 'AVG_SPACE_FREELIST_BLOCKS', 'NUM_FREELIST_BLOCKS', 'DEGREE', 'INSTANCES', 'CACHE', 'TABLE_LOCK', 'SAMPLE_SIZE', 'LAST_ANALYZED', 'PARTITIONED', 'IOT_TYPE', 'TEMPORARY', 'SECONDARY', 'NESTED', 'BUFFER_POOL', 'FLASH_CACHE', 'CELL_FLASH_CACHE', 'ROW_MOVEMENT', 'GLOBAL_STATS', 'USER_STATS', 'DURATION', 'SKIP_CORRUPT', 'MONITORING', 'CLUSTER_OWNER', 'DEPENDENCIES', 'COMPRESSION', 'COMPRESS_FOR', 'DROPPED', 'READ_ONLY', 'SEGMENT_CREATED', 'RESULT_CACHE']
+2020-09-24 20:46:34,540 DEBUG: [app.py:154] : ['SYS', 'ICOL$', 'SYSTEM', 'C_OBJ#', '', 'VALID', '0', '0', '0', '0', '139264', '204800', '1', '2147483645', '', '1', '1', 'YES', 'N', '2791', '734', '0', '0', '0', '30', '0', '0', '         1', '         1', '    N', 'ENABLED', '2791', '2010-03-30 10:17:59', 'NO', '', 'N', 'N', 'NO', 'DEFAULT', 'DEFAULT', 'DEFAULT', 'DISABLED', 'YES', 'NO', '', 'DISABLED', 'YES', 'SYS', 'DISABLED', 'DISABLED', '', 'NO', 'NO', 'YES', 'DEFAULT']
+2020-09-24 20:46:34,540 DEBUG: [app.py:154] : ['SYS', 'CON$', 'SYSTEM', '', '', 'VALID', '10', '40', '1', '255', '65536', '1048576', '1', '2147483645', '', '1', '1', 'YES', 'N', '10940', '44', '0', '0', '0', '25', '0', '0', '         1', '         1', '    N', 'ENABLED', '10940', '2020-09-23 22:00:12', 'NO', '', 'N', 'N', 'NO', 'DEFAULT', 'DEFAULT', 'DEFAULT', 'DISABLED', 'YES', 'NO', '', 'DISABLED', 'YES', '', 'DISABLED', 'DISABLED', '', 'NO', 'NO', 'YES', 'DEFAULT']
+2020-09-24 20:46:34,540 DEBUG: [app.py:154] : ['SYS', 'UNDO$', 'SYSTEM', '', '', 'VALID', '10', '40', '1', '255', '65536', '1048576', '1', '2147483645', '', '1', '1', 'YES', 'N', '21', '1', '0', '0', '0', '60', '0', '0', '         1', '         1', '    N', 'ENABLED', '21', '2020-09-19 18:05:32', 'NO', '', 'N', 'N', 'NO', 'DEFAULT', 'DEFAULT', 'DEFAULT', 'DISABLED', 'YES', 'NO', '', 'DISABLED', 'YES', '', 'DISABLED', 'DISABLED', '', 'NO', 'NO', 'YES', 'DEFAULT']
+2020-09-24 20:46:34,540 DEBUG: [app.py:154] : ['SYS', 'PROXY_ROLE_DATA$', 'SYSTEM', '', '', 'VALID', '10', '40', '1', '255', '65536', '1048576', '1', '2147483645', '', '1', '1', 'YES', 'N', '0', '0', '0', '0', '0', '0', '0', '0', '         1', '         1', '    N', 'ENABLED', '0', '2010-03-30 10:18:28', 'NO', '', 'N', 'N', 'NO', 'DEFAULT', 'DEFAULT', 'DEFAULT', 'DISABLED', 'YES', 'NO', '', 'DISABLED', 'YES', '', 'DISABLED', 'DISABLED', '', 'NO', 'NO', 'YES', 'DEFAULT']
+2020-09-24 20:46:34,597 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:46:34] "POST /get-table/ALL_TABLES HTTP/1.1" 201 -
+2020-09-24 20:46:45,549 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:46:45] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-24 20:46:45,798 DEBUG: [app.py:257] : Query parameters for get-tables-in-a-schema: 
+2020-09-24 20:46:45,799 DEBUG: [app.py:258] : Parameter names        : ['schema_name']
+2020-09-24 20:46:45,799 DEBUG: [app.py:259] : Parameter values       : ['HR']
+2020-09-24 20:46:45,836 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:46:45,836 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:46:45,836 DEBUG: [app.py:111] : 
+ SELECT DISTINCT
+     at.TABLE_NAME
+ FROM
+     ALL_TABLES at
+ WHERE
+     at.OWNER = :schema_name
+ ORDER BY
+    at.TABLE_NAME
+ 
+2020-09-24 20:46:45,836 DEBUG: [app.py:112] : Query Parameters: ['HR']
+2020-09-24 20:46:45,857 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:46:45,857 DEBUG: [app.py:154] : ['TABLE_NAME']
+2020-09-24 20:46:45,857 DEBUG: [app.py:154] : ['COUNTRIES']
+2020-09-24 20:46:45,857 DEBUG: [app.py:154] : ['DEPARTMENTS']
+2020-09-24 20:46:45,857 DEBUG: [app.py:154] : ['EMPLOYEES']
+2020-09-24 20:46:45,857 DEBUG: [app.py:154] : ['JOBS']
+2020-09-24 20:46:45,857 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:46:45] "POST /query_execution/get-tables-in-a-schema?schema_name=HR HTTP/1.1" 201 -
+2020-09-24 20:46:46,565 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:46:46] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-24 20:46:46,914 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:46:46,914 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:46:46,914 DEBUG: [app.py:111] : SELECT * FROM HR.COUNTRIES WHERE ROWNUM < 25000
+2020-09-24 20:46:46,914 DEBUG: [app.py:112] : Query Parameters: []
+2020-09-24 20:46:46,916 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:46:46,916 DEBUG: [app.py:154] : ['COUNTRY_ID', 'COUNTRY_NAME', 'REGION_ID']
+2020-09-24 20:46:46,916 DEBUG: [app.py:154] : ['AR', 'Argentina', '2']
+2020-09-24 20:46:46,916 DEBUG: [app.py:154] : ['AU', 'Australia', '3']
+2020-09-24 20:46:46,916 DEBUG: [app.py:154] : ['BE', 'Belgium', '1']
+2020-09-24 20:46:46,916 DEBUG: [app.py:154] : ['BR', 'Brazil', '2']
+2020-09-24 20:46:46,917 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:46:46] "POST /get-table/HR.COUNTRIES HTTP/1.1" 201 -
+2020-09-24 20:46:48,121 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:46:48] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-24 20:46:48,461 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:46:48,461 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:46:48,461 DEBUG: [app.py:111] : SELECT * FROM HR.DEPARTMENTS WHERE ROWNUM < 25000
+2020-09-24 20:46:48,461 DEBUG: [app.py:112] : Query Parameters: []
+2020-09-24 20:46:48,465 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:46:48,466 DEBUG: [app.py:154] : ['DEPARTMENT_ID', 'DEPARTMENT_NAME', 'MANAGER_ID', 'LOCATION_ID']
+2020-09-24 20:46:48,466 DEBUG: [app.py:154] : ['10', 'Administration', '200', '1700']
+2020-09-24 20:46:48,466 DEBUG: [app.py:154] : ['20', 'Marketing', '201', '1800']
+2020-09-24 20:46:48,466 DEBUG: [app.py:154] : ['30', 'Purchasing', '114', '1700']
+2020-09-24 20:46:48,466 DEBUG: [app.py:154] : ['40', 'Human Resources', '203', '2400']
+2020-09-24 20:46:48,466 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:46:48] "POST /get-table/HR.DEPARTMENTS HTTP/1.1" 201 -
+2020-09-24 20:46:49,357 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:46:49] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-24 20:46:49,707 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:46:49,707 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:46:49,707 DEBUG: [app.py:111] : SELECT * FROM HR.EMPLOYEES WHERE ROWNUM < 25000
+2020-09-24 20:46:49,707 DEBUG: [app.py:112] : Query Parameters: []
+2020-09-24 20:46:49,716 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:46:49,717 DEBUG: [app.py:154] : ['EMPLOYEE_ID', 'FIRST_NAME', 'LAST_NAME', 'EMAIL', 'PHONE_NUMBER', 'HIRE_DATE', 'JOB_ID', 'SALARY', 'COMMISSION_PCT', 'MANAGER_ID', 'DEPARTMENT_ID']
+2020-09-24 20:46:49,717 DEBUG: [app.py:154] : ['100', 'Steven', 'King', 'SKING', '515.123.4567', '2003-06-17 00:00:00', 'AD_PRES', '24000.0', '', '', '90']
+2020-09-24 20:46:49,717 DEBUG: [app.py:154] : ['101', 'Neena', 'Kochhar', 'NKOCHHAR', '515.123.4568', '2005-09-21 00:00:00', 'AD_VP', '17000.0', '', '100', '90']
+2020-09-24 20:46:49,717 DEBUG: [app.py:154] : ['102', 'Lex', 'De Haan', 'LDEHAAN', '515.123.4569', '2001-01-13 00:00:00', 'AD_VP', '17000.0', '', '100', '90']
+2020-09-24 20:46:49,717 DEBUG: [app.py:154] : ['103', 'Alexander', 'Hunold', 'AHUNOLD', '590.423.4567', '2006-01-03 00:00:00', 'IT_PROG', '9000.0', '', '102', '60']
+2020-09-24 20:46:49,718 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:46:49] "POST /get-table/HR.EMPLOYEES HTTP/1.1" 201 -
+2020-09-24 20:46:57,690 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:46:57] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-24 20:46:58,039 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:46:58,039 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:46:58,039 DEBUG: [app.py:111] : SELECT * FROM HR.JOBS WHERE ROWNUM < 25000
+2020-09-24 20:46:58,039 DEBUG: [app.py:112] : Query Parameters: []
+2020-09-24 20:46:58,041 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:46:58,042 DEBUG: [app.py:154] : ['JOB_ID', 'JOB_TITLE', 'MIN_SALARY', 'MAX_SALARY']
+2020-09-24 20:46:58,042 DEBUG: [app.py:154] : ['AD_PRES', 'President', '20080', '40000']
+2020-09-24 20:46:58,042 DEBUG: [app.py:154] : ['AD_VP', 'Administration Vice President', '15000', '30000']
+2020-09-24 20:46:58,042 DEBUG: [app.py:154] : ['AD_ASST', 'Administration Assistant', '3000', '6000']
+2020-09-24 20:46:58,042 DEBUG: [app.py:154] : ['FI_MGR', 'Finance Manager', '8200', '16000']
+2020-09-24 20:46:58,042 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:46:58] "POST /get-table/HR.JOBS HTTP/1.1" 201 -
+2020-09-24 20:46:59,409 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:46:59] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-24 20:46:59,747 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:46:59,747 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:46:59,747 DEBUG: [app.py:111] : SELECT * FROM HR.LOCATIONS WHERE ROWNUM < 25000
+2020-09-24 20:46:59,747 DEBUG: [app.py:112] : Query Parameters: []
+2020-09-24 20:46:59,749 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:46:59,749 DEBUG: [app.py:154] : ['LOCATION_ID', 'STREET_ADDRESS', 'POSTAL_CODE', 'CITY', 'STATE_PROVINCE', 'COUNTRY_ID']
+2020-09-24 20:46:59,749 DEBUG: [app.py:154] : ['1000', '1297 Via Cola di Rie', '00989', 'Roma', '', 'IT']
+2020-09-24 20:46:59,749 DEBUG: [app.py:154] : ['1100', '93091 Calle della Testa', '10934', 'Venice', '', 'IT']
+2020-09-24 20:46:59,749 DEBUG: [app.py:154] : ['1200', '2017 Shinjuku-ku', '1689', 'Tokyo', 'Tokyo Prefecture', 'JP']
+2020-09-24 20:46:59,749 DEBUG: [app.py:154] : ['1300', '9450 Kamiya-cho', '6823', 'Hiroshima', '', 'JP']
+2020-09-24 20:46:59,750 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:46:59] "POST /get-table/HR.LOCATIONS HTTP/1.1" 201 -
+2020-09-24 20:47:01,164 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:47:01] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-24 20:47:01,511 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:47:01,511 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:47:01,511 DEBUG: [app.py:111] : SELECT * FROM HR.REGIONS WHERE ROWNUM < 25000
+2020-09-24 20:47:01,511 DEBUG: [app.py:112] : Query Parameters: []
+2020-09-24 20:47:01,516 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:47:01,516 DEBUG: [app.py:154] : ['REGION_ID', 'REGION_NAME']
+2020-09-24 20:47:01,516 DEBUG: [app.py:154] : ['1', 'Europe']
+2020-09-24 20:47:01,516 DEBUG: [app.py:154] : ['2', 'Americas']
+2020-09-24 20:47:01,516 DEBUG: [app.py:154] : ['3', 'Asia']
+2020-09-24 20:47:01,516 DEBUG: [app.py:154] : ['4', 'Middle East and Africa']
+2020-09-24 20:47:01,516 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:47:01] "POST /get-table/HR.REGIONS HTTP/1.1" 201 -
+2020-09-24 20:47:02,489 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:47:02] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-24 20:47:02,820 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:47:02,820 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:47:02,820 DEBUG: [app.py:111] : SELECT * FROM HR.TEMP WHERE ROWNUM < 25000
+2020-09-24 20:47:02,820 DEBUG: [app.py:112] : Query Parameters: []
+2020-09-24 20:47:02,824 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:47:02,824 DEBUG: [app.py:154] : ['COL']
+2020-09-24 20:47:02,825 DEBUG: [app.py:154] : ['5217295293608174']
+2020-09-24 20:47:02,825 DEBUG: [app.py:154] : ['5217 2952 9360 8174']
+2020-09-24 20:47:02,825 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:47:02] "POST /get-table/HR.TEMP HTTP/1.1" 201 -
+2020-09-24 20:47:04,711 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:47:04] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-24 20:47:05,056 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:47:05,057 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:47:05,057 DEBUG: [app.py:111] : SELECT * FROM ALL_TABLES WHERE ROWNUM < 25000
+2020-09-24 20:47:05,057 DEBUG: [app.py:112] : Query Parameters: []
+2020-09-24 20:47:05,267 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:47:05,267 DEBUG: [app.py:154] : ['OWNER', 'TABLE_NAME', 'TABLESPACE_NAME', 'CLUSTER_NAME', 'IOT_NAME', 'STATUS', 'PCT_FREE', 'PCT_USED', 'INI_TRANS', 'MAX_TRANS', 'INITIAL_EXTENT', 'NEXT_EXTENT', 'MIN_EXTENTS', 'MAX_EXTENTS', 'PCT_INCREASE', 'FREELISTS', 'FREELIST_GROUPS', 'LOGGING', 'BACKED_UP', 'NUM_ROWS', 'BLOCKS', 'EMPTY_BLOCKS', 'AVG_SPACE', 'CHAIN_CNT', 'AVG_ROW_LEN', 'AVG_SPACE_FREELIST_BLOCKS', 'NUM_FREELIST_BLOCKS', 'DEGREE', 'INSTANCES', 'CACHE', 'TABLE_LOCK', 'SAMPLE_SIZE', 'LAST_ANALYZED', 'PARTITIONED', 'IOT_TYPE', 'TEMPORARY', 'SECONDARY', 'NESTED', 'BUFFER_POOL', 'FLASH_CACHE', 'CELL_FLASH_CACHE', 'ROW_MOVEMENT', 'GLOBAL_STATS', 'USER_STATS', 'DURATION', 'SKIP_CORRUPT', 'MONITORING', 'CLUSTER_OWNER', 'DEPENDENCIES', 'COMPRESSION', 'COMPRESS_FOR', 'DROPPED', 'READ_ONLY', 'SEGMENT_CREATED', 'RESULT_CACHE']
+2020-09-24 20:47:05,267 DEBUG: [app.py:154] : ['SYS', 'ICOL$', 'SYSTEM', 'C_OBJ#', '', 'VALID', '0', '0', '0', '0', '139264', '204800', '1', '2147483645', '', '1', '1', 'YES', 'N', '2791', '734', '0', '0', '0', '30', '0', '0', '         1', '         1', '    N', 'ENABLED', '2791', '2010-03-30 10:17:59', 'NO', '', 'N', 'N', 'NO', 'DEFAULT', 'DEFAULT', 'DEFAULT', 'DISABLED', 'YES', 'NO', '', 'DISABLED', 'YES', 'SYS', 'DISABLED', 'DISABLED', '', 'NO', 'NO', 'YES', 'DEFAULT']
+2020-09-24 20:47:05,267 DEBUG: [app.py:154] : ['SYS', 'CON$', 'SYSTEM', '', '', 'VALID', '10', '40', '1', '255', '65536', '1048576', '1', '2147483645', '', '1', '1', 'YES', 'N', '10940', '44', '0', '0', '0', '25', '0', '0', '         1', '         1', '    N', 'ENABLED', '10940', '2020-09-23 22:00:12', 'NO', '', 'N', 'N', 'NO', 'DEFAULT', 'DEFAULT', 'DEFAULT', 'DISABLED', 'YES', 'NO', '', 'DISABLED', 'YES', '', 'DISABLED', 'DISABLED', '', 'NO', 'NO', 'YES', 'DEFAULT']
+2020-09-24 20:47:05,267 DEBUG: [app.py:154] : ['SYS', 'UNDO$', 'SYSTEM', '', '', 'VALID', '10', '40', '1', '255', '65536', '1048576', '1', '2147483645', '', '1', '1', 'YES', 'N', '21', '1', '0', '0', '0', '60', '0', '0', '         1', '         1', '    N', 'ENABLED', '21', '2020-09-19 18:05:32', 'NO', '', 'N', 'N', 'NO', 'DEFAULT', 'DEFAULT', 'DEFAULT', 'DISABLED', 'YES', 'NO', '', 'DISABLED', 'YES', '', 'DISABLED', 'DISABLED', '', 'NO', 'NO', 'YES', 'DEFAULT']
+2020-09-24 20:47:05,268 DEBUG: [app.py:154] : ['SYS', 'PROXY_ROLE_DATA$', 'SYSTEM', '', '', 'VALID', '10', '40', '1', '255', '65536', '1048576', '1', '2147483645', '', '1', '1', 'YES', 'N', '0', '0', '0', '0', '0', '0', '0', '0', '         1', '         1', '    N', 'ENABLED', '0', '2010-03-30 10:18:28', 'NO', '', 'N', 'N', 'NO', 'DEFAULT', 'DEFAULT', 'DEFAULT', 'DISABLED', 'YES', 'NO', '', 'DISABLED', 'YES', '', 'DISABLED', 'DISABLED', '', 'NO', 'NO', 'YES', 'DEFAULT']
+2020-09-24 20:47:05,323 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:47:05] "POST /get-table/ALL_TABLES HTTP/1.1" 201 -
+2020-09-24 20:47:05,943 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:47:05] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-24 20:47:06,282 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:47:06,282 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:47:06,282 DEBUG: [app.py:111] : SELECT * FROM DBA_ALL_TABLES WHERE ROWNUM < 25000
+2020-09-24 20:47:06,282 DEBUG: [app.py:112] : Query Parameters: []
+2020-09-24 20:47:06,329 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:47:06] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-24 20:47:06,534 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:47:06,534 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:47:06,534 DEBUG: [app.py:111] : SELECT * FROM USER_ALL_TABLES WHERE ROWNUM < 25000
+2020-09-24 20:47:06,534 DEBUG: [app.py:112] : Query Parameters: []
+2020-09-24 20:47:06,592 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:47:06,593 DEBUG: [app.py:154] : ['OWNER', 'TABLE_NAME', 'TABLESPACE_NAME', 'CLUSTER_NAME', 'IOT_NAME', 'STATUS', 'PCT_FREE', 'PCT_USED', 'INI_TRANS', 'MAX_TRANS', 'INITIAL_EXTENT', 'NEXT_EXTENT', 'MIN_EXTENTS', 'MAX_EXTENTS', 'PCT_INCREASE', 'FREELISTS', 'FREELIST_GROUPS', 'LOGGING', 'BACKED_UP', 'NUM_ROWS', 'BLOCKS', 'EMPTY_BLOCKS', 'AVG_SPACE', 'CHAIN_CNT', 'AVG_ROW_LEN', 'AVG_SPACE_FREELIST_BLOCKS', 'NUM_FREELIST_BLOCKS', 'DEGREE', 'INSTANCES', 'CACHE', 'TABLE_LOCK', 'SAMPLE_SIZE', 'LAST_ANALYZED', 'PARTITIONED', 'IOT_TYPE', 'OBJECT_ID_TYPE', 'TABLE_TYPE_OWNER', 'TABLE_TYPE', 'TEMPORARY', 'SECONDARY', 'NESTED', 'BUFFER_POOL', 'FLASH_CACHE', 'CELL_FLASH_CACHE', 'ROW_MOVEMENT', 'GLOBAL_STATS', 'USER_STATS', 'DURATION', 'SKIP_CORRUPT', 'MONITORING', 'CLUSTER_OWNER', 'DEPENDENCIES', 'COMPRESSION', 'COMPRESS_FOR', 'DROPPED', 'SEGMENT_CREATED']
+2020-09-24 20:47:06,593 DEBUG: [app.py:154] : ['SYS', 'ICOL$', 'SYSTEM', 'C_OBJ#', '', 'VALID', '0', '0', '0', '0', '139264', '204800', '1', '2147483645', '', '1', '1', 'YES', 'N', '2791', '734', '0', '0', '0', '30', '0', '0', '         1', '         1', '    N', 'ENABLED', '2791', '2010-03-30 10:17:59', 'NO', '', '', '', '', 'N', 'N', 'NO', 'DEFAULT', 'DEFAULT', 'DEFAULT', 'DISABLED', 'YES', 'NO', '', 'DISABLED', 'YES', 'SYS', 'DISABLED', 'DISABLED', '', 'NO', 'YES']
+2020-09-24 20:47:06,593 DEBUG: [app.py:154] : ['SYS', 'CON$', 'SYSTEM', '', '', 'VALID', '10', '40', '1', '255', '65536', '1048576', '1', '2147483645', '', '1', '1', 'YES', 'N', '10940', '44', '0', '0', '0', '25', '0', '0', '         1', '         1', '    N', 'ENABLED', '10940', '2020-09-23 22:00:12', 'NO', '', '', '', '', 'N', 'N', 'NO', 'DEFAULT', 'DEFAULT', 'DEFAULT', 'DISABLED', 'YES', 'NO', '', 'DISABLED', 'YES', '', 'DISABLED', 'DISABLED', '', 'NO', 'YES']
+2020-09-24 20:47:06,593 DEBUG: [app.py:154] : ['SYS', 'UNDO$', 'SYSTEM', '', '', 'VALID', '10', '40', '1', '255', '65536', '1048576', '1', '2147483645', '', '1', '1', 'YES', 'N', '21', '1', '0', '0', '0', '60', '0', '0', '         1', '         1', '    N', 'ENABLED', '21', '2020-09-19 18:05:32', 'NO', '', '', '', '', 'N', 'N', 'NO', 'DEFAULT', 'DEFAULT', 'DEFAULT', 'DISABLED', 'YES', 'NO', '', 'DISABLED', 'YES', '', 'DISABLED', 'DISABLED', '', 'NO', 'YES']
+2020-09-24 20:47:06,593 DEBUG: [app.py:154] : ['SYS', 'PROXY_ROLE_DATA$', 'SYSTEM', '', '', 'VALID', '10', '40', '1', '255', '65536', '1048576', '1', '2147483645', '', '1', '1', 'YES', 'N', '0', '0', '0', '0', '0', '0', '0', '0', '         1', '         1', '    N', 'ENABLED', '0', '2010-03-30 10:18:28', 'NO', '', '', '', '', 'N', 'N', 'NO', 'DEFAULT', 'DEFAULT', 'DEFAULT', 'DISABLED', 'YES', 'NO', '', 'DISABLED', 'YES', '', 'DISABLED', 'DISABLED', '', 'NO', 'YES']
+2020-09-24 20:47:06,651 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:47:06] "POST /get-table/DBA_ALL_TABLES HTTP/1.1" 201 -
+2020-09-24 20:47:06,651 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:47:06,651 DEBUG: [app.py:154] : ['TABLE_NAME', 'TABLESPACE_NAME', 'CLUSTER_NAME', 'IOT_NAME', 'STATUS', 'PCT_FREE', 'PCT_USED', 'INI_TRANS', 'MAX_TRANS', 'INITIAL_EXTENT', 'NEXT_EXTENT', 'MIN_EXTENTS', 'MAX_EXTENTS', 'PCT_INCREASE', 'FREELISTS', 'FREELIST_GROUPS', 'LOGGING', 'BACKED_UP', 'NUM_ROWS', 'BLOCKS', 'EMPTY_BLOCKS', 'AVG_SPACE', 'CHAIN_CNT', 'AVG_ROW_LEN', 'AVG_SPACE_FREELIST_BLOCKS', 'NUM_FREELIST_BLOCKS', 'DEGREE', 'INSTANCES', 'CACHE', 'TABLE_LOCK', 'SAMPLE_SIZE', 'LAST_ANALYZED', 'PARTITIONED', 'IOT_TYPE', 'OBJECT_ID_TYPE', 'TABLE_TYPE_OWNER', 'TABLE_TYPE', 'TEMPORARY', 'SECONDARY', 'NESTED', 'BUFFER_POOL', 'FLASH_CACHE', 'CELL_FLASH_CACHE', 'ROW_MOVEMENT', 'GLOBAL_STATS', 'USER_STATS', 'DURATION', 'SKIP_CORRUPT', 'MONITORING', 'CLUSTER_OWNER', 'DEPENDENCIES', 'COMPRESSION', 'COMPRESS_FOR', 'DROPPED', 'SEGMENT_CREATED']
+2020-09-24 20:47:06,652 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:47:06] "POST /get-table/USER_ALL_TABLES HTTP/1.1" 201 -
+2020-09-24 20:47:11,934 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:47:11] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-24 20:47:12,277 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:47:12,277 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:47:12,277 DEBUG: [app.py:111] : SELECT * FROM DBA_ALL_TABLES WHERE ROWNUM < 25000
+2020-09-24 20:47:12,277 DEBUG: [app.py:112] : Query Parameters: []
+2020-09-24 20:47:12,605 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:47:12,605 DEBUG: [app.py:154] : ['OWNER', 'TABLE_NAME', 'TABLESPACE_NAME', 'CLUSTER_NAME', 'IOT_NAME', 'STATUS', 'PCT_FREE', 'PCT_USED', 'INI_TRANS', 'MAX_TRANS', 'INITIAL_EXTENT', 'NEXT_EXTENT', 'MIN_EXTENTS', 'MAX_EXTENTS', 'PCT_INCREASE', 'FREELISTS', 'FREELIST_GROUPS', 'LOGGING', 'BACKED_UP', 'NUM_ROWS', 'BLOCKS', 'EMPTY_BLOCKS', 'AVG_SPACE', 'CHAIN_CNT', 'AVG_ROW_LEN', 'AVG_SPACE_FREELIST_BLOCKS', 'NUM_FREELIST_BLOCKS', 'DEGREE', 'INSTANCES', 'CACHE', 'TABLE_LOCK', 'SAMPLE_SIZE', 'LAST_ANALYZED', 'PARTITIONED', 'IOT_TYPE', 'OBJECT_ID_TYPE', 'TABLE_TYPE_OWNER', 'TABLE_TYPE', 'TEMPORARY', 'SECONDARY', 'NESTED', 'BUFFER_POOL', 'FLASH_CACHE', 'CELL_FLASH_CACHE', 'ROW_MOVEMENT', 'GLOBAL_STATS', 'USER_STATS', 'DURATION', 'SKIP_CORRUPT', 'MONITORING', 'CLUSTER_OWNER', 'DEPENDENCIES', 'COMPRESSION', 'COMPRESS_FOR', 'DROPPED', 'SEGMENT_CREATED']
+2020-09-24 20:47:12,605 DEBUG: [app.py:154] : ['SYS', 'ICOL$', 'SYSTEM', 'C_OBJ#', '', 'VALID', '0', '0', '0', '0', '139264', '204800', '1', '2147483645', '', '1', '1', 'YES', 'N', '2791', '734', '0', '0', '0', '30', '0', '0', '         1', '         1', '    N', 'ENABLED', '2791', '2010-03-30 10:17:59', 'NO', '', '', '', '', 'N', 'N', 'NO', 'DEFAULT', 'DEFAULT', 'DEFAULT', 'DISABLED', 'YES', 'NO', '', 'DISABLED', 'YES', 'SYS', 'DISABLED', 'DISABLED', '', 'NO', 'YES']
+2020-09-24 20:47:12,605 DEBUG: [app.py:154] : ['SYS', 'CON$', 'SYSTEM', '', '', 'VALID', '10', '40', '1', '255', '65536', '1048576', '1', '2147483645', '', '1', '1', 'YES', 'N', '10940', '44', '0', '0', '0', '25', '0', '0', '         1', '         1', '    N', 'ENABLED', '10940', '2020-09-23 22:00:12', 'NO', '', '', '', '', 'N', 'N', 'NO', 'DEFAULT', 'DEFAULT', 'DEFAULT', 'DISABLED', 'YES', 'NO', '', 'DISABLED', 'YES', '', 'DISABLED', 'DISABLED', '', 'NO', 'YES']
+2020-09-24 20:47:12,605 DEBUG: [app.py:154] : ['SYS', 'UNDO$', 'SYSTEM', '', '', 'VALID', '10', '40', '1', '255', '65536', '1048576', '1', '2147483645', '', '1', '1', 'YES', 'N', '21', '1', '0', '0', '0', '60', '0', '0', '         1', '         1', '    N', 'ENABLED', '21', '2020-09-19 18:05:32', 'NO', '', '', '', '', 'N', 'N', 'NO', 'DEFAULT', 'DEFAULT', 'DEFAULT', 'DISABLED', 'YES', 'NO', '', 'DISABLED', 'YES', '', 'DISABLED', 'DISABLED', '', 'NO', 'YES']
+2020-09-24 20:47:12,605 DEBUG: [app.py:154] : ['SYS', 'PROXY_ROLE_DATA$', 'SYSTEM', '', '', 'VALID', '10', '40', '1', '255', '65536', '1048576', '1', '2147483645', '', '1', '1', 'YES', 'N', '0', '0', '0', '0', '0', '0', '0', '0', '         1', '         1', '    N', 'ENABLED', '0', '2010-03-30 10:18:28', 'NO', '', '', '', '', 'N', 'N', 'NO', 'DEFAULT', 'DEFAULT', 'DEFAULT', 'DISABLED', 'YES', 'NO', '', 'DISABLED', 'YES', '', 'DISABLED', 'DISABLED', '', 'NO', 'YES']
+2020-09-24 20:47:12,662 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:47:12] "POST /get-table/DBA_ALL_TABLES HTTP/1.1" 201 -
+2020-09-24 20:47:15,773 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:47:15] "GET / HTTP/1.1" 200 -
+2020-09-24 20:47:16,074 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:47:16] "GET /static/js/app.js HTTP/1.1" 200 -
+2020-09-24 20:47:16,117 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:47:16] "GET /static/js/auto-refresh-setup.js HTTP/1.1" 200 -
+2020-09-24 20:47:16,117 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:47:16] "GET /static/js/api-calls.js HTTP/1.1" 200 -
+2020-09-24 20:47:16,118 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:47:16] "GET /static/js/common.js HTTP/1.1" 200 -
+2020-09-24 20:47:16,865 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:47:16] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-24 20:47:16,867 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:47:16] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-24 20:47:17,111 DEBUG: [app.py:257] : Query parameters for long-running-queries: 
+2020-09-24 20:47:17,112 DEBUG: [app.py:258] : Parameter names        : []
+2020-09-24 20:47:17,112 DEBUG: [app.py:259] : Parameter values       : []
+2020-09-24 20:47:17,147 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:47:17,147 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:47:17,147 DEBUG: [app.py:111] : 
+SELECT
+  sid
+, serial#
+, opname
+, target
+, target_desc
+, sofar
+, totalwork
+, units
+, start_time
+, last_update_time
+, timestamp
+, time_remaining
+, elapsed_seconds
+, context
+, message
+, username
+, sql_address
+, sql_hash_value
+, sql_id
+, sql_plan_hash_value
+, sql_exec_start
+, sql_exec_id
+, sql_plan_line_id
+, sql_plan_operation
+, sql_plan_options
+, qcsid
+FROM
+    V$SESSION_LONGOPS
+WHERE
+    sofar <> totalwork
+
+2020-09-24 20:47:17,147 DEBUG: [app.py:112] : Query Parameters: None
+2020-09-24 20:47:17,149 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:47:17,150 DEBUG: [app.py:154] : ['SID', 'SERIAL#', 'OPNAME', 'TARGET', 'TARGET_DESC', 'SOFAR', 'TOTALWORK', 'UNITS', 'START_TIME', 'LAST_UPDATE_TIME', 'TIMESTAMP', 'TIME_REMAINING', 'ELAPSED_SECONDS', 'CONTEXT', 'MESSAGE', 'USERNAME', 'SQL_ADDRESS', 'SQL_HASH_VALUE', 'SQL_ID', 'SQL_PLAN_HASH_VALUE', 'SQL_EXEC_START', 'SQL_EXEC_ID', 'SQL_PLAN_LINE_ID', 'SQL_PLAN_OPERATION', 'SQL_PLAN_OPTIONS', 'QCSID']
+2020-09-24 20:47:17,150 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:47:17] "POST /query_execution/long-running-queries HTTP/1.1" 201 -
+2020-09-24 20:47:17,180 DEBUG: [app.py:257] : Query parameters for queries-resource-usage: 
+2020-09-24 20:47:17,181 DEBUG: [app.py:258] : Parameter names        : []
+2020-09-24 20:47:17,181 DEBUG: [app.py:259] : Parameter values       : []
+2020-09-24 20:47:17,197 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:47:17,197 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:47:17,197 DEBUG: [app.py:111] : 
+SELECT s.parsing_schema_name schema,
+       t.sql_id,
+       to_char(t.last_active_time,'yyyy-mm-dd:hh24:mi:ss') last_active_time,
+       t.sql_text,
+       t.disk_reads,
+       t.buffer_gets,
+       t.fetches,
+       t.sorts,
+       t.cpu_time/1000000 cpu,
+       t.rows_processed
+FROM V$SQLSTATS t,
+     V$SQL s
+WHERE t.sql_id = s.sql_id
+ORDER BY t.last_active_time DESC
+
+2020-09-24 20:47:17,197 DEBUG: [app.py:112] : Query Parameters: None
+2020-09-24 20:47:17,223 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:47:17,223 DEBUG: [app.py:154] : ['SCHEMA', 'SQL_ID', 'LAST_ACTIVE_TIME', 'SQL_TEXT', 'DISK_READS', 'BUFFER_GETS', 'FETCHES', 'SORTS', 'CPU', 'ROWS_PROCESSED']
+2020-09-24 20:47:17,224 DEBUG: [app.py:154] : ['SYS', '4vs91dcv7u1p6', '2020-09-24:20:47:16', 'insert into sys.aud$( sessionid,entryid,statement,ntimestamp#, userid,userhost,terminal,action#,returncode, obj$creator,obj$name,auth$privileges,auth$grantee, new$owner,new$name,ses$actions,ses$tid,logoff$pread, logoff$lwrite,logoff$dead,comment$text,spare1,spare2,  priv$used,clientid,sessioncpu,proxy$sid,user$guid, instance#,process#,xid,scn,auditid,  sqlbind,sqltext,obj$edition,dbid)  values(:1,:2,:3,SYS_EXTRACT_UTC(SYSTIMESTAMP),     :4,:5,:6,:7,:8,     :9,:10,:11,:12,     :13,:14,:15,:16,:17,     :18,:19,:20,:21,:22,     :23,:24,:25,:26,:27,     :28,:29,:30,:31,:32,     :33,:34,:35,:36)', '0', '8007', '0', '0', '0', '2471']
+2020-09-24 20:47:17,224 DEBUG: [app.py:154] : ['SYS', 'cm5vu20fhtnq1', '2020-09-24:20:47:16', 'select /*+ connect_by_filtering */ privilege#,level from sysauth$ connect by grantee#=prior privilege# and privilege#>0 start with grantee#=:1 and privilege#>0', '3', '55694', '35372', '0', '0', '17812']
+2020-09-24 20:47:17,224 DEBUG: [app.py:154] : ['SYS', '459f3z9u4fb3u', '2020-09-24:20:47:16', "select value$ from props$ where name = 'GLOBAL_DB_NAME'", '0', '180', '90', '0', '0', '45']
+2020-09-24 20:47:17,224 DEBUG: [app.py:154] : ['ADMIN', '7gtys6vx02ymj', '2020-09-24:20:47:16', ' SELECT   sid , serial# , opname , target , target_desc , sofar , totalwork , units , start_time , last_update_time , timestamp , time_remaining , elapsed_seconds , context , message , username , sql_address , sql_hash_value , sql_id , sql_plan_hash_value , sql_exec_start , sql_exec_id , sql_plan_line_id , sql_plan_operation , sql_plan_options , qcsid FROM     V$SESSION_LONGOPS WHERE     sofar <> totalwork ', '1', '124', '6', '0', '0', '0']
+2020-09-24 20:47:17,230 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:47:17] "POST /query_execution/queries-resource-usage HTTP/1.1" 201 -
+2020-09-24 20:47:19,727 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:47:19] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-24 20:47:20,039 DEBUG: [app.py:257] : Query parameters for data-dictionary-views: 
+2020-09-24 20:47:20,040 DEBUG: [app.py:258] : Parameter names        : []
+2020-09-24 20:47:20,040 DEBUG: [app.py:259] : Parameter values       : []
+2020-09-24 20:47:20,060 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:47:20,060 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:47:20,060 DEBUG: [app.py:111] : 
+SELECT 
+    view_name
+FROM 
+    dba_views a
+WHERE 
+    (view_name LIKE 'V$%'
+OR  view_name LIKE 'GV$%'
+OR  view_name LIKE 'ALL_%'
+OR  view_name LIKE 'DBA_%'  
+OR  view_name LIKE 'USER_%')
+AND EXISTS (SELECT 1 FROM DBA_OBJECTS b WHERE a.owner = b.owner AND a.view_name = b.object_name)
+ORDER BY 1
+
+2020-09-24 20:47:20,060 DEBUG: [app.py:112] : Query Parameters: None
+2020-09-24 20:47:20,144 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:47:20,144 DEBUG: [app.py:154] : ['VIEW_NAME']
+2020-09-24 20:47:20,144 DEBUG: [app.py:154] : ['ALL$AW_CUBE_AGG_LEVELS']
+2020-09-24 20:47:20,144 DEBUG: [app.py:154] : ['ALL$AW_CUBE_AGG_MEASURES']
+2020-09-24 20:47:20,144 DEBUG: [app.py:154] : ['ALL$AW_CUBE_AGG_PLANS']
+2020-09-24 20:47:20,144 DEBUG: [app.py:154] : ['ALL$AW_CUBE_ENABLED_HIERCOMBO']
+2020-09-24 20:47:20,148 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:47:20] "POST /query_execution/data-dictionary-views HTTP/1.1" 201 -
+2020-09-24 20:47:26,493 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:47:26] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-24 20:47:26,845 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:47:26,845 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:47:26,845 DEBUG: [app.py:111] : SELECT * FROM ALL_TABLES WHERE ROWNUM < 25000
+2020-09-24 20:47:26,845 DEBUG: [app.py:112] : Query Parameters: []
+2020-09-24 20:47:27,067 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:47:27,067 DEBUG: [app.py:154] : ['OWNER', 'TABLE_NAME', 'TABLESPACE_NAME', 'CLUSTER_NAME', 'IOT_NAME', 'STATUS', 'PCT_FREE', 'PCT_USED', 'INI_TRANS', 'MAX_TRANS', 'INITIAL_EXTENT', 'NEXT_EXTENT', 'MIN_EXTENTS', 'MAX_EXTENTS', 'PCT_INCREASE', 'FREELISTS', 'FREELIST_GROUPS', 'LOGGING', 'BACKED_UP', 'NUM_ROWS', 'BLOCKS', 'EMPTY_BLOCKS', 'AVG_SPACE', 'CHAIN_CNT', 'AVG_ROW_LEN', 'AVG_SPACE_FREELIST_BLOCKS', 'NUM_FREELIST_BLOCKS', 'DEGREE', 'INSTANCES', 'CACHE', 'TABLE_LOCK', 'SAMPLE_SIZE', 'LAST_ANALYZED', 'PARTITIONED', 'IOT_TYPE', 'TEMPORARY', 'SECONDARY', 'NESTED', 'BUFFER_POOL', 'FLASH_CACHE', 'CELL_FLASH_CACHE', 'ROW_MOVEMENT', 'GLOBAL_STATS', 'USER_STATS', 'DURATION', 'SKIP_CORRUPT', 'MONITORING', 'CLUSTER_OWNER', 'DEPENDENCIES', 'COMPRESSION', 'COMPRESS_FOR', 'DROPPED', 'READ_ONLY', 'SEGMENT_CREATED', 'RESULT_CACHE']
+2020-09-24 20:47:27,067 DEBUG: [app.py:154] : ['SYS', 'ICOL$', 'SYSTEM', 'C_OBJ#', '', 'VALID', '0', '0', '0', '0', '139264', '204800', '1', '2147483645', '', '1', '1', 'YES', 'N', '2791', '734', '0', '0', '0', '30', '0', '0', '         1', '         1', '    N', 'ENABLED', '2791', '2010-03-30 10:17:59', 'NO', '', 'N', 'N', 'NO', 'DEFAULT', 'DEFAULT', 'DEFAULT', 'DISABLED', 'YES', 'NO', '', 'DISABLED', 'YES', 'SYS', 'DISABLED', 'DISABLED', '', 'NO', 'NO', 'YES', 'DEFAULT']
+2020-09-24 20:47:27,067 DEBUG: [app.py:154] : ['SYS', 'CON$', 'SYSTEM', '', '', 'VALID', '10', '40', '1', '255', '65536', '1048576', '1', '2147483645', '', '1', '1', 'YES', 'N', '10940', '44', '0', '0', '0', '25', '0', '0', '         1', '         1', '    N', 'ENABLED', '10940', '2020-09-23 22:00:12', 'NO', '', 'N', 'N', 'NO', 'DEFAULT', 'DEFAULT', 'DEFAULT', 'DISABLED', 'YES', 'NO', '', 'DISABLED', 'YES', '', 'DISABLED', 'DISABLED', '', 'NO', 'NO', 'YES', 'DEFAULT']
+2020-09-24 20:47:27,067 DEBUG: [app.py:154] : ['SYS', 'UNDO$', 'SYSTEM', '', '', 'VALID', '10', '40', '1', '255', '65536', '1048576', '1', '2147483645', '', '1', '1', 'YES', 'N', '21', '1', '0', '0', '0', '60', '0', '0', '         1', '         1', '    N', 'ENABLED', '21', '2020-09-19 18:05:32', 'NO', '', 'N', 'N', 'NO', 'DEFAULT', 'DEFAULT', 'DEFAULT', 'DISABLED', 'YES', 'NO', '', 'DISABLED', 'YES', '', 'DISABLED', 'DISABLED', '', 'NO', 'NO', 'YES', 'DEFAULT']
+2020-09-24 20:47:27,068 DEBUG: [app.py:154] : ['SYS', 'PROXY_ROLE_DATA$', 'SYSTEM', '', '', 'VALID', '10', '40', '1', '255', '65536', '1048576', '1', '2147483645', '', '1', '1', 'YES', 'N', '0', '0', '0', '0', '0', '0', '0', '0', '         1', '         1', '    N', 'ENABLED', '0', '2010-03-30 10:18:28', 'NO', '', 'N', 'N', 'NO', 'DEFAULT', 'DEFAULT', 'DEFAULT', 'DISABLED', 'YES', 'NO', '', 'DISABLED', 'YES', '', 'DISABLED', 'DISABLED', '', 'NO', 'NO', 'YES', 'DEFAULT']
+2020-09-24 20:47:27,124 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:47:27] "POST /get-table/ALL_TABLES HTTP/1.1" 201 -
+2020-09-24 20:47:55,821 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:47:55] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-24 20:47:56,133 DEBUG: [app.py:257] : Query parameters for get-tables-in-a-schema: 
+2020-09-24 20:47:56,134 DEBUG: [app.py:258] : Parameter names        : ['schema_name']
+2020-09-24 20:47:56,134 DEBUG: [app.py:259] : Parameter values       : ['SH']
+2020-09-24 20:47:56,173 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:47:56,174 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:47:56,174 DEBUG: [app.py:111] : 
+ SELECT DISTINCT
+     at.TABLE_NAME
+ FROM
+     ALL_TABLES at
+ WHERE
+     at.OWNER = :schema_name
+ ORDER BY
+    at.TABLE_NAME
+ 
+2020-09-24 20:47:56,174 DEBUG: [app.py:112] : Query Parameters: ['SH']
+2020-09-24 20:47:56,191 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:47:56,191 DEBUG: [app.py:154] : ['TABLE_NAME']
+2020-09-24 20:47:56,191 DEBUG: [app.py:154] : ['CAL_MONTH_SALES_MV']
+2020-09-24 20:47:56,191 DEBUG: [app.py:154] : ['CHANNELS']
+2020-09-24 20:47:56,191 DEBUG: [app.py:154] : ['COSTS']
+2020-09-24 20:47:56,191 DEBUG: [app.py:154] : ['COUNTRIES']
+2020-09-24 20:47:56,192 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:47:56] "POST /query_execution/get-tables-in-a-schema?schema_name=SH HTTP/1.1" 201 -
+2020-09-24 20:47:57,765 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:47:57] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-24 20:47:58,110 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:47:58,110 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:47:58,110 DEBUG: [app.py:111] : SELECT * FROM SH.CAL_MONTH_SALES_MV WHERE ROWNUM < 25000
+2020-09-24 20:47:58,110 DEBUG: [app.py:112] : Query Parameters: []
+2020-09-24 20:47:58,115 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:47:58,115 DEBUG: [app.py:154] : ['CALENDAR_MONTH_DESC', 'DOLLARS']
+2020-09-24 20:47:58,115 DEBUG: [app.py:154] : ['1998-01', '2277420.49']
+2020-09-24 20:47:58,115 DEBUG: [app.py:154] : ['1998-09', '2167008.19']
+2020-09-24 20:47:58,116 DEBUG: [app.py:154] : ['1999-12', '1931931.01']
+2020-09-24 20:47:58,116 DEBUG: [app.py:154] : ['1999-01', '2077439.76']
+2020-09-24 20:47:58,116 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:47:58] "POST /get-table/SH.CAL_MONTH_SALES_MV HTTP/1.1" 201 -
+2020-09-24 20:47:58,749 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:47:58] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-24 20:47:59,097 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:47:59,098 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:47:59,098 DEBUG: [app.py:111] : SELECT * FROM SH.CHANNELS WHERE ROWNUM < 25000
+2020-09-24 20:47:59,098 DEBUG: [app.py:112] : Query Parameters: []
+2020-09-24 20:47:59,104 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:47:59,104 DEBUG: [app.py:154] : ['CHANNEL_ID', 'CHANNEL_DESC', 'CHANNEL_CLASS', 'CHANNEL_CLASS_ID', 'CHANNEL_TOTAL', 'CHANNEL_TOTAL_ID']
+2020-09-24 20:47:59,104 DEBUG: [app.py:154] : ['3', 'Direct Sales', 'Direct', '12', 'Channel total', '1']
+2020-09-24 20:47:59,104 DEBUG: [app.py:154] : ['9', 'Tele Sales', 'Direct', '12', 'Channel total', '1']
+2020-09-24 20:47:59,104 DEBUG: [app.py:154] : ['5', 'Catalog', 'Indirect', '13', 'Channel total', '1']
+2020-09-24 20:47:59,104 DEBUG: [app.py:154] : ['4', 'Internet', 'Indirect', '13', 'Channel total', '1']
+2020-09-24 20:47:59,105 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:47:59] "POST /get-table/SH.CHANNELS HTTP/1.1" 201 -
+2020-09-24 20:48:01,830 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:48:01] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-24 20:48:02,160 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:48:02,160 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:48:02,160 DEBUG: [app.py:111] : SELECT * FROM SH.CUSTOMERS WHERE ROWNUM < 25000
+2020-09-24 20:48:02,160 DEBUG: [app.py:112] : Query Parameters: []
+2020-09-24 20:48:02,872 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:48:02,872 DEBUG: [app.py:154] : ['CUST_ID', 'CUST_FIRST_NAME', 'CUST_LAST_NAME', 'CUST_GENDER', 'CUST_YEAR_OF_BIRTH', 'CUST_MARITAL_STATUS', 'CUST_STREET_ADDRESS', 'CUST_POSTAL_CODE', 'CUST_CITY', 'CUST_CITY_ID', 'CUST_STATE_PROVINCE', 'CUST_STATE_PROVINCE_ID', 'COUNTRY_ID', 'CUST_MAIN_PHONE_NUMBER', 'CUST_INCOME_LEVEL', 'CUST_CREDIT_LIMIT', 'CUST_EMAIL', 'CUST_TOTAL', 'CUST_TOTAL_ID', 'CUST_SRC_ID', 'CUST_EFF_FROM', 'CUST_EFF_TO', 'CUST_VALID']
+2020-09-24 20:48:02,872 DEBUG: [app.py:154] : ['49671', 'Abigail', 'Ruddy', 'M', '1976', 'married', '27 North Sagadahoc Boulevard', '60332', 'Ede', '51442', 'Gelderland', '52610', '52770', '519-236-6123', 'G: 130,000 - 149,999', '1500', 'Ruddy@company.com', 'Customer total', '52772', '', '1998-01-01 00:00:00', '', 'I']
+2020-09-24 20:48:02,872 DEBUG: [app.py:154] : ['3228', 'Abigail', 'Ruddy', 'M', '1964', '', '37 West Geneva Street', '55406', 'Hoofddorp', '51669', 'Noord-Holland', '52683', '52770', '327-194-5008', 'G: 130,000 - 149,999', '7000', 'Ruddy@company.com', 'Customer total', '52772', '', '1998-01-01 00:00:00', '', 'A']
+2020-09-24 20:48:02,872 DEBUG: [app.py:154] : ['6783', 'Abigail', 'Ruddy', 'M', '1942', 'single', '47 Toa Alta Road', '34077', 'Schimmert', '52297', 'Limburg', '52646', '52770', '288-613-9676', 'G: 130,000 - 149,999', '11000', 'Ruddy@company.com', 'Customer total', '52772', '', '1998-01-01 00:00:00', '', 'I']
+2020-09-24 20:48:02,872 DEBUG: [app.py:154] : ['10338', 'Abigail', 'Ruddy', 'M', '1977', 'married', '47 South Kanabec Road', '72996', 'Scheveningen', '52296', 'Zuid-Holland', '52771', '52770', '222-269-1259', 'G: 130,000 - 149,999', '1500', 'Ruddy@company.com', 'Customer total', '52772', '', '1998-01-01 00:00:00', '', 'I']
+2020-09-24 20:48:03,127 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:48:03] "POST /get-table/SH.CUSTOMERS HTTP/1.1" 201 -
+2020-09-24 20:48:16,216 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:48:16] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-24 20:48:16,559 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:48:16,559 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:48:16,559 DEBUG: [app.py:111] : SELECT * FROM SH.SUPPLEMENTARY_DEMOGRAPHICS WHERE ROWNUM < 25000
+2020-09-24 20:48:16,559 DEBUG: [app.py:112] : Query Parameters: []
+2020-09-24 20:48:16,653 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:48:16,653 DEBUG: [app.py:154] : ['CUST_ID', 'EDUCATION', 'OCCUPATION', 'HOUSEHOLD_SIZE', 'YRS_RESIDENCE', 'AFFINITY_CARD', 'BULK_PACK_DISKETTES', 'FLAT_PANEL_MONITOR', 'HOME_THEATER_PACKAGE', 'BOOKKEEPING_APPLICATION', 'PRINTER_SUPPLIES', 'Y_BOX_GAMES', 'OS_DOC_SET_KANJI', 'COMMENTS']
+2020-09-24 20:48:16,653 DEBUG: [app.py:154] : ['101501', 'Masters', 'Prof.', '2', '4', '0', '1', '1', '1', '1', '1', '0', '0', 'Shopping at your store is a hassle. I rarely shop there and usually forget to bring your new loyalty card and hence never get the items at the sale price.  Can a store manager look up my account on-line?']
+2020-09-24 20:48:16,653 DEBUG: [app.py:154] : ['101502', 'Bach.', 'Sales', '2', '3', '0', '1', '1', '0', '1', '1', '1', '0', 'Affinity card is great. I think it is a hassle to have to remember to bring it in every time though.']
+2020-09-24 20:48:16,653 DEBUG: [app.py:154] : ['101503', 'HS-grad', 'Cleric.', '2', '2', '0', '1', '0', '0', '1', '1', '1', '0', "I purchased a new computer recently, but the manuals weren't included.  Could you ship them to me directly?"]
+2020-09-24 20:48:16,654 DEBUG: [app.py:154] : ['101504', 'Bach.', 'Exec.', '3', '5', '1', '0', '0', '1', '1', '1', '0', '0', 'Affinity card is great. I think it is a hassle to have to remember to bring it in every time though.']
+2020-09-24 20:48:16,682 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:48:16] "POST /get-table/SH.SUPPLEMENTARY_DEMOGRAPHICS HTTP/1.1" 201 -
+2020-09-24 20:48:42,730 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:48:42] "GET / HTTP/1.1" 200 -
+2020-09-24 20:48:43,016 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:48:43] "GET /static/js/app.js HTTP/1.1" 200 -
+2020-09-24 20:48:43,063 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:48:43] "GET /static/js/common.js HTTP/1.1" 200 -
+2020-09-24 20:48:43,064 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:48:43] "GET /static/js/api-calls.js HTTP/1.1" 200 -
+2020-09-24 20:48:43,064 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:48:43] "GET /static/js/auto-refresh-setup.js HTTP/1.1" 200 -
+2020-09-24 20:48:43,850 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:48:43] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-24 20:48:43,850 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:48:43] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-24 20:48:44,095 DEBUG: [app.py:257] : Query parameters for long-running-queries: 
+2020-09-24 20:48:44,095 DEBUG: [app.py:258] : Parameter names        : []
+2020-09-24 20:48:44,095 DEBUG: [app.py:259] : Parameter values       : []
+2020-09-24 20:48:44,129 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:48:44,129 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:48:44,130 DEBUG: [app.py:111] : 
+SELECT
+  sid
+, serial#
+, opname
+, target
+, target_desc
+, sofar
+, totalwork
+, units
+, start_time
+, last_update_time
+, timestamp
+, time_remaining
+, elapsed_seconds
+, context
+, message
+, username
+, sql_address
+, sql_hash_value
+, sql_id
+, sql_plan_hash_value
+, sql_exec_start
+, sql_exec_id
+, sql_plan_line_id
+, sql_plan_operation
+, sql_plan_options
+, qcsid
+FROM
+    V$SESSION_LONGOPS
+WHERE
+    sofar <> totalwork
+
+2020-09-24 20:48:44,130 DEBUG: [app.py:112] : Query Parameters: None
+2020-09-24 20:48:44,132 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:48:44,132 DEBUG: [app.py:154] : ['SID', 'SERIAL#', 'OPNAME', 'TARGET', 'TARGET_DESC', 'SOFAR', 'TOTALWORK', 'UNITS', 'START_TIME', 'LAST_UPDATE_TIME', 'TIMESTAMP', 'TIME_REMAINING', 'ELAPSED_SECONDS', 'CONTEXT', 'MESSAGE', 'USERNAME', 'SQL_ADDRESS', 'SQL_HASH_VALUE', 'SQL_ID', 'SQL_PLAN_HASH_VALUE', 'SQL_EXEC_START', 'SQL_EXEC_ID', 'SQL_PLAN_LINE_ID', 'SQL_PLAN_OPERATION', 'SQL_PLAN_OPTIONS', 'QCSID']
+2020-09-24 20:48:44,133 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:48:44] "POST /query_execution/long-running-queries HTTP/1.1" 201 -
+2020-09-24 20:48:44,163 DEBUG: [app.py:257] : Query parameters for queries-resource-usage: 
+2020-09-24 20:48:44,163 DEBUG: [app.py:258] : Parameter names        : []
+2020-09-24 20:48:44,163 DEBUG: [app.py:259] : Parameter values       : []
+2020-09-24 20:48:44,181 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:48:44,181 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:48:44,181 DEBUG: [app.py:111] : 
+SELECT s.parsing_schema_name schema,
+       t.sql_id,
+       to_char(t.last_active_time,'yyyy-mm-dd:hh24:mi:ss') last_active_time,
+       t.sql_text,
+       t.disk_reads,
+       t.buffer_gets,
+       t.fetches,
+       t.sorts,
+       t.cpu_time/1000000 cpu,
+       t.rows_processed
+FROM V$SQLSTATS t,
+     V$SQL s
+WHERE t.sql_id = s.sql_id
+ORDER BY t.last_active_time DESC
+
+2020-09-24 20:48:44,181 DEBUG: [app.py:112] : Query Parameters: None
+2020-09-24 20:48:44,205 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:48:44,205 DEBUG: [app.py:154] : ['SCHEMA', 'SQL_ID', 'LAST_ACTIVE_TIME', 'SQL_TEXT', 'DISK_READS', 'BUFFER_GETS', 'FETCHES', 'SORTS', 'CPU', 'ROWS_PROCESSED']
+2020-09-24 20:48:44,205 DEBUG: [app.py:154] : ['SYS', 'f711myt0q6cma', '2020-09-24:20:48:44', 'insert into sys.aud$( sessionid,entryid,statement,ntimestamp#, userid,userhost,terminal,action#,returncode, logoff$lread,logoff$pread,logoff$lwrite,logoff$dead, logoff$time,comment$text,spare1,clientid,sessioncpu,proxy$sid,user$guid, instance#,process#,auditid,dbid) values(:1,:2,:3,SYS_EXTRACT_UTC(SYSTIMESTAMP),     :4,:5,:6,:7,:8,     :9,:10,:11,:12,     cast(SYS_EXTRACT_UTC(systimestamp) as date),:13,:14,:15,:16,:17,:18,     :19,:20,:21,:22)', '0', '158', '0', '0', '0.015625', '52']
+2020-09-24 20:48:44,205 DEBUG: [app.py:154] : ['ADMIN', '7kngmdwtb1dsh', '2020-09-24:20:48:44', " SELECT s.parsing_schema_name schema,        t.sql_id,        to_char(t.last_active_time,'yyyy-mm-dd:hh24:mi:ss') last_active_time,        t.sql_text,        t.disk_reads,        t.buffer_gets,        t.fetches,        t.sorts,        t.cpu_time/1000000 cpu,        t.rows_processed FROM V$SQLSTATS t,      V$SQL s WHERE t.sql_id = s.sql_id ORDER BY t.last_active_time DESC ", '4', '192', '66', '7', '0.015625', '5923']
+2020-09-24 20:48:44,206 DEBUG: [app.py:154] : ['SYS', '5ur69atw3vfhj', '2020-09-24:20:48:44', "select decode(failover_method, NULL, 0 , 'BASIC', 1, 'PRECONNECT', 2 , 'PREPARSE', 4 , 0), decode(failover_type, NULL, 1 , 'NONE', 1 , 'SESSION', 2, 'SELECT',  4, 1), failover_retries, failover_delay, flags from service$ where name = :1", '0', '177', '53', '0', '0', '53']
+2020-09-24 20:48:44,206 DEBUG: [app.py:154] : ['SYS', '0k8522rmdzg4k', '2020-09-24:20:48:44', 'select privilege# from sysauth$ where (grantee#=:1 or grantee#=1) and privilege#>0', '3', '29421', '21289', '0', '0', '18577']
+2020-09-24 20:48:44,213 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:48:44] "POST /query_execution/queries-resource-usage HTTP/1.1" 201 -
+2020-09-24 20:48:49,302 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:48:49] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-24 20:48:49,615 DEBUG: [app.py:257] : Query parameters for get-tables-in-a-schema: 
+2020-09-24 20:48:49,615 DEBUG: [app.py:258] : Parameter names        : ['schema_name']
+2020-09-24 20:48:49,616 DEBUG: [app.py:259] : Parameter values       : ['HR']
+2020-09-24 20:48:49,637 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:48:49,637 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:48:49,637 DEBUG: [app.py:111] : 
+ SELECT DISTINCT
+     at.TABLE_NAME
+ FROM
+     ALL_TABLES at
+ WHERE
+     at.OWNER = :schema_name
+ ORDER BY
+    at.TABLE_NAME
+ 
+2020-09-24 20:48:49,637 DEBUG: [app.py:112] : Query Parameters: ['HR']
+2020-09-24 20:48:49,653 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:48:49,653 DEBUG: [app.py:154] : ['TABLE_NAME']
+2020-09-24 20:48:49,653 DEBUG: [app.py:154] : ['COUNTRIES']
+2020-09-24 20:48:49,653 DEBUG: [app.py:154] : ['DEPARTMENTS']
+2020-09-24 20:48:49,653 DEBUG: [app.py:154] : ['EMPLOYEES']
+2020-09-24 20:48:49,653 DEBUG: [app.py:154] : ['JOBS']
+2020-09-24 20:48:49,654 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:48:49] "POST /query_execution/get-tables-in-a-schema?schema_name=HR HTTP/1.1" 201 -
+2020-09-24 20:48:50,664 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:48:50] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-24 20:48:51,003 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:48:51,003 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:48:51,003 DEBUG: [app.py:111] : SELECT * FROM HR.COUNTRIES WHERE ROWNUM < 25000
+2020-09-24 20:48:51,003 DEBUG: [app.py:112] : Query Parameters: []
+2020-09-24 20:48:51,006 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:48:51,006 DEBUG: [app.py:154] : ['COUNTRY_ID', 'COUNTRY_NAME', 'REGION_ID']
+2020-09-24 20:48:51,006 DEBUG: [app.py:154] : ['AR', 'Argentina', '2']
+2020-09-24 20:48:51,006 DEBUG: [app.py:154] : ['AU', 'Australia', '3']
+2020-09-24 20:48:51,006 DEBUG: [app.py:154] : ['BE', 'Belgium', '1']
+2020-09-24 20:48:51,006 DEBUG: [app.py:154] : ['BR', 'Brazil', '2']
+2020-09-24 20:48:51,007 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:48:51] "POST /get-table/HR.COUNTRIES HTTP/1.1" 201 -
+2020-09-24 20:48:52,562 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:48:52] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-24 20:48:52,914 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:48:52,915 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:48:52,915 DEBUG: [app.py:111] : SELECT * FROM HR.LOCATIONS WHERE ROWNUM < 25000
+2020-09-24 20:48:52,915 DEBUG: [app.py:112] : Query Parameters: []
+2020-09-24 20:48:52,917 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:48:52,917 DEBUG: [app.py:154] : ['LOCATION_ID', 'STREET_ADDRESS', 'POSTAL_CODE', 'CITY', 'STATE_PROVINCE', 'COUNTRY_ID']
+2020-09-24 20:48:52,917 DEBUG: [app.py:154] : ['1000', '1297 Via Cola di Rie', '00989', 'Roma', '', 'IT']
+2020-09-24 20:48:52,917 DEBUG: [app.py:154] : ['1100', '93091 Calle della Testa', '10934', 'Venice', '', 'IT']
+2020-09-24 20:48:52,917 DEBUG: [app.py:154] : ['1200', '2017 Shinjuku-ku', '1689', 'Tokyo', 'Tokyo Prefecture', 'JP']
+2020-09-24 20:48:52,917 DEBUG: [app.py:154] : ['1300', '9450 Kamiya-cho', '6823', 'Hiroshima', '', 'JP']
+2020-09-24 20:48:52,918 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:48:52] "POST /get-table/HR.LOCATIONS HTTP/1.1" 201 -
+2020-09-24 20:48:55,845 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:48:55] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-24 20:48:56,187 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:48:56,187 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:48:56,188 DEBUG: [app.py:111] : SELECT * FROM HR.REGIONS WHERE ROWNUM < 25000
+2020-09-24 20:48:56,188 DEBUG: [app.py:112] : Query Parameters: []
+2020-09-24 20:48:56,190 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:48:56,190 DEBUG: [app.py:154] : ['REGION_ID', 'REGION_NAME']
+2020-09-24 20:48:56,190 DEBUG: [app.py:154] : ['1', 'Europe']
+2020-09-24 20:48:56,190 DEBUG: [app.py:154] : ['2', 'Americas']
+2020-09-24 20:48:56,190 DEBUG: [app.py:154] : ['3', 'Asia']
+2020-09-24 20:48:56,190 DEBUG: [app.py:154] : ['4', 'Middle East and Africa']
+2020-09-24 20:48:56,191 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:48:56] "POST /get-table/HR.REGIONS HTTP/1.1" 201 -
+2020-09-24 20:48:56,820 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:48:56] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-24 20:48:57,157 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:48:57,157 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:48:57,157 DEBUG: [app.py:111] : SELECT * FROM HR.TEMP WHERE ROWNUM < 25000
+2020-09-24 20:48:57,157 DEBUG: [app.py:112] : Query Parameters: []
+2020-09-24 20:48:57,158 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:48:57,158 DEBUG: [app.py:154] : ['COL']
+2020-09-24 20:48:57,158 DEBUG: [app.py:154] : ['5217295293608174']
+2020-09-24 20:48:57,158 DEBUG: [app.py:154] : ['5217 2952 9360 8174']
+2020-09-24 20:48:57,159 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:48:57] "POST /get-table/HR.TEMP HTTP/1.1" 201 -
+2020-09-24 20:48:57,563 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:48:57] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-24 20:48:57,913 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:48:57,914 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:48:57,914 DEBUG: [app.py:111] : SELECT * FROM HR.LOCATIONS WHERE ROWNUM < 25000
+2020-09-24 20:48:57,914 DEBUG: [app.py:112] : Query Parameters: []
+2020-09-24 20:48:57,917 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:48:57,917 DEBUG: [app.py:154] : ['LOCATION_ID', 'STREET_ADDRESS', 'POSTAL_CODE', 'CITY', 'STATE_PROVINCE', 'COUNTRY_ID']
+2020-09-24 20:48:57,917 DEBUG: [app.py:154] : ['1000', '1297 Via Cola di Rie', '00989', 'Roma', '', 'IT']
+2020-09-24 20:48:57,917 DEBUG: [app.py:154] : ['1100', '93091 Calle della Testa', '10934', 'Venice', '', 'IT']
+2020-09-24 20:48:57,917 DEBUG: [app.py:154] : ['1200', '2017 Shinjuku-ku', '1689', 'Tokyo', 'Tokyo Prefecture', 'JP']
+2020-09-24 20:48:57,917 DEBUG: [app.py:154] : ['1300', '9450 Kamiya-cho', '6823', 'Hiroshima', '', 'JP']
+2020-09-24 20:48:57,918 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:48:57] "POST /get-table/HR.LOCATIONS HTTP/1.1" 201 -
+2020-09-24 20:48:59,812 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:48:59] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-24 20:49:00,158 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:49:00,158 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:49:00,158 DEBUG: [app.py:111] : SELECT * FROM HR.JOB_HISTORY WHERE ROWNUM < 25000
+2020-09-24 20:49:00,158 DEBUG: [app.py:112] : Query Parameters: []
+2020-09-24 20:49:00,165 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:49:00,165 DEBUG: [app.py:154] : ['EMPLOYEE_ID', 'START_DATE', 'END_DATE', 'JOB_ID', 'DEPARTMENT_ID']
+2020-09-24 20:49:00,165 DEBUG: [app.py:154] : ['102', '2001-01-13 00:00:00', '2006-07-24 00:00:00', 'IT_PROG', '60']
+2020-09-24 20:49:00,165 DEBUG: [app.py:154] : ['101', '1997-09-21 00:00:00', '2001-10-27 00:00:00', 'AC_ACCOUNT', '110']
+2020-09-24 20:49:00,165 DEBUG: [app.py:154] : ['101', '2001-10-28 00:00:00', '2005-03-15 00:00:00', 'AC_MGR', '110']
+2020-09-24 20:49:00,165 DEBUG: [app.py:154] : ['201', '2004-02-17 00:00:00', '2007-12-19 00:00:00', 'MK_REP', '20']
+2020-09-24 20:49:00,166 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:49:00] "POST /get-table/HR.JOB_HISTORY HTTP/1.1" 201 -
+2020-09-24 20:49:01,905 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:49:01] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-24 20:49:02,250 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:49:02,250 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:49:02,250 DEBUG: [app.py:111] : SELECT * FROM HR.EMPLOYEES WHERE ROWNUM < 25000
+2020-09-24 20:49:02,250 DEBUG: [app.py:112] : Query Parameters: []
+2020-09-24 20:49:02,256 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:49:02,256 DEBUG: [app.py:154] : ['EMPLOYEE_ID', 'FIRST_NAME', 'LAST_NAME', 'EMAIL', 'PHONE_NUMBER', 'HIRE_DATE', 'JOB_ID', 'SALARY', 'COMMISSION_PCT', 'MANAGER_ID', 'DEPARTMENT_ID']
+2020-09-24 20:49:02,256 DEBUG: [app.py:154] : ['100', 'Steven', 'King', 'SKING', '515.123.4567', '2003-06-17 00:00:00', 'AD_PRES', '24000.0', '', '', '90']
+2020-09-24 20:49:02,256 DEBUG: [app.py:154] : ['101', 'Neena', 'Kochhar', 'NKOCHHAR', '515.123.4568', '2005-09-21 00:00:00', 'AD_VP', '17000.0', '', '100', '90']
+2020-09-24 20:49:02,256 DEBUG: [app.py:154] : ['102', 'Lex', 'De Haan', 'LDEHAAN', '515.123.4569', '2001-01-13 00:00:00', 'AD_VP', '17000.0', '', '100', '90']
+2020-09-24 20:49:02,256 DEBUG: [app.py:154] : ['103', 'Alexander', 'Hunold', 'AHUNOLD', '590.423.4567', '2006-01-03 00:00:00', 'IT_PROG', '9000.0', '', '102', '60']
+2020-09-24 20:49:02,257 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:49:02] "POST /get-table/HR.EMPLOYEES HTTP/1.1" 201 -
+2020-09-24 20:49:07,288 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:49:07] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-24 20:49:07,619 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:49:07,619 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:49:07,620 DEBUG: [app.py:111] : SELECT * FROM HR.COUNTRIES WHERE ROWNUM < 25000
+2020-09-24 20:49:07,620 DEBUG: [app.py:112] : Query Parameters: []
+2020-09-24 20:49:07,622 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:49:07,622 DEBUG: [app.py:154] : ['COUNTRY_ID', 'COUNTRY_NAME', 'REGION_ID']
+2020-09-24 20:49:07,622 DEBUG: [app.py:154] : ['AR', 'Argentina', '2']
+2020-09-24 20:49:07,622 DEBUG: [app.py:154] : ['AU', 'Australia', '3']
+2020-09-24 20:49:07,622 DEBUG: [app.py:154] : ['BE', 'Belgium', '1']
+2020-09-24 20:49:07,622 DEBUG: [app.py:154] : ['BR', 'Brazil', '2']
+2020-09-24 20:49:07,622 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:49:07] "POST /get-table/HR.COUNTRIES HTTP/1.1" 201 -
+2020-09-24 20:49:31,700 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:49:31] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-24 20:49:32,007 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:49:32] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-24 20:49:32,007 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:49:32] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-24 20:49:32,007 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:49:32] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-24 20:49:32,007 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:49:32] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-24 20:49:32,008 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:49:32] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-09-24 20:49:32,009 DEBUG: [app.py:257] : Query parameters for long-running-query: 
+2020-09-24 20:49:32,010 DEBUG: [app.py:258] : Parameter names        : ['sql_id']
+2020-09-24 20:49:32,010 DEBUG: [app.py:259] : Parameter values       : ['9j0wazyquxak4']
+2020-09-24 20:49:32,033 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:49:32,033 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:49:32,033 DEBUG: [app.py:111] : 
+SELECT
+  sid
+, serial#
+, opname
+, target
+, target_desc
+, sofar
+, totalwork
+, units
+, start_time
+, last_update_time
+, timestamp
+, time_remaining
+, elapsed_seconds
+, context
+, message
+, username
+, sql_address
+, sql_hash_value
+, sql_id
+, sql_plan_hash_value
+, sql_exec_start
+, sql_exec_id
+, sql_plan_line_id
+, sql_plan_operation
+, sql_plan_options
+, qcsid
+FROM
+    V$SESSION_LONGOPS
+WHERE
+    sql_id = :sqlid
+
+2020-09-24 20:49:32,033 DEBUG: [app.py:112] : Query Parameters: ['9j0wazyquxak4']
+2020-09-24 20:49:32,035 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:49:32,035 DEBUG: [app.py:154] : ['SID', 'SERIAL#', 'OPNAME', 'TARGET', 'TARGET_DESC', 'SOFAR', 'TOTALWORK', 'UNITS', 'START_TIME', 'LAST_UPDATE_TIME', 'TIMESTAMP', 'TIME_REMAINING', 'ELAPSED_SECONDS', 'CONTEXT', 'MESSAGE', 'USERNAME', 'SQL_ADDRESS', 'SQL_HASH_VALUE', 'SQL_ID', 'SQL_PLAN_HASH_VALUE', 'SQL_EXEC_START', 'SQL_EXEC_ID', 'SQL_PLAN_LINE_ID', 'SQL_PLAN_OPERATION', 'SQL_PLAN_OPTIONS', 'QCSID']
+2020-09-24 20:49:32,036 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:49:32] "POST /query_execution/long-running-query?sql_id=9j0wazyquxak4 HTTP/1.1" 201 -
+2020-09-24 20:49:32,323 DEBUG: [app.py:257] : Query parameters for query-progress-against-plan: 
+2020-09-24 20:49:32,323 DEBUG: [app.py:258] : Parameter names        : ['sql_id']
+2020-09-24 20:49:32,324 DEBUG: [app.py:259] : Parameter values       : ['9j0wazyquxak4']
+2020-09-24 20:49:32,328 DEBUG: [app.py:257] : Query parameters for query-resource-usage: 
+2020-09-24 20:49:32,328 DEBUG: [app.py:258] : Parameter names        : ['sql_id']
+2020-09-24 20:49:32,328 DEBUG: [app.py:259] : Parameter values       : ['9j0wazyquxak4']
+2020-09-24 20:49:32,329 DEBUG: [app.py:257] : Query parameters for temp-space-use-sqlid: 
+2020-09-24 20:49:32,329 DEBUG: [app.py:258] : Parameter names        : ['sql_id']
+2020-09-24 20:49:32,329 DEBUG: [app.py:259] : Parameter values       : ['9j0wazyquxak4']
+2020-09-24 20:49:32,330 DEBUG: [app.py:257] : Query parameters for sql_text: 
+2020-09-24 20:49:32,330 DEBUG: [app.py:258] : Parameter names        : ['sql_id']
+2020-09-24 20:49:32,330 DEBUG: [app.py:259] : Parameter values       : ['9j0wazyquxak4']
+2020-09-24 20:49:32,332 DEBUG: [app.py:257] : Query parameters for dba-hist-1: 
+2020-09-24 20:49:32,332 DEBUG: [app.py:258] : Parameter names        : ['sql_id']
+2020-09-24 20:49:32,332 DEBUG: [app.py:259] : Parameter values       : ['9j0wazyquxak4']
+2020-09-24 20:49:32,346 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:49:32,346 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:49:32,346 DEBUG: [app.py:111] : 
+SELECT * 
+FROM (SELECT sql_id, 
+             to_char(sql_exec_start,'yyyy-mm-dd:hh24:mi:ss') sql_exec_start,
+             sql_exec_id, 
+             sum(buffer_gets) buffer_gets,
+             sum(disk_reads) disk_reads, 
+             round(sum(cpu_time/1000000),1) cpu_secs
+      FROM v$sql_monitor
+      WHERE sql_id = :sql_id
+      GROUP BY sql_id, sql_exec_start, sql_exec_id
+      ORDER BY 2 desc)
+WHERE rownum <= 50
+
+2020-09-24 20:49:32,346 DEBUG: [app.py:112] : Query Parameters: ['9j0wazyquxak4']
+2020-09-24 20:49:32,348 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:49:32,348 DEBUG: [app.py:154] : ['SQL_ID', 'SQL_EXEC_START', 'SQL_EXEC_ID', 'BUFFER_GETS', 'DISK_READS', 'CPU_SECS']
+2020-09-24 20:49:32,349 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:49:32] "POST /query_execution/query-resource-usage?sql_id=9j0wazyquxak4 HTTP/1.1" 201 -
+2020-09-24 20:49:32,352 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:49:32,352 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:49:32,352 DEBUG: [app.py:111] : 
+SELECT 
+    t.*
+FROM
+    V$TEMPSEG_USAGE t
+WHERE
+    t.sql_id = :sql_id
+
+2020-09-24 20:49:32,352 DEBUG: [app.py:112] : Query Parameters: ['9j0wazyquxak4']
+2020-09-24 20:49:32,354 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:49:32,354 DEBUG: [app.py:154] : ['USERNAME', 'USER', 'SESSION_ADDR', 'SESSION_NUM', 'SQLADDR', 'SQLHASH', 'SQL_ID', 'TABLESPACE', 'CONTENTS', 'SEGTYPE', 'SEGFILE#', 'SEGBLK#', 'EXTENTS', 'BLOCKS', 'SEGRFNO#']
+2020-09-24 20:49:32,355 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:49:32] "POST /query_execution/temp-space-use-sqlid?sql_id=9j0wazyquxak4 HTTP/1.1" 201 -
+2020-09-24 20:49:32,361 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:49:32,361 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:49:32,361 DEBUG: [app.py:111] : 
+SELECT sid, 
+       sql_id, 
+       status, 
+       plan_line_id,
+       plan_operation || ' ' || plan_options operation, 
+       (CASE
+           WHEN plan_object_owner IS NOT NULL AND plan_object_name IS NOT NULL THEN
+                plan_object_owner || '.' || plan_object_name || ' ~ ' || plan_object_type 
+           ELSE
+                ' '
+        END) AS plan_object,
+       output_rows
+FROM   V$SQL_PLAN_MONITOR
+WHERE  (sql_id, sql_exec_id, sid) = (SELECT sql_id, sql_exec_id, sid
+                                     FROM   V$SQL_MONITOR a
+                                     WHERE  sql_id = :sql_id
+                                       AND  sql_exec_id = (SELECT MAX(sql_exec_id) FROM V$SQL_MONITOR WHERE sql_id = a.sql_id)
+                                     )  
+ORDER BY 1,4
+
+2020-09-24 20:49:32,361 DEBUG: [app.py:112] : Query Parameters: ['9j0wazyquxak4']
+2020-09-24 20:49:32,363 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:49:32,363 DEBUG: [app.py:154] : ['SID', 'SQL_ID', 'STATUS', 'PLAN_LINE_ID', 'OPERATION', 'PLAN_OBJECT', 'OUTPUT_ROWS']
+2020-09-24 20:49:32,364 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:49:32] "POST /query_execution/query-progress-against-plan?sql_id=9j0wazyquxak4 HTTP/1.1" 201 -
+2020-09-24 20:49:32,370 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:49:32,370 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:49:32,370 DEBUG: [app.py:111] : 
+SELECT sql_fulltext
+FROM   gv$sql
+WHERE  sql_id = :sql_id
+
+2020-09-24 20:49:32,370 DEBUG: [app.py:112] : Query Parameters: ['9j0wazyquxak4']
+2020-09-24 20:49:32,373 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:49:32,373 DEBUG: [app.py:154] : ['SQL_FULLTEXT']
+2020-09-24 20:49:32,373 DEBUG: [app.py:154] : ['SELECT * FROM SH.CHANNELS WHERE ROWNUM < 25000']
+2020-09-24 20:49:32,374 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:49:32] "POST /query_execution/sql_text?sql_id=9j0wazyquxak4 HTTP/1.1" 201 -
+2020-09-24 20:49:32,379 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:49:32,379 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:49:32,379 DEBUG: [app.py:111] : 
+SELECT
+    a.sql_id,
+    to_char(begin_interval_time, 'yyyy-mm-dd:hh24:mi:ss') begin_interval_time,
+    b.error_count,
+    a.parsing_schema_name,
+    a.fetches_total,
+    a.fetches_delta,
+    a.executions_total,
+    a.executions_delta,
+    a.rows_processed_delta
+FROM
+    DBA_HIST_SQLSTAT a,
+    DBA_HIST_SNAPSHOT b
+WHERE
+    a.snap_id = b.snap_id
+AND a.instance_number = b.instance_number
+AND a.sql_id = :sql_id
+ORDER BY begin_interval_time DESC    
+
+2020-09-24 20:49:32,379 DEBUG: [app.py:112] : Query Parameters: ['9j0wazyquxak4']
+2020-09-24 20:49:32,383 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:49:32,383 DEBUG: [app.py:154] : ['SQL_ID', 'BEGIN_INTERVAL_TIME', 'ERROR_COUNT', 'PARSING_SCHEMA_NAME', 'FETCHES_TOTAL', 'FETCHES_DELTA', 'EXECUTIONS_TOTAL', 'EXECUTIONS_DELTA', 'ROWS_PROCESSED_DELTA']
+2020-09-24 20:49:32,383 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:49:32] "POST /query_execution/dba-hist-1?sql_id=9j0wazyquxak4 HTTP/1.1" 201 -
+2020-09-24 20:49:41,186 DEBUG: [app.py:184] : SELECT DBMS_SQLTUNE.REPORT_SQL_MONITOR('9j0wazyquxak4',type => 'active', report_level => 'ALL') FROM DUAL
+2020-09-24 20:49:41,218 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:49:41,218 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:49:41,218 DEBUG: [app.py:111] : SELECT DBMS_SQLTUNE.REPORT_SQL_MONITOR('9j0wazyquxak4',type => 'active', report_level => 'ALL') FROM DUAL
+2020-09-24 20:49:41,218 DEBUG: [app.py:112] : Query Parameters: None
+2020-09-24 20:49:41,300 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:49:41,300 DEBUG: [app.py:154] : ["DBMS_SQLTUNE.REPORT_SQL_MONITOR('9J0WAZYQUXAK4',TYPE=>'ACTIVE',REPORT_LEVEL=>'ALL')"]
+2020-09-24 20:49:41,300 DEBUG: [app.py:154] : ['<html>\n <head>\n  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>\n  <base href="http://download.oracle.com/otn_software/"/>\n  <script language="javascript" type="text/javascript" src="emviewers/scripts/flashver.js">\n   <!--Test flash version-->\n  </script>\n  <style>\n      body { margin: 0px; overflow:hidden }\n    </style>\n </head>\n <body scroll="no">\n  <script type="text/xml">\n   <!--FXTMODEL-->\n   <report db_version="11.2.0.1.0" elapsed_time="0.01" cpu_time="0.02">\n    <report_id><![CDATA[/orarep/sqlmonitor/main?bucket_max_count=128&event_detail=yes&report_level=ALL&sql_id=9j0wazyquxak4]]></report_id>\n   </report>\n   <!--FXTMODEL-->\n  </script>\n  <script language="JavaScript" type="text/javascript" src="emviewers/scripts/loadswf.js">\n   <!--Load report viewer-->\n  </script>\n  <iframe name="_history" frameborder="0" scrolling="no" width="22" height="0">\n   <html>\n    <head>\n     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>\n     <script type="text/javascript" language="JavaScript1.2" charset="utf-8">\n                var v = new top.Vars(top.getSearch(window));\n                var fv = v.toString(&apos;$_&apos;);\n              </script>\n    </head>\n    <body>\n     <script type="text/javascript" language="JavaScript1.2" charset="utf-8" src="emviewers/scripts/document.js">\n      <!--Run document script-->\n     </script>\n    </body>\n   </html>\n  </iframe>\n </body>\n</html>\n']
+2020-09-24 20:49:41,314 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:49:41] "GET /report_sql_monitor_active/9j0wazyquxak4 HTTP/1.1" 201 -
+2020-09-24 20:51:17,465 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:51:17] "GET / HTTP/1.1" 200 -
+2020-09-24 20:51:17,714 DEBUG: [app.py:257] : Query parameters for long-running-queries: 
+2020-09-24 20:51:17,714 DEBUG: [app.py:258] : Parameter names        : []
+2020-09-24 20:51:17,714 DEBUG: [app.py:259] : Parameter values       : []
+2020-09-24 20:51:17,729 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:51:17,729 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:51:17,729 DEBUG: [app.py:111] : 
+SELECT
+  sid
+, serial#
+, opname
+, target
+, target_desc
+, sofar
+, totalwork
+, units
+, start_time
+, last_update_time
+, timestamp
+, time_remaining
+, elapsed_seconds
+, context
+, message
+, username
+, sql_address
+, sql_hash_value
+, sql_id
+, sql_plan_hash_value
+, sql_exec_start
+, sql_exec_id
+, sql_plan_line_id
+, sql_plan_operation
+, sql_plan_options
+, qcsid
+FROM
+    V$SESSION_LONGOPS
+WHERE
+    sofar <> totalwork
+
+2020-09-24 20:51:17,729 DEBUG: [app.py:112] : Query Parameters: None
+2020-09-24 20:51:17,731 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:51:17,731 DEBUG: [app.py:154] : ['SID', 'SERIAL#', 'OPNAME', 'TARGET', 'TARGET_DESC', 'SOFAR', 'TOTALWORK', 'UNITS', 'START_TIME', 'LAST_UPDATE_TIME', 'TIMESTAMP', 'TIME_REMAINING', 'ELAPSED_SECONDS', 'CONTEXT', 'MESSAGE', 'USERNAME', 'SQL_ADDRESS', 'SQL_HASH_VALUE', 'SQL_ID', 'SQL_PLAN_HASH_VALUE', 'SQL_EXEC_START', 'SQL_EXEC_ID', 'SQL_PLAN_LINE_ID', 'SQL_PLAN_OPERATION', 'SQL_PLAN_OPTIONS', 'QCSID']
+2020-09-24 20:51:17,731 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:51:17] "POST /query_execution/long-running-queries HTTP/1.1" 201 -
+2020-09-24 20:51:17,782 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:51:17] "GET /favicon.ico HTTP/1.1" 404 -
+2020-09-24 20:51:18,014 DEBUG: [app.py:257] : Query parameters for queries-resource-usage: 
+2020-09-24 20:51:18,014 DEBUG: [app.py:258] : Parameter names        : []
+2020-09-24 20:51:18,014 DEBUG: [app.py:259] : Parameter values       : []
+2020-09-24 20:51:18,045 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:51:18,045 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:51:18,045 DEBUG: [app.py:111] : 
+SELECT s.parsing_schema_name schema,
+       t.sql_id,
+       to_char(t.last_active_time,'yyyy-mm-dd:hh24:mi:ss') last_active_time,
+       t.sql_text,
+       t.disk_reads,
+       t.buffer_gets,
+       t.fetches,
+       t.sorts,
+       t.cpu_time/1000000 cpu,
+       t.rows_processed
+FROM V$SQLSTATS t,
+     V$SQL s
+WHERE t.sql_id = s.sql_id
+ORDER BY t.last_active_time DESC
+
+2020-09-24 20:51:18,045 DEBUG: [app.py:112] : Query Parameters: None
+2020-09-24 20:51:18,069 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:51:18,070 DEBUG: [app.py:154] : ['SCHEMA', 'SQL_ID', 'LAST_ACTIVE_TIME', 'SQL_TEXT', 'DISK_READS', 'BUFFER_GETS', 'FETCHES', 'SORTS', 'CPU', 'ROWS_PROCESSED']
+2020-09-24 20:51:18,070 DEBUG: [app.py:154] : ['ADMIN', '7kngmdwtb1dsh', '2020-09-24:20:51:17', " SELECT s.parsing_schema_name schema,        t.sql_id,        to_char(t.last_active_time,'yyyy-mm-dd:hh24:mi:ss') last_active_time,        t.sql_text,        t.disk_reads,        t.buffer_gets,        t.fetches,        t.sorts,        t.cpu_time/1000000 cpu,        t.rows_processed FROM V$SQLSTATS t,      V$SQL s WHERE t.sql_id = s.sql_id ORDER BY t.last_active_time DESC ", '4', '192', '77', '8', '0.046875', '6924']
+2020-09-24 20:51:18,070 DEBUG: [app.py:154] : ['SYS', 'cm5vu20fhtnq1', '2020-09-24:20:51:17', 'select /*+ connect_by_filtering */ privilege#,level from sysauth$ connect by grantee#=prior privilege# and privilege#>0 start with grantee#=:1 and privilege#>0', '3', '56894', '36114', '0', '0', '18178']
+2020-09-24 20:51:18,070 DEBUG: [app.py:154] : ['SYS', '0k8522rmdzg4k', '2020-09-24:20:51:17', 'select privilege# from sysauth$ where (grantee#=:1 or grantee#=1) and privilege#>0', '3', '29838', '21565', '0', '0', '18800']
+2020-09-24 20:51:18,070 DEBUG: [app.py:154] : ['SYS', '5ur69atw3vfhj', '2020-09-24:20:51:17', "select decode(failover_method, NULL, 0 , 'BASIC', 1, 'PRECONNECT', 2 , 'PREPARSE', 4 , 0), decode(failover_type, NULL, 1 , 'NONE', 1 , 'SESSION', 2, 'SELECT',  4, 1), failover_retries, failover_delay, flags from service$ where name = :1", '0', '231', '71', '0', '0', '71']
+2020-09-24 20:51:18,077 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:51:18] "POST /query_execution/queries-resource-usage HTTP/1.1" 201 -
+2020-09-24 20:51:33,382 DEBUG: [app.py:257] : Query parameters for query-resource-usage: 
+2020-09-24 20:51:33,382 DEBUG: [app.py:258] : Parameter names        : ['sql_id']
+2020-09-24 20:51:33,383 DEBUG: [app.py:259] : Parameter values       : ['7kngmdwtb1dsh']
+2020-09-24 20:51:33,408 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:51:33,408 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:51:33,408 DEBUG: [app.py:111] : 
+SELECT * 
+FROM (SELECT sql_id, 
+             to_char(sql_exec_start,'yyyy-mm-dd:hh24:mi:ss') sql_exec_start,
+             sql_exec_id, 
+             sum(buffer_gets) buffer_gets,
+             sum(disk_reads) disk_reads, 
+             round(sum(cpu_time/1000000),1) cpu_secs
+      FROM v$sql_monitor
+      WHERE sql_id = :sql_id
+      GROUP BY sql_id, sql_exec_start, sql_exec_id
+      ORDER BY 2 desc)
+WHERE rownum <= 50
+
+2020-09-24 20:51:33,408 DEBUG: [app.py:112] : Query Parameters: ['7kngmdwtb1dsh']
+2020-09-24 20:51:33,411 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:51:33,411 DEBUG: [app.py:154] : ['SQL_ID', 'SQL_EXEC_START', 'SQL_EXEC_ID', 'BUFFER_GETS', 'DISK_READS', 'CPU_SECS']
+2020-09-24 20:51:33,411 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:51:33] "POST /query_execution/query-resource-usage?sql_id=7kngmdwtb1dsh HTTP/1.1" 201 -
+2020-09-24 20:51:33,684 DEBUG: [app.py:257] : Query parameters for sql_text: 
+2020-09-24 20:51:33,685 DEBUG: [app.py:258] : Parameter names        : ['sql_id']
+2020-09-24 20:51:33,685 DEBUG: [app.py:259] : Parameter values       : ['7kngmdwtb1dsh']
+2020-09-24 20:51:33,685 DEBUG: [app.py:257] : Query parameters for long-running-query: 
+2020-09-24 20:51:33,686 DEBUG: [app.py:258] : Parameter names        : ['sql_id']
+2020-09-24 20:51:33,686 DEBUG: [app.py:257] : Query parameters for query-progress-against-plan: 
+2020-09-24 20:51:33,686 DEBUG: [app.py:259] : Parameter values       : ['7kngmdwtb1dsh']
+2020-09-24 20:51:33,686 DEBUG: [app.py:258] : Parameter names        : ['sql_id']
+2020-09-24 20:51:33,686 DEBUG: [app.py:259] : Parameter values       : ['7kngmdwtb1dsh']
+2020-09-24 20:51:33,689 DEBUG: [app.py:257] : Query parameters for temp-space-use-sqlid: 
+2020-09-24 20:51:33,690 DEBUG: [app.py:257] : Query parameters for dba-hist-1: 
+2020-09-24 20:51:33,690 DEBUG: [app.py:258] : Parameter names        : ['sql_id']
+2020-09-24 20:51:33,690 DEBUG: [app.py:258] : Parameter names        : ['sql_id']
+2020-09-24 20:51:33,690 DEBUG: [app.py:259] : Parameter values       : ['7kngmdwtb1dsh']
+2020-09-24 20:51:33,690 DEBUG: [app.py:259] : Parameter values       : ['7kngmdwtb1dsh']
+2020-09-24 20:51:33,703 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:51:33,703 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:51:33,703 DEBUG: [app.py:111] : 
+SELECT sql_fulltext
+FROM   gv$sql
+WHERE  sql_id = :sql_id
+
+2020-09-24 20:51:33,703 DEBUG: [app.py:112] : Query Parameters: ['7kngmdwtb1dsh']
+2020-09-24 20:51:33,705 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:51:33,705 DEBUG: [app.py:154] : ['SQL_FULLTEXT']
+2020-09-24 20:51:33,705 DEBUG: [app.py:154] : ["\nSELECT s.parsing_schema_name schema,\n       t.sql_id,\n       to_char(t.last_active_time,'yyyy-mm-dd:hh24:mi:ss') last_active_time,\n       t.sql_text,\n       t.disk_reads,\n       t.buffer_gets,\n       t.fetches,\n       t.sorts,\n       t.cpu_time/1000000 cpu,\n       t.rows_processed\nFROM V$SQLSTATS t,\n     V$SQL s\nWHERE t.sql_id = s.sql_id\nORDER BY t.last_active_time DESC\n"]
+2020-09-24 20:51:33,706 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:51:33] "POST /query_execution/sql_text?sql_id=7kngmdwtb1dsh HTTP/1.1" 201 -
+2020-09-24 20:51:33,714 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:51:33,715 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:51:33,715 DEBUG: [app.py:111] : 
+SELECT sid, 
+       sql_id, 
+       status, 
+       plan_line_id,
+       plan_operation || ' ' || plan_options operation, 
+       (CASE
+           WHEN plan_object_owner IS NOT NULL AND plan_object_name IS NOT NULL THEN
+                plan_object_owner || '.' || plan_object_name || ' ~ ' || plan_object_type 
+           ELSE
+                ' '
+        END) AS plan_object,
+       output_rows
+FROM   V$SQL_PLAN_MONITOR
+WHERE  (sql_id, sql_exec_id, sid) = (SELECT sql_id, sql_exec_id, sid
+                                     FROM   V$SQL_MONITOR a
+                                     WHERE  sql_id = :sql_id
+                                       AND  sql_exec_id = (SELECT MAX(sql_exec_id) FROM V$SQL_MONITOR WHERE sql_id = a.sql_id)
+                                     )  
+ORDER BY 1,4
+
+2020-09-24 20:51:33,715 DEBUG: [app.py:112] : Query Parameters: ['7kngmdwtb1dsh']
+2020-09-24 20:51:33,717 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:51:33,717 DEBUG: [app.py:154] : ['SID', 'SQL_ID', 'STATUS', 'PLAN_LINE_ID', 'OPERATION', 'PLAN_OBJECT', 'OUTPUT_ROWS']
+2020-09-24 20:51:33,717 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:51:33] "POST /query_execution/query-progress-against-plan?sql_id=7kngmdwtb1dsh HTTP/1.1" 201 -
+2020-09-24 20:51:33,727 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:51:33,727 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:51:33,727 DEBUG: [app.py:111] : 
+SELECT
+  sid
+, serial#
+, opname
+, target
+, target_desc
+, sofar
+, totalwork
+, units
+, start_time
+, last_update_time
+, timestamp
+, time_remaining
+, elapsed_seconds
+, context
+, message
+, username
+, sql_address
+, sql_hash_value
+, sql_id
+, sql_plan_hash_value
+, sql_exec_start
+, sql_exec_id
+, sql_plan_line_id
+, sql_plan_operation
+, sql_plan_options
+, qcsid
+FROM
+    V$SESSION_LONGOPS
+WHERE
+    sql_id = :sqlid
+
+2020-09-24 20:51:33,727 DEBUG: [app.py:112] : Query Parameters: ['7kngmdwtb1dsh']
+2020-09-24 20:51:33,731 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:51:33,731 DEBUG: [app.py:154] : ['SID', 'SERIAL#', 'OPNAME', 'TARGET', 'TARGET_DESC', 'SOFAR', 'TOTALWORK', 'UNITS', 'START_TIME', 'LAST_UPDATE_TIME', 'TIMESTAMP', 'TIME_REMAINING', 'ELAPSED_SECONDS', 'CONTEXT', 'MESSAGE', 'USERNAME', 'SQL_ADDRESS', 'SQL_HASH_VALUE', 'SQL_ID', 'SQL_PLAN_HASH_VALUE', 'SQL_EXEC_START', 'SQL_EXEC_ID', 'SQL_PLAN_LINE_ID', 'SQL_PLAN_OPERATION', 'SQL_PLAN_OPTIONS', 'QCSID']
+2020-09-24 20:51:33,732 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:51:33] "POST /query_execution/long-running-query?sql_id=7kngmdwtb1dsh HTTP/1.1" 201 -
+2020-09-24 20:51:33,741 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:51:33,741 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:51:33,741 DEBUG: [app.py:111] : 
+SELECT 
+    t.*
+FROM
+    V$TEMPSEG_USAGE t
+WHERE
+    t.sql_id = :sql_id
+
+2020-09-24 20:51:33,741 DEBUG: [app.py:112] : Query Parameters: ['7kngmdwtb1dsh']
+2020-09-24 20:51:33,744 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:51:33,745 DEBUG: [app.py:154] : ['USERNAME', 'USER', 'SESSION_ADDR', 'SESSION_NUM', 'SQLADDR', 'SQLHASH', 'SQL_ID', 'TABLESPACE', 'CONTENTS', 'SEGTYPE', 'SEGFILE#', 'SEGBLK#', 'EXTENTS', 'BLOCKS', 'SEGRFNO#']
+2020-09-24 20:51:33,745 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:51:33] "POST /query_execution/temp-space-use-sqlid?sql_id=7kngmdwtb1dsh HTTP/1.1" 201 -
+2020-09-24 20:51:33,756 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:51:33,756 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:51:33,756 DEBUG: [app.py:111] : 
+SELECT
+    a.sql_id,
+    to_char(begin_interval_time, 'yyyy-mm-dd:hh24:mi:ss') begin_interval_time,
+    b.error_count,
+    a.parsing_schema_name,
+    a.fetches_total,
+    a.fetches_delta,
+    a.executions_total,
+    a.executions_delta,
+    a.rows_processed_delta
+FROM
+    DBA_HIST_SQLSTAT a,
+    DBA_HIST_SNAPSHOT b
+WHERE
+    a.snap_id = b.snap_id
+AND a.instance_number = b.instance_number
+AND a.sql_id = :sql_id
+ORDER BY begin_interval_time DESC    
+
+2020-09-24 20:51:33,756 DEBUG: [app.py:112] : Query Parameters: ['7kngmdwtb1dsh']
+2020-09-24 20:51:33,759 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:51:33,759 DEBUG: [app.py:154] : ['SQL_ID', 'BEGIN_INTERVAL_TIME', 'ERROR_COUNT', 'PARSING_SCHEMA_NAME', 'FETCHES_TOTAL', 'FETCHES_DELTA', 'EXECUTIONS_TOTAL', 'EXECUTIONS_DELTA', 'ROWS_PROCESSED_DELTA']
+2020-09-24 20:51:33,760 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:51:33] "POST /query_execution/dba-hist-1?sql_id=7kngmdwtb1dsh HTTP/1.1" 201 -
+2020-09-24 20:51:51,346 DEBUG: [app.py:184] : SELECT DBMS_SQLTUNE.REPORT_SQL_MONITOR('7kngmdwtb1dsh',type => 'active', report_level => 'ALL') FROM DUAL
+2020-09-24 20:51:51,369 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:51:51,369 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:51:51,369 DEBUG: [app.py:111] : SELECT DBMS_SQLTUNE.REPORT_SQL_MONITOR('7kngmdwtb1dsh',type => 'active', report_level => 'ALL') FROM DUAL
+2020-09-24 20:51:51,369 DEBUG: [app.py:112] : Query Parameters: None
+2020-09-24 20:51:51,383 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:51:51,383 DEBUG: [app.py:154] : ["DBMS_SQLTUNE.REPORT_SQL_MONITOR('7KNGMDWTB1DSH',TYPE=>'ACTIVE',REPORT_LEVEL=>'ALL')"]
+2020-09-24 20:51:51,384 DEBUG: [app.py:154] : ['<html>\n <head>\n  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>\n  <base href="http://download.oracle.com/otn_software/"/>\n  <script language="javascript" type="text/javascript" src="emviewers/scripts/flashver.js">\n   <!--Test flash version-->\n  </script>\n  <style>\n      body { margin: 0px; overflow:hidden }\n    </style>\n </head>\n <body scroll="no">\n  <script type="text/xml">\n   <!--FXTMODEL-->\n   <report db_version="11.2.0.1.0" elapsed_time="0.01" cpu_time="0.02">\n    <report_id><![CDATA[/orarep/sqlmonitor/main?bucket_max_count=128&event_detail=yes&report_level=ALL&sql_id=7kngmdwtb1dsh]]></report_id>\n   </report>\n   <!--FXTMODEL-->\n  </script>\n  <script language="JavaScript" type="text/javascript" src="emviewers/scripts/loadswf.js">\n   <!--Load report viewer-->\n  </script>\n  <iframe name="_history" frameborder="0" scrolling="no" width="22" height="0">\n   <html>\n    <head>\n     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>\n     <script type="text/javascript" language="JavaScript1.2" charset="utf-8">\n                var v = new top.Vars(top.getSearch(window));\n                var fv = v.toString(&apos;$_&apos;);\n              </script>\n    </head>\n    <body>\n     <script type="text/javascript" language="JavaScript1.2" charset="utf-8" src="emviewers/scripts/document.js">\n      <!--Run document script-->\n     </script>\n    </body>\n   </html>\n  </iframe>\n </body>\n</html>\n']
+2020-09-24 20:51:51,402 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:51:51] "GET /report_sql_monitor_active/7kngmdwtb1dsh HTTP/1.1" 201 -
+2020-09-24 20:51:59,081 DEBUG: [app.py:184] : SELECT DBMS_SQLTUNE.REPORT_SQL_MONITOR('7kngmdwtb1dsh',type => 'active', report_level => 'ALL') FROM DUAL
+2020-09-24 20:51:59,116 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:51:59,116 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:51:59,116 DEBUG: [app.py:111] : SELECT DBMS_SQLTUNE.REPORT_SQL_MONITOR('7kngmdwtb1dsh',type => 'active', report_level => 'ALL') FROM DUAL
+2020-09-24 20:51:59,125 DEBUG: [app.py:112] : Query Parameters: None
+2020-09-24 20:51:59,137 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:51:59,137 DEBUG: [app.py:154] : ["DBMS_SQLTUNE.REPORT_SQL_MONITOR('7KNGMDWTB1DSH',TYPE=>'ACTIVE',REPORT_LEVEL=>'ALL')"]
+2020-09-24 20:51:59,137 DEBUG: [app.py:154] : ['<html>\n <head>\n  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>\n  <base href="http://download.oracle.com/otn_software/"/>\n  <script language="javascript" type="text/javascript" src="emviewers/scripts/flashver.js">\n   <!--Test flash version-->\n  </script>\n  <style>\n      body { margin: 0px; overflow:hidden }\n    </style>\n </head>\n <body scroll="no">\n  <script type="text/xml">\n   <!--FXTMODEL-->\n   <report db_version="11.2.0.1.0" elapsed_time="0.00" cpu_time="0.00">\n    <report_id><![CDATA[/orarep/sqlmonitor/main?bucket_max_count=128&event_detail=yes&report_level=ALL&sql_id=7kngmdwtb1dsh]]></report_id>\n   </report>\n   <!--FXTMODEL-->\n  </script>\n  <script language="JavaScript" type="text/javascript" src="emviewers/scripts/loadswf.js">\n   <!--Load report viewer-->\n  </script>\n  <iframe name="_history" frameborder="0" scrolling="no" width="22" height="0">\n   <html>\n    <head>\n     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>\n     <script type="text/javascript" language="JavaScript1.2" charset="utf-8">\n                var v = new top.Vars(top.getSearch(window));\n                var fv = v.toString(&apos;$_&apos;);\n              </script>\n    </head>\n    <body>\n     <script type="text/javascript" language="JavaScript1.2" charset="utf-8" src="emviewers/scripts/document.js">\n      <!--Run document script-->\n     </script>\n    </body>\n   </html>\n  </iframe>\n </body>\n</html>\n']
+2020-09-24 20:51:59,153 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:51:59] "GET /report_sql_monitor_active/7kngmdwtb1dsh HTTP/1.1" 201 -
+2020-09-24 20:52:18,887 DEBUG: [app.py:257] : Query parameters for data-dictionary-views: 
+2020-09-24 20:52:18,888 DEBUG: [app.py:258] : Parameter names        : []
+2020-09-24 20:52:18,888 DEBUG: [app.py:259] : Parameter values       : []
+2020-09-24 20:52:18,910 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:52:18,910 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:52:18,910 DEBUG: [app.py:111] : 
+SELECT 
+    view_name
+FROM 
+    dba_views a
+WHERE 
+    (view_name LIKE 'V$%'
+OR  view_name LIKE 'GV$%'
+OR  view_name LIKE 'ALL_%'
+OR  view_name LIKE 'DBA_%'  
+OR  view_name LIKE 'USER_%')
+AND EXISTS (SELECT 1 FROM DBA_OBJECTS b WHERE a.owner = b.owner AND a.view_name = b.object_name)
+ORDER BY 1
+
+2020-09-24 20:52:18,910 DEBUG: [app.py:112] : Query Parameters: None
+2020-09-24 20:52:19,022 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:52:19,023 DEBUG: [app.py:154] : ['VIEW_NAME']
+2020-09-24 20:52:19,023 DEBUG: [app.py:154] : ['ALL$AW_CUBE_AGG_LEVELS']
+2020-09-24 20:52:19,023 DEBUG: [app.py:154] : ['ALL$AW_CUBE_AGG_MEASURES']
+2020-09-24 20:52:19,023 DEBUG: [app.py:154] : ['ALL$AW_CUBE_AGG_PLANS']
+2020-09-24 20:52:19,023 DEBUG: [app.py:154] : ['ALL$AW_CUBE_ENABLED_HIERCOMBO']
+2020-09-24 20:52:19,028 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:52:19] "POST /query_execution/data-dictionary-views HTTP/1.1" 201 -
+2020-09-24 20:52:31,062 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:52:31,062 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:52:31,062 DEBUG: [app.py:111] : SELECT * FROM ALL_TABLES WHERE ROWNUM < 25000
+2020-09-24 20:52:31,062 DEBUG: [app.py:112] : Query Parameters: []
+2020-09-24 20:52:31,355 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:52:31,355 DEBUG: [app.py:154] : ['OWNER', 'TABLE_NAME', 'TABLESPACE_NAME', 'CLUSTER_NAME', 'IOT_NAME', 'STATUS', 'PCT_FREE', 'PCT_USED', 'INI_TRANS', 'MAX_TRANS', 'INITIAL_EXTENT', 'NEXT_EXTENT', 'MIN_EXTENTS', 'MAX_EXTENTS', 'PCT_INCREASE', 'FREELISTS', 'FREELIST_GROUPS', 'LOGGING', 'BACKED_UP', 'NUM_ROWS', 'BLOCKS', 'EMPTY_BLOCKS', 'AVG_SPACE', 'CHAIN_CNT', 'AVG_ROW_LEN', 'AVG_SPACE_FREELIST_BLOCKS', 'NUM_FREELIST_BLOCKS', 'DEGREE', 'INSTANCES', 'CACHE', 'TABLE_LOCK', 'SAMPLE_SIZE', 'LAST_ANALYZED', 'PARTITIONED', 'IOT_TYPE', 'TEMPORARY', 'SECONDARY', 'NESTED', 'BUFFER_POOL', 'FLASH_CACHE', 'CELL_FLASH_CACHE', 'ROW_MOVEMENT', 'GLOBAL_STATS', 'USER_STATS', 'DURATION', 'SKIP_CORRUPT', 'MONITORING', 'CLUSTER_OWNER', 'DEPENDENCIES', 'COMPRESSION', 'COMPRESS_FOR', 'DROPPED', 'READ_ONLY', 'SEGMENT_CREATED', 'RESULT_CACHE']
+2020-09-24 20:52:31,355 DEBUG: [app.py:154] : ['SYS', 'ICOL$', 'SYSTEM', 'C_OBJ#', '', 'VALID', '0', '0', '0', '0', '139264', '204800', '1', '2147483645', '', '1', '1', 'YES', 'N', '2791', '734', '0', '0', '0', '30', '0', '0', '         1', '         1', '    N', 'ENABLED', '2791', '2010-03-30 10:17:59', 'NO', '', 'N', 'N', 'NO', 'DEFAULT', 'DEFAULT', 'DEFAULT', 'DISABLED', 'YES', 'NO', '', 'DISABLED', 'YES', 'SYS', 'DISABLED', 'DISABLED', '', 'NO', 'NO', 'YES', 'DEFAULT']
+2020-09-24 20:52:31,355 DEBUG: [app.py:154] : ['SYS', 'CON$', 'SYSTEM', '', '', 'VALID', '10', '40', '1', '255', '65536', '1048576', '1', '2147483645', '', '1', '1', 'YES', 'N', '10940', '44', '0', '0', '0', '25', '0', '0', '         1', '         1', '    N', 'ENABLED', '10940', '2020-09-23 22:00:12', 'NO', '', 'N', 'N', 'NO', 'DEFAULT', 'DEFAULT', 'DEFAULT', 'DISABLED', 'YES', 'NO', '', 'DISABLED', 'YES', '', 'DISABLED', 'DISABLED', '', 'NO', 'NO', 'YES', 'DEFAULT']
+2020-09-24 20:52:31,355 DEBUG: [app.py:154] : ['SYS', 'UNDO$', 'SYSTEM', '', '', 'VALID', '10', '40', '1', '255', '65536', '1048576', '1', '2147483645', '', '1', '1', 'YES', 'N', '21', '1', '0', '0', '0', '60', '0', '0', '         1', '         1', '    N', 'ENABLED', '21', '2020-09-19 18:05:32', 'NO', '', 'N', 'N', 'NO', 'DEFAULT', 'DEFAULT', 'DEFAULT', 'DISABLED', 'YES', 'NO', '', 'DISABLED', 'YES', '', 'DISABLED', 'DISABLED', '', 'NO', 'NO', 'YES', 'DEFAULT']
+2020-09-24 20:52:31,356 DEBUG: [app.py:154] : ['SYS', 'PROXY_ROLE_DATA$', 'SYSTEM', '', '', 'VALID', '10', '40', '1', '255', '65536', '1048576', '1', '2147483645', '', '1', '1', 'YES', 'N', '0', '0', '0', '0', '0', '0', '0', '0', '         1', '         1', '    N', 'ENABLED', '0', '2010-03-30 10:18:28', 'NO', '', 'N', 'N', 'NO', 'DEFAULT', 'DEFAULT', 'DEFAULT', 'DISABLED', 'YES', 'NO', '', 'DISABLED', 'YES', '', 'DISABLED', 'DISABLED', '', 'NO', 'NO', 'YES', 'DEFAULT']
+2020-09-24 20:52:31,437 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:52:31] "POST /get-table/ALL_TABLES HTTP/1.1" 201 -
+2020-09-24 20:52:45,786 DEBUG: [app.py:257] : Query parameters for get-tables-in-a-schema: 
+2020-09-24 20:52:45,786 DEBUG: [app.py:258] : Parameter names        : ['schema_name']
+2020-09-24 20:52:45,786 DEBUG: [app.py:259] : Parameter values       : ['HR']
+2020-09-24 20:52:45,808 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:52:45,808 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:52:45,808 DEBUG: [app.py:111] : 
+ SELECT DISTINCT
+     at.TABLE_NAME
+ FROM
+     ALL_TABLES at
+ WHERE
+     at.OWNER = :schema_name
+ ORDER BY
+    at.TABLE_NAME
+ 
+2020-09-24 20:52:45,808 DEBUG: [app.py:112] : Query Parameters: ['HR']
+2020-09-24 20:52:45,830 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:52:45,830 DEBUG: [app.py:154] : ['TABLE_NAME']
+2020-09-24 20:52:45,830 DEBUG: [app.py:154] : ['COUNTRIES']
+2020-09-24 20:52:45,830 DEBUG: [app.py:154] : ['DEPARTMENTS']
+2020-09-24 20:52:45,830 DEBUG: [app.py:154] : ['EMPLOYEES']
+2020-09-24 20:52:45,830 DEBUG: [app.py:154] : ['JOBS']
+2020-09-24 20:52:45,831 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:52:45] "POST /query_execution/get-tables-in-a-schema?schema_name=HR HTTP/1.1" 201 -
+2020-09-24 20:52:47,781 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:52:47,781 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:52:47,781 DEBUG: [app.py:111] : SELECT * FROM HR.COUNTRIES WHERE ROWNUM < 25000
+2020-09-24 20:52:47,782 DEBUG: [app.py:112] : Query Parameters: []
+2020-09-24 20:52:47,784 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:52:47,784 DEBUG: [app.py:154] : ['COUNTRY_ID', 'COUNTRY_NAME', 'REGION_ID']
+2020-09-24 20:52:47,784 DEBUG: [app.py:154] : ['AR', 'Argentina', '2']
+2020-09-24 20:52:47,784 DEBUG: [app.py:154] : ['AU', 'Australia', '3']
+2020-09-24 20:52:47,784 DEBUG: [app.py:154] : ['BE', 'Belgium', '1']
+2020-09-24 20:52:47,784 DEBUG: [app.py:154] : ['BR', 'Brazil', '2']
+2020-09-24 20:52:47,784 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:52:47] "POST /get-table/HR.COUNTRIES HTTP/1.1" 201 -
+2020-09-24 20:52:48,995 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:52:48,995 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:52:48,995 DEBUG: [app.py:111] : SELECT * FROM HR.DEPARTMENTS WHERE ROWNUM < 25000
+2020-09-24 20:52:48,996 DEBUG: [app.py:112] : Query Parameters: []
+2020-09-24 20:52:48,999 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:52:48,999 DEBUG: [app.py:154] : ['DEPARTMENT_ID', 'DEPARTMENT_NAME', 'MANAGER_ID', 'LOCATION_ID']
+2020-09-24 20:52:48,999 DEBUG: [app.py:154] : ['10', 'Administration', '200', '1700']
+2020-09-24 20:52:49,000 DEBUG: [app.py:154] : ['20', 'Marketing', '201', '1800']
+2020-09-24 20:52:49,000 DEBUG: [app.py:154] : ['30', 'Purchasing', '114', '1700']
+2020-09-24 20:52:49,000 DEBUG: [app.py:154] : ['40', 'Human Resources', '203', '2400']
+2020-09-24 20:52:49,001 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:52:49] "POST /get-table/HR.DEPARTMENTS HTTP/1.1" 201 -
+2020-09-24 20:52:51,809 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:52:51,809 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:52:51,809 DEBUG: [app.py:111] : SELECT * FROM HR.JOB_HISTORY WHERE ROWNUM < 25000
+2020-09-24 20:52:51,809 DEBUG: [app.py:112] : Query Parameters: []
+2020-09-24 20:52:51,812 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:52:51,812 DEBUG: [app.py:154] : ['EMPLOYEE_ID', 'START_DATE', 'END_DATE', 'JOB_ID', 'DEPARTMENT_ID']
+2020-09-24 20:52:51,812 DEBUG: [app.py:154] : ['102', '2001-01-13 00:00:00', '2006-07-24 00:00:00', 'IT_PROG', '60']
+2020-09-24 20:52:51,812 DEBUG: [app.py:154] : ['101', '1997-09-21 00:00:00', '2001-10-27 00:00:00', 'AC_ACCOUNT', '110']
+2020-09-24 20:52:51,812 DEBUG: [app.py:154] : ['101', '2001-10-28 00:00:00', '2005-03-15 00:00:00', 'AC_MGR', '110']
+2020-09-24 20:52:51,812 DEBUG: [app.py:154] : ['201', '2004-02-17 00:00:00', '2007-12-19 00:00:00', 'MK_REP', '20']
+2020-09-24 20:52:51,813 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:52:51] "POST /get-table/HR.JOB_HISTORY HTTP/1.1" 201 -
+2020-09-24 20:52:53,602 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:52:53,602 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:52:53,602 DEBUG: [app.py:111] : SELECT * FROM HR.TEMP WHERE ROWNUM < 25000
+2020-09-24 20:52:53,602 DEBUG: [app.py:112] : Query Parameters: []
+2020-09-24 20:52:53,605 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:52:53,605 DEBUG: [app.py:154] : ['COL']
+2020-09-24 20:52:53,605 DEBUG: [app.py:154] : ['5217295293608174']
+2020-09-24 20:52:53,605 DEBUG: [app.py:154] : ['5217 2952 9360 8174']
+2020-09-24 20:52:53,606 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:52:53] "POST /get-table/HR.TEMP HTTP/1.1" 201 -
+2020-09-24 20:52:55,895 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:52:55,895 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:52:55,895 DEBUG: [app.py:111] : SELECT * FROM HR.REGIONS WHERE ROWNUM < 25000
+2020-09-24 20:52:55,895 DEBUG: [app.py:112] : Query Parameters: []
+2020-09-24 20:52:55,897 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:52:55,897 DEBUG: [app.py:154] : ['REGION_ID', 'REGION_NAME']
+2020-09-24 20:52:55,898 DEBUG: [app.py:154] : ['1', 'Europe']
+2020-09-24 20:52:55,898 DEBUG: [app.py:154] : ['2', 'Americas']
+2020-09-24 20:52:55,898 DEBUG: [app.py:154] : ['3', 'Asia']
+2020-09-24 20:52:55,898 DEBUG: [app.py:154] : ['4', 'Middle East and Africa']
+2020-09-24 20:52:55,898 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:52:55] "POST /get-table/HR.REGIONS HTTP/1.1" 201 -
+2020-09-24 20:52:57,607 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:52:57,607 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:52:57,607 DEBUG: [app.py:111] : SELECT * FROM HR.LOCATIONS WHERE ROWNUM < 25000
+2020-09-24 20:52:57,607 DEBUG: [app.py:112] : Query Parameters: []
+2020-09-24 20:52:57,611 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:52:57,612 DEBUG: [app.py:154] : ['LOCATION_ID', 'STREET_ADDRESS', 'POSTAL_CODE', 'CITY', 'STATE_PROVINCE', 'COUNTRY_ID']
+2020-09-24 20:52:57,612 DEBUG: [app.py:154] : ['1000', '1297 Via Cola di Rie', '00989', 'Roma', '', 'IT']
+2020-09-24 20:52:57,612 DEBUG: [app.py:154] : ['1100', '93091 Calle della Testa', '10934', 'Venice', '', 'IT']
+2020-09-24 20:52:57,612 DEBUG: [app.py:154] : ['1200', '2017 Shinjuku-ku', '1689', 'Tokyo', 'Tokyo Prefecture', 'JP']
+2020-09-24 20:52:57,612 DEBUG: [app.py:154] : ['1300', '9450 Kamiya-cho', '6823', 'Hiroshima', '', 'JP']
+2020-09-24 20:52:57,613 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:52:57] "POST /get-table/HR.LOCATIONS HTTP/1.1" 201 -
+2020-09-24 20:53:00,891 DEBUG: [app.py:109] : ------------------------------------------------------------------------------------------------------------------------
+2020-09-24 20:53:00,891 DEBUG: [app.py:110] : Query to be executed
+2020-09-24 20:53:00,891 DEBUG: [app.py:111] : SELECT * FROM HR.JOB_HISTORY WHERE ROWNUM < 25000
+2020-09-24 20:53:00,891 DEBUG: [app.py:112] : Query Parameters: []
+2020-09-24 20:53:00,894 DEBUG: [app.py:153] : Sample Result
+2020-09-24 20:53:00,894 DEBUG: [app.py:154] : ['EMPLOYEE_ID', 'START_DATE', 'END_DATE', 'JOB_ID', 'DEPARTMENT_ID']
+2020-09-24 20:53:00,894 DEBUG: [app.py:154] : ['102', '2001-01-13 00:00:00', '2006-07-24 00:00:00', 'IT_PROG', '60']
+2020-09-24 20:53:00,894 DEBUG: [app.py:154] : ['101', '1997-09-21 00:00:00', '2001-10-27 00:00:00', 'AC_ACCOUNT', '110']
+2020-09-24 20:53:00,894 DEBUG: [app.py:154] : ['101', '2001-10-28 00:00:00', '2005-03-15 00:00:00', 'AC_MGR', '110']
+2020-09-24 20:53:00,895 DEBUG: [app.py:154] : ['201', '2004-02-17 00:00:00', '2007-12-19 00:00:00', 'MK_REP', '20']
+2020-09-24 20:53:00,895 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:53:00] "POST /get-table/HR.JOB_HISTORY HTTP/1.1" 201 -
