@@ -1,6 +1,6 @@
 # Stato
 
-![](C:\Users\ravis\Desktop\Stato\images\Stato.gif)
+![Stato.gif](./images/Stato.gif)
 
 ****
 
