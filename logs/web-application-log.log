@@ -2962,3 +2962,159 @@ ORDER BY 1
 2020-09-24 20:53:00,894 DEBUG: [app.py:154] : ['101', '2001-10-28 00:00:00', '2005-03-15 00:00:00', 'AC_MGR', '110']
 2020-09-24 20:53:00,895 DEBUG: [app.py:154] : ['201', '2004-02-17 00:00:00', '2007-12-19 00:00:00', 'MK_REP', '20']
 2020-09-24 20:53:00,895 INFO: [_internal.py:122] : 127.0.0.1 - - [24/Sep/2020 20:53:00] "POST /get-table/HR.JOB_HISTORY HTTP/1.1" 201 -
+2020-10-02 18:08:17,205 INFO: [_internal.py:122] :  * Restarting with stat
+2020-10-02 18:08:17,656 WARNING: [_internal.py:122] :  * Debugger is active!
+2020-10-02 18:08:17,669 INFO: [_internal.py:122] :  * Debugger PIN: 224-116-682
+2020-10-02 18:08:17,682 INFO: [_internal.py:122] :  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-10-02 18:08:27,011 INFO: [_internal.py:122] : 127.0.0.1 - - [02/Oct/2020 18:08:27] "GET / HTTP/1.1" 200 -
+2020-10-02 18:08:27,249 INFO: [_internal.py:122] : 127.0.0.1 - - [02/Oct/2020 18:08:27] "GET /static/js/app.js HTTP/1.1" 200 -
+2020-10-02 18:08:27,369 INFO: [_internal.py:122] : 127.0.0.1 - - [02/Oct/2020 18:08:27] "GET /static/js/api-calls.js HTTP/1.1" 200 -
+2020-10-02 18:08:27,370 INFO: [_internal.py:122] : 127.0.0.1 - - [02/Oct/2020 18:08:27] "GET /static/js/auto-refresh-setup.js HTTP/1.1" 200 -
+2020-10-02 18:08:27,371 INFO: [_internal.py:122] : 127.0.0.1 - - [02/Oct/2020 18:08:27] "GET /static/js/common.js HTTP/1.1" 200 -
+2020-10-02 18:08:27,447 INFO: [_internal.py:122] : 127.0.0.1 - - [02/Oct/2020 18:08:27] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-10-02 18:08:27,762 DEBUG: [app.py:257] : Query parameters for long-running-queries: 
+2020-10-02 18:08:27,763 DEBUG: [app.py:258] : Parameter names        : []
+2020-10-02 18:08:27,764 DEBUG: [app.py:257] : Query parameters for queries-resource-usage: 
+2020-10-02 18:08:27,764 DEBUG: [app.py:259] : Parameter values       : []
+2020-10-02 18:08:27,765 DEBUG: [app.py:258] : Parameter names        : []
+2020-10-02 18:08:28,017 DEBUG: [app.py:259] : Parameter values       : []
+2020-10-02 18:08:28,080 ERROR: [app.py:88] : Unable to get a DB connection to localhost:1522/testdb
+2020-10-02 18:08:28,080 ERROR: [app.py:88] : Unable to get a DB connection to localhost:1522/testdb
+2020-10-02 18:08:28,080 ERROR: [app.py:89] : ORA-28001: the password has expired
+2020-10-02 18:08:28,080 ERROR: [app.py:89] : ORA-28001: the password has expired
+2020-10-02 18:08:28,394 INFO: [_internal.py:122] : 127.0.0.1 - - [02/Oct/2020 18:08:28] "GET /favicon.ico HTTP/1.1" 404 -
+2020-10-02 18:09:04,516 INFO: [_internal.py:122] : 127.0.0.1 - - [02/Oct/2020 18:09:04] "GET / HTTP/1.1" 200 -
+2020-10-02 18:09:04,765 DEBUG: [app.py:257] : Query parameters for long-running-queries: 
+2020-10-02 18:09:04,765 DEBUG: [app.py:258] : Parameter names        : []
+2020-10-02 18:09:04,766 DEBUG: [app.py:259] : Parameter values       : []
+2020-10-02 18:09:04,801 ERROR: [app.py:88] : Unable to get a DB connection to localhost:1522/testdb
+2020-10-02 18:09:04,801 ERROR: [app.py:89] : ORA-28001: the password has expired
+2020-10-02 18:09:05,067 DEBUG: [app.py:257] : Query parameters for queries-resource-usage: 
+2020-10-02 18:09:05,068 DEBUG: [app.py:258] : Parameter names        : []
+2020-10-02 18:09:05,068 DEBUG: [app.py:259] : Parameter values       : []
+2020-10-02 18:09:05,107 ERROR: [app.py:88] : Unable to get a DB connection to localhost:1522/testdb
+2020-10-02 18:09:05,107 ERROR: [app.py:89] : ORA-28001: the password has expired
+2020-10-02 18:11:05,219 INFO: [_internal.py:122] : 127.0.0.1 - - [02/Oct/2020 18:11:05] "GET / HTTP/1.1" 200 -
+2020-10-02 18:11:05,469 DEBUG: [app.py:257] : Query parameters for queries-resource-usage: 
+2020-10-02 18:11:05,470 DEBUG: [app.py:258] : Parameter names        : []
+2020-10-02 18:11:05,470 DEBUG: [app.py:259] : Parameter values       : []
+2020-10-02 18:11:05,507 ERROR: [app.py:88] : Unable to get a DB connection to localhost:1522/testdb
+2020-10-02 18:11:05,507 ERROR: [app.py:89] : ORA-28001: the password has expired
+2020-10-02 18:11:05,714 DEBUG: [app.py:257] : Query parameters for long-running-queries: 
+2020-10-02 18:11:05,715 DEBUG: [app.py:258] : Parameter names        : []
+2020-10-02 18:11:05,715 DEBUG: [app.py:259] : Parameter values       : []
+2020-10-02 18:11:05,744 ERROR: [app.py:88] : Unable to get a DB connection to localhost:1522/testdb
+2020-10-02 18:11:05,744 ERROR: [app.py:89] : ORA-28001: the password has expired
+2020-10-02 19:27:57,066 INFO: [_internal.py:122] : 127.0.0.1 - - [02/Oct/2020 19:27:57] "GET / HTTP/1.1" 200 -
+2020-10-02 19:27:57,301 DEBUG: [app.py:257] : Query parameters for long-running-queries: 
+2020-10-02 19:27:57,301 DEBUG: [app.py:258] : Parameter names        : []
+2020-10-02 19:27:57,301 DEBUG: [app.py:259] : Parameter values       : []
+2020-10-02 19:27:57,329 ERROR: [app.py:88] : Unable to get a DB connection to localhost:1522/testdb
+2020-10-02 19:27:57,329 ERROR: [app.py:89] : ORA-28001: the password has expired
+2020-10-02 19:27:57,571 DEBUG: [app.py:257] : Query parameters for queries-resource-usage: 
+2020-10-02 19:27:57,572 DEBUG: [app.py:258] : Parameter names        : []
+2020-10-02 19:27:57,573 DEBUG: [app.py:259] : Parameter values       : []
+2020-10-02 19:27:57,598 ERROR: [app.py:88] : Unable to get a DB connection to localhost:1522/testdb
+2020-10-02 19:27:57,598 ERROR: [app.py:89] : ORA-28001: the password has expired
+2020-10-05 19:59:58,095 INFO: [_internal.py:122] :  * Restarting with stat
+2020-10-05 19:59:58,491 WARNING: [_internal.py:122] :  * Debugger is active!
+2020-10-05 19:59:58,497 INFO: [_internal.py:122] :  * Debugger PIN: 224-116-682
+2020-10-05 19:59:58,506 INFO: [_internal.py:122] :  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-10-05 20:00:07,046 INFO: [_internal.py:122] : 127.0.0.1 - - [05/Oct/2020 20:00:07] "GET / HTTP/1.1" 200 -
+2020-10-05 20:00:07,069 INFO: [_internal.py:122] : 127.0.0.1 - - [05/Oct/2020 20:00:07] "GET /static/js/app.js HTTP/1.1" 200 -
+2020-10-05 20:00:07,283 INFO: [_internal.py:122] : 127.0.0.1 - - [05/Oct/2020 20:00:07] "GET /static/js/api-calls.js HTTP/1.1" 200 -
+2020-10-05 20:00:07,378 INFO: [_internal.py:122] : 127.0.0.1 - - [05/Oct/2020 20:00:07] "GET /static/js/auto-refresh-setup.js HTTP/1.1" 200 -
+2020-10-05 20:00:07,380 INFO: [_internal.py:122] : 127.0.0.1 - - [05/Oct/2020 20:00:07] "GET /static/js/common.js HTTP/1.1" 200 -
+2020-10-05 20:00:07,916 INFO: [_internal.py:122] : 127.0.0.1 - - [05/Oct/2020 20:00:07] "GET /static/js/query-execution-worker.js HTTP/1.1" 200 -
+2020-10-05 20:00:07,926 DEBUG: [app.py:257] : Query parameters for long-running-queries: 
+2020-10-05 20:00:07,926 DEBUG: [app.py:258] : Parameter names        : []
+2020-10-05 20:00:07,926 DEBUG: [app.py:259] : Parameter values       : []
+2020-10-05 20:00:08,227 DEBUG: [app.py:257] : Query parameters for queries-resource-usage: 
+2020-10-05 20:00:08,227 DEBUG: [app.py:258] : Parameter names        : []
+2020-10-05 20:00:08,227 DEBUG: [app.py:259] : Parameter values       : []
+2020-10-05 20:00:08,262 ERROR: [app.py:88] : Unable to get a DB connection to localhost:1522/testdb
+2020-10-05 20:00:08,262 ERROR: [app.py:88] : Unable to get a DB connection to localhost:1522/testdb
+2020-10-05 20:00:08,262 ERROR: [app.py:89] : ORA-28001: the password has expired
+2020-10-05 20:00:08,262 ERROR: [app.py:89] : ORA-28001: the password has expired
+2020-10-05 20:00:08,567 DEBUG: [app.py:257] : Query parameters for long-running-queries: 
+2020-10-05 20:00:08,568 DEBUG: [app.py:258] : Parameter names        : []
+2020-10-05 20:00:08,568 DEBUG: [app.py:259] : Parameter values       : []
+2020-10-05 20:00:08,598 ERROR: [app.py:88] : Unable to get a DB connection to localhost:1522/testdb
+2020-10-05 20:00:08,598 ERROR: [app.py:89] : ORA-28001: the password has expired
+2020-10-05 20:00:08,866 INFO: [_internal.py:122] : 127.0.0.1 - - [05/Oct/2020 20:00:08] "GET /favicon.ico HTTP/1.1" 404 -
+2020-10-05 20:00:37,913 INFO: [_internal.py:122] : 127.0.0.1 - - [05/Oct/2020 20:00:37] "GET / HTTP/1.1" 200 -
+2020-10-05 20:00:38,164 DEBUG: [app.py:257] : Query parameters for long-running-queries: 
+2020-10-05 20:00:38,164 DEBUG: [app.py:258] : Parameter names        : []
+2020-10-05 20:00:38,165 DEBUG: [app.py:259] : Parameter values       : []
+2020-10-05 20:00:38,192 ERROR: [app.py:88] : Unable to get a DB connection to localhost:1522/testdb
+2020-10-05 20:00:38,192 ERROR: [app.py:89] : ORA-28001: the password has expired
+2020-10-05 20:00:38,422 DEBUG: [app.py:257] : Query parameters for queries-resource-usage: 
+2020-10-05 20:00:38,422 DEBUG: [app.py:258] : Parameter names        : []
+2020-10-05 20:00:38,422 DEBUG: [app.py:259] : Parameter values       : []
+2020-10-05 20:00:38,455 ERROR: [app.py:88] : Unable to get a DB connection to localhost:1522/testdb
+2020-10-05 20:00:38,455 ERROR: [app.py:89] : ORA-28001: the password has expired
+2020-10-05 20:07:16,623 INFO: [_internal.py:122] : 127.0.0.1 - - [05/Oct/2020 20:07:16] "GET / HTTP/1.1" 200 -
+2020-10-05 20:07:16,872 DEBUG: [app.py:257] : Query parameters for long-running-queries: 
+2020-10-05 20:07:16,872 DEBUG: [app.py:258] : Parameter names        : []
+2020-10-05 20:07:16,872 DEBUG: [app.py:259] : Parameter values       : []
+2020-10-05 20:07:16,890 ERROR: [app.py:88] : Unable to get a DB connection to localhost:1522/testdb
+2020-10-05 20:07:16,891 ERROR: [app.py:89] : ORA-28001: the password has expired
+2020-10-05 20:07:17,121 DEBUG: [app.py:257] : Query parameters for queries-resource-usage: 
+2020-10-05 20:07:17,122 DEBUG: [app.py:258] : Parameter names        : []
+2020-10-05 20:07:17,122 DEBUG: [app.py:259] : Parameter values       : []
+2020-10-05 20:07:17,156 ERROR: [app.py:88] : Unable to get a DB connection to localhost:1522/testdb
+2020-10-05 20:07:17,156 ERROR: [app.py:89] : ORA-28001: the password has expired
+2020-10-05 20:13:20,963 INFO: [_internal.py:122] : 127.0.0.1 - - [05/Oct/2020 20:13:20] "GET / HTTP/1.1" 200 -
+2020-10-05 20:13:21,214 DEBUG: [app.py:257] : Query parameters for long-running-queries: 
+2020-10-05 20:13:21,214 DEBUG: [app.py:258] : Parameter names        : []
+2020-10-05 20:13:21,214 DEBUG: [app.py:259] : Parameter values       : []
+2020-10-05 20:13:21,227 ERROR: [app.py:88] : Unable to get a DB connection to localhost:1522/testdb
+2020-10-05 20:13:21,227 ERROR: [app.py:89] : ORA-28001: the password has expired
+2020-10-05 20:13:21,457 DEBUG: [app.py:257] : Query parameters for queries-resource-usage: 
+2020-10-05 20:13:21,458 DEBUG: [app.py:258] : Parameter names        : []
+2020-10-05 20:13:21,458 DEBUG: [app.py:259] : Parameter values       : []
+2020-10-05 20:13:21,485 ERROR: [app.py:88] : Unable to get a DB connection to localhost:1522/testdb
+2020-10-05 20:13:21,485 ERROR: [app.py:89] : ORA-28001: the password has expired
+2020-10-05 21:29:43,121 INFO: [_internal.py:122] : 127.0.0.1 - - [05/Oct/2020 21:29:43] "GET / HTTP/1.1" 200 -
+2020-10-05 21:29:43,417 DEBUG: [app.py:257] : Query parameters for long-running-queries: 
+2020-10-05 21:29:43,417 DEBUG: [app.py:258] : Parameter names        : []
+2020-10-05 21:29:43,417 DEBUG: [app.py:259] : Parameter values       : []
+2020-10-05 21:29:43,445 ERROR: [app.py:88] : Unable to get a DB connection to localhost:1522/testdb
+2020-10-05 21:29:43,445 ERROR: [app.py:89] : ORA-28001: the password has expired
+2020-10-05 21:29:43,721 DEBUG: [app.py:257] : Query parameters for queries-resource-usage: 
+2020-10-05 21:29:43,721 DEBUG: [app.py:258] : Parameter names        : []
+2020-10-05 21:29:43,721 DEBUG: [app.py:259] : Parameter values       : []
+2020-10-05 21:29:43,749 DEBUG: [app.py:257] : Query parameters for long-running-queries: 
+2020-10-05 21:29:43,749 DEBUG: [app.py:258] : Parameter names        : []
+2020-10-05 21:29:43,749 DEBUG: [app.py:259] : Parameter values       : []
+2020-10-05 21:29:43,753 ERROR: [app.py:88] : Unable to get a DB connection to localhost:1522/testdb
+2020-10-05 21:29:43,753 ERROR: [app.py:89] : ORA-28001: the password has expired
+2020-10-05 21:29:43,769 ERROR: [app.py:88] : Unable to get a DB connection to localhost:1522/testdb
+2020-10-05 21:29:43,769 ERROR: [app.py:89] : ORA-28001: the password has expired
+2020-10-05 21:29:53,169 INFO: [_internal.py:122] : 127.0.0.1 - - [05/Oct/2020 21:29:53] "GET / HTTP/1.1" 200 -
+2020-10-05 21:29:53,421 DEBUG: [app.py:257] : Query parameters for long-running-queries: 
+2020-10-05 21:29:53,421 DEBUG: [app.py:258] : Parameter names        : []
+2020-10-05 21:29:53,421 DEBUG: [app.py:259] : Parameter values       : []
+2020-10-05 21:29:53,453 ERROR: [app.py:88] : Unable to get a DB connection to localhost:1522/testdb
+2020-10-05 21:29:53,453 ERROR: [app.py:89] : ORA-28001: the password has expired
+2020-10-05 21:29:53,725 DEBUG: [app.py:257] : Query parameters for queries-resource-usage: 
+2020-10-05 21:29:53,725 DEBUG: [app.py:258] : Parameter names        : []
+2020-10-05 21:29:53,725 DEBUG: [app.py:259] : Parameter values       : []
+2020-10-05 21:29:53,757 ERROR: [app.py:88] : Unable to get a DB connection to localhost:1522/testdb
+2020-10-05 21:29:53,757 ERROR: [app.py:89] : ORA-28001: the password has expired
+2020-10-05 21:32:29,891 INFO: [_internal.py:122] : 127.0.0.1 - - [05/Oct/2020 21:32:29] "GET / HTTP/1.1" 200 -
+2020-10-05 21:32:30,191 DEBUG: [app.py:257] : Query parameters for long-running-queries: 
+2020-10-05 21:32:30,191 DEBUG: [app.py:258] : Parameter names        : []
+2020-10-05 21:32:30,191 DEBUG: [app.py:259] : Parameter values       : []
+2020-10-05 21:32:30,223 ERROR: [app.py:88] : Unable to get a DB connection to localhost:1522/testdb
+2020-10-05 21:32:30,223 ERROR: [app.py:89] : ORA-28001: the password has expired
+2020-10-05 21:32:30,499 DEBUG: [app.py:257] : Query parameters for queries-resource-usage: 
+2020-10-05 21:32:30,499 DEBUG: [app.py:258] : Parameter names        : []
+2020-10-05 21:32:30,499 DEBUG: [app.py:259] : Parameter values       : []
+2020-10-05 21:32:30,527 DEBUG: [app.py:257] : Query parameters for long-running-queries: 
+2020-10-05 21:32:30,527 DEBUG: [app.py:258] : Parameter names        : []
+2020-10-05 21:32:30,527 DEBUG: [app.py:259] : Parameter values       : []
+2020-10-05 21:32:30,535 ERROR: [app.py:88] : Unable to get a DB connection to localhost:1522/testdb
+2020-10-05 21:32:30,535 ERROR: [app.py:89] : ORA-28001: the password has expired
+2020-10-05 21:32:30,547 ERROR: [app.py:88] : Unable to get a DB connection to localhost:1522/testdb
+2020-10-05 21:32:30,547 ERROR: [app.py:89] : ORA-28001: the password has expired
