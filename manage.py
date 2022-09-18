@@ -1,5 +1,6 @@
-from flask_script import Server, Manager
-from server.app import app
+from flask_script import Manager, Server
+
+from app import app
 
 manager = Manager(app)
 
@@ -7,8 +8,8 @@ manager = Manager(app)
 manager.add_command("runserver", Server(
     use_debugger=True,
     use_reloader=True,
-    host='localhost',
-    port=5000
+    host='127.0.0.1',
+    port=8080
 ))
 
 if __name__ == '__main__':

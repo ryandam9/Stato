@@ -1,17 +1,14 @@
 import copy
 import logging
 import os
+import sys
 from logging.handlers import RotatingFileHandler
 from pathlib import Path
 
-from flask import Flask
-from flask import request, jsonify, render_template
-from flask_cors import CORS
-from flask_cors import cross_origin
-import sys
-
 import cx_Oracle
-from flask import jsonify
+from flask import Flask, jsonify, render_template, request
+from flask_cors import CORS, cross_origin
+
 from oracle_queries import qry
 
 project_location = os.getcwd()
@@ -275,6 +272,7 @@ def query_execution(query_id):
 
     # Format Query results in JSON form.
     result = format_data(records)
+    result.headers.add('Access-Control-Allow-Origin', '*')
     return result, 201
 
 

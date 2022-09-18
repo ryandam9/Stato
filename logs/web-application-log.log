@@ -3118,3 +3118,249 @@ ORDER BY 1
 2020-10-05 21:32:30,535 ERROR: [app.py:89] : ORA-28001: the password has expired
 2020-10-05 21:32:30,547 ERROR: [app.py:88] : Unable to get a DB connection to localhost:1522/testdb
 2020-10-05 21:32:30,547 ERROR: [app.py:89] : ORA-28001: the password has expired
+2022-03-11 20:07:43,128 INFO: [_internal.py:113] :  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2022-03-11 20:07:43,143 INFO: [_internal.py:113] :  * Restarting with fsevents reloader
+2022-03-11 20:07:43,285 WARNING: [_internal.py:113] :  * Debugger is active!
+2022-03-11 20:07:43,296 INFO: [_internal.py:113] :  * Debugger PIN: 222-025-790
+2022-03-11 20:08:22,043 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:08:22] "[33mGET /github-login HTTP/1.1[0m" 404 -
+2022-03-11 20:08:22,074 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:08:22] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2022-03-11 20:08:26,167 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:08:26] "[37mGET / HTTP/1.1[0m" 200 -
+2022-03-11 20:08:26,193 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:08:26] "[37mGET /static/js/app.js HTTP/1.1[0m" 200 -
+2022-03-11 20:08:26,193 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:08:26] "[37mGET /static/js/auto-refresh-setup.js HTTP/1.1[0m" 200 -
+2022-03-11 20:08:26,194 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:08:26] "[37mGET /static/js/api-calls.js HTTP/1.1[0m" 200 -
+2022-03-11 20:08:26,195 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:08:26] "[37mGET /static/js/common.js HTTP/1.1[0m" 200 -
+2022-03-11 20:08:26,852 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:08:26] "[37mGET /static/js/query-execution-worker.js HTTP/1.1[0m" 200 -
+2022-03-11 20:10:27,802 DEBUG: [fsevents.py:164] : NativeEvent(path="/Users/rk/Desktop/Stato/settings.py.6ce6244097c0b0fd43e75190a9d689c3.tmp", inode=38639313, flags=10100, id=188274): is_created, is_file
+2022-03-11 20:10:27,803 DEBUG: [fsevents.py:97] : queue_event <FileCreatedEvent: event_type=created, src_path='/Users/rk/Desktop/Stato/settings.py.6ce6244097c0b0fd43e75190a9d689c3.tmp', is_directory=False>
+2022-03-11 20:10:27,804 DEBUG: [fsevents.py:97] : queue_event <DirModifiedEvent: event_type=modified, src_path='/Users/rk/Desktop/Stato', is_directory=True>
+2022-03-11 20:10:27,812 DEBUG: [fsevents.py:164] : NativeEvent(path="/Users/rk/Desktop/Stato/settings.py.6ce6244097c0b0fd43e75190a9d689c3.tmp", inode=38639313, flags=11100, id=188277): is_created, is_file, is_modified
+2022-03-11 20:10:27,812 DEBUG: [fsevents.py:97] : queue_event <FileModifiedEvent: event_type=modified, src_path='/Users/rk/Desktop/Stato/settings.py.6ce6244097c0b0fd43e75190a9d689c3.tmp', is_directory=False>
+2022-03-11 20:10:27,891 DEBUG: [fsevents.py:164] : NativeEvent(path="/Users/rk/Desktop/Stato/settings.py.6ce6244097c0b0fd43e75190a9d689c3.tmp", inode=38639313, flags=11300, id=188280): is_coalesced, is_created, is_file, is_modified, is_removed
+2022-03-11 20:10:27,907 DEBUG: [fsevents.py:164] : NativeEvent(path="/Users/rk/Desktop/Stato/settings.py", inode=38635643, flags=10400, id=188283): is_file, is_inode_meta_mod
+2022-03-11 20:10:27,907 DEBUG: [fsevents.py:97] : queue_event <FileModifiedEvent: event_type=modified, src_path='/Users/rk/Desktop/Stato/settings.py.6ce6244097c0b0fd43e75190a9d689c3.tmp', is_directory=False>
+2022-03-11 20:10:27,907 DEBUG: [fsevents.py:97] : queue_event <FileDeletedEvent: event_type=deleted, src_path='/Users/rk/Desktop/Stato/settings.py.6ce6244097c0b0fd43e75190a9d689c3.tmp', is_directory=False>
+2022-03-11 20:10:27,907 DEBUG: [fsevents.py:97] : queue_event <DirModifiedEvent: event_type=modified, src_path='/Users/rk/Desktop/Stato', is_directory=True>
+2022-03-11 20:10:27,908 DEBUG: [fsevents.py:97] : queue_event <FileModifiedEvent: event_type=modified, src_path='/Users/rk/Desktop/Stato/settings.py', is_directory=False>
+2022-03-11 20:10:27,908 INFO: [_internal.py:113] :  * Detected change in '/Users/rk/Desktop/Stato/settings.py', reloading
+2022-03-11 20:10:27,917 DEBUG: [fsevents.py:164] : NativeEvent(path="/Users/rk/Desktop/Stato/settings.py", inode=38635643, flags=11400, id=188286): is_file, is_inode_meta_mod, is_modified
+2022-03-11 20:10:27,917 DEBUG: [fsevents.py:97] : queue_event <FileModifiedEvent: event_type=modified, src_path='/Users/rk/Desktop/Stato/settings.py', is_directory=False>
+2022-03-11 20:10:27,917 INFO: [_internal.py:113] :  * Detected change in '/Users/rk/Desktop/Stato/settings.py', reloading
+2022-03-11 20:10:28,973 INFO: [_internal.py:113] :  * Restarting with fsevents reloader
+2022-03-11 20:10:29,157 WARNING: [_internal.py:113] :  * Debugger is active!
+2022-03-11 20:10:29,165 INFO: [_internal.py:113] :  * Debugger PIN: 222-025-790
+2022-03-11 20:10:30,869 INFO: [_internal.py:113] :  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2022-03-11 20:10:30,872 INFO: [_internal.py:113] :  * Restarting with fsevents reloader
+2022-03-11 20:10:31,009 WARNING: [_internal.py:113] :  * Debugger is active!
+2022-03-11 20:10:31,017 INFO: [_internal.py:113] :  * Debugger PIN: 222-025-790
+2022-03-11 20:10:36,147 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:10:36] "[37mGET / HTTP/1.1[0m" 200 -
+2022-03-11 20:10:37,292 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:10:37] "[37mGET / HTTP/1.1[0m" 200 -
+2022-03-11 20:10:43,276 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:10:43] "[37mGET / HTTP/1.1[0m" 200 -
+2022-03-11 20:11:11,868 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:11:11] "[37mGET / HTTP/1.1[0m" 200 -
+2022-03-11 20:11:12,458 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:11:12] "[37mGET / HTTP/1.1[0m" 200 -
+2022-03-11 20:11:12,755 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:11:12] "[37mGET / HTTP/1.1[0m" 200 -
+2022-03-11 20:11:12,897 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:11:12] "[37mGET / HTTP/1.1[0m" 200 -
+2022-03-11 20:11:13,043 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:11:13] "[37mGET / HTTP/1.1[0m" 200 -
+2022-03-11 20:11:13,177 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:11:13] "[37mGET / HTTP/1.1[0m" 200 -
+2022-03-11 20:11:39,198 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:11:39] "[37mGET / HTTP/1.1[0m" 200 -
+2022-03-11 20:12:54,919 DEBUG: [fsevents.py:164] : NativeEvent(path="/Users/rk/Desktop/Stato/settings.py", inode=38635643, flags=10400, id=190132): is_file, is_inode_meta_mod
+2022-03-11 20:12:54,919 DEBUG: [fsevents.py:97] : queue_event <FileModifiedEvent: event_type=modified, src_path='/Users/rk/Desktop/Stato/settings.py', is_directory=False>
+2022-03-11 20:12:54,919 INFO: [_internal.py:113] :  * Detected change in '/Users/rk/Desktop/Stato/settings.py', reloading
+2022-03-11 20:12:54,929 DEBUG: [fsevents.py:164] : NativeEvent(path="/Users/rk/Desktop/Stato/settings.py", inode=38635643, flags=11400, id=190135): is_file, is_inode_meta_mod, is_modified
+2022-03-11 20:12:54,929 DEBUG: [fsevents.py:97] : queue_event <FileModifiedEvent: event_type=modified, src_path='/Users/rk/Desktop/Stato/settings.py', is_directory=False>
+2022-03-11 20:12:54,930 INFO: [_internal.py:113] :  * Detected change in '/Users/rk/Desktop/Stato/settings.py', reloading
+2022-03-11 20:12:55,974 INFO: [_internal.py:113] :  * Restarting with fsevents reloader
+2022-03-11 20:12:56,171 WARNING: [_internal.py:113] :  * Debugger is active!
+2022-03-11 20:12:56,180 INFO: [_internal.py:113] :  * Debugger PIN: 222-025-790
+2022-03-11 20:13:02,636 INFO: [_internal.py:113] :  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2022-03-11 20:13:02,638 INFO: [_internal.py:113] :  * Restarting with fsevents reloader
+2022-03-11 20:13:02,773 WARNING: [_internal.py:113] :  * Debugger is active!
+2022-03-11 20:13:02,781 INFO: [_internal.py:113] :  * Debugger PIN: 222-025-790
+2022-03-11 20:13:20,321 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:13:20] "[37mGET / HTTP/1.1[0m" 200 -
+2022-03-11 20:18:43,353 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:18:43] "[37mGET / HTTP/1.1[0m" 200 -
+2022-03-11 20:20:40,338 INFO: [_internal.py:113] :  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2022-03-11 20:20:40,341 INFO: [_internal.py:113] :  * Restarting with fsevents reloader
+2022-03-11 20:20:40,476 WARNING: [_internal.py:113] :  * Debugger is active!
+2022-03-11 20:20:40,486 INFO: [_internal.py:113] :  * Debugger PIN: 222-025-790
+2022-03-11 20:20:54,334 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:20:54] "[37mGET / HTTP/1.1[0m" 200 -
+2022-03-11 20:20:54,364 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:20:54] "[37mGET /static/js/auto-refresh-setup.js HTTP/1.1[0m" 200 -
+2022-03-11 20:20:54,364 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:20:54] "[37mGET /static/js/app.js HTTP/1.1[0m" 200 -
+2022-03-11 20:20:54,364 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:20:54] "[37mGET /static/js/api-calls.js HTTP/1.1[0m" 200 -
+2022-03-11 20:20:54,365 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:20:54] "[37mGET /static/js/common.js HTTP/1.1[0m" 200 -
+2022-03-11 20:20:55,031 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:20:55] "[37mGET /static/js/query-execution-worker.js HTTP/1.1[0m" 200 -
+2022-03-11 20:20:55,032 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:20:55] "[37mGET /static/js/query-execution-worker.js HTTP/1.1[0m" 200 -
+2022-03-11 20:24:06,287 INFO: [_internal.py:113] :  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2022-03-11 20:24:06,289 INFO: [_internal.py:113] :  * Restarting with fsevents reloader
+2022-03-11 20:24:06,423 WARNING: [_internal.py:113] :  * Debugger is active!
+2022-03-11 20:24:06,431 INFO: [_internal.py:113] :  * Debugger PIN: 222-025-790
+2022-03-11 20:24:27,679 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:24:27] "[37mGET / HTTP/1.1[0m" 200 -
+2022-03-11 20:24:27,708 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:24:27] "[37mGET /static/js/api-calls.js HTTP/1.1[0m" 200 -
+2022-03-11 20:24:27,710 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:24:27] "[37mGET /static/js/common.js HTTP/1.1[0m" 200 -
+2022-03-11 20:24:27,710 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:24:27] "[37mGET /static/js/app.js HTTP/1.1[0m" 200 -
+2022-03-11 20:24:27,710 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:24:27] "[37mGET /static/js/auto-refresh-setup.js HTTP/1.1[0m" 200 -
+2022-03-11 20:24:28,363 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:24:28] "[37mGET /static/js/query-execution-worker.js HTTP/1.1[0m" 200 -
+2022-03-11 20:24:28,363 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:24:28] "[37mGET /static/js/query-execution-worker.js HTTP/1.1[0m" 200 -
+2022-03-11 20:27:45,959 INFO: [_internal.py:113] :  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2022-03-11 20:27:45,961 INFO: [_internal.py:113] :  * Restarting with fsevents reloader
+2022-03-11 20:27:46,098 WARNING: [_internal.py:113] :  * Debugger is active!
+2022-03-11 20:27:46,105 INFO: [_internal.py:113] :  * Debugger PIN: 222-025-790
+2022-03-11 20:30:35,081 INFO: [_internal.py:113] :  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2022-03-11 20:30:35,093 INFO: [_internal.py:113] :  * Restarting with fsevents reloader
+2022-03-11 20:30:35,239 WARNING: [_internal.py:113] :  * Debugger is active!
+2022-03-11 20:30:35,248 INFO: [_internal.py:113] :  * Debugger PIN: 222-025-790
+2022-03-11 20:31:18,419 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:31:18] "[37mGET / HTTP/1.1[0m" 200 -
+2022-03-11 20:31:18,558 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:31:18] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2022-03-11 20:31:32,420 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:31:32] "[37mGET / HTTP/1.1[0m" 200 -
+2022-03-11 20:33:36,399 DEBUG: [fsevents.py:164] : NativeEvent(path="/Users/rk/Desktop/Stato/manage.py.a0490bed607816b5b4bc298ceeb8b4e0.tmp", inode=38648895, flags=10100, id=327473): is_created, is_file
+2022-03-11 20:33:36,399 DEBUG: [fsevents.py:97] : queue_event <FileCreatedEvent: event_type=created, src_path='/Users/rk/Desktop/Stato/manage.py.a0490bed607816b5b4bc298ceeb8b4e0.tmp', is_directory=False>
+2022-03-11 20:33:36,400 DEBUG: [fsevents.py:97] : queue_event <DirModifiedEvent: event_type=modified, src_path='/Users/rk/Desktop/Stato', is_directory=True>
+2022-03-11 20:33:36,408 DEBUG: [fsevents.py:164] : NativeEvent(path="/Users/rk/Desktop/Stato/manage.py.a0490bed607816b5b4bc298ceeb8b4e0.tmp", inode=38648895, flags=11100, id=327476): is_created, is_file, is_modified
+2022-03-11 20:33:36,408 DEBUG: [fsevents.py:97] : queue_event <FileModifiedEvent: event_type=modified, src_path='/Users/rk/Desktop/Stato/manage.py.a0490bed607816b5b4bc298ceeb8b4e0.tmp', is_directory=False>
+2022-03-11 20:33:36,487 DEBUG: [fsevents.py:164] : NativeEvent(path="/Users/rk/Desktop/Stato/manage.py.a0490bed607816b5b4bc298ceeb8b4e0.tmp", inode=38648895, flags=11300, id=327479): is_coalesced, is_created, is_file, is_modified, is_removed
+2022-03-11 20:33:36,500 DEBUG: [fsevents.py:164] : NativeEvent(path="/Users/rk/Desktop/Stato/manage.py", inode=38635641, flags=10400, id=327482): is_file, is_inode_meta_mod
+2022-03-11 20:33:36,501 DEBUG: [fsevents.py:97] : queue_event <FileModifiedEvent: event_type=modified, src_path='/Users/rk/Desktop/Stato/manage.py.a0490bed607816b5b4bc298ceeb8b4e0.tmp', is_directory=False>
+2022-03-11 20:33:36,501 DEBUG: [fsevents.py:97] : queue_event <FileDeletedEvent: event_type=deleted, src_path='/Users/rk/Desktop/Stato/manage.py.a0490bed607816b5b4bc298ceeb8b4e0.tmp', is_directory=False>
+2022-03-11 20:33:36,501 DEBUG: [fsevents.py:97] : queue_event <DirModifiedEvent: event_type=modified, src_path='/Users/rk/Desktop/Stato', is_directory=True>
+2022-03-11 20:33:36,502 DEBUG: [fsevents.py:97] : queue_event <FileModifiedEvent: event_type=modified, src_path='/Users/rk/Desktop/Stato/manage.py', is_directory=False>
+2022-03-11 20:33:36,502 INFO: [_internal.py:113] :  * Detected change in '/Users/rk/Desktop/Stato/manage.py', reloading
+2022-03-11 20:33:36,512 DEBUG: [fsevents.py:164] : NativeEvent(path="/Users/rk/Desktop/Stato/manage.py", inode=38635641, flags=11400, id=327485): is_file, is_inode_meta_mod, is_modified
+2022-03-11 20:33:36,512 DEBUG: [fsevents.py:97] : queue_event <FileModifiedEvent: event_type=modified, src_path='/Users/rk/Desktop/Stato/manage.py', is_directory=False>
+2022-03-11 20:33:36,512 INFO: [_internal.py:113] :  * Detected change in '/Users/rk/Desktop/Stato/manage.py', reloading
+2022-03-11 20:33:37,565 INFO: [_internal.py:113] :  * Restarting with fsevents reloader
+2022-03-11 20:33:37,728 WARNING: [_internal.py:113] :  * Debugger is active!
+2022-03-11 20:33:37,736 INFO: [_internal.py:113] :  * Debugger PIN: 222-025-790
+2022-03-11 20:33:48,451 INFO: [manage.py:16] : Application is getting started.
+2022-03-11 20:33:48,451 INFO: [manage.py:17] : App Instance Path:/Users/rk/Desktop/Stato/instance
+2022-03-11 20:33:48,456 INFO: [_internal.py:113] :  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2022-03-11 20:33:48,459 INFO: [_internal.py:113] :  * Restarting with fsevents reloader
+2022-03-11 20:33:48,592 INFO: [manage.py:16] : Application is getting started.
+2022-03-11 20:33:48,593 INFO: [manage.py:17] : App Instance Path:/Users/rk/Desktop/Stato/instance
+2022-03-11 20:33:48,596 WARNING: [_internal.py:113] :  * Debugger is active!
+2022-03-11 20:33:48,604 INFO: [_internal.py:113] :  * Debugger PIN: 222-025-790
+2022-03-11 20:34:12,203 DEBUG: [fsevents.py:164] : NativeEvent(path="/Users/rk/Desktop/Stato/manage.py.a0490bed607816b5b4bc298ceeb8b4e0.tmp", inode=38648943, flags=10100, id=328310): is_created, is_file
+2022-03-11 20:34:12,203 DEBUG: [fsevents.py:97] : queue_event <FileCreatedEvent: event_type=created, src_path='/Users/rk/Desktop/Stato/manage.py.a0490bed607816b5b4bc298ceeb8b4e0.tmp', is_directory=False>
+2022-03-11 20:34:12,204 DEBUG: [fsevents.py:97] : queue_event <DirModifiedEvent: event_type=modified, src_path='/Users/rk/Desktop/Stato', is_directory=True>
+2022-03-11 20:34:12,213 DEBUG: [fsevents.py:164] : NativeEvent(path="/Users/rk/Desktop/Stato/manage.py.a0490bed607816b5b4bc298ceeb8b4e0.tmp", inode=38648943, flags=11100, id=328313): is_created, is_file, is_modified
+2022-03-11 20:34:12,222 DEBUG: [fsevents.py:97] : queue_event <FileModifiedEvent: event_type=modified, src_path='/Users/rk/Desktop/Stato/manage.py.a0490bed607816b5b4bc298ceeb8b4e0.tmp', is_directory=False>
+2022-03-11 20:34:12,290 DEBUG: [fsevents.py:164] : NativeEvent(path="/Users/rk/Desktop/Stato/manage.py.a0490bed607816b5b4bc298ceeb8b4e0.tmp", inode=38648943, flags=11300, id=328322): is_coalesced, is_created, is_file, is_modified, is_removed
+2022-03-11 20:34:12,305 DEBUG: [fsevents.py:164] : NativeEvent(path="/Users/rk/Desktop/Stato/manage.py", inode=38635641, flags=10400, id=328325): is_file, is_inode_meta_mod
+2022-03-11 20:34:12,305 DEBUG: [fsevents.py:97] : queue_event <FileModifiedEvent: event_type=modified, src_path='/Users/rk/Desktop/Stato/manage.py.a0490bed607816b5b4bc298ceeb8b4e0.tmp', is_directory=False>
+2022-03-11 20:34:12,305 DEBUG: [fsevents.py:97] : queue_event <FileDeletedEvent: event_type=deleted, src_path='/Users/rk/Desktop/Stato/manage.py.a0490bed607816b5b4bc298ceeb8b4e0.tmp', is_directory=False>
+2022-03-11 20:34:12,306 DEBUG: [fsevents.py:97] : queue_event <DirModifiedEvent: event_type=modified, src_path='/Users/rk/Desktop/Stato', is_directory=True>
+2022-03-11 20:34:12,306 DEBUG: [fsevents.py:97] : queue_event <FileModifiedEvent: event_type=modified, src_path='/Users/rk/Desktop/Stato/manage.py', is_directory=False>
+2022-03-11 20:34:12,307 INFO: [_internal.py:113] :  * Detected change in '/Users/rk/Desktop/Stato/manage.py', reloading
+2022-03-11 20:34:12,316 DEBUG: [fsevents.py:164] : NativeEvent(path="/Users/rk/Desktop/Stato/manage.py", inode=38635641, flags=11400, id=328328): is_file, is_inode_meta_mod, is_modified
+2022-03-11 20:34:12,316 DEBUG: [fsevents.py:97] : queue_event <FileModifiedEvent: event_type=modified, src_path='/Users/rk/Desktop/Stato/manage.py', is_directory=False>
+2022-03-11 20:34:12,317 INFO: [_internal.py:113] :  * Detected change in '/Users/rk/Desktop/Stato/manage.py', reloading
+2022-03-11 20:34:13,371 INFO: [_internal.py:113] :  * Restarting with fsevents reloader
+2022-03-11 20:34:13,527 INFO: [manage.py:16] : Application is getting started.
+2022-03-11 20:34:13,527 INFO: [manage.py:17] : App Instance Path:/Users/rk/Desktop/Stato/instance
+2022-03-11 20:34:13,531 WARNING: [_internal.py:113] :  * Debugger is active!
+2022-03-11 20:34:13,539 INFO: [_internal.py:113] :  * Debugger PIN: 222-025-790
+2022-03-11 20:34:15,777 INFO: [manage.py:16] : Application is getting started.
+2022-03-11 20:34:15,777 INFO: [manage.py:17] : App Instance Path:/Users/rk/Desktop/Stato/instance
+2022-03-11 20:34:15,783 INFO: [_internal.py:113] :  * Running on http://localhost:5000/ (Press CTRL+C to quit)
+2022-03-11 20:34:15,785 INFO: [_internal.py:113] :  * Restarting with fsevents reloader
+2022-03-11 20:34:15,918 INFO: [manage.py:16] : Application is getting started.
+2022-03-11 20:34:15,918 INFO: [manage.py:17] : App Instance Path:/Users/rk/Desktop/Stato/instance
+2022-03-11 20:34:15,921 WARNING: [_internal.py:113] :  * Debugger is active!
+2022-03-11 20:34:15,929 INFO: [_internal.py:113] :  * Debugger PIN: 222-025-790
+2022-03-11 20:34:20,242 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:34:20] "[37mGET / HTTP/1.1[0m" 200 -
+2022-03-11 20:34:20,266 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:34:20] "[37mGET /static/js/app.js HTTP/1.1[0m" 200 -
+2022-03-11 20:34:20,268 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:34:20] "[37mGET /static/js/api-calls.js HTTP/1.1[0m" 200 -
+2022-03-11 20:34:20,269 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:34:20] "[37mGET /static/js/auto-refresh-setup.js HTTP/1.1[0m" 200 -
+2022-03-11 20:34:20,271 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:34:20] "[37mGET /static/js/common.js HTTP/1.1[0m" 200 -
+2022-03-11 20:34:20,907 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:34:20] "[37mGET /static/js/query-execution-worker.js HTTP/1.1[0m" 200 -
+2022-03-11 20:34:20,909 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:34:20] "[37mGET /static/js/query-execution-worker.js HTTP/1.1[0m" 200 -
+2022-03-11 20:34:56,718 INFO: [manage.py:16] : Application is getting started.
+2022-03-11 20:34:56,718 INFO: [manage.py:17] : App Instance Path:/Users/rk/Desktop/Stato/instance
+2022-03-11 20:34:56,723 INFO: [_internal.py:113] :  * Running on http://localhost:8080/ (Press CTRL+C to quit)
+2022-03-11 20:34:56,726 INFO: [_internal.py:113] :  * Restarting with fsevents reloader
+2022-03-11 20:34:56,860 INFO: [manage.py:16] : Application is getting started.
+2022-03-11 20:34:56,860 INFO: [manage.py:17] : App Instance Path:/Users/rk/Desktop/Stato/instance
+2022-03-11 20:34:56,864 WARNING: [_internal.py:113] :  * Debugger is active!
+2022-03-11 20:34:56,871 INFO: [_internal.py:113] :  * Debugger PIN: 222-025-790
+2022-03-11 20:35:02,409 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:35:02] "[37mGET / HTTP/1.1[0m" 200 -
+2022-03-11 20:35:02,437 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:35:02] "[37mGET /static/js/app.js HTTP/1.1[0m" 200 -
+2022-03-11 20:35:02,439 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:35:02] "[37mGET /static/js/api-calls.js HTTP/1.1[0m" 200 -
+2022-03-11 20:35:02,442 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:35:02] "[37mGET /static/js/auto-refresh-setup.js HTTP/1.1[0m" 200 -
+2022-03-11 20:35:02,444 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:35:02] "[37mGET /static/js/common.js HTTP/1.1[0m" 200 -
+2022-03-11 20:35:03,077 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:35:03] "[37mGET /static/js/query-execution-worker.js HTTP/1.1[0m" 200 -
+2022-03-11 20:35:03,080 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:35:03] "[37mGET /static/js/query-execution-worker.js HTTP/1.1[0m" 200 -
+2022-03-11 20:35:04,211 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:35:04] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2022-03-11 20:35:09,771 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:35:09] "[33mGET /index.html HTTP/1.1[0m" 404 -
+2022-03-11 20:35:12,194 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:35:12] "[37mGET / HTTP/1.1[0m" 200 -
+2022-03-11 20:35:12,228 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:35:12] "[37mGET /static/js/app.js HTTP/1.1[0m" 200 -
+2022-03-11 20:35:12,230 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:35:12] "[37mGET /static/js/api-calls.js HTTP/1.1[0m" 200 -
+2022-03-11 20:35:12,232 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:35:12] "[37mGET /static/js/auto-refresh-setup.js HTTP/1.1[0m" 200 -
+2022-03-11 20:35:12,235 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:35:12] "[37mGET /static/js/common.js HTTP/1.1[0m" 200 -
+2022-03-11 20:35:12,588 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:35:12] "[37mGET /static/js/query-execution-worker.js HTTP/1.1[0m" 200 -
+2022-03-11 20:35:12,591 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:35:12] "[37mGET /static/js/query-execution-worker.js HTTP/1.1[0m" 200 -
+2022-03-11 20:35:22,208 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:35:22] "[37mGET / HTTP/1.1[0m" 200 -
+2022-03-11 20:35:22,242 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:35:22] "[37mGET /static/js/app.js HTTP/1.1[0m" 200 -
+2022-03-11 20:35:22,245 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:35:22] "[37mGET /static/js/api-calls.js HTTP/1.1[0m" 200 -
+2022-03-11 20:35:22,248 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:35:22] "[37mGET /static/js/auto-refresh-setup.js HTTP/1.1[0m" 200 -
+2022-03-11 20:35:22,251 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:35:22] "[37mGET /static/js/common.js HTTP/1.1[0m" 200 -
+2022-03-11 20:35:23,063 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:35:23] "[37mGET /static/js/query-execution-worker.js HTTP/1.1[0m" 200 -
+2022-03-11 20:35:23,065 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:35:23] "[37mGET /static/js/query-execution-worker.js HTTP/1.1[0m" 200 -
+2022-03-11 20:35:23,494 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:35:23] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2022-03-11 20:35:37,186 DEBUG: [fsevents.py:164] : NativeEvent(path="/Users/rk/Desktop/Stato/manage.py.a0490bed607816b5b4bc298ceeb8b4e0.tmp", inode=38649151, flags=10100, id=331787): is_created, is_file
+2022-03-11 20:35:37,186 DEBUG: [fsevents.py:97] : queue_event <FileCreatedEvent: event_type=created, src_path='/Users/rk/Desktop/Stato/manage.py.a0490bed607816b5b4bc298ceeb8b4e0.tmp', is_directory=False>
+2022-03-11 20:35:37,187 DEBUG: [fsevents.py:97] : queue_event <DirModifiedEvent: event_type=modified, src_path='/Users/rk/Desktop/Stato', is_directory=True>
+2022-03-11 20:35:37,196 DEBUG: [fsevents.py:164] : NativeEvent(path="/Users/rk/Desktop/Stato/manage.py.a0490bed607816b5b4bc298ceeb8b4e0.tmp", inode=38649151, flags=11100, id=331790): is_created, is_file, is_modified
+2022-03-11 20:35:37,196 DEBUG: [fsevents.py:97] : queue_event <FileModifiedEvent: event_type=modified, src_path='/Users/rk/Desktop/Stato/manage.py.a0490bed607816b5b4bc298ceeb8b4e0.tmp', is_directory=False>
+2022-03-11 20:35:37,266 DEBUG: [fsevents.py:164] : NativeEvent(path="/Users/rk/Desktop/Stato/manage.py.a0490bed607816b5b4bc298ceeb8b4e0.tmp", inode=38649151, flags=11300, id=331793): is_coalesced, is_created, is_file, is_modified, is_removed
+2022-03-11 20:35:37,278 DEBUG: [fsevents.py:164] : NativeEvent(path="/Users/rk/Desktop/Stato/manage.py", inode=38635641, flags=10400, id=331796): is_file, is_inode_meta_mod
+2022-03-11 20:35:37,278 DEBUG: [fsevents.py:97] : queue_event <FileModifiedEvent: event_type=modified, src_path='/Users/rk/Desktop/Stato/manage.py.a0490bed607816b5b4bc298ceeb8b4e0.tmp', is_directory=False>
+2022-03-11 20:35:37,278 DEBUG: [fsevents.py:97] : queue_event <FileDeletedEvent: event_type=deleted, src_path='/Users/rk/Desktop/Stato/manage.py.a0490bed607816b5b4bc298ceeb8b4e0.tmp', is_directory=False>
+2022-03-11 20:35:37,279 DEBUG: [fsevents.py:97] : queue_event <DirModifiedEvent: event_type=modified, src_path='/Users/rk/Desktop/Stato', is_directory=True>
+2022-03-11 20:35:37,280 DEBUG: [fsevents.py:97] : queue_event <FileModifiedEvent: event_type=modified, src_path='/Users/rk/Desktop/Stato/manage.py', is_directory=False>
+2022-03-11 20:35:37,280 INFO: [_internal.py:113] :  * Detected change in '/Users/rk/Desktop/Stato/manage.py', reloading
+2022-03-11 20:35:37,289 DEBUG: [fsevents.py:164] : NativeEvent(path="/Users/rk/Desktop/Stato/manage.py", inode=38635641, flags=11400, id=331799): is_file, is_inode_meta_mod, is_modified
+2022-03-11 20:35:37,289 DEBUG: [fsevents.py:97] : queue_event <FileModifiedEvent: event_type=modified, src_path='/Users/rk/Desktop/Stato/manage.py', is_directory=False>
+2022-03-11 20:35:37,290 INFO: [_internal.py:113] :  * Detected change in '/Users/rk/Desktop/Stato/manage.py', reloading
+2022-03-11 20:35:38,350 INFO: [_internal.py:113] :  * Restarting with fsevents reloader
+2022-03-11 20:35:38,505 INFO: [manage.py:16] : Application is getting started.
+2022-03-11 20:35:38,505 INFO: [manage.py:17] : App Instance Path:/Users/rk/Desktop/Stato/instance
+2022-03-11 20:35:38,509 WARNING: [_internal.py:113] :  * Debugger is active!
+2022-03-11 20:35:38,517 INFO: [_internal.py:113] :  * Debugger PIN: 222-025-790
+2022-03-11 20:35:40,348 INFO: [manage.py:16] : Application is getting started.
+2022-03-11 20:35:40,348 INFO: [manage.py:17] : App Instance Path:/Users/rk/Desktop/Stato/instance
+2022-03-11 20:35:40,352 INFO: [_internal.py:113] :  * Running on http://127.0.0.1:8080/ (Press CTRL+C to quit)
+2022-03-11 20:35:40,355 INFO: [_internal.py:113] :  * Restarting with fsevents reloader
+2022-03-11 20:35:40,488 INFO: [manage.py:16] : Application is getting started.
+2022-03-11 20:35:40,488 INFO: [manage.py:17] : App Instance Path:/Users/rk/Desktop/Stato/instance
+2022-03-11 20:35:40,492 WARNING: [_internal.py:113] :  * Debugger is active!
+2022-03-11 20:35:40,500 INFO: [_internal.py:113] :  * Debugger PIN: 222-025-790
+2022-03-11 20:35:44,976 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:35:44] "[37mGET / HTTP/1.1[0m" 200 -
+2022-03-11 20:35:45,000 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:35:45] "[37mGET /static/js/app.js HTTP/1.1[0m" 200 -
+2022-03-11 20:35:45,003 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:35:45] "[37mGET /static/js/api-calls.js HTTP/1.1[0m" 200 -
+2022-03-11 20:35:45,005 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:35:45] "[37mGET /static/js/auto-refresh-setup.js HTTP/1.1[0m" 200 -
+2022-03-11 20:35:45,007 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:35:45] "[37mGET /static/js/common.js HTTP/1.1[0m" 200 -
+2022-03-11 20:35:45,653 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:35:45] "[37mGET /static/js/query-execution-worker.js HTTP/1.1[0m" 200 -
+2022-03-11 20:35:45,655 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:35:45] "[37mGET /static/js/query-execution-worker.js HTTP/1.1[0m" 200 -
+2022-03-11 20:40:32,811 INFO: [manage.py:16] : Application is getting started.
+2022-03-11 20:40:32,811 INFO: [manage.py:17] : App Instance Path:/Users/rk/Desktop/Stato/instance
+2022-03-11 20:40:32,816 INFO: [_internal.py:113] :  * Running on http://127.0.0.1:8080/ (Press CTRL+C to quit)
+2022-03-11 20:40:32,818 INFO: [_internal.py:113] :  * Restarting with fsevents reloader
+2022-03-11 20:40:32,951 INFO: [manage.py:16] : Application is getting started.
+2022-03-11 20:40:32,951 INFO: [manage.py:17] : App Instance Path:/Users/rk/Desktop/Stato/instance
+2022-03-11 20:40:32,955 WARNING: [_internal.py:113] :  * Debugger is active!
+2022-03-11 20:40:32,963 INFO: [_internal.py:113] :  * Debugger PIN: 222-025-790
+2022-03-11 20:40:35,895 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:40:35] "[37mGET / HTTP/1.1[0m" 200 -
+2022-03-11 20:40:35,917 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:40:35] "[37mGET /static/js/app.js HTTP/1.1[0m" 200 -
+2022-03-11 20:40:35,919 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:40:35] "[37mGET /static/js/api-calls.js HTTP/1.1[0m" 200 -
+2022-03-11 20:40:35,921 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:40:35] "[37mGET /static/js/auto-refresh-setup.js HTTP/1.1[0m" 200 -
+2022-03-11 20:40:35,924 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:40:35] "[37mGET /static/js/common.js HTTP/1.1[0m" 200 -
+2022-03-11 20:40:36,575 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:40:36] "[37mGET /static/js/query-execution-worker.js HTTP/1.1[0m" 200 -
+2022-03-11 20:40:36,577 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:40:36] "[37mGET /static/js/query-execution-worker.js HTTP/1.1[0m" 200 -
+2022-03-11 20:42:58,465 INFO: [_internal.py:113] :  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2022-03-11 20:42:58,467 INFO: [_internal.py:113] :  * Restarting with fsevents reloader
+2022-03-11 20:42:58,603 WARNING: [_internal.py:113] :  * Debugger is active!
+2022-03-11 20:42:58,611 INFO: [_internal.py:113] :  * Debugger PIN: 222-025-790
+2022-03-11 20:43:16,458 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:43:16] "[37mGET / HTTP/1.1[0m" 200 -
+2022-03-11 20:43:16,488 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:43:16] "[37mGET /static/js/api-calls.js HTTP/1.1[0m" 200 -
+2022-03-11 20:43:16,489 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:43:16] "[37mGET /static/js/app.js HTTP/1.1[0m" 200 -
+2022-03-11 20:43:16,491 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:43:16] "[37mGET /static/js/auto-refresh-setup.js HTTP/1.1[0m" 200 -
+2022-03-11 20:43:16,493 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:43:16] "[37mGET /static/js/common.js HTTP/1.1[0m" 200 -
+2022-03-11 20:43:17,144 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:43:17] "[37mGET /static/js/query-execution-worker.js HTTP/1.1[0m" 200 -
+2022-03-11 20:43:17,144 INFO: [_internal.py:113] : 127.0.0.1 - - [11/Mar/2022 20:43:17] "[37mGET /static/js/query-execution-worker.js HTTP/1.1[0m" 200 -
